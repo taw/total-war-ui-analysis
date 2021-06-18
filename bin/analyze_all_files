@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+require "pathname"
+
+data_dir = Pathname("#{__dir__}") + "../data"
+output_dir = Pathname("#{__dir__}") + "../output"
+
+if ARGV.empty?
+  todo = data_dir.find.reject(&:directory?)
+else
+  todo = ARGV.map{|path| Pathname(path).realpath}
+end
+
+todo.each do |path|
+  output_path = output_dir + (path.relative_path_from(data_dir).to_s + ".txt")
+
+  output_path.parent.mkpath
+  system %Q[#{__dir__}/analysis "#{path}" >"#{output_path}"]
+end

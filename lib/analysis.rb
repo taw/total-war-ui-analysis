@@ -32,7 +32,7 @@ class DataBlock < Block
     puts "#{range} #{self.class}"
     data.chars.each_slice(16) do |slice|
       slice = slice.join
-      asc = slice.chars.map{|c| c =~ /[\x20-x7f]/ ? c : "."}.join
+      asc = slice.chars.map{|c| c =~ /[\x20-\x7f]/ ? c : "."}.join
       asc += " " * (16 - asc.size)
       hex = slice.bytes.map{|c| "%02x" % c}.join(" ")
       puts "  #{asc} #{hex}"
@@ -71,7 +71,7 @@ class Analysis
       @blocks << VersionBlock.new(self, 0, 10)
     end
     # we might be overmatching here
-    @data.scan(/[\x20-x7f]{4,65535}/) do |s|
+    @data.scan(/[\x20-\x7f]{4,65535}/) do |s|
       s, e = $~.offset(0)
       next if s < 2
       sz = @data[s-2,2].unpack1("v")
