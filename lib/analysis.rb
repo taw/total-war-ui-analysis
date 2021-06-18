@@ -9,7 +9,7 @@ class Block
   end
 
   def range
-    "#{s}..#{e-1}"
+    "%06d-%06d" % [s, e-1]
   end
 
   def inspect
@@ -27,6 +27,7 @@ class DataBlock < Block
     data.chars.each_slice(16) do |slice|
       slice = slice.join
       asc = slice.chars.map{|c| c =~ /[\x20-x7f]/ ? c : "."}.join
+      asc += " " * (16 - asc.size)
       hex = slice.bytes.map{|c| "%02x" % c}.join(" ")
       puts "  #{asc} #{hex}"
     end
@@ -34,6 +35,9 @@ class DataBlock < Block
 end
 
 class VersionBlock < Block
+  def report
+    puts "#{range} #{self.class} #{data[7,3].to_i}"
+  end
 end
 
 class StringBlock < Block
@@ -54,6 +58,9 @@ class Analysis
   end
 
   def analysis
+    if @data[0...10] =~ /\AVersion\d\d\d/
+      @blocks << VersionBlock.new(self, 0, 10)
+    end
     # ...
   end
 
@@ -61,7 +68,7 @@ class Analysis
     ofs = 0
     # Blocks can have gaps and occasionally overlap
     @blocks.sort.each do |b|
-      if b.start > ofs
+      if b.s > ofs
         report_data_block ofs, b.s
         ofs = b.s
       elsif b.s < ofs
