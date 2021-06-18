@@ -52,6 +52,9 @@ class StringBlock < Block
   end
 end
 
+class ImagePathBlock < StringBlock
+end
+
 class Analysis
   attr_reader :data, :size, :blocks
 
@@ -76,7 +79,12 @@ class Analysis
       next if s < 2
       sz = @data[s-2,2].unpack1("v")
       if s+sz <= e
-        @blocks << StringBlock.new(self, s-2, s+sz)
+        str = @data[s, sz]
+        if str =~ /(\.png|\.tga)\z/ and str =~ %r[/|\\]
+          @blocks << ImagePathBlock.new(self, s-2, s+sz)
+        else
+          @blocks << StringBlock.new(self, s-2, s+sz)
+        end
       end
     end
   end
