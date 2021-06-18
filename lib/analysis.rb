@@ -80,30 +80,34 @@ class Analysis
       @blocks << VersionBlock.new(self, 0, 10)
     end
 
-    @data.scan(/[\r\n\t\x20-\x7f]{4,65535}/) do |s|
-      s, e = $~.offset(0)
-      next if s < 2
-      sz = @data[s-2,2].unpack1("v")
-      next if sz < 4
-      if s+sz <= e
-        str = @data[s, sz]
-        if str =~ /(\.png|\.tga)\z/ and str =~ %r[/|\\]
-          @blocks << ImagePathBlock.new(self, s-2, s+sz)
-        else
-          @blocks << StringBlock.new(self, s-2, s+sz)
-        end
+    # Find all StringBlock and UnicodeBlock
+    ofs = 10
+    while ofs < size-2
+      sz = @data[ofs, 2].unpack1("v")
+      if sz < 4
+        ofs += 1
+        next
       end
-    end
 
-    @data.scan(/(?:[\r\n\t\x20-\x7f]\x00){4,65535}/) do |s|
-      s, e = $~.offset(0)
-      next if s < 2
-      sz = @data[s-2,2].unpack1("v")
-      next if sz < 4
-      # p [:maybe_unicode, s, e, @data[s...e].unpack("v*").pack("U*"), @data[s,sz*2].unpack("v*").pack("U*"), s+2*sz <= e]
-      if s+2*sz <= e
-        @blocks << UnicodeBlock.new(self, s-2, s+sz*2)
+      str = @data[ofs+2, sz]
+      if str.size == sz and str =~ /\A[\r\n\t\x20-\x7f]+\z/
+        if str =~ /(\.png|\.tga)\z/ and str =~ %r[/|\\]
+          @blocks << ImagePathBlock.new(self, ofs, ofs+2+sz)
+        else
+          @blocks << StringBlock.new(self, ofs, ofs+2+sz)
+        end
+        ofs += 2 + sz
+        next
       end
+
+      ustr = @data[ofs+2, sz*2]
+      if ustr.size == 2*sz and ustr =~ /\A(?:[\r\n\t\x20-\x7f]\x00)+\z/
+        @blocks << UnicodeBlock.new(self, ofs, ofs+2+sz*2)
+        ofs += 2 + sz * 2
+        next
+      end
+
+      ofs += 1
     end
   end
 
@@ -121,7 +125,7 @@ class Analysis
       b.report
       ofs = b.e
     end
-    if ofs <= size
+    if ofs < size
       report_data_block ofs, size
     end
   end
