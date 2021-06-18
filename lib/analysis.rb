@@ -1,3 +1,5 @@
+require "pry"
+
 class Block
   attr_reader :file, :s, :e, :data
 
@@ -18,6 +20,10 @@ class Block
 
   def report
     puts "#{range} #{self.class} #{data.inspect}"
+  end
+
+  def <=>(other)
+    [s,e] <=> [other.s, other.e]
   end
 end
 
@@ -41,6 +47,9 @@ class VersionBlock < Block
 end
 
 class StringBlock < Block
+  def report
+    puts "#{range} #{self.class} #{data[2..-1].inspect}"
+  end
 end
 
 class Analysis
@@ -61,7 +70,15 @@ class Analysis
     if @data[0...10] =~ /\AVersion\d\d\d/
       @blocks << VersionBlock.new(self, 0, 10)
     end
-    # ...
+    # we might be overmatching here
+    @data.scan(/[\x20-x7f]{4,65535}/) do |s|
+      s, e = $~.offset(0)
+      next if s < 2
+      sz = @data[s-2,2].unpack1("v")
+      if s+sz <= e
+        @blocks << StringBlock.new(self, s-2, s+sz)
+      end
+    end
   end
 
   def report
