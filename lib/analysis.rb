@@ -52,6 +52,12 @@ class StringBlock < Block
   end
 end
 
+class UnicodeBlock < Block
+  def report
+    puts "#{range} #{self.class} #{data[2..-1].unpack("v*").pack("U*").inspect}"
+  end
+end
+
 class ImagePathBlock < StringBlock
 end
 
@@ -73,11 +79,12 @@ class Analysis
     if @data[0...10] =~ /\AVersion\d\d\d/
       @blocks << VersionBlock.new(self, 0, 10)
     end
-    # we might be overmatching here
-    @data.scan(/[\x20-\x7f]{4,65535}/) do |s|
+
+    @data.scan(/[\r\n\t\x20-\x7f]{4,65535}/) do |s|
       s, e = $~.offset(0)
       next if s < 2
       sz = @data[s-2,2].unpack1("v")
+      next if sz < 4
       if s+sz <= e
         str = @data[s, sz]
         if str =~ /(\.png|\.tga)\z/ and str =~ %r[/|\\]
@@ -85,6 +92,17 @@ class Analysis
         else
           @blocks << StringBlock.new(self, s-2, s+sz)
         end
+      end
+    end
+
+    @data.scan(/(?:[\r\n\t\x20-\x7f]\x00){4,65535}/) do |s|
+      s, e = $~.offset(0)
+      next if s < 2
+      sz = @data[s-2,2].unpack1("v")
+      next if sz < 4
+      # p [:maybe_unicode, s, e, @data[s...e].unpack("v*").pack("U*"), @data[s,sz*2].unpack("v*").pack("U*"), s+2*sz <= e]
+      if s+2*sz <= e
+        @blocks << UnicodeBlock.new(self, s-2, s+sz*2)
       end
     end
   end
