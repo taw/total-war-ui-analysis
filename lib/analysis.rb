@@ -67,6 +67,25 @@ end
 class FontNameBlock < StringBlock
 end
 
+class RootIDBlock < Block
+  def report
+    puts "#{range} #{self.class} #{data.unpack1("V")}"
+  end
+end
+
+class EventListBlock < Block
+  attr_reader :list
+
+  def initialize(*)
+    super
+    @list = []
+  end
+
+  def report
+    puts "#{range} #{self.class} #{@list.inspect}"
+  end
+end
+
 class Analysis
   attr_reader :data, :size, :blocks
 
@@ -87,6 +106,13 @@ class Analysis
       @version = @data[7,3].to_i
     else
       warn "File does not start with version block"
+    end
+  end
+
+  # Not present in newest versions
+  def analyze_rootid
+    if @data[14,6] == "\x04\x00root".b
+      @blocks << RootIDBlock.new(self, 10, 14)
     end
   end
 
@@ -130,6 +156,7 @@ class Analysis
 
   def analysis
     analyze_version
+    analyze_rootid
     analyze_strings
   end
 
