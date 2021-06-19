@@ -61,6 +61,12 @@ end
 class ImagePathBlock < StringBlock
 end
 
+class T0Block < StringBlock
+end
+
+class FontNameBlock < StringBlock
+end
+
 class Analysis
   attr_reader :data, :size, :blocks
 
@@ -75,12 +81,19 @@ class Analysis
     report
   end
 
-  def analysis
+  def analyze_version
     if @data[0...10] =~ /\AVersion\d\d\d/
       @blocks << VersionBlock.new(self, 0, 10)
+      @version = @data[7,3].to_i
+    else
+      warn "File does not start with version block"
     end
+  end
 
+  def analyze_strings
     # Find all StringBlock and UnicodeBlock
+    # It skips some short ones, and definitely skips empty ones
+    # TODO: We can find some of short ones later based on context
     ofs = 10
     while ofs < size-2
       sz = @data[ofs, 2].unpack1("v")
@@ -93,6 +106,10 @@ class Analysis
       if str.size == sz and str =~ /\A[\r\n\t\x20-\x7f]+\z/
         if str =~ /(\.png|\.tga)\z/ and str =~ %r[/|\\]
           @blocks << ImagePathBlock.new(self, ofs, ofs+2+sz)
+        elsif str =~ /\A(FiraSans-Regular|bardi_\d.*|Ingame \d+,|Frontend \d+,)/
+          @blocks << FontNameBlock.new(self, ofs, ofs+2+sz)
+        elsif str =~ /\A(normal_t0|[a-z_]+_t0)\z/
+          @blocks << T0Block.new(self, ofs, ofs+2+sz)
         else
           @blocks << StringBlock.new(self, ofs, ofs+2+sz)
         end
@@ -109,6 +126,11 @@ class Analysis
 
       ofs += 1
     end
+  end
+
+  def analysis
+    analyze_version
+    analyze_strings
   end
 
   def report
