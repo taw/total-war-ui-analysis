@@ -102,7 +102,7 @@ class Analysis
 
   def analyze_version
     if @data[0...10] =~ /\AVersion\d\d\d/
-      @blocks << VersionBlock.new(self, 0, 10)
+      add_block 0, 10, VersionBlock
       @version = @data[7,3].to_i
     else
       warn "File does not start with version block"
@@ -112,8 +112,12 @@ class Analysis
   # Not present in newest versions
   def analyze_rootid
     if @data[14,6] == "\x04\x00root".b
-      @blocks << RootIDBlock.new(self, 10, 14)
+      add_block 10, 14, RootIDBlock
     end
+  end
+
+  def add_block(s, e, type)
+    @blocks << type.new(self, s, e)
   end
 
   def analyze_strings
@@ -131,13 +135,15 @@ class Analysis
       str = @data[ofs+2, sz]
       if str.size == sz and str =~ /\A[\r\n\t\x20-\x7f]+\z/
         if str =~ /(\.png|\.tga)\z/ and str =~ %r[/|\\]
-          @blocks << ImagePathBlock.new(self, ofs, ofs+2+sz)
+          add_block ofs, ofs+2+sz, ImagePathBlock
         elsif str =~ /\A(FiraSans-Regular|bardi_\d.*|Ingame \d+,|Frontend \d+,)/
-          @blocks << FontNameBlock.new(self, ofs, ofs+2+sz)
+          add_block ofs, ofs+2+sz, FontNameBlock
         elsif str =~ /\A(normal_t0|[a-z_]+_t0)\z/
-          @blocks << T0Block.new(self, ofs, ofs+2+sz)
+          add_block ofs, ofs+2+sz, T0Block
+        elsif str == "events_end"
+          add_block ofs, ofs+2+sz, EventListBlock
         else
-          @blocks << StringBlock.new(self, ofs, ofs+2+sz)
+          add_block ofs, ofs+2+sz, StringBlock
         end
         ofs += 2 + sz
         next
@@ -145,7 +151,7 @@ class Analysis
 
       ustr = @data[ofs+2, sz*2]
       if ustr.size == 2*sz and ustr =~ /\A(?:[\r\n\t\x20-\x7f]\x00)+\z/
-        @blocks << UnicodeBlock.new(self, ofs, ofs+2+sz*2)
+        add_block ofs, ofs+2+sz*2, UnicodeBlock
         ofs += 2 + sz * 2
         next
       end
