@@ -35,27 +35,16 @@
   ................ 0a 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   .                00
 000379-000869 StringBlock "local m_action = nil\n\nfunction SetAction(a)\n\tm_action = a\nend\n\nfunction Action()\n\treturn m_action\nend\n\nfunction EnterClickDown()\n\tlocal x,y = Component.Call(\"Position\")\n\tComponent.Call(\"Children[0].MoveTo\", x+2, y+2)\nend\n\nfunction ExitClickDown()\n\tlocal x,y = Component.Call(\"Position\")\n\tComponent.Call(\"Children[0].MoveTo\", x+1, y+1)\nend\n\nfunction NotifySelected()\n\tComponent.CallByAddress(Component.GetProperty(\"Notify\"), \"LuaCall\", \"Notify\", Component.FindChildAddress(\"button_tx\"))\nend"
-000870-000877 DataBlock
-  .....c..         06 00 00 00 d0 63 02 17
-000878-000930 ImagePathBlock "UI/Templates/Skins/textbutton_small_center_down.tga"
-000931-000946 DataBlock
-  s...........@/.. 73 00 00 00 1b 00 00 00 ff ff ff ff 40 2f 05 18
-000947-001003 ImagePathBlock "UI/Templates/Skins/textbutton_small_center_down_off.tga"
-001004-001019 DataBlock
-  s............... 73 00 00 00 1b 00 00 00 ff ff ff ff a0 ca 0a 17
-001020-001070 ImagePathBlock "UI/Templates/Skins/textbutton_small_center_up.tga"
-001071-001086 DataBlock
-  s............... 73 00 00 00 1b 00 00 00 ff ff ff ff f0 d0 0a 17
-001087-001142 ImagePathBlock "UI/Templates/Skins/textbutton_small_center_up_roll.tga"
-001143-001158 DataBlock
-  s............... 73 00 00 00 1b 00 00 00 ff ff ff ff 10 d8 0a 17
-001159-001207 ImagePathBlock "UI/Templates/Skins/textbutton_small_side_up.tga"
-001208-001223 DataBlock
-  ............(... 05 00 00 00 1c 00 00 00 ff ff ff ff 28 de 0a 17
-001224-001274 ImagePathBlock "UI/Templates/Skins/textbutton_small_side_down.tga"
-001275-001302 DataBlock
-  ................ 05 00 00 00 1c 00 00 00 ff ff ff ff 00 00 00 00
-  ........x...     00 00 00 00 05 00 00 00 78 c7 04 18
+000870-000873 DataBlock
+  ....             06 00 00 00
+000874-000942 ImageBlock id=386032592 xsize=115 ysize=27 path="UI/Templates/Skins/textbutton_small_center_down.tga" unknown=4294967295
+000943-001015 ImageBlock id=402992960 xsize=115 ysize=27 path="UI/Templates/Skins/textbutton_small_center_down_off.tga" unknown=4294967295
+001016-001082 ImageBlock id=386583200 xsize=115 ysize=27 path="UI/Templates/Skins/textbutton_small_center_up.tga" unknown=4294967295
+001083-001154 ImageBlock id=386584816 xsize=115 ysize=27 path="UI/Templates/Skins/textbutton_small_center_up_roll.tga" unknown=4294967295
+001155-001219 ImageBlock id=386586640 xsize=5 ysize=28 path="UI/Templates/Skins/textbutton_small_side_up.tga" unknown=4294967295
+001220-001286 ImageBlock id=386588200 xsize=5 ysize=28 path="UI/Templates/Skins/textbutton_small_side_down.tga" unknown=4294967295
+001287-001302 DataBlock
+  ............x... 00 00 00 00 00 00 00 00 05 00 00 00 78 c7 04 18
 001303-001310 StringBlock "normal"
 001311-001347 DataBlock
   ................ f9 00 00 00 1c 00 00 00 00 00 00 00 00 00 00 00
@@ -186,9 +175,7 @@
 002870-002877 StringBlock "Action"
 002878-002879 DataBlock
   ..               00 00
-002880-002896 StringBlock "OnMouseLClickUp"
-002897-002912 StringBlock "NotifySelected"
-002913-002924 EventListBlock []
+002880-002924 EventListBlock ["OnMouseLClickUp", "NotifySelected"]
 002925-002940 DataBlock
   -...........(... 2d 00 00 00 00 00 00 00 01 00 00 00 28 80 f7 16
 002941-002951 StringBlock "button_tx"

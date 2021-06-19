@@ -47,8 +47,15 @@ class VersionBlock < Block
 end
 
 class StringBlock < Block
+  attr_reader :str
+
+  def initialize(*)
+    super
+    @str = data[2..-1]
+  end
+
   def report
-    puts "#{range} #{self.class} #{data[2..-1].inspect}"
+    puts "#{range} #{self.class} #{str.inspect}"
   end
 end
 
@@ -73,8 +80,20 @@ class RootIDBlock < Block
   end
 end
 
+class ImageBlock < Block
+  def report
+    id = data[0,4].unpack1("V")
+    str = data[6...-12]
+    xsize = data[-12,4].unpack1("V")
+    ysize = data[-8,4].unpack1("V")
+    unknown = data[-4,4].unpack1("V")
+    puts "#{range} #{self.class} id=#{id} xsize=#{xsize} ysize=#{ysize} path=#{str.inspect} unknown=#{unknown}"
+  end
+end
+
 class EventListBlock < Block
   attr_reader :list
+  attr_writer :s
 
   def initialize(*)
     super
@@ -136,7 +155,7 @@ class Analysis
       if str.size == sz and str =~ /\A[\r\n\t\x20-\x7f]+\z/
         if str =~ /(\.png|\.tga)\z/ and str =~ %r[/|\\]
           add_block ofs, ofs+2+sz, ImagePathBlock
-        elsif str =~ /\A(FiraSans-Regular|bardi_\d.*|Ingame \d+,|Frontend \d+,)/
+        elsif str =~ /\A(FiraSans-Regular|bardi_\d.*|Ingame \d+,|Frontend \d+,|la_gioconda|Norse\z|Norse-Bold)/
           add_block ofs, ofs+2+sz, FontNameBlock
         elsif str =~ /\A(normal_t0|[a-z_]+_t0)\z/
           add_block ofs, ofs+2+sz, T0Block
@@ -160,10 +179,63 @@ class Analysis
     end
   end
 
+  def free_space_before(i)
+    e = @blocks[i].s
+    s = (i == 0) ? 0 : @blocks[i-1].e
+    e - s
+  end
+
+  def free_space_after(i)
+    s = @blocks[i].e
+    e = (i == @blocks.size-1) ? @size : @blocks[i+1].s
+    e - s
+  end
+
+  def analyze_images
+    @blocks.each_with_index do |b,i|
+      next unless b.is_a?(ImagePathBlock)
+      next unless free_space_before(i) >= 4
+      next unless free_space_after(i) >= 12
+      xsize = @data[@blocks[i].e, 4].unpack1("V")
+      ysize = @data[@blocks[i].e+4, 4].unpack1("V")
+      next if xsize >= 0x1_0000
+      next if ysize >= 0x1_0000
+      @blocks[i] = ImageBlock.new(self, b.s-4, b.e+12)
+    end
+  end
+
+  def analyze_image_lists
+    # TODO
+  end
+
+  def analyze_event_lists
+    @blocks.each_with_index do |b,i|
+      next unless b.is_a?(EventListBlock)
+      j = i-1
+      while true
+        break if j < 0
+        if @blocks[j].is_a?(StringBlock) and @blocks[j].e == @blocks[i].s
+          # eat it!
+          @blocks[i].s = @blocks[j].s
+          @blocks[i].list.unshift @blocks[j].str
+          @blocks[j] = nil
+          j -= 1
+        else
+          # don't try anything funny for now
+          break
+        end
+      end
+    end
+    @blocks.compact!
+  end
+
   def analysis
     analyze_version
     analyze_rootid
     analyze_strings
+    analyze_images
+    analyze_image_lists
+    analyze_event_lists
   end
 
   def report

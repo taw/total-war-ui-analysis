@@ -63,21 +63,14 @@
 000758-000762 DataBlock
   .....            00 00 00 00 00
 000763-001350 StringBlock "local clicked = false\r\nlocal over     = false\r\nlocal last_upate = 0\r\n\r\nfunction OnMouseOn()\r\n\tover = true\r\nend\r\n\r\nfunction OnMouseOff()\r\n\tover = false\r\nend\r\n\r\nfunction OnClickDown()\r\n\tclicked = true\r\n\tlast_update = 0\r\nend\r\n\r\nfunction OnClickUp()\r\n\tclicked = false\r\nend\r\n\r\nfunction OnUpdate(time)\r\n\tif over == true and clicked == true and time - last_update > 500 then\r\n\t\tlast_update = time\r\n\t\tOnSelect()\r\n\tend\r\nend\r\n\r\n\r\nfunction OnSelect()\r\n\r\n\tlocal this = UIComponent(Address)\r\n\tlocal panel = UIComponent(this:Parent(\"faction_selection\"))\r\n\r\n\tpanel:LuaCall(\"SelectNextFaction\")\r\n\r\nend\t"
-001351-001358 DataBlock
-  ....,.x.         04 00 00 00 2c 82 78 0b
-001359-001405 ImagePathBlock "data\\UI\\FrontEnd UI\\Skins\\arrow_down_roll.tga"
-001406-001421 DataBlock
-  ...."........cI. 17 00 00 00 22 00 00 00 ff ff ff ff ac 63 49 0b
-001422-001463 ImagePathBlock "data\\UI\\FrontEnd UI\\Skins\\arrow_roll.tga"
-001464-001479 DataBlock
-  ....".........t. 17 00 00 00 22 00 00 00 ff ff ff ff d4 ad 74 0b
-001480-001519 ImagePathBlock "data\\UI\\FrontEnd UI\\Skins\\arrow_up.tga"
-001520-001535 DataBlock
-  ...."........Ft. 17 00 00 00 22 00 00 00 ff ff ff ff 0c 46 74 0b
-001536-001577 ImagePathBlock "data\\UI\\FrontEnd UI\\Skins\\arrow_down.tga"
-001578-001605 DataBlock
-  ...."........... 17 00 00 00 22 00 00 00 ff ff ff ff 00 00 00 00
-  ......... s.     00 00 00 00 05 00 00 00 bc 20 73 0b
+001351-001354 DataBlock
+  ....             04 00 00 00
+001355-001417 ImageBlock id=192447020 xsize=23 ysize=34 path="data\\UI\\FrontEnd UI\\Skins\\arrow_down_roll.tga" unknown=4294967295
+001418-001475 ImageBlock id=189359020 xsize=23 ysize=34 path="data\\UI\\FrontEnd UI\\Skins\\arrow_roll.tga" unknown=4294967295
+001476-001531 ImageBlock id=192196052 xsize=23 ysize=34 path="data\\UI\\FrontEnd UI\\Skins\\arrow_up.tga" unknown=4294967295
+001532-001589 ImageBlock id=192169484 xsize=23 ysize=34 path="data\\UI\\FrontEnd UI\\Skins\\arrow_down.tga" unknown=4294967295
+001590-001605 DataBlock
+  ............. s. 00 00 00 00 00 00 00 00 05 00 00 00 bc 20 73 0b
 001606-001613 StringBlock "normal"
 001614-001650 DataBlock
   ...."........... 17 00 00 00 22 00 00 00 00 00 00 00 00 00 00 00
@@ -167,17 +160,7 @@
   ................ 00 00 00 00 00 de 00 00 00 0b 01 00 00 02 00 00
   .......z...... s 00 00 00 00 00 ec a0 7a 0b 0b 00 00 00 bc 20 73
   .....            0b 00 00 00 00
-002606-002624 StringBlock "OnMouseLClickDown"
-002625-002637 StringBlock "OnClickDown"
-002638-002654 StringBlock "OnMouseLClickUp"
-002655-002665 StringBlock "OnClickUp"
-002666-002680 StringBlock "OnUpdatePulse"
-002681-002690 StringBlock "OnUpdate"
-002691-002701 StringBlock "OnMouseOn"
-002702-002712 StringBlock "OnMouseOn"
-002713-002724 StringBlock "OnMouseOff"
-002725-002736 StringBlock "OnMouseOff"
-002737-002748 EventListBlock []
+002606-002748 EventListBlock ["OnMouseLClickDown", "OnClickDown", "OnMouseLClickUp", "OnClickUp", "OnUpdatePulse", "OnUpdate", "OnMouseOn", "OnMouseOn", "OnMouseOff", "OnMouseOff"]
 002749-002762 DataBlock
   ...........k~.   00 00 00 00 00 00 00 00 00 00 14 6b 7e 0b
 002763-002782 StringBlock "button_flags_right"
@@ -191,21 +174,14 @@
 002954-002958 DataBlock
   .....            00 00 00 00 00
 002959-003544 StringBlock "local clicked = false\r\nlocal over     = false\r\nlocal last_upate = 0\r\n\r\nfunction OnMouseOn()\r\n\tover = true\r\nend\r\n\r\nfunction OnMouseOff()\r\n\tover = false\r\nend\r\n\r\nfunction OnClickDown()\r\n\tclicked = true\r\n\tlast_update = 0\r\nend\r\n\r\nfunction OnClickUp()\r\n\tclicked = false\r\nend\r\n\r\nfunction OnUpdate(time)\r\n\tif over == true and clicked == true and time - last_update > 500 then\r\n\t\tlast_update = time\r\n\t\tOnSelect()\r\n\tend\r\nend\r\n\r\nfunction OnSelect()\r\n\r\n\tlocal this = UIComponent(Address)\r\n\tlocal panel = UIComponent(this:Parent(\"faction_selection\"))\r\n\r\n\tpanel:LuaCall(\"SelectPrevFaction\")\r\n\r\nend\t"
-003545-003552 DataBlock
-  .....Zy.         04 00 00 00 1c 5a 79 0b
-003553-003599 ImagePathBlock "data\\UI\\FrontEnd UI\\Skins\\arrow_down_roll.tga"
-003600-003615 DataBlock
-  ....".......,nt. 17 00 00 00 22 00 00 00 ff ff ff ff 2c 6e 74 0b
-003616-003657 ImagePathBlock "data\\UI\\FrontEnd UI\\Skins\\arrow_roll.tga"
-003658-003673 DataBlock
-  ...."........1h. 17 00 00 00 22 00 00 00 ff ff ff ff d4 31 68 0b
-003674-003713 ImagePathBlock "data\\UI\\FrontEnd UI\\Skins\\arrow_up.tga"
-003714-003729 DataBlock
-  ...."........0h. 17 00 00 00 22 00 00 00 ff ff ff ff ec 30 68 0b
-003730-003771 ImagePathBlock "data\\UI\\FrontEnd UI\\Skins\\arrow_down.tga"
-003772-003799 DataBlock
-  ...."........... 17 00 00 00 22 00 00 00 ff ff ff ff 00 00 00 00
-  ........<.s.     00 00 00 00 05 00 00 00 3c 98 73 0b
+003545-003548 DataBlock
+  ....             04 00 00 00
+003549-003611 ImageBlock id=192502300 xsize=23 ysize=34 path="data\\UI\\FrontEnd UI\\Skins\\arrow_down_roll.tga" unknown=4294967295
+003612-003669 ImageBlock id=192179756 xsize=23 ysize=34 path="data\\UI\\FrontEnd UI\\Skins\\arrow_roll.tga" unknown=4294967295
+003670-003725 ImageBlock id=191377876 xsize=23 ysize=34 path="data\\UI\\FrontEnd UI\\Skins\\arrow_up.tga" unknown=4294967295
+003726-003783 ImageBlock id=191377644 xsize=23 ysize=34 path="data\\UI\\FrontEnd UI\\Skins\\arrow_down.tga" unknown=4294967295
+003784-003799 DataBlock
+  ............<.s. 00 00 00 00 00 00 00 00 05 00 00 00 3c 98 73 0b
 003800-003807 StringBlock "normal"
 003808-003844 DataBlock
   ...."........... 17 00 00 00 22 00 00 00 00 00 00 00 00 00 00 00
@@ -295,33 +271,20 @@
   ................ 00 00 00 00 00 de 00 00 00 0b 01 00 00 02 00 00
   .......n.....<.s 00 00 00 00 00 f4 89 6e 0b 0b 00 00 00 3c 98 73
   .....            0b 00 00 00 00
-004800-004818 StringBlock "OnMouseLClickDown"
-004819-004831 StringBlock "OnClickDown"
-004832-004848 StringBlock "OnMouseLClickUp"
-004849-004859 StringBlock "OnClickUp"
-004860-004874 StringBlock "OnUpdatePulse"
-004875-004884 StringBlock "OnUpdate"
-004885-004895 StringBlock "OnMouseOn"
-004896-004906 StringBlock "OnMouseOn"
-004907-004918 StringBlock "OnMouseOff"
-004919-004930 StringBlock "OnMouseOff"
-004931-004942 EventListBlock []
+004800-004942 EventListBlock ["OnMouseLClickDown", "OnClickDown", "OnMouseLClickUp", "OnClickUp", "OnUpdatePulse", "OnUpdate", "OnMouseOn", "OnMouseOn", "OnMouseOff", "OnMouseOff"]
 004943-004956 DataBlock
   ..........4.P.   00 00 00 00 00 00 00 00 00 00 34 c5 50 0b
 004957-004977 StringBlock "dy_selected_faction"
 004978-004992 DataBlock
   ....?..........  18 01 00 00 3f 00 00 00 01 01 00 01 00 00 00
 004993-005013 StringBlock "dy_selected_faction"
-005014-005036 DataBlock
+005014-005032 DataBlock
   ................ ff ff ff ff 00 00 00 00 00 00 00 00 00 00 00 02
-  ...$.{.          00 00 00 24 ae 7b 0b
-005037-005076 ImagePathBlock "data\\UI\\FrontEnd UI\\Skins\\1x1_gold.tga"
-005077-005092 DataBlock
-  ............|.}. 01 00 00 00 01 00 00 00 ff ff ff ff 7c d0 7d 0b
-005093-005145 ImagePathBlock "data\\UI\\FrontEnd UI\\Skins\\decorated_text_corner.tga"
-005146-005173 DataBlock
-  ................ 06 00 00 00 06 00 00 00 ff ff ff ff 00 00 00 00
-  .........Em.     00 00 00 00 01 00 00 00 ec 45 6d 0b
+  ...              00 00 00
+005033-005088 ImageBlock id=192654884 xsize=1 ysize=1 path="data\\UI\\FrontEnd UI\\Skins\\1x1_gold.tga" unknown=4294967295
+005089-005157 ImageBlock id=192794748 xsize=6 ysize=6 path="data\\UI\\FrontEnd UI\\Skins\\decorated_text_corner.tga" unknown=4294967295
+005158-005173 DataBlock
+  .............Em. 00 00 00 00 00 00 00 00 01 00 00 00 ec 45 6d 0b
 005174-005183 StringBlock "NewState"
 005184-005191 DataBlock
   ........         c8 00 00 00 18 00 00 00
@@ -370,19 +333,14 @@
 005822-005836 DataBlock
   N..............  4e 01 00 00 07 00 00 00 01 01 00 01 00 00 00
 005837-005852 StringBlock "selected_frame"
-005853-005875 DataBlock
+005853-005871 DataBlock
   ................ ff ff ff ff 00 00 00 00 00 00 00 00 00 00 00 03
-  ....Or.          00 00 00 94 4f 72 0b
-005876-005922 ImagePathBlock "data\\UI\\FrontEnd UI\\Skins\\dropdown_corner.tga"
-005923-005938 DataBlock
-  .............~m. 03 00 00 00 03 00 00 00 ff ff ff ff fc 7e 6d 0b
-005939-005983 ImagePathBlock "data\\UI\\FrontEnd UI\\Skins\\dropdown_side.tga"
-005984-005999 DataBlock
-  ............DRv. 03 00 00 00 01 00 00 00 ff ff ff ff 44 52 76 0b
-006000-006043 ImagePathBlock "data\\UI\\FrontEnd UI\\Skins\\dropdown_top.tga"
-006044-006071 DataBlock
-  ................ 01 00 00 00 03 00 00 00 ff ff ff ff 00 00 00 00
-  ........d.p.     00 00 00 00 01 00 00 00 64 db 70 0b
+  ...              00 00 00
+005872-005934 ImageBlock id=192040852 xsize=3 ysize=3 path="data\\UI\\FrontEnd UI\\Skins\\dropdown_corner.tga" unknown=4294967295
+005935-005995 ImageBlock id=191725308 xsize=3 ysize=1 path="data\\UI\\FrontEnd UI\\Skins\\dropdown_side.tga" unknown=4294967295
+005996-006055 ImageBlock id=192303684 xsize=1 ysize=3 path="data\\UI\\FrontEnd UI\\Skins\\dropdown_top.tga" unknown=4294967295
+006056-006071 DataBlock
+  ............d.p. 00 00 00 00 00 00 00 00 01 00 00 00 64 db 70 0b
 006072-006079 StringBlock "normal"
 006080-006116 DataBlock
   ]...3........... 5d 00 00 00 33 00 00 00 00 00 00 00 02 00 00 00
@@ -429,12 +387,11 @@
 006632-006644 DataBlock
   .............    ff ff ff ff 00 00 00 00 00 00 00 00 00
 006645-006806 StringBlock "-- The faction global is set via the script\r\n\r\nfunction OnSelect()\r\n\tUIComponent(UIComponent(Address):Parent()):LuaCall(\"NotifyFactionSelected\", Faction)\r\nend\r\n"
-006807-006814 DataBlock
-  ....tnr.         01 00 00 00 74 6e 72 0b
-006815-006854 ImagePathBlock "data\\UI\\FrontEnd UI\\Skins\\flag_132.tga"
-006855-006882 DataBlock
-  ....B........... 84 00 00 00 42 00 00 00 ff ff ff ff 00 00 00 00
-  .........+?.     00 00 00 00 05 00 00 00 f4 2b 3f 0b
+006807-006810 DataBlock
+  ....             01 00 00 00
+006811-006866 ImageBlock id=192048756 xsize=132 ysize=66 path="data\\UI\\FrontEnd UI\\Skins\\flag_132.tga" unknown=4294967295
+006867-006882 DataBlock
+  .............+?. 00 00 00 00 00 00 00 00 05 00 00 00 f4 2b 3f 0b
 006883-006890 StringBlock "normal"
 006891-006927 DataBlock
   F...#........... 46 00 00 00 23 00 00 00 00 00 00 00 00 00 00 00
@@ -524,9 +481,7 @@
   ................ 00 00 00 00 00 de 00 00 00 0b 01 00 00 02 00 00
   .....\4g......+? 00 00 00 00 00 5c 34 67 0b 0b 00 00 00 f4 2b 3f
   .....            0b 00 00 00 00
-007887-007903 StringBlock "OnMouseLClickUp"
-007904-007913 StringBlock "OnSelect"
-007914-007925 EventListBlock []
+007887-007925 EventListBlock ["OnMouseLClickUp", "OnSelect"]
 007926-007933 DataBlock
   ........         00 00 00 00 00 00 00 00
 007934-007963 StringBlock "template.button_standard.lua"
@@ -539,12 +494,11 @@
 008000-008012 DataBlock
   .............    ff ff ff ff 00 00 00 00 00 00 00 00 00
 008013-008174 StringBlock "-- The faction global is set via the script\r\n\r\nfunction OnSelect()\r\n\tUIComponent(UIComponent(Address):Parent()):LuaCall(\"NotifyFactionSelected\", Faction)\r\nend\r\n"
-008175-008182 DataBlock
-  .....rr.         01 00 00 00 14 72 72 0b
-008183-008222 ImagePathBlock "data\\UI\\FrontEnd UI\\Skins\\flag_132.tga"
-008223-008250 DataBlock
-  ....B........... 84 00 00 00 42 00 00 00 ff ff ff ff 00 00 00 00
-  .........hx.     00 00 00 00 05 00 00 00 14 68 78 0b
+008175-008178 DataBlock
+  ....             01 00 00 00
+008179-008234 ImageBlock id=192049684 xsize=132 ysize=66 path="data\\UI\\FrontEnd UI\\Skins\\flag_132.tga" unknown=4294967295
+008235-008250 DataBlock
+  .............hx. 00 00 00 00 00 00 00 00 05 00 00 00 14 68 78 0b
 008251-008258 StringBlock "normal"
 008259-008295 DataBlock
   F...#........... 46 00 00 00 23 00 00 00 00 00 00 00 00 00 00 00
@@ -634,9 +588,7 @@
   ................ 00 00 00 00 00 de 00 00 00 0b 01 00 00 02 00 00
   .....,.m......hx 00 00 00 00 00 2c e6 6d 0b 0b 00 00 00 14 68 78
   .....            0b 00 00 00 00
-009255-009271 StringBlock "OnMouseLClickUp"
-009272-009281 StringBlock "OnSelect"
-009282-009293 EventListBlock []
+009255-009293 EventListBlock ["OnMouseLClickUp", "OnSelect"]
 009294-009301 DataBlock
   ........         00 00 00 00 00 00 00 00
 009302-009331 StringBlock "template.button_standard.lua"
@@ -649,12 +601,11 @@
 009368-009380 DataBlock
   .............    ff ff ff ff 00 00 00 00 00 00 00 00 00
 009381-009542 StringBlock "-- The faction global is set via the script\r\n\r\nfunction OnSelect()\r\n\tUIComponent(UIComponent(Address):Parent()):LuaCall(\"NotifyFactionSelected\", Faction)\r\nend\r\n"
-009543-009550 DataBlock
-  ....\.}.         01 00 00 00 5c 84 7d 0b
-009551-009590 ImagePathBlock "data\\UI\\FrontEnd UI\\Skins\\flag_132.tga"
-009591-009618 DataBlock
-  ....B........... 84 00 00 00 42 00 00 00 ff ff ff ff 00 00 00 00
-  ..........i.     00 00 00 00 05 00 00 00 14 07 69 0b
+009543-009546 DataBlock
+  ....             01 00 00 00
+009547-009602 ImageBlock id=192775260 xsize=132 ysize=66 path="data\\UI\\FrontEnd UI\\Skins\\flag_132.tga" unknown=4294967295
+009603-009618 DataBlock
+  ..............i. 00 00 00 00 00 00 00 00 05 00 00 00 14 07 69 0b
 009619-009626 StringBlock "normal"
 009627-009663 DataBlock
   F...#........... 46 00 00 00 23 00 00 00 00 00 00 00 00 00 00 00
@@ -744,9 +695,7 @@
   ................ 00 00 00 00 00 de 00 00 00 0b 01 00 00 02 00 00
   .....$.j.......i 00 00 00 00 00 24 ac 6a 0b 0b 00 00 00 14 07 69
   .....            0b 00 00 00 00
-010623-010641 StringBlock "OnMouseLClickDown"
-010642-010651 StringBlock "OnSelect"
-010652-010663 EventListBlock []
+010623-010663 EventListBlock ["OnMouseLClickDown", "OnSelect"]
 010664-010671 DataBlock
   ........         00 00 00 00 00 00 00 00
 010672-010701 StringBlock "template.button_standard.lua"
@@ -759,12 +708,11 @@
 010738-010750 DataBlock
   .............    ff ff ff ff 00 00 00 00 00 00 00 00 00
 010751-010912 StringBlock "-- The faction global is set via the script\r\n\r\nfunction OnSelect()\r\n\tUIComponent(UIComponent(Address):Parent()):LuaCall(\"NotifyFactionSelected\", Faction)\r\nend\r\n"
-010913-010920 DataBlock
-  .....7|.         01 00 00 00 94 37 7c 0b
-010921-010960 ImagePathBlock "data\\UI\\FrontEnd UI\\Skins\\flag_132.tga"
-010961-010988 DataBlock
-  ....B........... 84 00 00 00 42 00 00 00 ff ff ff ff 00 00 00 00
-  ........tl..     00 00 00 00 05 00 00 00 74 6c 1e 00
+010913-010916 DataBlock
+  ....             01 00 00 00
+010917-010972 ImageBlock id=192690068 xsize=132 ysize=66 path="data\\UI\\FrontEnd UI\\Skins\\flag_132.tga" unknown=4294967295
+010973-010988 DataBlock
+  ............tl.. 00 00 00 00 00 00 00 00 05 00 00 00 74 6c 1e 00
 010989-010996 StringBlock "normal"
 010997-011033 DataBlock
   F...#........... 46 00 00 00 23 00 00 00 00 00 00 00 00 00 00 00
@@ -854,9 +802,7 @@
   ................ 00 00 00 00 00 de 00 00 00 0b 01 00 00 02 00 00
   .......h.....tl. 00 00 00 00 00 bc 19 68 0b 0b 00 00 00 74 6c 1e
   .....            00 00 00 00 00
-011993-012009 StringBlock "OnMouseLClickUp"
-012010-012019 StringBlock "OnSelect"
-012020-012031 EventListBlock []
+011993-012031 EventListBlock ["OnMouseLClickUp", "OnSelect"]
 012032-012039 DataBlock
   ........         00 00 00 00 00 00 00 00
 012040-012069 StringBlock "template.button_standard.lua"
@@ -866,13 +812,12 @@
 012082-012096 DataBlock
   Q..............  51 01 00 00 0a 00 00 00 01 01 00 01 00 00 00
 012097-012111 StringBlock "flag_selected"
-012112-012137 DataBlock
+012112-012133 DataBlock
   ................ ff ff ff ff 00 00 00 00 00 00 00 00 00 03 00 0d
-  .......3h.       0a 09 01 00 00 00 1c 33 68 0b
-012138-012177 ImagePathBlock "data\\UI\\FrontEnd UI\\Skins\\flag_132.tga"
-012178-012205 DataBlock
-  ....B........... 84 00 00 00 42 00 00 00 ff ff ff ff 00 00 00 00
-  ..........w.     00 00 00 00 01 00 00 00 cc ac 77 0b
+  ......           0a 09 01 00 00 00
+012134-012189 ImageBlock id=191378204 xsize=132 ysize=66 path="data\\UI\\FrontEnd UI\\Skins\\flag_132.tga" unknown=4294967295
+012190-012205 DataBlock
+  ..............w. 00 00 00 00 00 00 00 00 01 00 00 00 cc ac 77 0b
 012206-012213 StringBlock "normal"
 012214-012250 DataBlock
   W...-........... 57 00 00 00 2d 00 00 00 00 00 00 00 02 00 00 00
@@ -900,12 +845,11 @@
 012451-012463 DataBlock
   .............    ff ff ff ff 00 00 00 00 00 00 00 00 00
 012464-012625 StringBlock "-- The faction global is set via the script\r\n\r\nfunction OnSelect()\r\n\tUIComponent(UIComponent(Address):Parent()):LuaCall(\"NotifyFactionSelected\", Faction)\r\nend\r\n"
-012626-012633 DataBlock
-  ......v.         01 00 00 00 d4 ce 76 0b
-012634-012673 ImagePathBlock "data\\UI\\FrontEnd UI\\Skins\\flag_132.tga"
-012674-012701 DataBlock
-  ....B........... 84 00 00 00 42 00 00 00 ff ff ff ff 00 00 00 00
-  .........Gl.     00 00 00 00 05 00 00 00 d4 47 6c 0b
+012626-012629 DataBlock
+  ....             01 00 00 00
+012630-012685 ImageBlock id=192335572 xsize=132 ysize=66 path="data\\UI\\FrontEnd UI\\Skins\\flag_132.tga" unknown=4294967295
+012686-012701 DataBlock
+  .............Gl. 00 00 00 00 00 00 00 00 05 00 00 00 d4 47 6c 0b
 012702-012709 StringBlock "normal"
 012710-012746 DataBlock
   F...#........... 46 00 00 00 23 00 00 00 00 00 00 00 00 00 00 00
@@ -995,9 +939,7 @@
   ................ 00 00 00 00 00 de 00 00 00 0b 01 00 00 02 00 00
   .....$.}......Gl 00 00 00 00 00 24 bb 7d 0b 0b 00 00 00 d4 47 6c
   .....            0b 00 00 00 00
-013706-013722 StringBlock "OnMouseLClickUp"
-013723-013732 StringBlock "OnSelect"
-013733-013744 EventListBlock []
+013706-013744 EventListBlock ["OnMouseLClickUp", "OnSelect"]
 013745-013752 DataBlock
   ........         00 00 00 00 00 00 00 00
 013753-013782 StringBlock "template.button_standard.lua"
@@ -1010,12 +952,11 @@
 013819-013831 DataBlock
   .............    ff ff ff ff 00 00 00 00 00 00 00 00 00
 013832-013993 StringBlock "-- The faction global is set via the script\r\n\r\nfunction OnSelect()\r\n\tUIComponent(UIComponent(Address):Parent()):LuaCall(\"NotifyFactionSelected\", Faction)\r\nend\r\n"
-013994-014001 DataBlock
-  ....tV..         01 00 00 00 74 56 82 0b
-014002-014041 ImagePathBlock "data\\UI\\FrontEnd UI\\Skins\\flag_132.tga"
-014042-014069 DataBlock
-  ....B........... 84 00 00 00 42 00 00 00 ff ff ff ff 00 00 00 00
-  ..........m.     00 00 00 00 05 00 00 00 e4 a0 6d 0b
+013994-013997 DataBlock
+  ....             01 00 00 00
+013998-014053 ImageBlock id=193091188 xsize=132 ysize=66 path="data\\UI\\FrontEnd UI\\Skins\\flag_132.tga" unknown=4294967295
+014054-014069 DataBlock
+  ..............m. 00 00 00 00 00 00 00 00 05 00 00 00 e4 a0 6d 0b
 014070-014077 StringBlock "normal"
 014078-014114 DataBlock
   F...#........... 46 00 00 00 23 00 00 00 00 00 00 00 00 00 00 00
@@ -1105,9 +1046,7 @@
   ................ 00 00 00 00 00 de 00 00 00 0b 01 00 00 02 00 00
   ......MK.......m 00 00 00 00 00 d4 4d 4b 0b 0b 00 00 00 e4 a0 6d
   .....            0b 00 00 00 00
-015074-015090 StringBlock "OnMouseLClickUp"
-015091-015100 StringBlock "OnSelect"
-015101-015112 EventListBlock []
+015074-015112 EventListBlock ["OnMouseLClickUp", "OnSelect"]
 015113-015120 DataBlock
   ........         00 00 00 00 00 00 00 00
 015121-015150 StringBlock "template.button_standard.lua"
@@ -1120,12 +1059,11 @@
 015187-015199 DataBlock
   .............    ff ff ff ff 00 00 00 00 00 00 00 00 00
 015200-015361 StringBlock "-- The faction global is set via the script\r\n\r\nfunction OnSelect()\r\n\tUIComponent(UIComponent(Address):Parent()):LuaCall(\"NotifyFactionSelected\", Faction)\r\nend\r\n"
-015362-015369 DataBlock
-  ....$.m.         01 00 00 00 24 aa 6d 0b
-015370-015409 ImagePathBlock "data\\UI\\FrontEnd UI\\Skins\\flag_132.tga"
-015410-015437 DataBlock
-  ....B........... 84 00 00 00 42 00 00 00 ff ff ff ff 00 00 00 00
-  ..........s.     00 00 00 00 05 00 00 00 cc 19 73 0b
+015362-015365 DataBlock
+  ....             01 00 00 00
+015366-015421 ImageBlock id=191736356 xsize=132 ysize=66 path="data\\UI\\FrontEnd UI\\Skins\\flag_132.tga" unknown=4294967295
+015422-015437 DataBlock
+  ..............s. 00 00 00 00 00 00 00 00 05 00 00 00 cc 19 73 0b
 015438-015445 StringBlock "normal"
 015446-015482 DataBlock
   F...#........... 46 00 00 00 23 00 00 00 00 00 00 00 00 00 00 00
@@ -1215,9 +1153,7 @@
   ................ 00 00 00 00 00 de 00 00 00 0b 01 00 00 02 00 00
   .......z.......s 00 00 00 00 00 e4 dc 7a 0b 0b 00 00 00 cc 19 73
   .....            0b 00 00 00 00
-016442-016458 StringBlock "OnMouseLClickUp"
-016459-016468 StringBlock "OnSelect"
-016469-016480 EventListBlock []
+016442-016480 EventListBlock ["OnMouseLClickUp", "OnSelect"]
 016481-016488 DataBlock
   ........         00 00 00 00 00 00 00 00
 016489-016518 StringBlock "template.button_standard.lua"
@@ -1230,12 +1166,11 @@
 016555-016567 DataBlock
   .............    ff ff ff ff 00 00 00 00 00 00 00 00 00
 016568-016729 StringBlock "-- The faction global is set via the script\r\n\r\nfunction OnSelect()\r\n\tUIComponent(UIComponent(Address):Parent()):LuaCall(\"NotifyFactionSelected\", Faction)\r\nend\r\n"
-016730-016737 DataBlock
-  ....,,g.         01 00 00 00 2c 2c 67 0b
-016738-016777 ImagePathBlock "data\\UI\\FrontEnd UI\\Skins\\flag_132.tga"
-016778-016805 DataBlock
-  ....B........... 84 00 00 00 42 00 00 00 ff ff ff ff 00 00 00 00
-  ..........w.     00 00 00 00 05 00 00 00 bc 80 77 0b
+016730-016733 DataBlock
+  ....             01 00 00 00
+016734-016789 ImageBlock id=191310892 xsize=132 ysize=66 path="data\\UI\\FrontEnd UI\\Skins\\flag_132.tga" unknown=4294967295
+016790-016805 DataBlock
+  ..............w. 00 00 00 00 00 00 00 00 05 00 00 00 bc 80 77 0b
 016806-016813 StringBlock "normal"
 016814-016850 DataBlock
   F...#........... 46 00 00 00 23 00 00 00 00 00 00 00 00 00 00 00
@@ -1325,9 +1260,7 @@
   ................ 00 00 00 00 00 de 00 00 00 0b 01 00 00 02 00 00
   .......|.......w 00 00 00 00 00 ec 88 7c 0b 0b 00 00 00 bc 80 77
   .....            0b 00 00 00 00
-017810-017826 StringBlock "OnMouseLClickUp"
-017827-017836 StringBlock "OnSelect"
-017837-017848 EventListBlock []
+017810-017848 EventListBlock ["OnMouseLClickUp", "OnSelect"]
 017849-017856 DataBlock
   ........         00 00 00 00 00 00 00 00
 017857-017886 StringBlock "template.button_standard.lua"

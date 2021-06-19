@@ -26,17 +26,7 @@
   ................ 00 00 00 00 00 00 00 01 01 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   .....            00 00 00 00 00
-000317-000334 StringBlock "OnMouseLDblClick"
-000335-000347 StringBlock "OnLDblClick"
-000348-000362 StringBlock "OnUpdatePulse"
-000363-000377 StringBlock "OnUpdatePulse"
-000378-000389 StringBlock "SetTooltip"
-000390-000405 StringBlock "SetTooltipText"
-000406-000419 StringBlock "OnAdoptChild"
-000420-000433 StringBlock "OnAdoptChild"
-000434-000446 StringBlock "OnDestroyed"
-000447-000459 StringBlock "OnDestroyed"
-000460-000471 EventListBlock []
+000317-000471 EventListBlock ["OnMouseLDblClick", "OnLDblClick", "OnUpdatePulse", "OnUpdatePulse", "SetTooltip", "SetTooltipText", "OnAdoptChild", "OnAdoptChild", "OnDestroyed", "OnDestroyed"]
 000472-000487 DataBlock
   .............<j. 00 00 00 00 00 00 00 00 01 00 00 00 b4 3c 6a 11
 000488-000501 StringBlock "colour_wheel"
@@ -73,19 +63,14 @@
   ................ 00 00 00 00 00 00 00 00 00 00 00 01 01 00 00 00
   .....            00 01 00 00 00
 001282-001288 StringBlock "radar"
-001289-001315 DataBlock
+001289-001311 DataBlock
   ................ ff ff ff ff 00 00 00 00 00 00 00 00 00 00 00 00
-  .........d.      00 00 00 03 00 00 00 ac d5 64 11
-001316-001369 ImagePathBlock "data\\UI\\Campaign UI/Skins/scroll_frame_corner_16.tga"
-001370-001385 DataBlock
-  .............z\. 10 00 00 00 10 00 00 00 ff ff ff ff bc 7a 5c 16
-001386-001438 ImagePathBlock "data\\UI\\Campaign UI/Skins/scroll_frame_edge_16h.tga"
-001439-001454 DataBlock
-  P...........L.R. 50 01 00 00 10 00 00 00 ff ff ff ff 4c a2 52 16
-001455-001507 ImagePathBlock "data\\UI\\Campaign UI/Skins/scroll_frame_edge_16v.tga"
-001508-001535 DataBlock
-  ....P........... 10 00 00 00 50 01 00 00 ff ff ff ff 00 00 00 00
-  .........{\.     00 00 00 00 01 00 00 00 a4 7b 5c 16
+  .......          00 00 00 03 00 00 00
+001312-001381 ImageBlock id=291820972 xsize=16 ysize=16 path="data\\UI\\Campaign UI/Skins/scroll_frame_corner_16.tga" unknown=4294967295
+001382-001450 ImageBlock id=375159484 xsize=336 ysize=16 path="data\\UI\\Campaign UI/Skins/scroll_frame_edge_16h.tga" unknown=4294967295
+001451-001519 ImageBlock id=374514252 xsize=16 ysize=336 path="data\\UI\\Campaign UI/Skins/scroll_frame_edge_16v.tga" unknown=4294967295
+001520-001535 DataBlock
+  .............{\. 00 00 00 00 00 00 00 00 01 00 00 00 a4 7b 5c 16
 001536-001545 StringBlock "NewState"
 001546-001582 DataBlock
   @............... 40 01 00 00 15 01 00 00 00 00 00 00 02 00 00 00
@@ -167,12 +152,11 @@
   .............lHQ 01 00 00 00 00 00 00 00 00 00 00 00 00 6c 48 51
   .                16
 002509-003018 StringBlock "local this \t\t\t= UIComponent(Address)\nlocal colour_wheel \t= UIComponent(this:Parent(\"colour_wheel\"))\nlocal picking \t\t= false\n\nfunction OnMouseLClickUp(clicked_x, clicked_y)\n\tpicking = false\nend\n\nfunction OnMouseLClickDown(clicked_x, clicked_y)\n\tif colour_wheel:IsMouseOverChildren() then\n\t\tcolour_wheel:LuaCall(\"PickColour\", clicked_x, clicked_y)\n\t\tpicking = true\n\tend\nend\n\nfunction OnMouseMove(clicked_x, clicked_y)\n\tif picking == true then\n\t\tcolour_wheel:LuaCall(\"PickColour\", clicked_x, clicked_y)\n\tend\nend"
-003019-003026 DataBlock
-  .....GQ.         01 00 00 00 84 47 51 16
-003027-003074 ImagePathBlock "data\\UI\\Campaign UI/Skins/naval_card_94x88.tga"
-003075-003102 DataBlock
-  ^...X........... 5e 00 00 00 58 00 00 00 ff ff ff ff 00 00 00 00
-  ........lHQ.     00 00 00 00 01 00 00 00 6c 48 51 16
+003019-003022 DataBlock
+  ....             01 00 00 00
+003023-003086 ImageBlock id=374425476 xsize=94 ysize=88 path="data\\UI\\Campaign UI/Skins/naval_card_94x88.tga" unknown=4294967295
+003087-003102 DataBlock
+  ............lHQ. 00 00 00 00 00 00 00 00 01 00 00 00 6c 48 51 16
 003103-003111 StringBlock "Default"
 003112-003148 DataBlock
   ................ 00 01 00 00 00 01 00 00 00 00 00 00 02 00 00 00
@@ -192,25 +176,17 @@
   ................ 00 00 00 00 00 00 00 01 01 00 00 00 00 00 00 00
   .....f...A...... 00 00 00 00 00 66 00 00 00 41 00 00 00 00 00 00
   .....            00 00 00 00 00
-003325-003337 StringBlock "OnMouseMove"
-003338-003350 StringBlock "OnMouseMove"
-003351-003369 StringBlock "OnMouseLClickDown"
-003370-003388 StringBlock "OnMouseLClickDown"
-003389-003405 StringBlock "OnMouseLClickUp"
-003406-003422 StringBlock "OnMouseLClickUp"
-003423-003434 EventListBlock []
+003325-003434 EventListBlock ["OnMouseMove", "OnMouseMove", "OnMouseLClickDown", "OnMouseLClickDown", "OnMouseLClickUp", "OnMouseLClickUp"]
 003435-003450 DataBlock
   .............LQ. 00 00 00 00 00 00 00 00 01 00 00 00 b4 4c 51 16
 003451-003458 StringBlock "marker"
-003459-003508 DataBlock
+003459-003504 DataBlock
   ..|...|......... 00 00 7c 00 00 00 7c 00 00 00 00 01 01 00 00 00
   ................ 00 01 00 00 00 00 00 ff ff ff ff 00 00 00 00 00
-  .....TQ.......4R 00 00 00 00 1c 54 51 16 00 00 01 00 00 00 34 52
-  Q.               51 16
-003509-003550 ImagePathBlock "data\\UI\\Campaign UI/Skins/cursor_8x8.tga"
-003551-003578 DataBlock
-  ................ 08 00 00 00 08 00 00 00 ff ff ff ff 00 00 00 00
-  .........TQ.     00 00 00 00 01 00 00 00 1c 54 51 16
+  .....TQ.......   00 00 00 00 1c 54 51 16 00 00 01 00 00 00
+003505-003562 ImageBlock id=374428212 xsize=8 ysize=8 path="data\\UI\\Campaign UI/Skins/cursor_8x8.tga" unknown=4294967295
+003563-003578 DataBlock
+  .............TQ. 00 00 00 00 00 00 00 00 01 00 00 00 1c 54 51 16
 003579-003588 StringBlock "NewState"
 003589-003625 DataBlock
   ................ 08 00 00 00 08 00 00 00 00 00 00 00 02 00 00 00
@@ -239,13 +215,12 @@
   ................ 00 00 2e 01 00 00 10 00 00 00 00 00 01 00 00 00
   .....            00 01 00 00 00
 003859-003867 StringBlock "vslider"
-003868-003894 DataBlock
+003868-003890 DataBlock
   ................ ff ff ff ff 00 00 00 00 00 00 00 00 00 00 00 00
-  .......4.Q.      00 00 00 01 00 00 00 34 eb 51 16
-003895-003938 ImagePathBlock "data\\UI\\Campaign UI/Skins/v_slider_bar.tga"
-003939-003966 DataBlock
-  ................ 04 00 00 00 01 00 00 00 ff ff ff ff 00 00 00 00
-  ..........Q.     00 00 00 00 01 00 00 00 bc ec 51 16
+  .......          00 00 00 01 00 00 00
+003891-003950 ImageBlock id=374467380 xsize=4 ysize=1 path="data\\UI\\Campaign UI/Skins/v_slider_bar.tga" unknown=4294967295
+003951-003966 DataBlock
+  ..............Q. 00 00 00 00 00 00 00 00 01 00 00 00 bc ec 51 16
 003967-003976 StringBlock "NewState"
 003977-004013 DataBlock
   ................ 04 00 00 00 b2 00 00 00 00 00 00 00 02 00 00 00
@@ -277,19 +252,16 @@
 004222-004229 StringBlock "Notify"
 004230-004231 DataBlock
   ..               00 00
-004232-004241 StringBlock "inverted"
-004242-004247 StringBlock "true"
-004248-004259 EventListBlock []
-004260-004333 DataBlock
+004232-004259 EventListBlock ["inverted", "true"]
+004260-004329 DataBlock
   ............4.Q. 14 00 00 00 00 00 00 00 03 00 00 00 34 f3 51 16
   ..top........... 03 00 74 6f 70 00 00 fd ff ff ff 00 00 00 00 00
   ............top. 00 00 00 00 00 00 01 00 00 00 03 00 74 6f 70 ff
   ................ ff ff ff 00 00 00 00 02 00 00 00 00 00 00 00 00
-  ........Q.       00 00 01 00 00 00 b4 f8 51 16
-004334-004377 ImagePathBlock "data\\UI\\Campaign UI/Skins/v_slider_end.tga"
-004378-004405 DataBlock
-  ................ 0a 00 00 00 0a 00 00 00 ff ff ff ff 00 00 00 00
-  ..........Q.     00 00 00 00 01 00 00 00 a4 fa 51 16
+  ......           00 00 01 00 00 00
+004330-004389 ImageBlock id=374470836 xsize=10 ysize=10 path="data\\UI\\Campaign UI/Skins/v_slider_end.tga" unknown=4294967295
+004390-004405 DataBlock
+  ..............Q. 00 00 00 00 00 00 00 00 01 00 00 00 a4 fa 51 16
 004406-004415 StringBlock "NewState"
 004416-004452 DataBlock
   ................ 0a 00 00 00 0a 00 00 00 00 00 00 00 02 00 00 00
@@ -312,9 +284,7 @@
 004623-004632 StringBlock "stepSize"
 004633-004635 DataBlock
   ..1              01 00 31
-004636-004652 StringBlock "OnMouseLClickUp"
-004653-004666 StringBlock "UpdateSlider"
-004667-004678 EventListBlock []
+004636-004678 EventListBlock ["OnMouseLClickUp", "UpdateSlider"]
 004679-004699 DataBlock
   ................ 14 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ...O.            00 dc bf 4f 16
@@ -323,13 +293,12 @@
   ................ 00 00 fd ff ff ff a8 00 00 00 00 00 00 00 00 00
   .....            00 01 00 00 00
 004729-004736 StringBlock "bottom"
-004737-004763 DataBlock
+004737-004759 DataBlock
   ................ ff ff ff ff 00 00 00 00 08 00 00 00 00 00 00 00
-  .......\.O.      00 00 00 01 00 00 00 5c c5 4f 16
-004764-004807 ImagePathBlock "data\\UI\\Campaign UI/Skins/v_slider_end.tga"
-004808-004835 DataBlock
-  ................ 0a 00 00 00 0a 00 00 00 ff ff ff ff 00 00 00 00
-  ..........O.     00 00 00 00 01 00 00 00 94 c6 4f 16
+  .......          00 00 00 01 00 00 00
+004760-004819 ImageBlock id=374326620 xsize=10 ysize=10 path="data\\UI\\Campaign UI/Skins/v_slider_end.tga" unknown=4294967295
+004820-004835 DataBlock
+  ..............O. 00 00 00 00 00 00 00 00 01 00 00 00 94 c6 4f 16
 004836-004845 StringBlock "NewState"
 004846-004882 DataBlock
   ................ 0a 00 00 00 0a 00 00 00 00 00 00 00 02 00 00 00
@@ -352,9 +321,7 @@
 005053-005062 StringBlock "stepSize"
 005063-005065 DataBlock
   ..1              01 00 31
-005066-005082 StringBlock "OnMouseLClickUp"
-005083-005096 StringBlock "UpdateSlider"
-005097-005108 EventListBlock []
+005066-005108 EventListBlock ["OnMouseLClickUp", "UpdateSlider"]
 005109-005129 DataBlock
   ................ 14 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ...O.            00 a4 cb 4f 16
@@ -363,13 +330,12 @@
   ......`......... 00 00 fa ff ff ff 60 00 00 00 00 00 00 01 00 00
   .....            00 01 00 00 00
 005159-005166 StringBlock "handle"
-005167-005193 DataBlock
+005167-005189 DataBlock
   ................ ff ff ff ff 00 00 00 00 00 00 00 00 00 00 00 00
-  .......$.O.      00 00 00 01 00 00 00 24 d1 4f 16
-005194-005240 ImagePathBlock "data\\UI\\Campaign UI/Skins/v_slider_handle.tga"
-005241-005268 DataBlock
-  ................ 15 00 00 00 16 00 00 00 ff ff ff ff 00 00 00 00
-  ..........O.     00 00 00 00 01 00 00 00 e4 d2 4f 16
+  .......          00 00 00 01 00 00 00
+005190-005252 ImageBlock id=374329636 xsize=21 ysize=22 path="data\\UI\\Campaign UI/Skins/v_slider_handle.tga" unknown=4294967295
+005253-005268 DataBlock
+  ..............O. 00 00 00 00 00 00 00 00 01 00 00 00 e4 d2 4f 16
 005269-005278 StringBlock "NewState"
 005279-005315 DataBlock
   ................ 10 00 00 00 10 00 00 00 00 00 00 00 02 00 00 00
@@ -389,11 +355,7 @@
   ................ 00 00 00 00 00 00 00 01 01 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 c0 cd cd cd c0 cd cd cd 00 00 00
   .....            00 00 00 00 00
-005486-005493 StringBlock "OnDrag"
-005494-005505 StringBlock "HandleMove"
-005506-005513 StringBlock "OnMove"
-005514-005526 StringBlock "LimitHandle"
-005527-005538 EventListBlock []
+005486-005538 EventListBlock ["OnDrag", "HandleMove", "OnMove", "LimitHandle"]
 005539-005550 DataBlock
   ............     14 00 00 00 00 00 00 00 00 00 00 00
 005551-005579 StringBlock "template.vslider_handle.lua"
@@ -983,15 +945,13 @@
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   .............z.  00 00 00 00 00 00 00 00 00 00 00 04 08 7a 16
 011495-011505 StringBlock "lum_range"
-011506-011555 DataBlock
+011506-011551 DataBlock
   ................ 00 00 18 01 00 00 0e 00 00 00 00 01 01 00 00 00
   ................ 00 01 00 00 00 00 00 ff ff ff ff 00 00 00 00 00
-  ......z......... 00 00 00 00 bc 12 7a 16 00 00 01 00 00 00 84 0d
-  z.               7a 16
-011556-011596 ImagePathBlock "data\\UI\\Campaign UI/Skins/1x1_white.tga"
-011597-011624 DataBlock
-  .... ........... 00 01 00 00 20 00 00 00 ff ff ff ff 00 00 00 00
-  ..........z.     00 00 00 00 01 00 00 00 bc 12 7a 16
+  ......z.......   00 00 00 00 bc 12 7a 16 00 00 01 00 00 00
+011552-011608 ImageBlock id=377097604 xsize=256 ysize=32 path="data\\UI\\Campaign UI/Skins/1x1_white.tga" unknown=4294967295
+011609-011624 DataBlock
+  ..............z. 00 00 00 00 00 00 00 00 01 00 00 00 bc 12 7a 16
 011625-011634 StringBlock "NewState"
 011635-011671 DataBlock
   ................ 0c 00 00 00 b4 00 00 00 00 00 00 00 02 00 00 00
@@ -1020,13 +980,12 @@
   ................ 00 00 fa 00 00 00 d1 00 00 00 00 01 01 00 00 00
   .....            00 01 00 00 00
 011912-011927 StringBlock "gilt_corner_TR"
-011928-011954 DataBlock
+011928-011950 DataBlock
   ................ ff ff ff ff 00 00 00 00 00 00 00 00 00 00 00 00
-  .........z.      00 00 00 01 00 00 00 84 1c 7a 16
-011955-012013 ImagePathBlock "data\\UI\\Campaign UI/Skins/scroll_frame_corner_gilt_72.tga"
-012014-012041 DataBlock
-  H...H........... 48 00 00 00 48 00 00 00 ff ff ff ff 00 00 00 00
-  ......... z.     00 00 00 00 01 00 00 00 ec 20 7a 16
+  .......          00 00 00 01 00 00 00
+011951-012025 ImageBlock id=377101444 xsize=72 ysize=72 path="data\\UI\\Campaign UI/Skins/scroll_frame_corner_gilt_72.tga" unknown=4294967295
+012026-012041 DataBlock
+  ............. z. 00 00 00 00 00 00 00 00 01 00 00 00 ec 20 7a 16
 012042-012051 StringBlock "NewState"
 012052-012088 DataBlock
   H...H........... 48 00 00 00 48 00 00 00 00 00 00 00 02 00 00 00
@@ -1058,19 +1017,13 @@
   ....             ff ff ff ff
 012340-012373 UnicodeBlock "Close this panel"
 012374-012429 UnicodeBlock "button_close_Tooltip_560070"
-012430-012448 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 03 00 00 00 b4
-  *z.              2a 7a 16
-012449-012513 ImagePathBlock "data\\UI\\Campaign UI/Skins/panelframe_button_okay_unselected.tga"
-012514-012529 DataBlock
-  :...:........jz. 3a 00 00 00 3a 00 00 00 ff ff ff ff e4 6a 7a 16
-012530-012602 ImagePathBlock "data\\UI\\Campaign UI/Skins/panelframe_button_okay_unselected_depress.tga"
-012603-012618 DataBlock
-  :...:.......tnz. 3a 00 00 00 3a 00 00 00 ff ff ff ff 74 6e 7a 16
-012619-012688 ImagePathBlock "data\\UI\\Campaign UI/Skins/panelframe_button_okay_unselected_roll.tga"
-012689-012716 DataBlock
-  :...:........... 3a 00 00 00 3a 00 00 00 ff ff ff ff 00 00 00 00
-  .........rz.     00 00 00 00 04 00 00 00 0c 72 7a 16
+012430-012444 DataBlock
+  ...............  00 00 00 00 00 00 00 00 00 00 00 03 00 00 00
+012445-012525 ImageBlock id=377105076 xsize=58 ysize=58 path="data\\UI\\Campaign UI/Skins/panelframe_button_okay_unselected.tga" unknown=4294967295
+012526-012614 ImageBlock id=377121508 xsize=58 ysize=58 path="data\\UI\\Campaign UI/Skins/panelframe_button_okay_unselected_depress.tga" unknown=4294967295
+012615-012700 ImageBlock id=377122420 xsize=58 ysize=58 path="data\\UI\\Campaign UI/Skins/panelframe_button_okay_unselected_roll.tga" unknown=4294967295
+012701-012716 DataBlock
+  .............rz. 00 00 00 00 00 00 00 00 04 00 00 00 0c 72 7a 16
 012717-012724 StringBlock "normal"
 012725-012761 DataBlock
   -...-........... 2d 00 00 00 2d 00 00 00 00 00 00 00 02 00 00 00
@@ -1172,13 +1125,12 @@
   ................ 00 00 0a 00 00 00 0a 00 00 00 00 01 01 01 00 00
   .....            00 01 00 00 00
 013857-013869 StringBlock "colour_spot"
-013870-013896 DataBlock
+013870-013892 DataBlock
   ...............z ff ff ff ff 00 00 00 00 00 00 00 00 00 c4 8d 7a
-  .........z.      16 00 00 01 00 00 00 8c 8c 7a 16
-013897-013944 ImagePathBlock "data\\UI\\Campaign UI/Skins/naval_card_94x88.tga"
-013945-013972 DataBlock
-  ^...X........... 5e 00 00 00 58 00 00 00 ff ff ff ff 00 00 00 00
-  ..........z.     00 00 00 00 01 00 00 00 c4 8d 7a 16
+  .......          16 00 00 01 00 00 00
+013893-013956 ImageBlock id=377130124 xsize=94 ysize=88 path="data\\UI\\Campaign UI/Skins/naval_card_94x88.tga" unknown=4294967295
+013957-013972 DataBlock
+  ..............z. 00 00 00 00 00 00 00 00 01 00 00 00 c4 8d 7a 16
 013973-013981 StringBlock "Default"
 013982-014018 DataBlock
   (...(........... 28 00 00 00 28 00 00 00 00 00 00 00 02 00 00 00
