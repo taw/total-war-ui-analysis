@@ -550,7 +550,7 @@
 006854-006919 UnicodeBlock "header_label_default_Text_5d006b"
 006920-006925 DataBlock
   ......           00 00 00 00 00 00
-006926-006937 StringBlock "Iskra-Bold"
+006926-006937 FontNameBlock "Iskra-Bold"
 006938-006953 DataBlock
   ................ 1e 00 00 00 02 00 00 00 00 00 00 00 ff ff ff ff
 006954-006961 StringBlock "header"
@@ -576,7 +576,7 @@
 007133-007192 UnicodeBlock "header_label_edit_Text_130004"
 007193-007198 DataBlock
   ......           00 00 00 00 00 00
-007199-007210 StringBlock "Iskra-Bold"
+007199-007210 FontNameBlock "Iskra-Bold"
 007211-007226 DataBlock
   ................ 1e 00 00 00 02 00 00 00 00 00 00 00 ff ff ff ff
 007227-007234 StringBlock "header"
@@ -663,16 +663,17 @@
   ................ 00 00 01 01 02 00 00 00 00 00 00 00 00 00 00 00
   ...              00 00 01
 008092-008099 StringBlock "active"
-008100-008116 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00
-  .                00
-008117-008162 ImagePathBlock "ui\\skins\\default\\input_field_frame_white.png"
-008163-008199 ImagePathBlock "ui\\skins\\default\\input_field_bg.png"
-008200-008211 DataBlock
-  ............     00 00 00 00 00 00 00 00 02 00 00 00
-008212-008257 ImagePathBlock "ui\\skins\\default\\input_field_frame_white.png"
-008258-008273 DataBlock
-  .......H.......3 a1 80 ce fc f0 04 d5 48 a5 1b c1 de b3 07 dc 33
+008100-008112 DataBlock
+  .............    00 00 00 00 00 00 00 00 00 00 00 00 00
+008113-008199 ImagePathListBlock 2 elements:
+  008117-008162 ImagePathBlock "ui\\skins\\default\\input_field_frame_white.png"
+  008163-008199 ImagePathBlock "ui\\skins\\default\\input_field_bg.png"
+008200-008273 DataBlock
+  ............,.ui 00 00 00 00 00 00 00 00 02 00 00 00 2c 00 75 69
+  \skins\default\i 5c 73 6b 69 6e 73 5c 64 65 66 61 75 6c 74 5c 69
+  nput_field_frame 6e 70 75 74 5f 66 69 65 6c 64 5f 66 72 61 6d 65
+  _white.png...... 5f 77 68 69 74 65 2e 70 6e 67 a1 80 ce fc f0 04
+  .H.......3       d5 48 a5 1b c1 de b3 07 dc 33
 008274-008310 ImagePathBlock "ui\\skins\\default\\input_field_bg.png"
 008311-008350 DataBlock
   -l...`yJ...w.... 2d 6c 9a fc c4 60 79 4a 9f a5 9a 77 c4 01 af e3
@@ -893,19 +894,21 @@
 010635-010638 DataBlock
   ..40             02 00 34 30
 010639-010654 StringBlock "min_text_width"
-010655-010663 DataBlock
-  ..160....        03 00 31 36 30 06 00 00 00
-010664-010714 ImagePathBlock "ui\\skins\\default\\button_rectangular_backplate.png"
-010715-010760 ImagePathBlock "ui\\skins\\default\\button_rectangular_glow.png"
-010761-010815 ImagePathBlock "ui\\skins\\default\\button_square_highlight_vertical.png"
-010816-010876 ImagePathBlock "ui\\skins\\default\\button_square_hover_highlight_vertical.png"
-010877-010923 ImagePathBlock "ui\\skins\\default\\button_rectangular_frame.png"
-010924-010976 ImagePathBlock "ui\\skins\\default\\button_rectangular_backplate_d.png"
-010977-010988 DataBlock
-  ............     00 00 00 00 00 00 00 00 06 00 00 00
-010989-011039 ImagePathBlock "ui\\skins\\default\\button_rectangular_backplate.png"
-011040-011055 DataBlock
-  6...yX.O....k... 36 16 18 ef 79 58 07 4f 89 c7 1c f5 6b 1a bf dd
+010655-010659 DataBlock
+  ..160            03 00 31 36 30
+010660-010976 ImagePathListBlock 6 elements:
+  010664-010714 ImagePathBlock "ui\\skins\\default\\button_rectangular_backplate.png"
+  010715-010760 ImagePathBlock "ui\\skins\\default\\button_rectangular_glow.png"
+  010761-010815 ImagePathBlock "ui\\skins\\default\\button_square_highlight_vertical.png"
+  010816-010876 ImagePathBlock "ui\\skins\\default\\button_square_hover_highlight_vertical.png"
+  010877-010923 ImagePathBlock "ui\\skins\\default\\button_rectangular_frame.png"
+  010924-010976 ImagePathBlock "ui\\skins\\default\\button_rectangular_backplate_d.png"
+010977-011055 DataBlock
+  ............1.ui 00 00 00 00 00 00 00 00 06 00 00 00 31 00 75 69
+  \skins\default\b 5c 73 6b 69 6e 73 5c 64 65 66 61 75 6c 74 5c 62
+  utton_rectangula 75 74 74 6f 6e 5f 72 65 63 74 61 6e 67 75 6c 61
+  r_backplate.png6 72 5f 62 61 63 6b 70 6c 61 74 65 2e 70 6e 67 36
+  ...yX.O....k...  16 18 ef 79 58 07 4f 89 c7 1c f5 6b 1a bf dd
 011056-011101 ImagePathBlock "ui\\skins\\default\\button_rectangular_glow.png"
 011102-011117 DataBlock
   t....V6G......O. 74 d8 e6 ba b7 56 36 47 af b1 ab a8 f2 a8 4f de
@@ -1043,19 +1046,21 @@
 012515-012518 DataBlock
   ..40             02 00 34 30
 012519-012534 StringBlock "min_text_width"
-012535-012543 DataBlock
-  ..160....        03 00 31 36 30 06 00 00 00
-012544-012594 ImagePathBlock "ui\\skins\\default\\button_rectangular_backplate.png"
-012595-012640 ImagePathBlock "ui\\skins\\default\\button_rectangular_glow.png"
-012641-012695 ImagePathBlock "ui\\skins\\default\\button_square_highlight_vertical.png"
-012696-012756 ImagePathBlock "ui\\skins\\default\\button_square_hover_highlight_vertical.png"
-012757-012803 ImagePathBlock "ui\\skins\\default\\button_rectangular_frame.png"
-012804-012856 ImagePathBlock "ui\\skins\\default\\button_rectangular_backplate_d.png"
-012857-012868 DataBlock
-  ............     00 00 00 00 00 00 00 00 06 00 00 00
-012869-012919 ImagePathBlock "ui\\skins\\default\\button_rectangular_backplate.png"
-012920-012935 DataBlock
-  .~..8.[L.1j....C 19 7e ba a5 38 12 5b 4c a8 31 6a b9 07 d7 c2 43
+012535-012539 DataBlock
+  ..160            03 00 31 36 30
+012540-012856 ImagePathListBlock 6 elements:
+  012544-012594 ImagePathBlock "ui\\skins\\default\\button_rectangular_backplate.png"
+  012595-012640 ImagePathBlock "ui\\skins\\default\\button_rectangular_glow.png"
+  012641-012695 ImagePathBlock "ui\\skins\\default\\button_square_highlight_vertical.png"
+  012696-012756 ImagePathBlock "ui\\skins\\default\\button_square_hover_highlight_vertical.png"
+  012757-012803 ImagePathBlock "ui\\skins\\default\\button_rectangular_frame.png"
+  012804-012856 ImagePathBlock "ui\\skins\\default\\button_rectangular_backplate_d.png"
+012857-012935 DataBlock
+  ............1.ui 00 00 00 00 00 00 00 00 06 00 00 00 31 00 75 69
+  \skins\default\b 5c 73 6b 69 6e 73 5c 64 65 66 61 75 6c 74 5c 62
+  utton_rectangula 75 74 74 6f 6e 5f 72 65 63 74 61 6e 67 75 6c 61
+  r_backplate.png. 72 5f 62 61 63 6b 70 6c 61 74 65 2e 70 6e 67 19
+  ~..8.[L.1j....C  7e ba a5 38 12 5b 4c a8 31 6a b9 07 d7 c2 43
 012936-012981 ImagePathBlock "ui\\skins\\default\\button_rectangular_glow.png"
 012982-012997 DataBlock
   ..}.>..G......y. c3 9e 7d e0 3e 83 d0 47 a4 1d 0a 1e 91 1d 79 c0

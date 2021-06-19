@@ -86,15 +86,16 @@
 000952-000952 DataBlock
   .                0c
 000953-000990 ImagePathBlock "ui\\skins\\default\\panel_back_tile.png"
-000991-000999 DataBlock
-  .........        00 01 00 00 00 01 00 00 00
-001000-001052 ImageBlock id=181941968 xsize=256 ysize=256 path="ui\\skins\\default\\panel_back_top.png" unknown=978944
-001053-001053 DataBlock
-  .                09
-001054-001093 ImagePathBlock "ui\\skins\\default\\panel_back_bottom.png"
-001094-001118 DataBlock
-  ................ 00 01 00 00 00 01 00 00 00 00 00 00 00 00 00 00
-  .....@.'!        00 01 00 00 00 40 06 27 21
+000991-000995 DataBlock
+  .....            00 01 00 00 00
+000996-001052 ImageListBlock 1 elements:
+  001000-001052 ImageBlock id=181941968 xsize=256 ysize=256 path="ui\\skins\\default\\panel_back_top.png" unknown=978944
+001053-001118 DataBlock
+  .&.ui\skins\defa 09 26 00 75 69 5c 73 6b 69 6e 73 5c 64 65 66 61
+  ult\panel_back_b 75 6c 74 5c 70 61 6e 65 6c 5f 62 61 63 6b 5f 62
+  ottom.png....... 6f 74 74 6f 6d 2e 70 6e 67 00 01 00 00 00 01 00
+  ..............@. 00 00 00 00 00 00 00 00 00 00 01 00 00 00 40 06
+  '!               27 21
 001119-001128 StringBlock "NewState"
 001129-001167 DataBlock
   ................ a2 01 00 00 12 02 00 00 00 00 00 00 02 00 00 00
@@ -268,12 +269,14 @@
   .A...B....-..... c8 41 00 00 18 42 08 00 00 00 2d 00 00 00 01 02
   .............    00 00 00 00 00 00 00 00 00 00 00 00 00
 003043-003052 StringBlock "NewState"
-003053-003068 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00
-003069-003119 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom.png"
-003120-003131 DataBlock
-  ..top..top..     03 00 74 6f 70 03 00 74 6f 70 00 00
-003132-003154 StringBlock "SliderIncrementButton"
+003053-003064 DataBlock
+  ............     00 00 00 00 00 00 00 00 00 00 00 00
+003065-003119 ImagePathListBlock 1 elements:
+  003069-003119 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom.png"
+003120-003154 DataBlock
+  ..top..top....Sl 03 00 74 6f 70 03 00 74 6f 70 00 00 15 00 53 6c
+  iderIncrementBut 69 64 65 72 49 6e 63 72 65 6d 65 6e 74 42 75 74
+  ton              74 6f 6e
 003155-003180 StringBlock "UI_GBL_TMP_Slider_Arrows"
 003181-003219 DataBlock
   ...........A...A 00 00 00 00 00 00 0c c2 00 00 a8 41 00 00 a8 41
@@ -298,22 +301,26 @@
 003315-003318 DataBlock
   ..10             02 00 31 30
 003319-003339 StringBlock "update_frequency_ms"
-003340-003348 DataBlock
-  ..200....        03 00 32 30 30 03 00 00 00
-003349-003403 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top_active.png"
-003404-003459 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top_pressed.png"
-003460-003513 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top_hover.png"
-003514-003524 StringBlock "frame_top"
+003340-003344 DataBlock
+  ..200            03 00 32 30 30
+003345-003513 ImagePathListBlock 3 elements:
+  003349-003403 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top_active.png"
+  003404-003459 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top_pressed.png"
+  003460-003513 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top_hover.png"
+003514-003524 DataBlock
+  ..frame_top      09 00 66 72 61 6d 65 5f 74 6f 70
 003525-003535 StringBlock "frame_top"
 003536-003580 DataBlock
   .........?...... 00 00 00 00 00 00 00 00 80 3f 00 00 14 c2 00 00
   .A...B....-..... c8 41 00 00 14 42 02 00 00 00 2d 00 00 00 01 02
   .............    00 00 00 00 00 00 00 00 00 00 00 00 00
 003581-003590 StringBlock "NewState"
-003591-003606 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00
-003607-003654 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top.png"
-003655-003662 StringBlock "handle"
+003591-003602 DataBlock
+  ............     00 00 00 00 00 00 00 00 00 00 00 00
+003603-003654 ImagePathListBlock 1 elements:
+  003607-003654 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top.png"
+003655-003662 DataBlock
+  ..handle         06 00 68 61 6e 64 6c 65
 003663-003670 StringBlock "handle"
 003671-003672 DataBlock
   ..               00 00
@@ -333,11 +340,13 @@
 003794-003801 DataBlock
   ........         00 00 00 00 00 00 00 00
 003802-003811 StringBlock "down_off"
-003812-003827 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00
-003828-003883 ImagePathBlock "ui\\skins\\default\\slider_horizontal_handle_underlay.png"
-003884-003930 ImagePathBlock "ui\\skins\\default\\slider_horizontal_handle.png"
-003931-003938 StringBlock "bottom"
+003812-003823 DataBlock
+  ............     00 00 00 00 00 00 00 00 00 00 00 00
+003824-003930 ImagePathListBlock 2 elements:
+  003828-003883 ImagePathBlock "ui\\skins\\default\\slider_horizontal_handle_underlay.png"
+  003884-003930 ImagePathBlock "ui\\skins\\default\\slider_horizontal_handle.png"
+003931-003938 DataBlock
+  ..bottom         06 00 62 6f 74 74 6f 6d
 003939-003946 StringBlock "bottom"
 003947-003948 DataBlock
   ..               00 00
@@ -366,16 +375,14 @@
 004132-004135 DataBlock
   ..10             02 00 31 30
 004136-004156 StringBlock "update_frequency_ms"
-004157-004165 DataBlock
-  ..200....        03 00 32 30 30 03 00 00 00
-004166-004223 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom_active.png"
-004224-004282 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom_pressed.png"
-004283-004339 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom_hover.png"
-004340-004341 DataBlock
-  ..               00 00
-004342-004349 StringBlock "slider"
-004350-004351 DataBlock
-  ..               00 00
+004157-004161 DataBlock
+  ..200            03 00 32 30 30
+004162-004339 ImagePathListBlock 3 elements:
+  004166-004223 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom_active.png"
+  004224-004282 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom_pressed.png"
+  004283-004339 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom_hover.png"
+004340-004351 DataBlock
+  ....slider..     00 00 06 00 73 6c 69 64 65 72 00 00
 004352-004360 StringBlock "VSlider"
 004361-004401 DataBlock
   ....4B...B...A.. 00 00 00 00 34 42 00 00 88 42 00 00 a0 41 00 00
@@ -403,23 +410,21 @@
 004499-004501 DataBlock
   ..1              01 00 31
 004502-004511 StringBlock "TabOrder"
-004512-004518 DataBlock
-  ..1....          01 00 31 01 00 00 00
-004519-004560 ImagePathBlock "ui\\skins\\default\\slider_vertical_mid.png"
-004561-004570 DataBlock
-  .........F       00 00 00 00 00 00 80 de 03 46
-004571-004582 StringBlock "text_field"
-004583-004631 DataBlock
-  ................ 00 00 00 00 14 00 00 00 a1 00 00 00 01 01 00 00
-  ................ 00 00 00 00 00 00 00 01 00 00 00 00 08 00 00 00
-  ............F... 00 00 00 00 f8 ff ff ff 00 00 f4 91 46 01 00 00
-  .                00
-004632-004680 ImageBlock id=1175567232 xsize=183 ysize=27 path="ui\\skins\\default\\frame_text.png" unknown=0
-004681-004693 DataBlock
-  ............F    00 00 00 00 00 01 00 00 00 00 f4 91 46
-004694-004703 StringBlock "NewState"
-004704-004711 DataBlock
-  F.......         46 00 00 00 18 00 00 00
+004512-004514 DataBlock
+  ..1              01 00 31
+004515-004560 ImagePathListBlock 1 elements:
+  004519-004560 ImagePathBlock "ui\\skins\\default\\slider_vertical_mid.png"
+004561-004627 DataBlock
+  .........F..text 00 00 00 00 00 00 80 de 03 46 0a 00 74 65 78 74
+  _field.......... 5f 66 69 65 6c 64 00 00 00 00 14 00 00 00 a1 00
+  ................ 00 00 01 01 00 00 00 00 00 00 00 00 00 01 00 00
+  ................ 00 00 08 00 00 00 00 00 00 00 f8 ff ff ff 00 00
+  ..F              f4 91 46
+004628-004680 ImageListBlock 1 elements:
+  004632-004680 ImageBlock id=1175567232 xsize=183 ysize=27 path="ui\\skins\\default\\frame_text.png" unknown=0
+004681-004711 DataBlock
+  ............F..N 00 00 00 00 00 01 00 00 00 00 f4 91 46 08 00 4e
+  ewStateF.......  65 77 53 74 61 74 65 46 00 00 00 18 00 00 00
 004712-004721 UnicodeBlock "2.22"
 004722-004744 DataBlock
   ................ 00 00 04 00 00 00 04 00 00 00 00 00 00 00 01 00
@@ -521,12 +526,14 @@
   .A...B....<..... c8 41 00 00 18 42 08 00 00 00 3c 00 00 00 01 02
   .............    00 00 00 00 00 00 00 00 00 00 00 00 00
 005815-005824 StringBlock "NewState"
-005825-005840 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00
-005841-005891 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom.png"
-005892-005903 DataBlock
-  ..top..top..     03 00 74 6f 70 03 00 74 6f 70 00 00
-005904-005926 StringBlock "SliderIncrementButton"
+005825-005836 DataBlock
+  ............     00 00 00 00 00 00 00 00 00 00 00 00
+005837-005891 ImagePathListBlock 1 elements:
+  005841-005891 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom.png"
+005892-005926 DataBlock
+  ..top..top....Sl 03 00 74 6f 70 03 00 74 6f 70 00 00 15 00 53 6c
+  iderIncrementBut 69 64 65 72 49 6e 63 72 65 6d 65 6e 74 42 75 74
+  ton              74 6f 6e
 005927-005952 StringBlock "UI_GBL_TMP_Slider_Arrows"
 005953-005991 DataBlock
   ...........A...A 00 00 00 00 00 00 0c c2 00 00 a8 41 00 00 a8 41
@@ -551,22 +558,26 @@
 006087-006090 DataBlock
   ..10             02 00 31 30
 006091-006111 StringBlock "update_frequency_ms"
-006112-006120 DataBlock
-  ..200....        03 00 32 30 30 03 00 00 00
-006121-006175 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top_active.png"
-006176-006231 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top_pressed.png"
-006232-006285 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top_hover.png"
-006286-006296 StringBlock "frame_top"
+006112-006116 DataBlock
+  ..200            03 00 32 30 30
+006117-006285 ImagePathListBlock 3 elements:
+  006121-006175 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top_active.png"
+  006176-006231 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top_pressed.png"
+  006232-006285 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top_hover.png"
+006286-006296 DataBlock
+  ..frame_top      09 00 66 72 61 6d 65 5f 74 6f 70
 006297-006307 StringBlock "frame_top"
 006308-006352 DataBlock
   .........?...... 00 00 00 00 00 00 00 00 80 3f 00 00 14 c2 00 00
   .A...B....<..... c8 41 00 00 14 42 02 00 00 00 3c 00 00 00 01 02
   .............    00 00 00 00 00 00 00 00 00 00 00 00 00
 006353-006362 StringBlock "NewState"
-006363-006378 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00
-006379-006426 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top.png"
-006427-006434 StringBlock "handle"
+006363-006374 DataBlock
+  ............     00 00 00 00 00 00 00 00 00 00 00 00
+006375-006426 ImagePathListBlock 1 elements:
+  006379-006426 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top.png"
+006427-006434 DataBlock
+  ..handle         06 00 68 61 6e 64 6c 65
 006435-006442 StringBlock "handle"
 006443-006444 DataBlock
   ..               00 00
@@ -586,11 +597,13 @@
 006566-006573 DataBlock
   ........         00 00 00 00 00 00 00 00
 006574-006583 StringBlock "down_off"
-006584-006599 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00
-006600-006655 ImagePathBlock "ui\\skins\\default\\slider_horizontal_handle_underlay.png"
-006656-006702 ImagePathBlock "ui\\skins\\default\\slider_horizontal_handle.png"
-006703-006710 StringBlock "bottom"
+006584-006595 DataBlock
+  ............     00 00 00 00 00 00 00 00 00 00 00 00
+006596-006702 ImagePathListBlock 2 elements:
+  006600-006655 ImagePathBlock "ui\\skins\\default\\slider_horizontal_handle_underlay.png"
+  006656-006702 ImagePathBlock "ui\\skins\\default\\slider_horizontal_handle.png"
+006703-006710 DataBlock
+  ..bottom         06 00 62 6f 74 74 6f 6d
 006711-006718 StringBlock "bottom"
 006719-006720 DataBlock
   ..               00 00
@@ -619,16 +632,14 @@
 006904-006907 DataBlock
   ..10             02 00 31 30
 006908-006928 StringBlock "update_frequency_ms"
-006929-006937 DataBlock
-  ..200....        03 00 32 30 30 03 00 00 00
-006938-006995 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom_active.png"
-006996-007054 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom_pressed.png"
-007055-007111 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom_hover.png"
-007112-007113 DataBlock
-  ..               00 00
-007114-007121 StringBlock "slider"
-007122-007123 DataBlock
-  ..               00 00
+006929-006933 DataBlock
+  ..200            03 00 32 30 30
+006934-007111 ImagePathListBlock 3 elements:
+  006938-006995 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom_active.png"
+  006996-007054 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom_pressed.png"
+  007055-007111 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom_hover.png"
+007112-007123 DataBlock
+  ....slider..     00 00 06 00 73 6c 69 64 65 72 00 00
 007124-007132 StringBlock "VSlider"
 007133-007173 DataBlock
   ....4B...B...A.. 00 00 00 00 34 42 00 00 88 42 00 00 a0 41 00 00
@@ -656,23 +667,21 @@
 007271-007273 DataBlock
   ..1              01 00 31
 007274-007283 StringBlock "TabOrder"
-007284-007290 DataBlock
-  ..1....          01 00 31 01 00 00 00
-007291-007332 ImagePathBlock "ui\\skins\\default\\slider_vertical_mid.png"
-007333-007342 DataBlock
-  .......0.F       00 00 00 00 00 00 00 30 c4 46
-007343-007354 StringBlock "text_field"
-007355-007403 DataBlock
-  ................ 00 00 00 00 14 00 00 00 a1 00 00 00 01 01 00 00
-  ................ 00 00 00 00 00 00 00 01 00 00 00 00 08 00 00 00
-  ...........vI... 00 00 00 00 f8 ff ff ff 00 00 9f 76 49 01 00 00
-  .                00
-007404-007452 ImageBlock id=1231796352 xsize=183 ysize=27 path="ui\\skins\\default\\frame_text.png" unknown=0
-007453-007465 DataBlock
-  ...........vI    00 00 00 00 00 01 00 00 00 00 9f 76 49
-007466-007475 StringBlock "NewState"
-007476-007483 DataBlock
-  F.......         46 00 00 00 18 00 00 00
+007284-007286 DataBlock
+  ..1              01 00 31
+007287-007332 ImagePathListBlock 1 elements:
+  007291-007332 ImagePathBlock "ui\\skins\\default\\slider_vertical_mid.png"
+007333-007399 DataBlock
+  .......0.F..text 00 00 00 00 00 00 00 30 c4 46 0a 00 74 65 78 74
+  _field.......... 5f 66 69 65 6c 64 00 00 00 00 14 00 00 00 a1 00
+  ................ 00 00 01 01 00 00 00 00 00 00 00 00 00 01 00 00
+  ................ 00 00 08 00 00 00 00 00 00 00 f8 ff ff ff 00 00
+  .vI              9f 76 49
+007400-007452 ImageListBlock 1 elements:
+  007404-007452 ImageBlock id=1231796352 xsize=183 ysize=27 path="ui\\skins\\default\\frame_text.png" unknown=0
+007453-007483 DataBlock
+  ...........vI..N 00 00 00 00 00 01 00 00 00 00 9f 76 49 08 00 4e
+  ewStateF.......  65 77 53 74 61 74 65 46 00 00 00 18 00 00 00
 007484-007493 UnicodeBlock "2.22"
 007494-007516 DataBlock
   ................ 00 00 04 00 00 00 04 00 00 00 00 00 00 00 01 00
@@ -774,12 +783,14 @@
   .A...B....<..... c8 41 00 00 18 42 08 00 00 00 3c 00 00 00 01 02
   .............    00 00 00 00 00 00 00 00 00 00 00 00 00
 008587-008596 StringBlock "NewState"
-008597-008612 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00
-008613-008663 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom.png"
-008664-008675 DataBlock
-  ..top..top..     03 00 74 6f 70 03 00 74 6f 70 00 00
-008676-008698 StringBlock "SliderIncrementButton"
+008597-008608 DataBlock
+  ............     00 00 00 00 00 00 00 00 00 00 00 00
+008609-008663 ImagePathListBlock 1 elements:
+  008613-008663 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom.png"
+008664-008698 DataBlock
+  ..top..top....Sl 03 00 74 6f 70 03 00 74 6f 70 00 00 15 00 53 6c
+  iderIncrementBut 69 64 65 72 49 6e 63 72 65 6d 65 6e 74 42 75 74
+  ton              74 6f 6e
 008699-008724 StringBlock "UI_GBL_TMP_Slider_Arrows"
 008725-008763 DataBlock
   ...........A...A 00 00 00 00 00 00 0c c2 00 00 a8 41 00 00 a8 41
@@ -804,22 +815,26 @@
 008859-008862 DataBlock
   ..10             02 00 31 30
 008863-008883 StringBlock "update_frequency_ms"
-008884-008892 DataBlock
-  ..200....        03 00 32 30 30 03 00 00 00
-008893-008947 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top_active.png"
-008948-009003 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top_pressed.png"
-009004-009057 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top_hover.png"
-009058-009068 StringBlock "frame_top"
+008884-008888 DataBlock
+  ..200            03 00 32 30 30
+008889-009057 ImagePathListBlock 3 elements:
+  008893-008947 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top_active.png"
+  008948-009003 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top_pressed.png"
+  009004-009057 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top_hover.png"
+009058-009068 DataBlock
+  ..frame_top      09 00 66 72 61 6d 65 5f 74 6f 70
 009069-009079 StringBlock "frame_top"
 009080-009124 DataBlock
   .........?...... 00 00 00 00 00 00 00 00 80 3f 00 00 14 c2 00 00
   .A...B....<..... c8 41 00 00 14 42 02 00 00 00 3c 00 00 00 01 02
   .............    00 00 00 00 00 00 00 00 00 00 00 00 00
 009125-009134 StringBlock "NewState"
-009135-009150 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00
-009151-009198 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top.png"
-009199-009206 StringBlock "handle"
+009135-009146 DataBlock
+  ............     00 00 00 00 00 00 00 00 00 00 00 00
+009147-009198 ImagePathListBlock 1 elements:
+  009151-009198 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top.png"
+009199-009206 DataBlock
+  ..handle         06 00 68 61 6e 64 6c 65
 009207-009214 StringBlock "handle"
 009215-009216 DataBlock
   ..               00 00
@@ -839,11 +854,13 @@
 009338-009345 DataBlock
   ........         00 00 00 00 00 00 00 00
 009346-009355 StringBlock "down_off"
-009356-009371 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00
-009372-009427 ImagePathBlock "ui\\skins\\default\\slider_horizontal_handle_underlay.png"
-009428-009474 ImagePathBlock "ui\\skins\\default\\slider_horizontal_handle.png"
-009475-009482 StringBlock "bottom"
+009356-009367 DataBlock
+  ............     00 00 00 00 00 00 00 00 00 00 00 00
+009368-009474 ImagePathListBlock 2 elements:
+  009372-009427 ImagePathBlock "ui\\skins\\default\\slider_horizontal_handle_underlay.png"
+  009428-009474 ImagePathBlock "ui\\skins\\default\\slider_horizontal_handle.png"
+009475-009482 DataBlock
+  ..bottom         06 00 62 6f 74 74 6f 6d
 009483-009490 StringBlock "bottom"
 009491-009492 DataBlock
   ..               00 00
@@ -872,16 +889,14 @@
 009676-009679 DataBlock
   ..10             02 00 31 30
 009680-009700 StringBlock "update_frequency_ms"
-009701-009709 DataBlock
-  ..200....        03 00 32 30 30 03 00 00 00
-009710-009767 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom_active.png"
-009768-009826 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom_pressed.png"
-009827-009883 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom_hover.png"
-009884-009885 DataBlock
-  ..               00 00
-009886-009893 StringBlock "slider"
-009894-009895 DataBlock
-  ..               00 00
+009701-009705 DataBlock
+  ..200            03 00 32 30 30
+009706-009883 ImagePathListBlock 3 elements:
+  009710-009767 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom_active.png"
+  009768-009826 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom_pressed.png"
+  009827-009883 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom_hover.png"
+009884-009895 DataBlock
+  ....slider..     00 00 06 00 73 6c 69 64 65 72 00 00
 009896-009904 StringBlock "VSlider"
 009905-009945 DataBlock
   ....4B...B...A.. 00 00 00 00 34 42 00 00 88 42 00 00 a0 41 00 00
@@ -909,14 +924,13 @@
 010042-010044 DataBlock
   ..1              01 00 31
 010045-010054 StringBlock "TabOrder"
-010055-010061 DataBlock
-  ..1....          01 00 31 01 00 00 00
-010062-010103 ImagePathBlock "ui\\skins\\default\\slider_vertical_mid.png"
-010104-010107 DataBlock
-  ....             00 00 00 00
-010108-010124 StringBlock "checkbox_toggle"
-010125-010130 DataBlock
-  ......           01 00 00 00 00 00
+010055-010057 DataBlock
+  ..1              01 00 31
+010058-010103 ImagePathListBlock 1 elements:
+  010062-010103 ImagePathBlock "ui\\skins\\default\\slider_vertical_mid.png"
+010104-010130 DataBlock
+  ......checkbox_t 00 00 00 00 0f 00 63 68 65 63 6b 62 6f 78 5f 74
+  oggle......      6f 67 67 6c 65 01 00 00 00 00 00
 010131-010151 StringBlock "checkbox_music_mute"
 010152-010153 DataBlock
   ..               00 00
@@ -959,22 +973,20 @@
 010508-010519 DataBlock
   ............     00 00 00 00 00 00 00 00 01 00 00 00
 010520-010529 StringBlock "TabOrder"
-010530-010536 DataBlock
-  ..7....          01 00 37 04 00 00 00
-010537-010574 ImagePathBlock "ui\\skins\\default\\checkbox_active.png"
-010575-010611 ImagePathBlock "ui\\skins\\default\\checkbox_hover.png"
-010612-010651 ImagePathBlock "ui\\skins\\default\\checkbox_selected.png"
-010652-010697 ImagePathBlock "ui\\skins\\default\\checkbox_selected_hover.png"
-010698-010717 DataBlock
+010530-010532 DataBlock
+  ..7              01 00 37
+010533-010697 ImagePathListBlock 4 elements:
+  010537-010574 ImagePathBlock "ui\\skins\\default\\checkbox_active.png"
+  010575-010611 ImagePathBlock "ui\\skins\\default\\checkbox_hover.png"
+  010612-010651 ImagePathBlock "ui\\skins\\default\\checkbox_selected.png"
+  010652-010697 ImagePathBlock "ui\\skins\\default\\checkbox_selected_hover.png"
+010698-010790 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-  @1@!             40 31 40 21
-010718-010725 StringBlock "master"
-010726-010790 DataBlock
-  ....#........... 00 00 00 00 23 01 00 00 fe ff ff ff 00 00 00 00
-  ................ 00 00 01 00 00 00 00 01 00 00 00 00 00 00 00 00
+  @1@!..master.... 40 31 40 21 06 00 6d 61 73 74 65 72 00 00 00 00
+  #............... 23 01 00 00 fe ff ff ff 00 00 00 00 00 00 01 00
+  ................ 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-  ..............4@ 00 00 00 00 00 00 00 00 00 01 00 00 00 c0 34 40
-  !                21
+  ..........4@!    00 00 00 00 00 01 00 00 00 c0 34 40 21
 010791-010800 StringBlock "NewState"
 010801-010839 DataBlock
   o............... 6f 00 00 00 c1 00 00 00 00 00 00 00 02 00 00 00
@@ -1039,12 +1051,14 @@
   .A...B....<..... c8 41 00 00 18 42 08 00 00 00 3c 00 00 00 01 02
   .............    00 00 00 00 00 00 00 00 00 00 00 00 00
 011484-011493 StringBlock "NewState"
-011494-011509 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00
-011510-011560 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom.png"
-011561-011572 DataBlock
-  ..top..top..     03 00 74 6f 70 03 00 74 6f 70 00 00
-011573-011595 StringBlock "SliderIncrementButton"
+011494-011505 DataBlock
+  ............     00 00 00 00 00 00 00 00 00 00 00 00
+011506-011560 ImagePathListBlock 1 elements:
+  011510-011560 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom.png"
+011561-011595 DataBlock
+  ..top..top....Sl 03 00 74 6f 70 03 00 74 6f 70 00 00 15 00 53 6c
+  iderIncrementBut 69 64 65 72 49 6e 63 72 65 6d 65 6e 74 42 75 74
+  ton              74 6f 6e
 011596-011621 StringBlock "UI_GBL_TMP_Slider_Arrows"
 011622-011660 DataBlock
   ...........A...A 00 00 00 00 00 00 0c c2 00 00 a8 41 00 00 a8 41
@@ -1069,22 +1083,26 @@
 011756-011759 DataBlock
   ..10             02 00 31 30
 011760-011780 StringBlock "update_frequency_ms"
-011781-011789 DataBlock
-  ..200....        03 00 32 30 30 03 00 00 00
-011790-011844 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top_active.png"
-011845-011900 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top_pressed.png"
-011901-011954 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top_hover.png"
-011955-011965 StringBlock "frame_top"
+011781-011785 DataBlock
+  ..200            03 00 32 30 30
+011786-011954 ImagePathListBlock 3 elements:
+  011790-011844 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top_active.png"
+  011845-011900 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top_pressed.png"
+  011901-011954 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top_hover.png"
+011955-011965 DataBlock
+  ..frame_top      09 00 66 72 61 6d 65 5f 74 6f 70
 011966-011976 StringBlock "frame_top"
 011977-012021 DataBlock
   .........?...... 00 00 00 00 00 00 00 00 80 3f 00 00 14 c2 00 00
   .A...B....<..... c8 41 00 00 14 42 02 00 00 00 3c 00 00 00 01 02
   .............    00 00 00 00 00 00 00 00 00 00 00 00 00
 012022-012031 StringBlock "NewState"
-012032-012047 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00
-012048-012095 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top.png"
-012096-012103 StringBlock "handle"
+012032-012043 DataBlock
+  ............     00 00 00 00 00 00 00 00 00 00 00 00
+012044-012095 ImagePathListBlock 1 elements:
+  012048-012095 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top.png"
+012096-012103 DataBlock
+  ..handle         06 00 68 61 6e 64 6c 65
 012104-012111 StringBlock "handle"
 012112-012113 DataBlock
   ..               00 00
@@ -1104,11 +1122,13 @@
 012235-012242 DataBlock
   ........         00 00 00 00 00 00 00 00
 012243-012252 StringBlock "down_off"
-012253-012268 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00
-012269-012324 ImagePathBlock "ui\\skins\\default\\slider_horizontal_handle_underlay.png"
-012325-012371 ImagePathBlock "ui\\skins\\default\\slider_horizontal_handle.png"
-012372-012379 StringBlock "bottom"
+012253-012264 DataBlock
+  ............     00 00 00 00 00 00 00 00 00 00 00 00
+012265-012371 ImagePathListBlock 2 elements:
+  012269-012324 ImagePathBlock "ui\\skins\\default\\slider_horizontal_handle_underlay.png"
+  012325-012371 ImagePathBlock "ui\\skins\\default\\slider_horizontal_handle.png"
+012372-012379 DataBlock
+  ..bottom         06 00 62 6f 74 74 6f 6d
 012380-012387 StringBlock "bottom"
 012388-012389 DataBlock
   ..               00 00
@@ -1137,16 +1157,14 @@
 012573-012576 DataBlock
   ..10             02 00 31 30
 012577-012597 StringBlock "update_frequency_ms"
-012598-012606 DataBlock
-  ..200....        03 00 32 30 30 03 00 00 00
-012607-012664 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom_active.png"
-012665-012723 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom_pressed.png"
-012724-012780 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom_hover.png"
-012781-012782 DataBlock
-  ..               00 00
-012783-012790 StringBlock "slider"
-012791-012792 DataBlock
-  ..               00 00
+012598-012602 DataBlock
+  ..200            03 00 32 30 30
+012603-012780 ImagePathListBlock 3 elements:
+  012607-012664 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom_active.png"
+  012665-012723 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom_pressed.png"
+  012724-012780 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom_hover.png"
+012781-012792 DataBlock
+  ....slider..     00 00 06 00 73 6c 69 64 65 72 00 00
 012793-012801 StringBlock "VSlider"
 012802-012842 DataBlock
   ....4B...B...A.. 00 00 00 00 34 42 00 00 88 42 00 00 a0 41 00 00
@@ -1174,14 +1192,13 @@
 012939-012941 DataBlock
   ..1              01 00 31
 012942-012951 StringBlock "TabOrder"
-012952-012958 DataBlock
-  ..1....          01 00 31 01 00 00 00
-012959-013000 ImagePathBlock "ui\\skins\\default\\slider_vertical_mid.png"
-013001-013004 DataBlock
-  ....             00 00 00 00
-013005-013021 StringBlock "checkbox_toggle"
-013022-013027 DataBlock
-  ......           01 00 00 00 00 00
+012952-012954 DataBlock
+  ..1              01 00 31
+012955-013000 ImagePathListBlock 1 elements:
+  012959-013000 ImagePathBlock "ui\\skins\\default\\slider_vertical_mid.png"
+013001-013027 DataBlock
+  ......checkbox_t 00 00 00 00 0f 00 63 68 65 63 6b 62 6f 78 5f 74
+  oggle......      6f 67 67 6c 65 01 00 00 00 00 00
 013028-013049 StringBlock "checkbox_master_mute"
 013050-013051 DataBlock
   ..               00 00
@@ -1224,25 +1241,27 @@
 013414-013425 DataBlock
   ............     00 00 00 00 00 00 00 00 01 00 00 00
 013426-013435 StringBlock "TabOrder"
-013436-013442 DataBlock
-  ..8....          01 00 38 04 00 00 00
-013443-013480 ImagePathBlock "ui\\skins\\default\\checkbox_active.png"
-013481-013517 ImagePathBlock "ui\\skins\\default\\checkbox_hover.png"
-013518-013557 ImagePathBlock "ui\\skins\\default\\checkbox_selected.png"
-013558-013603 ImagePathBlock "ui\\skins\\default\\checkbox_selected_hover.png"
-013604-013666 DataBlock
+013436-013438 DataBlock
+  ..8              01 00 38
+013439-013603 ImagePathListBlock 4 elements:
+  013443-013480 ImagePathBlock "ui\\skins\\default\\checkbox_active.png"
+  013481-013517 ImagePathBlock "ui\\skins\\default\\checkbox_hover.png"
+  013518-013557 ImagePathBlock "ui\\skins\\default\\checkbox_selected.png"
+  013558-013603 ImagePathBlock "ui\\skins\\default\\checkbox_selected_hover.png"
+013604-013809 DataBlock
   ......@w@!..vr.. 00 00 00 00 00 00 40 77 40 21 02 00 76 72 00 00
   ................ 00 00 00 00 00 00 03 00 00 00 00 01 00 00 00 00
   ................ 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00 00
-  ...............  00 00 00 00 00 00 00 00 00 00 00 01 00 00 00
-013667-013747 ImageBlock id=557873792 xsize=1 ysize=1 path="ui\\shogun2\\working_data\\ui\\common ui\\skins\\1x1_verydarkgrey.png" unknown=0
-013748-013760 DataBlock
-  .........@{@!    00 00 00 00 00 01 00 00 00 40 7b 40 21
-013761-013770 StringBlock "NewState"
-013771-013809 DataBlock
-  ................ 01 00 00 00 bd 00 00 00 00 00 00 00 02 00 00 00
-  ................ 00 00 00 00 00 00 00 00 01 00 00 00 01 00 00 00
-  .......          00 00 00 00 00 00 00
+  ................ 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 80
+  z@!?.ui\shogun2\ 7a 40 21 3f 00 75 69 5c 73 68 6f 67 75 6e 32 5c
+  working_data\ui\ 77 6f 72 6b 69 6e 67 5f 64 61 74 61 5c 75 69 5c
+  common ui\skins\ 63 6f 6d 6d 6f 6e 20 75 69 5c 73 6b 69 6e 73 5c
+  1x1_verydarkgrey 31 78 31 5f 76 65 72 79 64 61 72 6b 67 72 65 79
+  .png............ 2e 70 6e 67 01 00 00 00 01 00 00 00 00 00 00 00
+  .........@{@!..N 00 00 00 00 00 01 00 00 00 40 7b 40 21 08 00 4e
+  ewState......... 65 77 53 74 61 74 65 01 00 00 00 bd 00 00 00 00
+  ................ 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 01
+  ..............   00 00 00 01 00 00 00 00 00 00 00 00 00 00
 013810-013822 FontNameBlock "la_gioconda"
 013823-013838 DataBlock
   ................ 0a 00 00 00 01 00 00 00 00 00 00 00 00 00 00 ff
@@ -1304,10 +1323,13 @@
   cC..cC....<..... 63 43 00 00 63 43 05 00 00 00 3c 00 00 00 01 02
   .............    00 00 00 00 00 00 00 00 00 00 00 00 00
 014489-014498 StringBlock "NewState"
-014499-014514 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00
-014515-014567 ImagePathBlock "ui\\skins\\default\\button_square_large_text_hover.png"
-014568-014586 StringBlock "smoke_clip_parent"
+014499-014510 DataBlock
+  ............     00 00 00 00 00 00 00 00 00 00 00 00
+014511-014567 ImagePathListBlock 1 elements:
+  014515-014567 ImagePathBlock "ui\\skins\\default\\button_square_large_text_hover.png"
+014568-014586 DataBlock
+  ..smoke_clip_par 11 00 73 6d 6f 6b 65 5f 63 6c 69 70 5f 70 61 72
+  ent              65 6e 74
 014587-014605 StringBlock "smoke_clip_parent"
 014606-014650 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 c0 00 00
@@ -1339,14 +1361,13 @@
   .C..LB....<..... 8d 43 00 00 4c 42 05 00 00 00 3c 00 00 00 01 02
   .............    00 00 00 00 00 00 00 00 00 00 00 00 00
 015025-015034 StringBlock "NewState"
-015035-015050 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00
-015051-015102 ImagePathBlock "ui\\skins\\default\\button_square_large_text_mask.png"
-015103-015104 DataBlock
-  ..               00 00
-015105-015121 StringBlock "button_settings"
-015122-015123 DataBlock
-  ..               00 00
+015035-015046 DataBlock
+  ............     00 00 00 00 00 00 00 00 00 00 00 00
+015047-015102 ImagePathListBlock 1 elements:
+  015051-015102 ImagePathBlock "ui\\skins\\default\\button_square_large_text_mask.png"
+015103-015123 DataBlock
+  ....button_setti 00 00 0f 00 62 75 74 74 6f 6e 5f 73 65 74 74 69
+  ngs..            6e 67 73 00 00
 015124-015135 StringBlock "TextButton"
 015136-015172 StringBlock "UI_GBL_TMP_Square_Large_Text_Button"
 015173-015211 DataBlock
@@ -1369,30 +1390,28 @@
 015285-015296 DataBlock
   ............     00 00 00 00 00 00 00 00 01 00 00 00
 015297-015306 StringBlock "TabOrder"
-015307-015314 DataBlock
-  ..11....         02 00 31 31 05 00 00 00
-015315-015369 ImagePathBlock "ui\\skins\\default\\button_square_large_text_pressed.png"
-015370-015423 ImagePathBlock "ui\\skins\\default\\button_square_large_text_active.png"
-015424-015476 ImagePathBlock "ui\\skins\\default\\button_square_large_text_hover.png"
-015477-015532 ImagePathBlock "ui\\skins\\default\\button_square_large_text_inactive.png"
-015533-015588 ImagePathBlock "ui\\skins\\default\\button_square_large_text_underlay.png"
-015589-015608 DataBlock
+015307-015310 DataBlock
+  ..11             02 00 31 31
+015311-015588 ImagePathListBlock 5 elements:
+  015315-015369 ImagePathBlock "ui\\skins\\default\\button_square_large_text_pressed.png"
+  015370-015423 ImagePathBlock "ui\\skins\\default\\button_square_large_text_active.png"
+  015424-015476 ImagePathBlock "ui\\skins\\default\\button_square_large_text_hover.png"
+  015477-015532 ImagePathBlock "ui\\skins\\default\\button_square_large_text_inactive.png"
+  015533-015588 ImagePathBlock "ui\\skins\\default\\button_square_large_text_underlay.png"
+015589-015673 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-  ..A!             c0 04 41 21
-015609-015628 StringBlock "sound_system_panel"
-015629-015677 DataBlock
-  ................ 00 00 00 00 00 00 00 00 f7 00 00 00 01 01 00 00
-  ................ 00 00 01 00 00 00 00 01 00 00 00 00 00 00 00 00
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00
-  .                00
-015678-015730 ImageBlock id=416983616 xsize=256 ysize=256 path="ui\\skins\\default\\panel_back_top.png" unknown=0
-015731-015743 DataBlock
-  .........@.A!    00 00 00 00 00 01 00 00 00 40 08 41 21
-015744-015753 StringBlock "NewState"
-015754-015792 DataBlock
-  ....`........... a2 01 00 00 60 00 00 00 00 00 00 00 02 00 00 00
-  ................ 00 00 00 00 00 00 00 00 01 00 00 00 01 00 00 00
-  .......          00 00 00 00 00 00 00
+  ..A!..sound_syst c0 04 41 21 12 00 73 6f 75 6e 64 5f 73 79 73 74
+  em_panel........ 65 6d 5f 70 61 6e 65 6c 00 00 00 00 00 00 00 00
+  ................ f7 00 00 00 01 01 00 00 00 00 01 00 00 00 00 01
+  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  .....            00 00 00 00 00
+015674-015730 ImageListBlock 1 elements:
+  015678-015730 ImageBlock id=416983616 xsize=256 ysize=256 path="ui\\skins\\default\\panel_back_top.png" unknown=0
+015731-015792 DataBlock
+  .........@.A!..N 00 00 00 00 00 01 00 00 00 40 08 41 21 08 00 4e
+  ewState....`.... 65 77 53 74 61 74 65 a2 01 00 00 60 00 00 00 00
+  ................ 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 01
+  ..............   00 00 00 01 00 00 00 00 00 00 00 00 00 00
 015793-015805 FontNameBlock "la_gioconda"
 015806-015821 DataBlock
   ................ 0a 00 00 00 01 00 00 00 00 00 00 00 00 00 00 ff
@@ -1416,17 +1435,15 @@
   .......<........ 00 00 00 00 00 00 00 3c 00 00 00 00 00 00 00 09
   .....@.A!        00 00 00 00 00 40 0a 41 21
 016052-016063 StringBlock "heading_tx"
-016064-016112 DataBlock
+016064-016108 DataBlock
   ................ 00 00 00 00 04 00 00 00 00 00 00 00 01 01 00 00
   ................ 00 00 01 00 00 00 00 01 00 00 00 00 02 00 00 00
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00
-  .                00
-016113-016165 ImageBlock id=153996208 xsize=320 ysize=52 path="ui\\skins\\default\\panel_subtitle.png" unknown=0
-016166-016178 DataBlock
-  ...........A!    00 00 00 00 00 01 00 00 00 80 0d 41 21
-016179-016188 StringBlock "NewState"
-016189-016196 DataBlock
-  ....&...         99 01 00 00 26 00 00 00
+  .............    00 00 00 00 00 00 00 00 00 00 00 00 00
+016109-016165 ImageListBlock 1 elements:
+  016113-016165 ImageBlock id=153996208 xsize=320 ysize=52 path="ui\\skins\\default\\panel_subtitle.png" unknown=0
+016166-016196 DataBlock
+  ...........A!..N 00 00 00 00 00 01 00 00 00 80 0d 41 21 08 00 4e
+  ewState....&...  65 77 53 74 61 74 65 99 01 00 00 26 00 00 00
 016197-016230 UnicodeBlock "Advanced Options"
 016231-016253 DataBlock
   ................ 00 00 04 00 00 00 04 00 00 00 00 00 00 00 02 00
@@ -1820,19 +1837,17 @@
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   .....@.A!        00 00 00 00 00 40 fa 41 21
 021360-021371 StringBlock "popup_list"
-021372-021420 DataBlock
+021372-021416 DataBlock
   ................ 00 00 00 00 00 00 00 00 03 00 00 00 01 01 00 00
   ................ 00 00 01 00 00 00 00 01 00 00 00 00 05 00 00 00
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00
-  .                00
-021421-021476 ImageBlock id=557972864 xsize=160 ysize=48 path="ui\\common ui\\skins\\dropdown_listbg.png" unknown=0
-021477-021489 DataBlock
-  .........@.A!    00 00 00 00 00 01 00 00 00 40 fe 41 21
-021490-021499 StringBlock "NewState"
-021500-021538 DataBlock
-  ................ 81 00 00 00 18 00 00 00 00 00 00 00 02 00 00 00
-  ................ 00 00 00 00 00 00 00 00 01 00 00 00 01 00 00 00
-  .......          00 00 00 00 00 00 00
+  .............    00 00 00 00 00 00 00 00 00 00 00 00 00
+021417-021476 ImageListBlock 1 elements:
+  021421-021476 ImageBlock id=557972864 xsize=160 ysize=48 path="ui\\common ui\\skins\\dropdown_listbg.png" unknown=0
+021477-021538 DataBlock
+  .........@.A!..N 00 00 00 00 00 01 00 00 00 40 fe 41 21 08 00 4e
+  ewState......... 65 77 53 74 61 74 65 81 00 00 00 18 00 00 00 00
+  ................ 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 01
+  ..............   00 00 00 01 00 00 00 00 00 00 00 00 00 00
 021539-021551 FontNameBlock "la_gioconda"
 021552-021567 DataBlock
   ................ 0a 00 00 00 01 00 00 00 00 00 00 00 00 00 00 ff
@@ -2750,17 +2765,16 @@
 032799-032810 DataBlock
   ............     00 00 00 00 00 00 00 00 01 00 00 00
 032811-032820 StringBlock "TabOrder"
-032821-032828 DataBlock
-  ..10....         02 00 31 30 04 00 00 00
-032829-032866 ImagePathBlock "ui\\skins\\default\\checkbox_active.png"
-032867-032903 ImagePathBlock "ui\\skins\\default\\checkbox_hover.png"
-032904-032943 ImagePathBlock "ui\\skins\\default\\checkbox_selected.png"
-032944-032989 ImagePathBlock "ui\\skins\\default\\checkbox_selected_hover.png"
-032990-032997 DataBlock
-  ......@!         01 00 00 00 80 ff 40 21
-032998-033007 StringBlock "label_tx"
-033008-033009 DataBlock
-  ..               00 00
+032821-032824 DataBlock
+  ..10             02 00 31 30
+032825-032989 ImagePathListBlock 4 elements:
+  032829-032866 ImagePathBlock "ui\\skins\\default\\checkbox_active.png"
+  032867-032903 ImagePathBlock "ui\\skins\\default\\checkbox_hover.png"
+  032904-032943 ImagePathBlock "ui\\skins\\default\\checkbox_selected.png"
+  032944-032989 ImagePathBlock "ui\\skins\\default\\checkbox_selected_hover.png"
+032990-033009 DataBlock
+  ......@!..label_ 01 00 00 00 80 ff 40 21 08 00 6c 61 62 65 6c 5f
+  tx..             74 78 00 00
 033010-033023 StringBlock "CheckboxText"
 033024-033084 DataBlock
   $............... 24 00 00 00 03 00 00 00 01 00 00 00 00 00 01 00
@@ -2850,19 +2864,22 @@
 033835-033842 DataBlock
   ........         00 00 00 00 00 00 00 00
 033843-033852 StringBlock "inactive"
-033853-033868 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 0a 00 00 00
-033869-033924 ImagePathBlock "ui\\skins\\default\\button_dropdown_selected_inactive.png"
-033925-033970 ImagePathBlock "ui\\skins\\default\\button_dropdown_pressed.png"
-033971-034023 ImagePathBlock "ui\\skins\\default\\button_dropdown_selected_hover.png"
-034024-034067 ImagePathBlock "ui\\skins\\default\\button_dropdown_hover.png"
-034068-034112 ImagePathBlock "ui\\skins\\default\\button_dropdown_active.png"
-034113-034159 ImagePathBlock "ui\\skins\\default\\button_dropdown_inactive.png"
-034160-034206 ImagePathBlock "ui\\skins\\default\\button_dropdown_selected.png"
-034207-034261 ImagePathBlock "ui\\skins\\default\\button_dropdown_selected_pressed.png"
-034262-034317 ImagePathBlock "ui\\skins\\default\\button_dropdown_selected_underlay.png"
-034318-034364 ImagePathBlock "ui\\skins\\default\\button_dropdown_underlay.png"
-034365-034381 StringBlock "dy_selected_txt"
+033853-033864 DataBlock
+  ............     00 00 00 00 00 00 00 00 00 00 00 00
+033865-034364 ImagePathListBlock 10 elements:
+  033869-033924 ImagePathBlock "ui\\skins\\default\\button_dropdown_selected_inactive.png"
+  033925-033970 ImagePathBlock "ui\\skins\\default\\button_dropdown_pressed.png"
+  033971-034023 ImagePathBlock "ui\\skins\\default\\button_dropdown_selected_hover.png"
+  034024-034067 ImagePathBlock "ui\\skins\\default\\button_dropdown_hover.png"
+  034068-034112 ImagePathBlock "ui\\skins\\default\\button_dropdown_active.png"
+  034113-034159 ImagePathBlock "ui\\skins\\default\\button_dropdown_inactive.png"
+  034160-034206 ImagePathBlock "ui\\skins\\default\\button_dropdown_selected.png"
+  034207-034261 ImagePathBlock "ui\\skins\\default\\button_dropdown_selected_pressed.png"
+  034262-034317 ImagePathBlock "ui\\skins\\default\\button_dropdown_selected_underlay.png"
+  034318-034364 ImagePathBlock "ui\\skins\\default\\button_dropdown_underlay.png"
+034365-034381 DataBlock
+  ..dy_selected_tx 0f 00 64 79 5f 73 65 6c 65 63 74 65 64 5f 74 78
+  t                74
 034382-034398 StringBlock "dy_selected_txt"
 034399-034443 DataBlock
   ........@@...@.. 00 00 00 00 00 00 00 00 40 40 00 00 80 40 00 00
@@ -2902,10 +2919,12 @@
 034807-034814 DataBlock
   ........         00 00 00 00 00 00 00 00
 034815-034830 StringBlock "selected_hover"
-034831-034846 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00
-034847-034894 ImagePathBlock "ui\\skins\\default\\button_dropdown_highlight.png"
-034895-034906 StringBlock "popup_list"
+034831-034842 DataBlock
+  ............     00 00 00 00 00 00 00 00 00 00 00 00
+034843-034894 ImagePathListBlock 1 elements:
+  034847-034894 ImagePathBlock "ui\\skins\\default\\button_dropdown_highlight.png"
+034895-034906 DataBlock
+  ..popup_list     0a 00 70 6f 70 75 70 5f 6c 69 73 74
 034907-034918 StringBlock "popup_list"
 034919-034963 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -2932,18 +2951,17 @@
   .C..4B....A..... 03 43 00 00 34 42 00 00 00 00 41 00 00 00 00 02
   .............    00 00 00 00 00 00 00 00 00 00 00 00 00
 035212-035221 StringBlock "NewState"
-035222-035237 DataBlock
+035222-035233 DataBlock
+  ............     00 00 00 00 00 00 00 00 00 00 00 00
+035234-035281 ImagePathListBlock 1 elements:
+  035238-035281 ImagePathBlock "ui\\skins\\default\\button_dropdown_panel.png"
+035282-035365 DataBlock
+  ......A!..label_ 01 00 00 00 00 c0 41 21 09 00 6c 61 62 65 6c 5f
+  txt............. 74 78 74 00 00 00 00 00 00 00 00 e8 ff ff ff 01
+  ................ 01 00 00 00 00 01 00 00 00 00 01 00 00 00 00 01
+  ................ 00 00 00 00 00 00 00 e8 ff ff ff 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00
-035238-035281 ImagePathBlock "ui\\skins\\default\\button_dropdown_panel.png"
-035282-035289 DataBlock
-  ......A!         01 00 00 00 00 c0 41 21
-035290-035300 StringBlock "label_txt"
-035301-035365 DataBlock
-  ................ 00 00 00 00 00 00 00 00 e8 ff ff ff 01 01 00 00
-  ................ 00 00 01 00 00 00 00 01 00 00 00 00 01 00 00 00
-  ................ 00 00 00 00 e8 ff ff ff 00 00 00 00 00 00 00 00
-  .............@.A 00 00 00 00 00 00 00 00 00 01 00 00 00 40 c3 41
-  !                21
+  @.A!             40 c3 41 21
 035366-035375 StringBlock "NewState"
 035376-035383 DataBlock
   ........         a6 00 00 00 18 00 00 00
@@ -3029,19 +3047,22 @@
 036574-036581 DataBlock
   ........         00 00 00 00 00 00 00 00
 036582-036591 StringBlock "inactive"
-036592-036607 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 0a 00 00 00
-036608-036663 ImagePathBlock "ui\\skins\\default\\button_dropdown_selected_inactive.png"
-036664-036709 ImagePathBlock "ui\\skins\\default\\button_dropdown_pressed.png"
-036710-036762 ImagePathBlock "ui\\skins\\default\\button_dropdown_selected_hover.png"
-036763-036806 ImagePathBlock "ui\\skins\\default\\button_dropdown_hover.png"
-036807-036851 ImagePathBlock "ui\\skins\\default\\button_dropdown_active.png"
-036852-036898 ImagePathBlock "ui\\skins\\default\\button_dropdown_inactive.png"
-036899-036945 ImagePathBlock "ui\\skins\\default\\button_dropdown_selected.png"
-036946-037000 ImagePathBlock "ui\\skins\\default\\button_dropdown_selected_pressed.png"
-037001-037056 ImagePathBlock "ui\\skins\\default\\button_dropdown_selected_underlay.png"
-037057-037103 ImagePathBlock "ui\\skins\\default\\button_dropdown_underlay.png"
-037104-037120 StringBlock "dy_selected_txt"
+036592-036603 DataBlock
+  ............     00 00 00 00 00 00 00 00 00 00 00 00
+036604-037103 ImagePathListBlock 10 elements:
+  036608-036663 ImagePathBlock "ui\\skins\\default\\button_dropdown_selected_inactive.png"
+  036664-036709 ImagePathBlock "ui\\skins\\default\\button_dropdown_pressed.png"
+  036710-036762 ImagePathBlock "ui\\skins\\default\\button_dropdown_selected_hover.png"
+  036763-036806 ImagePathBlock "ui\\skins\\default\\button_dropdown_hover.png"
+  036807-036851 ImagePathBlock "ui\\skins\\default\\button_dropdown_active.png"
+  036852-036898 ImagePathBlock "ui\\skins\\default\\button_dropdown_inactive.png"
+  036899-036945 ImagePathBlock "ui\\skins\\default\\button_dropdown_selected.png"
+  036946-037000 ImagePathBlock "ui\\skins\\default\\button_dropdown_selected_pressed.png"
+  037001-037056 ImagePathBlock "ui\\skins\\default\\button_dropdown_selected_underlay.png"
+  037057-037103 ImagePathBlock "ui\\skins\\default\\button_dropdown_underlay.png"
+037104-037120 DataBlock
+  ..dy_selected_tx 0f 00 64 79 5f 73 65 6c 65 63 74 65 64 5f 74 78
+  t                74
 037121-037137 StringBlock "dy_selected_txt"
 037138-037182 DataBlock
   .........@...@.. 00 00 00 00 00 00 00 00 80 40 00 00 80 40 00 00
@@ -3081,10 +3102,12 @@
 037546-037553 DataBlock
   ........         00 00 00 00 00 00 00 00
 037554-037569 StringBlock "selected_hover"
-037570-037585 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00
-037586-037633 ImagePathBlock "ui\\skins\\default\\button_dropdown_highlight.png"
-037634-037645 StringBlock "popup_list"
+037570-037581 DataBlock
+  ............     00 00 00 00 00 00 00 00 00 00 00 00
+037582-037633 ImagePathListBlock 1 elements:
+  037586-037633 ImagePathBlock "ui\\skins\\default\\button_dropdown_highlight.png"
+037634-037645 DataBlock
+  ..popup_list     0a 00 70 6f 70 75 70 5f 6c 69 73 74
 037646-037657 StringBlock "popup_list"
 037658-037702 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -3111,18 +3134,17 @@
   .C..4B....A..... 2e 43 00 00 34 42 00 00 00 00 41 00 00 00 00 02
   .............    00 00 00 00 00 00 00 00 00 00 00 00 00
 037951-037960 StringBlock "NewState"
-037961-037976 DataBlock
+037961-037972 DataBlock
+  ............     00 00 00 00 00 00 00 00 00 00 00 00
+037973-038020 ImagePathListBlock 1 elements:
+  037977-038020 ImagePathBlock "ui\\skins\\default\\button_dropdown_panel.png"
+038021-038104 DataBlock
+  .....hA!..label_ 01 00 00 00 80 68 41 21 09 00 6c 61 62 65 6c 5f
+  txt............. 74 78 74 00 00 00 00 00 00 00 00 e8 ff ff ff 01
+  ................ 01 00 00 00 00 01 00 00 00 00 01 00 00 00 00 01
+  ................ 00 00 00 00 00 00 00 e8 ff ff ff 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00
-037977-038020 ImagePathBlock "ui\\skins\\default\\button_dropdown_panel.png"
-038021-038028 DataBlock
-  .....hA!         01 00 00 00 80 68 41 21
-038029-038039 StringBlock "label_txt"
-038040-038104 DataBlock
-  ................ 00 00 00 00 00 00 00 00 e8 ff ff ff 01 01 00 00
-  ................ 00 00 01 00 00 00 00 01 00 00 00 00 01 00 00 00
-  ................ 00 00 00 00 e8 ff ff ff 00 00 00 00 00 00 00 00
-  ..............lA 00 00 00 00 00 00 00 00 00 01 00 00 00 00 6c 41
-  !                21
+  .lA!             00 6c 41 21
 038105-038114 StringBlock "NewState"
 038115-038122 DataBlock
   ........         c7 00 00 00 18 00 00 00
@@ -3208,19 +3230,22 @@
 039114-039121 DataBlock
   ........         00 00 00 00 00 00 00 00
 039122-039131 StringBlock "inactive"
-039132-039147 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 0a 00 00 00
-039148-039203 ImagePathBlock "ui\\skins\\default\\button_dropdown_selected_inactive.png"
-039204-039249 ImagePathBlock "ui\\skins\\default\\button_dropdown_pressed.png"
-039250-039302 ImagePathBlock "ui\\skins\\default\\button_dropdown_selected_hover.png"
-039303-039346 ImagePathBlock "ui\\skins\\default\\button_dropdown_hover.png"
-039347-039391 ImagePathBlock "ui\\skins\\default\\button_dropdown_active.png"
-039392-039438 ImagePathBlock "ui\\skins\\default\\button_dropdown_inactive.png"
-039439-039485 ImagePathBlock "ui\\skins\\default\\button_dropdown_selected.png"
-039486-039540 ImagePathBlock "ui\\skins\\default\\button_dropdown_selected_pressed.png"
-039541-039596 ImagePathBlock "ui\\skins\\default\\button_dropdown_selected_underlay.png"
-039597-039643 ImagePathBlock "ui\\skins\\default\\button_dropdown_underlay.png"
-039644-039660 StringBlock "dy_selected_txt"
+039132-039143 DataBlock
+  ............     00 00 00 00 00 00 00 00 00 00 00 00
+039144-039643 ImagePathListBlock 10 elements:
+  039148-039203 ImagePathBlock "ui\\skins\\default\\button_dropdown_selected_inactive.png"
+  039204-039249 ImagePathBlock "ui\\skins\\default\\button_dropdown_pressed.png"
+  039250-039302 ImagePathBlock "ui\\skins\\default\\button_dropdown_selected_hover.png"
+  039303-039346 ImagePathBlock "ui\\skins\\default\\button_dropdown_hover.png"
+  039347-039391 ImagePathBlock "ui\\skins\\default\\button_dropdown_active.png"
+  039392-039438 ImagePathBlock "ui\\skins\\default\\button_dropdown_inactive.png"
+  039439-039485 ImagePathBlock "ui\\skins\\default\\button_dropdown_selected.png"
+  039486-039540 ImagePathBlock "ui\\skins\\default\\button_dropdown_selected_pressed.png"
+  039541-039596 ImagePathBlock "ui\\skins\\default\\button_dropdown_selected_underlay.png"
+  039597-039643 ImagePathBlock "ui\\skins\\default\\button_dropdown_underlay.png"
+039644-039660 DataBlock
+  ..dy_selected_tx 0f 00 64 79 5f 73 65 6c 65 63 74 65 64 5f 74 78
+  t                74
 039661-039677 StringBlock "dy_selected_txt"
 039678-039722 DataBlock
   ........@@...@.. 00 00 00 00 00 00 00 00 40 40 00 00 80 40 00 00
@@ -3260,10 +3285,12 @@
 040086-040093 DataBlock
   ........         00 00 00 00 00 00 00 00
 040094-040109 StringBlock "selected_hover"
-040110-040125 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00
-040126-040173 ImagePathBlock "ui\\skins\\default\\button_dropdown_highlight.png"
-040174-040185 StringBlock "popup_list"
+040110-040121 DataBlock
+  ............     00 00 00 00 00 00 00 00 00 00 00 00
+040122-040173 ImagePathListBlock 1 elements:
+  040126-040173 ImagePathBlock "ui\\skins\\default\\button_dropdown_highlight.png"
+040174-040185 DataBlock
+  ..popup_list     0a 00 70 6f 70 75 70 5f 6c 69 73 74
 040186-040197 StringBlock "popup_list"
 040198-040242 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -3290,18 +3317,17 @@
   .C..4B....A..... 03 43 00 00 34 42 00 00 00 00 41 00 00 00 00 02
   .............    00 00 00 00 00 00 00 00 00 00 00 00 00
 040491-040500 StringBlock "NewState"
-040501-040516 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00
-040517-040560 ImagePathBlock "ui\\skins\\default\\button_dropdown_panel.png"
-040561-040568 DataBlock
-  ....@.B!         01 00 00 00 40 8e 42 21
-040569-040579 StringBlock "label_txt"
-040580-040644 DataBlock
-  ................ 00 00 00 00 05 00 00 00 ec ff ff ff 01 01 00 00
-  ................ 00 00 01 00 00 00 00 01 00 00 00 00 00 00 00 00
+040501-040512 DataBlock
+  ............     00 00 00 00 00 00 00 00 00 00 00 00
+040513-040560 ImagePathListBlock 1 elements:
+  040517-040560 ImagePathBlock "ui\\skins\\default\\button_dropdown_panel.png"
+040561-040644 DataBlock
+  ....@.B!..label_ 01 00 00 00 40 8e 42 21 09 00 6c 61 62 65 6c 5f
+  txt............. 74 78 74 00 00 00 00 05 00 00 00 ec ff ff ff 01
+  ................ 01 00 00 00 00 01 00 00 00 00 01 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-  ...............B 00 00 00 00 00 00 00 00 00 01 00 00 00 c0 91 42
-  !                21
+  ................ 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00
+  ..B!             c0 91 42 21
 040645-040654 StringBlock "NewState"
 040655-040662 DataBlock
   n.......         6e 00 00 00 14 00 00 00
@@ -3386,19 +3412,22 @@
 041435-041442 DataBlock
   ........         00 00 00 00 00 00 00 00
 041443-041452 StringBlock "inactive"
-041453-041468 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 0a 00 00 00
-041469-041524 ImagePathBlock "ui\\skins\\default\\button_dropdown_selected_inactive.png"
-041525-041570 ImagePathBlock "ui\\skins\\default\\button_dropdown_pressed.png"
-041571-041623 ImagePathBlock "ui\\skins\\default\\button_dropdown_selected_hover.png"
-041624-041667 ImagePathBlock "ui\\skins\\default\\button_dropdown_hover.png"
-041668-041712 ImagePathBlock "ui\\skins\\default\\button_dropdown_active.png"
-041713-041759 ImagePathBlock "ui\\skins\\default\\button_dropdown_inactive.png"
-041760-041806 ImagePathBlock "ui\\skins\\default\\button_dropdown_selected.png"
-041807-041861 ImagePathBlock "ui\\skins\\default\\button_dropdown_selected_pressed.png"
-041862-041917 ImagePathBlock "ui\\skins\\default\\button_dropdown_selected_underlay.png"
-041918-041964 ImagePathBlock "ui\\skins\\default\\button_dropdown_underlay.png"
-041965-041981 StringBlock "dy_selected_txt"
+041453-041464 DataBlock
+  ............     00 00 00 00 00 00 00 00 00 00 00 00
+041465-041964 ImagePathListBlock 10 elements:
+  041469-041524 ImagePathBlock "ui\\skins\\default\\button_dropdown_selected_inactive.png"
+  041525-041570 ImagePathBlock "ui\\skins\\default\\button_dropdown_pressed.png"
+  041571-041623 ImagePathBlock "ui\\skins\\default\\button_dropdown_selected_hover.png"
+  041624-041667 ImagePathBlock "ui\\skins\\default\\button_dropdown_hover.png"
+  041668-041712 ImagePathBlock "ui\\skins\\default\\button_dropdown_active.png"
+  041713-041759 ImagePathBlock "ui\\skins\\default\\button_dropdown_inactive.png"
+  041760-041806 ImagePathBlock "ui\\skins\\default\\button_dropdown_selected.png"
+  041807-041861 ImagePathBlock "ui\\skins\\default\\button_dropdown_selected_pressed.png"
+  041862-041917 ImagePathBlock "ui\\skins\\default\\button_dropdown_selected_underlay.png"
+  041918-041964 ImagePathBlock "ui\\skins\\default\\button_dropdown_underlay.png"
+041965-041981 DataBlock
+  ..dy_selected_tx 0f 00 64 79 5f 73 65 6c 65 63 74 65 64 5f 74 78
+  t                74
 041982-041998 StringBlock "dy_selected_txt"
 041999-042043 DataBlock
   ........@@...@.. 00 00 00 00 00 00 00 00 40 40 00 00 80 40 00 00
@@ -3438,10 +3467,12 @@
 042407-042414 DataBlock
   ........         00 00 00 00 00 00 00 00
 042415-042430 StringBlock "selected_hover"
-042431-042446 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00
-042447-042494 ImagePathBlock "ui\\skins\\default\\button_dropdown_highlight.png"
-042495-042506 StringBlock "popup_list"
+042431-042442 DataBlock
+  ............     00 00 00 00 00 00 00 00 00 00 00 00
+042443-042494 ImagePathListBlock 1 elements:
+  042447-042494 ImagePathBlock "ui\\skins\\default\\button_dropdown_highlight.png"
+042495-042506 DataBlock
+  ..popup_list     0a 00 70 6f 70 75 70 5f 6c 69 73 74
 042507-042518 StringBlock "popup_list"
 042519-042563 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -3468,18 +3499,17 @@
   .C..4B....A..... 03 43 00 00 34 42 00 00 00 00 41 00 00 00 00 02
   .............    00 00 00 00 00 00 00 00 00 00 00 00 00
 042812-042821 StringBlock "NewState"
-042822-042837 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00
-042838-042881 ImagePathBlock "ui\\skins\\default\\button_dropdown_panel.png"
-042882-042889 DataBlock
-  .....'B!         01 00 00 00 00 27 42 21
-042890-042900 StringBlock "label_txt"
-042901-042965 DataBlock
-  ........V....... 00 00 00 00 f6 00 00 00 56 00 00 00 01 01 00 00
-  ................ 00 00 01 00 00 00 00 01 00 00 00 00 00 00 00 00
+042822-042833 DataBlock
+  ............     00 00 00 00 00 00 00 00 00 00 00 00
+042834-042881 ImagePathListBlock 1 elements:
+  042838-042881 ImagePathBlock "ui\\skins\\default\\button_dropdown_panel.png"
+042882-042965 DataBlock
+  .....'B!..label_ 01 00 00 00 00 27 42 21 09 00 6c 61 62 65 6c 5f
+  txt........V.... 74 78 74 00 00 00 00 f6 00 00 00 56 00 00 00 01
+  ................ 01 00 00 00 00 01 00 00 00 00 01 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-  ..............*B 00 00 00 00 00 00 00 00 00 01 00 00 00 80 2a 42
-  !                21
+  ................ 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00
+  .*B!             80 2a 42 21
 042966-042975 StringBlock "NewState"
 042976-042983 DataBlock
   {.......         7b 00 00 00 14 00 00 00
@@ -3516,19 +3546,17 @@
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ......           00 00 00 a8 e7 09
 043405-043418 StringBlock "title_plaque"
-043419-043467 DataBlock
+043419-043463 DataBlock
   ....;........... 00 00 00 00 3b 00 00 00 ec ff ff ff 01 00 00 00
   ................ 00 00 01 00 00 00 00 01 00 00 00 00 02 00 00 00
-  ...........c.... 00 00 00 00 ec ff ff ff 00 d0 da 63 09 01 00 00
-  .                00
-043468-043517 ImageBlock id=199299824 xsize=544 ysize=59 path="ui\\skins\\default\\panel_title.png" unknown=0
-043518-043530 DataBlock
-  ...........c.    00 00 00 00 00 01 00 00 00 d0 da 63 09
-043531-043540 StringBlock "NewState"
-043541-043579 DataBlock
-  ,...2........... 2c 01 00 00 32 00 00 00 00 00 00 00 02 00 00 00
-  ................ 00 00 00 00 00 00 00 00 01 00 00 00 01 00 00 00
-  .......          00 00 00 00 00 00 00
+  ...........c.    00 00 00 00 ec ff ff ff 00 d0 da 63 09
+043464-043517 ImageListBlock 1 elements:
+  043468-043517 ImageBlock id=199299824 xsize=544 ysize=59 path="ui\\skins\\default\\panel_title.png" unknown=0
+043518-043579 DataBlock
+  ...........c...N 00 00 00 00 00 01 00 00 00 d0 da 63 09 08 00 4e
+  ewState,...2.... 65 77 53 74 61 74 65 2c 01 00 00 32 00 00 00 00
+  ................ 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 01
+  ..............   00 00 00 01 00 00 00 00 00 00 00 00 00 00
 043580-043591 FontNameBlock "Norse-Bold"
 043592-043607 DataBlock
   ................ 0a 00 00 00 02 00 00 00 01 00 00 00 dd da fa ff
@@ -3642,19 +3670,18 @@
 044798-044809 DataBlock
   ............     00 00 00 00 00 00 00 00 01 00 00 00
 044810-044825 StringBlock "override_sound"
-044826-044831 DataBlock
-  ......           00 00 06 00 00 00
-044832-044864 ImagePathBlock "ui\\skins\\default\\icon_check.png"
-044865-044914 ImagePathBlock "ui\\skins\\default\\button_round_medium_pressed.png"
-044915-044962 ImagePathBlock "ui\\skins\\default\\button_round_medium_hover.png"
-044963-045011 ImagePathBlock "ui\\skins\\default\\button_round_medium_active.png"
-045012-045062 ImagePathBlock "ui\\skins\\default\\button_round_medium_inactive.png"
-045063-045113 ImagePathBlock "ui\\skins\\default\\button_round_medium_underlay.png"
-045114-045117 DataBlock
-  ....             00 00 00 00
-045118-045138 StringBlock "round_medium_button"
-045139-045144 DataBlock
-  ......           01 00 00 00 00 00
+044826-044827 DataBlock
+  ..               00 00
+044828-045113 ImagePathListBlock 6 elements:
+  044832-044864 ImagePathBlock "ui\\skins\\default\\icon_check.png"
+  044865-044914 ImagePathBlock "ui\\skins\\default\\button_round_medium_pressed.png"
+  044915-044962 ImagePathBlock "ui\\skins\\default\\button_round_medium_hover.png"
+  044963-045011 ImagePathBlock "ui\\skins\\default\\button_round_medium_active.png"
+  045012-045062 ImagePathBlock "ui\\skins\\default\\button_round_medium_inactive.png"
+  045063-045113 ImagePathBlock "ui\\skins\\default\\button_round_medium_underlay.png"
+045114-045144 DataBlock
+  ......round_medi 00 00 00 00 13 00 72 6f 75 6e 64 5f 6d 65 64 69
+  um_button......  75 6d 5f 62 75 74 74 6f 6e 01 00 00 00 00 00
 045145-045159 StringBlock "button_cancel"
 045160-045161 DataBlock
   ..               00 00
@@ -3682,20 +3709,19 @@
 045403-045414 DataBlock
   ............     00 00 00 00 00 00 00 00 01 00 00 00
 045415-045430 StringBlock "override_sound"
-045431-045436 DataBlock
-  ......           00 00 06 00 00 00
-045437-045469 ImagePathBlock "ui\\skins\\default\\icon_cross.png"
-045470-045519 ImagePathBlock "ui\\skins\\default\\button_round_medium_pressed.png"
-045520-045567 ImagePathBlock "ui\\skins\\default\\button_round_medium_hover.png"
-045568-045616 ImagePathBlock "ui\\skins\\default\\button_round_medium_active.png"
-045617-045667 ImagePathBlock "ui\\skins\\default\\button_round_medium_inactive.png"
-045668-045718 ImagePathBlock "ui\\skins\\default\\button_round_medium_underlay.png"
-045719-045748 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-  ..........@p&!   00 00 00 00 00 00 00 00 00 00 40 70 26 21
-045749-045764 StringBlock "voice_settings"
-045765-045766 DataBlock
+045431-045432 DataBlock
   ..               00 00
+045433-045718 ImagePathListBlock 6 elements:
+  045437-045469 ImagePathBlock "ui\\skins\\default\\icon_cross.png"
+  045470-045519 ImagePathBlock "ui\\skins\\default\\button_round_medium_pressed.png"
+  045520-045567 ImagePathBlock "ui\\skins\\default\\button_round_medium_hover.png"
+  045568-045616 ImagePathBlock "ui\\skins\\default\\button_round_medium_active.png"
+  045617-045667 ImagePathBlock "ui\\skins\\default\\button_round_medium_inactive.png"
+  045668-045718 ImagePathBlock "ui\\skins\\default\\button_round_medium_underlay.png"
+045719-045766 DataBlock
+  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  ..........@p&!.. 00 00 00 00 00 00 00 00 00 00 40 70 26 21 0e 00
+  voice_settings.. 76 6f 69 63 65 5f 73 65 74 74 69 6e 67 73 00 00
 045767-045788 StringBlock "AdvancedAudioOptions"
 045789-045833 DataBlock
   ....2........... 00 00 00 00 32 00 00 00 00 00 00 00 00 00 00 00
@@ -3705,15 +3731,15 @@
 045888-045888 DataBlock
   .                11
 045889-045928 ImagePathBlock "ui\\skins\\default\\panel_back_border.png"
-045929-045937 DataBlock
-  .........        00 01 00 00 00 01 00 00 00
-045938-045993 ImageBlock id=639110144 xsize=256 ysize=256 path="ui\\skins\\default\\panel_back_bottom.png" unknown=403701760
-045994-045994 DataBlock
-  &                26
-045995-046031 ImagePathBlock "ui\\skins\\default\\panel_back_top.png"
-046032-046056 DataBlock
-  ................ 00 01 00 00 00 01 00 00 00 00 00 00 00 00 00 00
-  ......s&!        00 01 00 00 00 c0 73 26 21
+045929-045933 DataBlock
+  .....            00 01 00 00 00
+045934-045993 ImageListBlock 1 elements:
+  045938-045993 ImageBlock id=639110144 xsize=256 ysize=256 path="ui\\skins\\default\\panel_back_bottom.png" unknown=403701760
+045994-046056 DataBlock
+  &#.ui\skins\defa 26 23 00 75 69 5c 73 6b 69 6e 73 5c 64 65 66 61
+  ult\panel_back_t 75 6c 74 5c 70 61 6e 65 6c 5f 62 61 63 6b 5f 74
+  op.png.......... 6f 70 2e 70 6e 67 00 01 00 00 00 01 00 00 00 00
+  ............s&!  00 00 00 00 00 00 00 01 00 00 00 c0 73 26 21
 046057-046066 StringBlock "NewState"
 046067-046105 DataBlock
   ................ a2 01 00 00 12 02 00 00 00 00 00 00 04 00 00 00
@@ -3853,18 +3879,17 @@
 047611-047612 DataBlock
   ..               00 00
 047613-047628 StringBlock "NumericalInput"
-047629-047673 DataBlock
+047629-047669 DataBlock
   5............... 35 01 00 00 07 00 00 00 01 01 00 00 00 00 01 00
   ................ 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00
-  .............    00 00 00 00 00 00 00 00 00 01 00 00 00
-047674-047722 ImageBlock id=556192704 xsize=183 ysize=27 path="ui\\skins\\default\\frame_text.png" unknown=0
-047723-047735 DataBlock
-  ...........&!    00 00 00 00 00 01 00 00 00 80 d4 26 21
-047736-047745 StringBlock "NewState"
-047746-047784 DataBlock
-  P............... 50 00 00 00 1b 00 00 00 00 00 00 00 04 00 00 00
-  ................ 04 00 00 00 02 00 00 00 02 00 00 00 01 00 00 00
-  .......          00 00 00 00 00 00 00
+  .........        00 00 00 00 00 00 00 00 00
+047670-047722 ImageListBlock 1 elements:
+  047674-047722 ImageBlock id=556192704 xsize=183 ysize=27 path="ui\\skins\\default\\frame_text.png" unknown=0
+047723-047784 DataBlock
+  ...........&!..N 00 00 00 00 00 01 00 00 00 80 d4 26 21 08 00 4e
+  ewStateP........ 65 77 53 74 61 74 65 50 00 00 00 1b 00 00 00 00
+  ................ 00 00 00 04 00 00 00 04 00 00 00 02 00 00 00 02
+  ..............   00 00 00 01 00 00 00 00 00 00 00 00 00 00
 047785-047797 FontNameBlock "la_gioconda"
 047798-047813 DataBlock
   ................ 0c 00 00 00 01 00 00 00 00 00 00 00 d7 f8 ff ff
@@ -3941,10 +3966,12 @@
   .B...A....-..... 14 42 00 00 c8 41 01 00 00 00 2d 00 00 00 01 02
   .............    00 00 00 00 00 00 00 00 00 00 00 00 00
 048600-048609 StringBlock "NewState"
-048610-048625 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00
-048626-048676 ImagePathBlock "ui\\skins\\default\\panel_slider_horizontal_left.png"
-048677-048683 StringBlock "right"
+048610-048621 DataBlock
+  ............     00 00 00 00 00 00 00 00 00 00 00 00
+048622-048676 ImagePathListBlock 1 elements:
+  048626-048676 ImagePathBlock "ui\\skins\\default\\panel_slider_horizontal_left.png"
+048677-048683 DataBlock
+  ..right          05 00 72 69 67 68 74
 048684-048690 StringBlock "right"
 048691-048692 DataBlock
   ..               00 00
@@ -3973,12 +4000,14 @@
 048876-048878 DataBlock
   ..1              01 00 31
 048879-048899 StringBlock "update_frequency_ms"
-048900-048908 DataBlock
-  ..200....        03 00 32 30 30 03 00 00 00
-048909-048963 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top_active.png"
-048964-049019 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top_pressed.png"
-049020-049073 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top_hover.png"
-049074-049081 StringBlock "handle"
+048900-048904 DataBlock
+  ..200            03 00 32 30 30
+048905-049073 ImagePathListBlock 3 elements:
+  048909-048963 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top_active.png"
+  048964-049019 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top_pressed.png"
+  049020-049073 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top_hover.png"
+049074-049081 DataBlock
+  ..handle         06 00 68 61 6e 64 6c 65
 049082-049089 StringBlock "handle"
 049090-049091 DataBlock
   ..               00 00
@@ -3998,11 +4027,13 @@
 049213-049220 DataBlock
   ........         00 00 00 00 00 00 00 00
 049221-049230 StringBlock "down_off"
-049231-049246 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00
-049247-049291 ImagePathBlock "ui\\skins\\default\\slider_vertical_handle.png"
-049292-049345 ImagePathBlock "ui\\skins\\default\\slider_vertical_handle_underlay.png"
-049346-049351 StringBlock "left"
+049231-049242 DataBlock
+  ............     00 00 00 00 00 00 00 00 00 00 00 00
+049243-049345 ImagePathListBlock 2 elements:
+  049247-049291 ImagePathBlock "ui\\skins\\default\\slider_vertical_handle.png"
+  049292-049345 ImagePathBlock "ui\\skins\\default\\slider_vertical_handle_underlay.png"
+049346-049351 DataBlock
+  ..left           04 00 6c 65 66 74
 049352-049357 StringBlock "left"
 049358-049359 DataBlock
   ..               00 00
@@ -4031,26 +4062,26 @@
 049543-049545 DataBlock
   ..1              01 00 31
 049546-049566 StringBlock "update_frequency_ms"
-049567-049575 DataBlock
-  ..200....        03 00 32 30 30 03 00 00 00
-049576-049633 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom_active.png"
-049634-049692 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom_pressed.png"
-049693-049749 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom_hover.png"
-049750-049762 StringBlock "frame_right"
+049567-049571 DataBlock
+  ..200            03 00 32 30 30
+049572-049749 ImagePathListBlock 3 elements:
+  049576-049633 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom_active.png"
+  049634-049692 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom_pressed.png"
+  049693-049749 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom_hover.png"
+049750-049762 DataBlock
+  ..frame_right    0b 00 66 72 61 6d 65 5f 72 69 67 68 74
 049763-049775 StringBlock "frame_right"
 049776-049820 DataBlock
   .........B...... 00 00 00 00 00 00 00 00 1c 42 00 00 00 c0 00 00
   .B...A....-..... 18 42 00 00 c8 41 03 00 00 00 2d 00 00 00 01 02
   .............    00 00 00 00 00 00 00 00 00 00 00 00 00
 049821-049830 StringBlock "NewState"
-049831-049846 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00
-049847-049898 ImagePathBlock "ui\\skins\\default\\panel_slider_horizontal_right.png"
-049899-049900 DataBlock
-  ..               00 00
-049901-049908 StringBlock "slider"
-049909-049910 DataBlock
-  ..               00 00
+049831-049842 DataBlock
+  ............     00 00 00 00 00 00 00 00 00 00 00 00
+049843-049898 ImagePathListBlock 1 elements:
+  049847-049898 ImagePathBlock "ui\\skins\\default\\panel_slider_horizontal_right.png"
+049899-049910 DataBlock
+  ....slider..     00 00 06 00 73 6c 69 64 65 72 00 00
 049911-049919 StringBlock "HSlider"
 049920-049960 DataBlock
   ....9C..@A...B.. 00 00 00 00 39 43 00 00 40 41 00 00 96 42 00 00
@@ -4148,18 +4179,17 @@
 050790-050791 DataBlock
   ..               00 00
 050792-050807 StringBlock "NumericalInput"
-050808-050852 DataBlock
+050808-050848 DataBlock
   5............... 35 01 00 00 07 00 00 00 01 01 00 00 00 00 01 00
   ................ 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00
-  .............    00 00 00 00 00 00 00 00 00 01 00 00 00
-050853-050901 ImageBlock id=557794176 xsize=183 ysize=27 path="ui\\skins\\default\\frame_text.png" unknown=0
-050902-050914 DataBlock
-  .........@D?!    00 00 00 00 00 01 00 00 00 40 44 3f 21
-050915-050924 StringBlock "NewState"
-050925-050963 DataBlock
-  P............... 50 00 00 00 1b 00 00 00 00 00 00 00 04 00 00 00
-  ................ 04 00 00 00 02 00 00 00 02 00 00 00 01 00 00 00
-  .......          00 00 00 00 00 00 00
+  .........        00 00 00 00 00 00 00 00 00
+050849-050901 ImageListBlock 1 elements:
+  050853-050901 ImageBlock id=557794176 xsize=183 ysize=27 path="ui\\skins\\default\\frame_text.png" unknown=0
+050902-050963 DataBlock
+  .........@D?!..N 00 00 00 00 00 01 00 00 00 40 44 3f 21 08 00 4e
+  ewStateP........ 65 77 53 74 61 74 65 50 00 00 00 1b 00 00 00 00
+  ................ 00 00 00 04 00 00 00 04 00 00 00 02 00 00 00 02
+  ..............   00 00 00 01 00 00 00 00 00 00 00 00 00 00
 050964-050976 FontNameBlock "la_gioconda"
 050977-050992 DataBlock
   ................ 0c 00 00 00 01 00 00 00 00 00 00 00 d7 f8 ff ff
@@ -4236,10 +4266,12 @@
   .B...A....C..... 14 42 00 00 c8 41 01 00 00 00 43 00 00 00 01 02
   .............    00 00 00 00 00 00 00 00 00 00 00 00 00
 051779-051788 StringBlock "NewState"
-051789-051804 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00
-051805-051855 ImagePathBlock "ui\\skins\\default\\panel_slider_horizontal_left.png"
-051856-051862 StringBlock "right"
+051789-051800 DataBlock
+  ............     00 00 00 00 00 00 00 00 00 00 00 00
+051801-051855 ImagePathListBlock 1 elements:
+  051805-051855 ImagePathBlock "ui\\skins\\default\\panel_slider_horizontal_left.png"
+051856-051862 DataBlock
+  ..right          05 00 72 69 67 68 74
 051863-051869 StringBlock "right"
 051870-051871 DataBlock
   ..               00 00
@@ -4268,12 +4300,14 @@
 052055-052057 DataBlock
   ..1              01 00 31
 052058-052078 StringBlock "update_frequency_ms"
-052079-052087 DataBlock
-  ..200....        03 00 32 30 30 03 00 00 00
-052088-052142 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top_active.png"
-052143-052198 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top_pressed.png"
-052199-052252 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top_hover.png"
-052253-052260 StringBlock "handle"
+052079-052083 DataBlock
+  ..200            03 00 32 30 30
+052084-052252 ImagePathListBlock 3 elements:
+  052088-052142 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top_active.png"
+  052143-052198 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top_pressed.png"
+  052199-052252 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top_hover.png"
+052253-052260 DataBlock
+  ..handle         06 00 68 61 6e 64 6c 65
 052261-052268 StringBlock "handle"
 052269-052270 DataBlock
   ..               00 00
@@ -4293,11 +4327,13 @@
 052392-052399 DataBlock
   ........         00 00 00 00 00 00 00 00
 052400-052409 StringBlock "down_off"
-052410-052425 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 02 00 00 00
-052426-052470 ImagePathBlock "ui\\skins\\default\\slider_vertical_handle.png"
-052471-052524 ImagePathBlock "ui\\skins\\default\\slider_vertical_handle_underlay.png"
-052525-052530 StringBlock "left"
+052410-052421 DataBlock
+  ............     00 00 00 00 00 00 00 00 00 00 00 00
+052422-052524 ImagePathListBlock 2 elements:
+  052426-052470 ImagePathBlock "ui\\skins\\default\\slider_vertical_handle.png"
+  052471-052524 ImagePathBlock "ui\\skins\\default\\slider_vertical_handle_underlay.png"
+052525-052530 DataBlock
+  ..left           04 00 6c 65 66 74
 052531-052536 StringBlock "left"
 052537-052538 DataBlock
   ..               00 00
@@ -4326,26 +4362,26 @@
 052722-052724 DataBlock
   ..1              01 00 31
 052725-052745 StringBlock "update_frequency_ms"
-052746-052754 DataBlock
-  ..200....        03 00 32 30 30 03 00 00 00
-052755-052812 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom_active.png"
-052813-052871 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom_pressed.png"
-052872-052928 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom_hover.png"
-052929-052941 StringBlock "frame_right"
+052746-052750 DataBlock
+  ..200            03 00 32 30 30
+052751-052928 ImagePathListBlock 3 elements:
+  052755-052812 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom_active.png"
+  052813-052871 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom_pressed.png"
+  052872-052928 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom_hover.png"
+052929-052941 DataBlock
+  ..frame_right    0b 00 66 72 61 6d 65 5f 72 69 67 68 74
 052942-052954 StringBlock "frame_right"
 052955-052999 DataBlock
   .........B...... 00 00 00 00 00 00 00 00 1c 42 00 00 00 c0 00 00
   .B...A....C..... 18 42 00 00 c8 41 03 00 00 00 43 00 00 00 01 02
   .............    00 00 00 00 00 00 00 00 00 00 00 00 00
 053000-053009 StringBlock "NewState"
-053010-053025 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00
-053026-053077 ImagePathBlock "ui\\skins\\default\\panel_slider_horizontal_right.png"
-053078-053079 DataBlock
-  ..               00 00
-053080-053087 StringBlock "slider"
-053088-053089 DataBlock
-  ..               00 00
+053010-053021 DataBlock
+  ............     00 00 00 00 00 00 00 00 00 00 00 00
+053022-053077 ImagePathListBlock 1 elements:
+  053026-053077 ImagePathBlock "ui\\skins\\default\\panel_slider_horizontal_right.png"
+053078-053089 DataBlock
+  ....slider..     00 00 06 00 73 6c 69 64 65 72 00 00
 053090-053098 StringBlock "HSlider"
 053099-053139 DataBlock
   ....9C..0A...B.. 00 00 00 00 39 43 00 00 30 41 00 00 96 42 00 00
@@ -4418,17 +4454,16 @@
 053602-053609 DataBlock
   ........         00 00 00 00 00 00 00 00
 053610-053619 StringBlock "inactive"
-053620-053635 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 04 00 00 00
-053636-053673 ImagePathBlock "ui\\skins\\default\\checkbox_active.png"
-053674-053710 ImagePathBlock "ui\\skins\\default\\checkbox_hover.png"
-053711-053750 ImagePathBlock "ui\\skins\\default\\checkbox_selected.png"
-053751-053796 ImagePathBlock "ui\\skins\\default\\checkbox_selected_hover.png"
-053797-053804 DataBlock
-  ....@.?!         01 00 00 00 40 02 3f 21
-053805-053814 StringBlock "label_tx"
-053815-053816 DataBlock
-  ..               00 00
+053620-053631 DataBlock
+  ............     00 00 00 00 00 00 00 00 00 00 00 00
+053632-053796 ImagePathListBlock 4 elements:
+  053636-053673 ImagePathBlock "ui\\skins\\default\\checkbox_active.png"
+  053674-053710 ImagePathBlock "ui\\skins\\default\\checkbox_hover.png"
+  053711-053750 ImagePathBlock "ui\\skins\\default\\checkbox_selected.png"
+  053751-053796 ImagePathBlock "ui\\skins\\default\\checkbox_selected_hover.png"
+053797-053816 DataBlock
+  ....@.?!..label_ 01 00 00 00 40 02 3f 21 08 00 6c 61 62 65 6c 5f
+  tx..             74 78 00 00
 053817-053830 StringBlock "CheckboxText"
 053831-053891 DataBlock
   "............... 22 00 00 00 08 00 00 00 01 00 00 00 00 00 01 00
@@ -4478,10 +4513,13 @@
   cC..cC....<..... 63 43 00 00 63 43 05 00 00 00 3c 00 00 00 01 02
   .............    00 00 00 00 00 00 00 00 00 00 00 00 00
 054341-054350 StringBlock "NewState"
-054351-054366 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00
-054367-054419 ImagePathBlock "ui\\skins\\default\\button_square_large_text_hover.png"
-054420-054438 StringBlock "smoke_clip_parent"
+054351-054362 DataBlock
+  ............     00 00 00 00 00 00 00 00 00 00 00 00
+054363-054419 ImagePathListBlock 1 elements:
+  054367-054419 ImagePathBlock "ui\\skins\\default\\button_square_large_text_hover.png"
+054420-054438 DataBlock
+  ..smoke_clip_par 11 00 73 6d 6f 6b 65 5f 63 6c 69 70 5f 70 61 72
+  ent              65 6e 74
 054439-054457 StringBlock "smoke_clip_parent"
 054458-054502 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 c0 00 00
@@ -4513,14 +4551,13 @@
   .C..LB....<..... 8d 43 00 00 4c 42 05 00 00 00 3c 00 00 00 01 02
   .............    00 00 00 00 00 00 00 00 00 00 00 00 00
 054841-054850 StringBlock "NewState"
-054851-054866 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00
-054867-054918 ImagePathBlock "ui\\skins\\default\\button_square_large_text_mask.png"
-054919-054920 DataBlock
-  ..               00 00
-054921-054933 StringBlock "button_test"
-054934-054935 DataBlock
-  ..               00 00
+054851-054862 DataBlock
+  ............     00 00 00 00 00 00 00 00 00 00 00 00
+054863-054918 ImagePathListBlock 1 elements:
+  054867-054918 ImagePathBlock "ui\\skins\\default\\button_square_large_text_mask.png"
+054919-054935 DataBlock
+  ....button_test. 00 00 0b 00 62 75 74 74 6f 6e 5f 74 65 73 74 00
+  .                00
 054936-054948 StringBlock "TabGroupTab"
 054949-054992 StringBlock "UI_GBL_TMP_Square_Large_Text_Button_Toggle"
 054993-055031 DataBlock
@@ -4555,34 +4592,32 @@
 055206-055213 DataBlock
   ........         00 00 00 00 00 00 00 00
 055214-055223 StringBlock "inactive"
-055224-055239 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 09 00 00 00
-055240-055294 ImagePathBlock "ui\\skins\\default\\button_square_large_text_pressed.png"
-055295-055348 ImagePathBlock "ui\\skins\\default\\button_square_large_text_active.png"
-055349-055401 ImagePathBlock "ui\\skins\\default\\button_square_large_text_hover.png"
-055402-055457 ImagePathBlock "ui\\skins\\default\\button_square_large_text_inactive.png"
-055458-055513 ImagePathBlock "ui\\skins\\default\\button_square_large_text_selected.png"
-055514-055575 ImagePathBlock "ui\\skins\\default\\button_square_large_text_selected_hover.png"
-055576-055640 ImagePathBlock "ui\\skins\\default\\button_square_large_text_selected_inactive.png"
-055641-055696 ImagePathBlock "ui\\skins\\default\\button_square_large_text_underlay.png"
-055697-055761 ImagePathBlock "ui\\skins\\default\\button_square_large_text_selected_underlay.png"
-055762-055781 DataBlock
+055224-055235 DataBlock
+  ............     00 00 00 00 00 00 00 00 00 00 00 00
+055236-055761 ImagePathListBlock 9 elements:
+  055240-055294 ImagePathBlock "ui\\skins\\default\\button_square_large_text_pressed.png"
+  055295-055348 ImagePathBlock "ui\\skins\\default\\button_square_large_text_active.png"
+  055349-055401 ImagePathBlock "ui\\skins\\default\\button_square_large_text_hover.png"
+  055402-055457 ImagePathBlock "ui\\skins\\default\\button_square_large_text_inactive.png"
+  055458-055513 ImagePathBlock "ui\\skins\\default\\button_square_large_text_selected.png"
+  055514-055575 ImagePathBlock "ui\\skins\\default\\button_square_large_text_selected_hover.png"
+  055576-055640 ImagePathBlock "ui\\skins\\default\\button_square_large_text_selected_inactive.png"
+  055641-055696 ImagePathBlock "ui\\skins\\default\\button_square_large_text_underlay.png"
+  055697-055761 ImagePathBlock "ui\\skins\\default\\button_square_large_text_selected_underlay.png"
+055762-055843 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-  ..?!             80 a7 3f 21
-055782-055798 StringBlock "voicechat_panel"
-055799-055847 DataBlock
-  ................ 00 00 00 00 00 00 00 00 18 01 00 00 01 01 00 00
-  ................ 00 00 01 00 00 00 00 01 00 00 00 00 00 00 00 00
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00
-  .                00
-055848-055900 ImageBlock id=276340352 xsize=256 ysize=256 path="ui\\skins\\default\\panel_back_top.png" unknown=0
-055901-055913 DataBlock
-  ...........?!    00 00 00 00 00 01 00 00 00 00 ab 3f 21
-055914-055923 StringBlock "NewState"
-055924-055962 DataBlock
-  ....g........... a2 01 00 00 67 00 00 00 00 00 00 00 02 00 00 00
-  ................ 00 00 00 00 00 00 00 00 01 00 00 00 01 00 00 00
-  .......          00 00 00 00 00 00 00
+  ..?!..voicechat_ 80 a7 3f 21 0f 00 76 6f 69 63 65 63 68 61 74 5f
+  panel........... 70 61 6e 65 6c 00 00 00 00 00 00 00 00 18 01 00
+  ................ 00 01 01 00 00 00 00 01 00 00 00 00 01 00 00 00
+  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  ..               00 00
+055844-055900 ImageListBlock 1 elements:
+  055848-055900 ImageBlock id=276340352 xsize=256 ysize=256 path="ui\\skins\\default\\panel_back_top.png" unknown=0
+055901-055962 DataBlock
+  ...........?!..N 00 00 00 00 00 01 00 00 00 00 ab 3f 21 08 00 4e
+  ewState....g.... 65 77 53 74 61 74 65 a2 01 00 00 67 00 00 00 00
+  ................ 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 01
+  ..............   00 00 00 01 00 00 00 00 00 00 00 00 00 00
 055963-055975 FontNameBlock "la_gioconda"
 055976-055991 DataBlock
   ................ 0a 00 00 00 01 00 00 00 00 00 00 00 00 00 00 ff
@@ -4606,17 +4641,15 @@
   .......A........ 00 00 00 00 00 00 00 41 00 00 00 00 00 00 00 02
   .......?!        00 00 00 00 00 00 ad 3f 21
 056222-056228 StringBlock "title"
-056229-056277 DataBlock
+056229-056273 DataBlock
   ................ 00 00 00 00 0a 00 00 00 ef ff ff ff 01 01 00 00
   ................ 00 00 01 00 00 00 00 01 00 00 00 00 05 00 00 00
-  ...........?!... 00 00 00 00 d6 ff ff ff 00 80 b0 3f 21 01 00 00
-  .                00
-056278-056330 ImageBlock id=346459104 xsize=320 ysize=52 path="ui\\skins\\default\\panel_subtitle.png" unknown=0
-056331-056343 DataBlock
-  ...........?!    00 00 00 00 00 01 00 00 00 80 b0 3f 21
-056344-056353 StringBlock "NewState"
-056354-056361 DataBlock
-  ....4...         8d 01 00 00 34 00 00 00
+  ...........?!    00 00 00 00 d6 ff ff ff 00 80 b0 3f 21
+056274-056330 ImageListBlock 1 elements:
+  056278-056330 ImageBlock id=346459104 xsize=320 ysize=52 path="ui\\skins\\default\\panel_subtitle.png" unknown=0
+056331-056361 DataBlock
+  ...........?!..N 00 00 00 00 00 01 00 00 00 80 b0 3f 21 08 00 4e
+  ewState....4...  65 77 53 74 61 74 65 8d 01 00 00 34 00 00 00
 056362-056387 UnicodeBlock "Push to Talk"
 056388-056410 DataBlock
   ................ 00 00 04 00 00 00 04 00 00 00 00 00 00 00 02 00
@@ -4686,17 +4719,16 @@
 057039-057046 DataBlock
   ........         00 00 00 00 00 00 00 00
 057047-057056 StringBlock "inactive"
-057057-057072 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 04 00 00 00
-057073-057110 ImagePathBlock "ui\\skins\\default\\checkbox_active.png"
-057111-057147 ImagePathBlock "ui\\skins\\default\\checkbox_hover.png"
-057148-057187 ImagePathBlock "ui\\skins\\default\\checkbox_selected.png"
-057188-057233 ImagePathBlock "ui\\skins\\default\\checkbox_selected_hover.png"
-057234-057241 DataBlock
-  ......?!         01 00 00 00 80 dc 3f 21
-057242-057251 StringBlock "label_tx"
-057252-057253 DataBlock
-  ..               00 00
+057057-057068 DataBlock
+  ............     00 00 00 00 00 00 00 00 00 00 00 00
+057069-057233 ImagePathListBlock 4 elements:
+  057073-057110 ImagePathBlock "ui\\skins\\default\\checkbox_active.png"
+  057111-057147 ImagePathBlock "ui\\skins\\default\\checkbox_hover.png"
+  057148-057187 ImagePathBlock "ui\\skins\\default\\checkbox_selected.png"
+  057188-057233 ImagePathBlock "ui\\skins\\default\\checkbox_selected_hover.png"
+057234-057253 DataBlock
+  ......?!..label_ 01 00 00 00 80 dc 3f 21 08 00 6c 61 62 65 6c 5f
+  tx..             74 78 00 00
 057254-057267 StringBlock "CheckboxText"
 057268-057328 DataBlock
   '............... 27 00 00 00 06 00 00 00 01 01 00 00 00 00 01 00
@@ -4741,18 +4773,17 @@
 057743-057744 DataBlock
   ..               00 00
 057745-057770 StringBlock "OptionsAudioVoiceChatKey"
-057771-057815 DataBlock
+057771-057811 DataBlock
   l...}........... 6c 00 00 00 7d 01 00 00 01 01 00 00 00 00 01 00
   ................ 00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00
-  .............    00 00 00 00 00 00 00 00 00 01 00 00 00
-057816-057864 ImageBlock id=557838784 xsize=183 ysize=27 path="ui\\skins\\default\\frame_text.png" unknown=0
-057865-057877 DataBlock
-  ...........?!    00 00 00 00 00 01 00 00 00 80 f2 3f 21
-057878-057887 StringBlock "NewState"
-057888-057922 DataBlock
-  ..........-..... f2 00 00 00 18 00 00 00 01 00 2d 00 00 00 02 00
-  ................ 00 00 04 00 00 00 02 00 00 00 02 00 00 00 01 00
-  ...              00 00 01
+  .........        00 00 00 00 00 00 00 00 00
+057812-057864 ImageListBlock 1 elements:
+  057816-057864 ImageBlock id=557838784 xsize=183 ysize=27 path="ui\\skins\\default\\frame_text.png" unknown=0
+057865-057922 DataBlock
+  ...........?!..N 00 00 00 00 00 01 00 00 00 80 f2 3f 21 08 00 4e
+  ewState......... 65 77 53 74 61 74 65 f2 00 00 00 18 00 00 00 01
+  .-.............. 00 2d 00 00 00 02 00 00 00 04 00 00 00 02 00 00
+  ..........       00 02 00 00 00 01 00 00 00 01
 057923-057988 UnicodeBlock "text_field_NewState_Text_1c0000j"
 057989-057992 DataBlock
   ....             00 00 00 00
@@ -4824,18 +4855,16 @@
   .C..lB....<..... fa 43 00 00 6c 42 02 00 00 00 3c 00 00 00 01 02
   .............    00 00 00 00 00 00 00 00 00 00 00 00 00
 058702-058711 StringBlock "NewState"
-058712-058727 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00
-058728-058761 ImagePathBlock "ui\\skins\\default\\panel_title.png"
-058762-058769 DataBlock
-  ......?!         01 00 00 00 00 e2 3f 21
-058770-058776 StringBlock "title"
-058777-058841 DataBlock
-  ....h........... 00 00 00 00 68 00 00 00 0a 00 00 00 01 01 00 00
-  ................ 00 00 01 00 00 00 00 01 00 00 00 00 05 00 00 00
-  .........@.?!... 00 00 00 00 ff ff ff ff 00 40 e5 3f 21 00 00 00
-  .............@.? 00 00 00 00 00 00 00 00 00 01 00 00 00 40 e5 3f
-  !                21
+058712-058723 DataBlock
+  ............     00 00 00 00 00 00 00 00 00 00 00 00
+058724-058761 ImagePathListBlock 1 elements:
+  058728-058761 ImagePathBlock "ui\\skins\\default\\panel_title.png"
+058762-058841 DataBlock
+  ......?!..title. 01 00 00 00 00 e2 3f 21 05 00 74 69 74 6c 65 00
+  ...h............ 00 00 00 68 00 00 00 0a 00 00 00 01 01 00 00 00
+  ................ 00 01 00 00 00 00 01 00 00 00 00 05 00 00 00 00
+  ........@.?!.... 00 00 00 ff ff ff ff 00 40 e5 3f 21 00 00 00 00
+  ............@.?! 00 00 00 00 00 00 00 00 01 00 00 00 40 e5 3f 21
 058842-058851 StringBlock "NewState"
 058852-058859 DataBlock
   $...$...         24 01 00 00 24 00 00 00
@@ -4909,17 +4938,16 @@
 059521-059528 DataBlock
   ........         00 00 00 00 00 00 00 00
 059529-059538 StringBlock "inactive"
-059539-059554 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 04 00 00 00
-059555-059592 ImagePathBlock "ui\\skins\\default\\checkbox_active.png"
-059593-059629 ImagePathBlock "ui\\skins\\default\\checkbox_hover.png"
-059630-059669 ImagePathBlock "ui\\skins\\default\\checkbox_selected.png"
-059670-059715 ImagePathBlock "ui\\skins\\default\\checkbox_selected_hover.png"
-059716-059723 DataBlock
-  ......@!         01 00 00 00 00 b3 40 21
-059724-059733 StringBlock "label_tx"
-059734-059735 DataBlock
-  ..               00 00
+059539-059550 DataBlock
+  ............     00 00 00 00 00 00 00 00 00 00 00 00
+059551-059715 ImagePathListBlock 4 elements:
+  059555-059592 ImagePathBlock "ui\\skins\\default\\checkbox_active.png"
+  059593-059629 ImagePathBlock "ui\\skins\\default\\checkbox_hover.png"
+  059630-059669 ImagePathBlock "ui\\skins\\default\\checkbox_selected.png"
+  059670-059715 ImagePathBlock "ui\\skins\\default\\checkbox_selected_hover.png"
+059716-059735 DataBlock
+  ......@!..label_ 01 00 00 00 00 b3 40 21 08 00 6c 61 62 65 6c 5f
+  tx..             74 78 00 00
 059736-059749 StringBlock "CheckboxText"
 059750-059810 DataBlock
   "............... 22 00 00 00 08 00 00 00 01 00 00 00 00 00 01 00
@@ -5017,19 +5045,18 @@
 060709-060720 DataBlock
   ............     00 00 00 00 00 00 00 00 01 00 00 00
 060721-060736 StringBlock "override_sound"
-060737-060742 DataBlock
-  ......           00 00 06 00 00 00
-060743-060775 ImagePathBlock "ui\\skins\\default\\icon_check.png"
-060776-060825 ImagePathBlock "ui\\skins\\default\\button_round_medium_pressed.png"
-060826-060873 ImagePathBlock "ui\\skins\\default\\button_round_medium_hover.png"
-060874-060922 ImagePathBlock "ui\\skins\\default\\button_round_medium_active.png"
-060923-060973 ImagePathBlock "ui\\skins\\default\\button_round_medium_inactive.png"
-060974-061024 ImagePathBlock "ui\\skins\\default\\button_round_medium_underlay.png"
-061025-061028 DataBlock
-  ....             00 00 00 00
-061029-061049 StringBlock "round_medium_button"
-061050-061055 DataBlock
-  ......           01 00 00 00 00 00
+060737-060738 DataBlock
+  ..               00 00
+060739-061024 ImagePathListBlock 6 elements:
+  060743-060775 ImagePathBlock "ui\\skins\\default\\icon_check.png"
+  060776-060825 ImagePathBlock "ui\\skins\\default\\button_round_medium_pressed.png"
+  060826-060873 ImagePathBlock "ui\\skins\\default\\button_round_medium_hover.png"
+  060874-060922 ImagePathBlock "ui\\skins\\default\\button_round_medium_active.png"
+  060923-060973 ImagePathBlock "ui\\skins\\default\\button_round_medium_inactive.png"
+  060974-061024 ImagePathBlock "ui\\skins\\default\\button_round_medium_underlay.png"
+061025-061055 DataBlock
+  ......round_medi 00 00 00 00 13 00 72 6f 75 6e 64 5f 6d 65 64 69
+  um_button......  75 6d 5f 62 75 74 74 6f 6e 01 00 00 00 00 00
 061056-061074 StringBlock "button_adv_cancel"
 061075-061076 DataBlock
   ..               00 00
@@ -5058,36 +5085,37 @@
 061288-061299 DataBlock
   ............     00 00 00 00 00 00 00 00 01 00 00 00
 061300-061315 StringBlock "override_sound"
-061316-061321 DataBlock
-  ......           00 00 06 00 00 00
-061322-061354 ImagePathBlock "ui\\skins\\default\\icon_cross.png"
-061355-061404 ImagePathBlock "ui\\skins\\default\\button_round_medium_pressed.png"
-061405-061452 ImagePathBlock "ui\\skins\\default\\button_round_medium_hover.png"
-061453-061501 ImagePathBlock "ui\\skins\\default\\button_round_medium_active.png"
-061502-061552 ImagePathBlock "ui\\skins\\default\\button_round_medium_inactive.png"
-061553-061603 ImagePathBlock "ui\\skins\\default\\button_round_medium_underlay.png"
-061604-061633 DataBlock
+061316-061317 DataBlock
+  ..               00 00
+061318-061603 ImagePathListBlock 6 elements:
+  061322-061354 ImagePathBlock "ui\\skins\\default\\icon_cross.png"
+  061355-061404 ImagePathBlock "ui\\skins\\default\\button_round_medium_pressed.png"
+  061405-061452 ImagePathBlock "ui\\skins\\default\\button_round_medium_hover.png"
+  061453-061501 ImagePathBlock "ui\\skins\\default\\button_round_medium_active.png"
+  061502-061552 ImagePathBlock "ui\\skins\\default\\button_round_medium_inactive.png"
+  061553-061603 ImagePathBlock "ui\\skins\\default\\button_round_medium_underlay.png"
+061604-061701 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-  ..........@.B!   00 00 00 00 00 00 00 00 00 00 40 de 42 21
-061634-061652 StringBlock "keyboard_conflict"
-061653-061701 DataBlock
-  ........2....... 00 00 00 00 00 00 00 00 32 00 00 00 00 00 00 00
-  ................ 00 00 00 00 00 00 00 01 00 00 00 00 02 00 00 00
-  ....2........... 00 00 00 00 32 00 00 00 00 00 00 00 00 04 00 00
-  .                00
+  ..........@.B!.. 00 00 00 00 00 00 00 00 00 00 40 de 42 21 11 00
+  keyboard_conflic 6b 65 79 62 6f 61 72 64 5f 63 6f 6e 66 6c 69 63
+  t........2...... 74 00 00 00 00 00 00 00 00 32 00 00 00 00 00 00
+  ................ 00 00 00 00 00 00 00 00 01 00 00 00 00 02 00 00
+  .....2.......... 00 00 00 00 00 32 00 00 00 00 00 00 00 00 04 00
+  ..               00 00
 061702-061755 ImageBlock id=558031232 xsize=256 ysize=256 path="ui\\skins\\default\\panel_back_tile.png" unknown=2926944256
 061756-061756 DataBlock
   .                10
 061757-061796 ImagePathBlock "ui\\skins\\default\\panel_back_border.png"
-061797-061805 DataBlock
-  .........        00 01 00 00 00 01 00 00 00
-061806-061861 ImageBlock id=769425600 xsize=256 ysize=256 path="ui\\skins\\default\\panel_back_bottom.png" unknown=2247835648
-061862-061862 DataBlock
-  .                19
-061863-061902 ImagePathBlock "ui\\skins\\default\\parchment_texture.png"
-061903-061927 DataBlock
-  ................ 00 01 00 00 00 01 00 00 00 00 00 00 00 00 00 00
-  .....@.B!        00 01 00 00 00 40 e2 42 21
+061797-061801 DataBlock
+  .....            00 01 00 00 00
+061802-061861 ImageListBlock 1 elements:
+  061806-061861 ImageBlock id=769425600 xsize=256 ysize=256 path="ui\\skins\\default\\panel_back_bottom.png" unknown=2247835648
+061862-061927 DataBlock
+  .&.ui\skins\defa 19 26 00 75 69 5c 73 6b 69 6e 73 5c 64 65 66 61
+  ult\parchment_te 75 6c 74 5c 70 61 72 63 68 6d 65 6e 74 5f 74 65
+  xture.png....... 78 74 75 72 65 2e 70 6e 67 00 01 00 00 00 01 00
+  ..............@. 00 00 00 00 00 00 00 00 00 00 01 00 00 00 40 e2
+  B!               42 21
 061928-061937 StringBlock "NewState"
 061938-061976 DataBlock
   ................ a2 01 00 00 09 01 00 00 00 00 00 00 04 00 00 00
@@ -5490,19 +5518,18 @@
 066823-066834 DataBlock
   ............     00 00 00 00 00 00 00 00 01 00 00 00
 066835-066850 StringBlock "override_sound"
-066851-066856 DataBlock
-  ......           00 00 06 00 00 00
-066857-066889 ImagePathBlock "ui\\skins\\default\\icon_check.png"
-066890-066939 ImagePathBlock "ui\\skins\\default\\button_round_medium_pressed.png"
-066940-066987 ImagePathBlock "ui\\skins\\default\\button_round_medium_hover.png"
-066988-067036 ImagePathBlock "ui\\skins\\default\\button_round_medium_active.png"
-067037-067087 ImagePathBlock "ui\\skins\\default\\button_round_medium_inactive.png"
-067088-067138 ImagePathBlock "ui\\skins\\default\\button_round_medium_underlay.png"
-067139-067142 DataBlock
-  ....             00 00 00 00
-067143-067163 StringBlock "round_medium_button"
-067164-067169 DataBlock
-  ......           01 00 00 00 00 00
+066851-066852 DataBlock
+  ..               00 00
+066853-067138 ImagePathListBlock 6 elements:
+  066857-066889 ImagePathBlock "ui\\skins\\default\\icon_check.png"
+  066890-066939 ImagePathBlock "ui\\skins\\default\\button_round_medium_pressed.png"
+  066940-066987 ImagePathBlock "ui\\skins\\default\\button_round_medium_hover.png"
+  066988-067036 ImagePathBlock "ui\\skins\\default\\button_round_medium_active.png"
+  067037-067087 ImagePathBlock "ui\\skins\\default\\button_round_medium_inactive.png"
+  067088-067138 ImagePathBlock "ui\\skins\\default\\button_round_medium_underlay.png"
+067139-067169 DataBlock
+  ......round_medi 00 00 00 00 13 00 72 6f 75 6e 64 5f 6d 65 64 69
+  um_button......  75 6d 5f 62 75 74 74 6f 6e 01 00 00 00 00 00
 067170-067184 StringBlock "button_cancel"
 067185-067186 DataBlock
   ..               00 00
@@ -5531,14 +5558,15 @@
 067398-067409 DataBlock
   ............     00 00 00 00 00 00 00 00 01 00 00 00
 067410-067425 StringBlock "override_sound"
-067426-067431 DataBlock
-  ......           00 00 06 00 00 00
-067432-067464 ImagePathBlock "ui\\skins\\default\\icon_cross.png"
-067465-067514 ImagePathBlock "ui\\skins\\default\\button_round_medium_pressed.png"
-067515-067562 ImagePathBlock "ui\\skins\\default\\button_round_medium_hover.png"
-067563-067611 ImagePathBlock "ui\\skins\\default\\button_round_medium_active.png"
-067612-067662 ImagePathBlock "ui\\skins\\default\\button_round_medium_inactive.png"
-067663-067713 ImagePathBlock "ui\\skins\\default\\button_round_medium_underlay.png"
+067426-067427 DataBlock
+  ..               00 00
+067428-067713 ImagePathListBlock 6 elements:
+  067432-067464 ImagePathBlock "ui\\skins\\default\\icon_cross.png"
+  067465-067514 ImagePathBlock "ui\\skins\\default\\button_round_medium_pressed.png"
+  067515-067562 ImagePathBlock "ui\\skins\\default\\button_round_medium_hover.png"
+  067563-067611 ImagePathBlock "ui\\skins\\default\\button_round_medium_active.png"
+  067612-067662 ImagePathBlock "ui\\skins\\default\\button_round_medium_inactive.png"
+  067663-067713 ImagePathBlock "ui\\skins\\default\\button_round_medium_underlay.png"
 067714-067757 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00

@@ -18,8 +18,8 @@ class Block
     "#{self.class}[#{@s}...#{@e}]"
   end
 
-  def report
-    puts "#{range} #{self.class} #{data.inspect}"
+  def to_s
+    "#{range} #{self.class} #{data.inspect}"
   end
 
   def <=>(other)
@@ -28,21 +28,21 @@ class Block
 end
 
 class DataBlock < Block
-  def report
-    puts "#{range} #{self.class}"
-    data.chars.each_slice(16) do |slice|
+  def to_s
+    "#{range} #{self.class}\n" +
+    data.chars.each_slice(16).map do |slice|
       slice = slice.join
       asc = slice.chars.map{|c| c =~ /[\x20-\x7f]/ ? c : "."}.join
       asc += " " * (16 - asc.size)
       hex = slice.bytes.map{|c| "%02x" % c}.join(" ")
-      puts "  #{asc} #{hex}"
-    end
+      "  #{asc} #{hex}\n"
+    end.join
   end
 end
 
 class VersionBlock < Block
-  def report
-    puts "#{range} #{self.class} #{data[7,3].to_i}"
+  def to_s
+    "#{range} #{self.class} #{data[7,3].to_i}"
   end
 end
 
@@ -54,14 +54,14 @@ class StringBlock < Block
     @str = data[2..-1]
   end
 
-  def report
-    puts "#{range} #{self.class} #{str.inspect}"
+  def to_s
+    "#{range} #{self.class} #{str.inspect}"
   end
 end
 
 class UnicodeBlock < Block
-  def report
-    puts "#{range} #{self.class} #{data[2..-1].unpack("v*").pack("U*").inspect}"
+  def to_s
+    "#{range} #{self.class} #{data[2..-1].unpack("v*").pack("U*").inspect}"
   end
 end
 
@@ -74,21 +74,45 @@ end
 class FontNameBlock < StringBlock
 end
 
+class U32ListBlock < Block
+  def initialize(file, s, e, blocks)
+    super(file, s, e)
+    @count = data[0,4].unpack1("V")
+    @blocks = blocks
+    # verify that block list is correct
+    raise unless blocks.size == @count
+    raise unless blocks.first.s == s+4
+    raise unless blocks.last.e == e
+    raise unless blocks.each_cons(2).all?{|a,b| a.e == b.s}
+  end
+
+  def to_s
+    "#{range} #{self.class} #{@count} elements:\n" +
+    @blocks.map(&:to_s).join("\n").gsub(/^/, "  ")
+  end
+end
+
 class RootIDBlock < Block
-  def report
-    puts "#{range} #{self.class} #{data.unpack1("V")}"
+  def to_s
+    "#{range} #{self.class} #{data.unpack1("V")}"
   end
 end
 
 class ImageBlock < Block
-  def report
+  def to_s
     id = data[0,4].unpack1("V")
     str = data[6...-12]
     xsize = data[-12,4].unpack1("V")
     ysize = data[-8,4].unpack1("V")
     unknown = data[-4,4].unpack1("V")
-    puts "#{range} #{self.class} id=#{id} xsize=#{xsize} ysize=#{ysize} path=#{str.inspect} unknown=#{unknown}"
+    "#{range} #{self.class} id=#{id} xsize=#{xsize} ysize=#{ysize} path=#{str.inspect} unknown=#{unknown}"
   end
+end
+
+class ImagePathListBlock < U32ListBlock
+end
+
+class ImageListBlock < U32ListBlock
 end
 
 class EventListBlock < Block
@@ -155,7 +179,7 @@ class Analysis
       if str.size == sz and str =~ /\A[\r\n\t\x20-\x7f]+\z/
         if str =~ /(\.png|\.tga)\z/ and str =~ %r[/|\\]
           add_block ofs, ofs+2+sz, ImagePathBlock
-        elsif str =~ /\A(FiraSans-Regular|bardi_\d.*|Ingame \d+,|Frontend \d+,|la_gioconda|Norse\z|Norse-Bold)/
+        elsif str =~ /\A(FiraSans-Regular|bardi_\d.*|Ingame \d+,|Frontend \d+,|la_gioconda|Norse\z|Norse-Bold|Iskra-Bold)/
           add_block ofs, ofs+2+sz, FontNameBlock
         elsif str =~ /\A(normal_t0|[a-z_]+_t0)\z/
           add_block ofs, ofs+2+sz, T0Block
@@ -179,9 +203,14 @@ class Analysis
     end
   end
 
+  # blocks can be temporarily nil during rewriting
   def free_space_before(i)
+    prev = i-1
+    while prev != 0 and @blocks[prev].nil?
+      prev -= 1
+    end
     e = @blocks[i].s
-    s = (i == 0) ? 0 : @blocks[i-1].e
+    s = (i == 0) ? 0 : @blocks[prev].e
     e - s
   end
 
@@ -202,10 +231,6 @@ class Analysis
       next if ysize >= 0x1_0000
       @blocks[i] = ImageBlock.new(self, b.s-4, b.e+12)
     end
-  end
-
-  def analyze_image_lists
-    # TODO
   end
 
   def analyze_event_lists
@@ -229,13 +254,35 @@ class Analysis
     @blocks.compact!
   end
 
+  def analyze_u32_lists(base_class, list_class)
+    @blocks.each_with_index do |b,i|
+      next unless b.is_a?(base_class)
+      next unless free_space_before(i) >= 4
+      count = @data[b.s-4, 4].unpack1("V")
+      next unless count >= 1
+      subblocks = @blocks[i, count]
+      next unless subblocks.size == count
+      next unless subblocks.all?{|bb| bb.is_a?(base_class)}
+      next unless subblocks.each_cons(2).all?{|u,v| u.e == v.s}
+      s = subblocks.first.s - 4
+      e = subblocks.last.e
+      new_block = list_class.new(self, s, e, subblocks)
+      @blocks[i] = new_block
+      ((i+1)..(i+count)).each do |j|
+        @blocks[j] = nil
+      end
+    end
+    @blocks.compact!
+  end
+
   def analysis
     analyze_version
     analyze_rootid
     analyze_strings
     analyze_images
-    analyze_image_lists
     analyze_event_lists
+    analyze_u32_lists(ImageBlock, ImageListBlock)
+    analyze_u32_lists(ImagePathBlock, ImagePathListBlock)
   end
 
   def report
@@ -249,7 +296,7 @@ class Analysis
         warn_overlap ofs, b.s
         ofs = b.s
       end
-      b.report
+      puts b
       ofs = b.e
     end
     if ofs < size
@@ -258,7 +305,7 @@ class Analysis
   end
 
   def report_data_block(s,e)
-    DataBlock.new(self,s,e).report
+    puts DataBlock.new(self,s,e)
   end
 
   def warn_overlap(ofs, new_ofs)

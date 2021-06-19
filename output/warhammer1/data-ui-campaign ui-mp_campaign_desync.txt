@@ -46,15 +46,16 @@
 000552-000552 DataBlock
   .                0b
 000553-000590 ImagePathBlock "ui/skins/default/panel_back_tile.png"
-000591-000599 DataBlock
-  .........        00 01 00 00 00 01 00 00 00
-000600-000655 ImageBlock id=193974352 xsize=256 ysize=256 path="ui/skins/default/panel_back_bottom.png" unknown=2727641088
-000656-000656 DataBlock
-                   20
-000657-000696 ImagePathBlock "ui/skins/default/parchment_texture.png"
-000697-000721 DataBlock
-  ................ 00 01 00 00 00 01 00 00 00 00 00 00 00 00 00 00
-  .......;         00 01 00 00 00 c0 8d 3b 20
+000591-000595 DataBlock
+  .....            00 01 00 00 00
+000596-000655 ImageListBlock 1 elements:
+  000600-000655 ImageBlock id=193974352 xsize=256 ysize=256 path="ui/skins/default/panel_back_bottom.png" unknown=2727641088
+000656-000721 DataBlock
+   &.ui/skins/defa 20 26 00 75 69 2f 73 6b 69 6e 73 2f 64 65 66 61
+  ult/parchment_te 75 6c 74 2f 70 61 72 63 68 6d 65 6e 74 5f 74 65
+  xture.png....... 78 74 75 72 65 2e 70 6e 67 00 01 00 00 00 01 00
+  ................ 00 00 00 00 00 00 00 00 00 00 01 00 00 00 c0 8d
+  ;                3b 20
 000722-000731 StringBlock "NewState"
 000732-000770 DataBlock
   ....C........... ee 01 00 00 43 01 00 00 00 00 00 00 04 00 00 00
@@ -277,10 +278,13 @@
   .C...C....<..... 8d 43 00 80 8d 43 05 00 00 00 3c 00 00 00 01 02
   .............    00 00 00 00 00 00 00 00 00 00 00 00 00
 003633-003642 StringBlock "NewState"
-003643-003658 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00
-003659-003711 ImagePathBlock "ui/skins/default/button_square_large_text_hover.png"
-003712-003730 StringBlock "smoke_clip_parent"
+003643-003654 DataBlock
+  ............     00 00 00 00 00 00 00 00 00 00 00 00
+003655-003711 ImagePathListBlock 1 elements:
+  003659-003711 ImagePathBlock "ui/skins/default/button_square_large_text_hover.png"
+003712-003730 DataBlock
+  ..smoke_clip_par 11 00 73 6d 6f 6b 65 5f 63 6c 69 70 5f 70 61 72
+  ent              65 6e 74
 003731-003749 StringBlock "smoke_clip_parent"
 003750-003794 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 c0 00 80
@@ -312,14 +316,12 @@
   .C..LB....<..... a9 43 00 00 4c 42 05 00 00 00 3c 00 00 00 01 02
   .............    00 00 00 00 00 00 00 00 00 00 00 00 00
 004181-004190 StringBlock "NewState"
-004191-004206 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00
-004207-004258 ImagePathBlock "ui/skins/default/button_square_large_text_mask.png"
-004259-004260 DataBlock
-  ..               00 00
-004261-004271 StringBlock "button_ok"
-004272-004273 DataBlock
-  ..               00 00
+004191-004202 DataBlock
+  ............     00 00 00 00 00 00 00 00 00 00 00 00
+004203-004258 ImagePathListBlock 1 elements:
+  004207-004258 ImagePathBlock "ui/skins/default/button_square_large_text_mask.png"
+004259-004273 DataBlock
+  ....button_ok..  00 00 09 00 62 75 74 74 6f 6e 5f 6f 6b 00 00
 004274-004285 StringBlock "TextButton"
 004286-004320 StringBlock "UI_GBL_HUD_Generic_Accept_Confirm"
 004321-004359 DataBlock
@@ -342,18 +344,18 @@
 004433-004444 DataBlock
   ............     00 00 00 00 00 00 00 00 01 00 00 00
 004445-004460 StringBlock "override_sound"
-004461-004466 DataBlock
-  ......           00 00 05 00 00 00
-004467-004521 ImagePathBlock "ui/skins/default/button_square_large_text_pressed.png"
-004522-004575 ImagePathBlock "ui/skins/default/button_square_large_text_active.png"
-004576-004628 ImagePathBlock "ui/skins/default/button_square_large_text_hover.png"
-004629-004684 ImagePathBlock "ui/skins/default/button_square_large_text_inactive.png"
-004685-004740 ImagePathBlock "ui/skins/default/button_square_large_text_underlay.png"
-004741-004744 DataBlock
-  ....             00 00 00 00
-004745-004770 StringBlock "square_large_text_button"
-004771-004774 DataBlock
-  ....             05 00 00 00
+004461-004462 DataBlock
+  ..               00 00
+004463-004740 ImagePathListBlock 5 elements:
+  004467-004521 ImagePathBlock "ui/skins/default/button_square_large_text_pressed.png"
+  004522-004575 ImagePathBlock "ui/skins/default/button_square_large_text_active.png"
+  004576-004628 ImagePathBlock "ui/skins/default/button_square_large_text_hover.png"
+  004629-004684 ImagePathBlock "ui/skins/default/button_square_large_text_inactive.png"
+  004685-004740 ImagePathBlock "ui/skins/default/button_square_large_text_underlay.png"
+004741-004774 DataBlock
+  ......square_lar 00 00 00 00 18 00 73 71 75 61 72 65 5f 6c 61 72
+  ge_text_button.. 67 65 5f 74 65 78 74 5f 62 75 74 74 6f 6e 05 00
+  ..               00 00
 004775-004789 StringBlock "smoke_overlay"
 004790-004804 StringBlock "smoke_overlay"
 004805-004849 DataBlock
@@ -361,10 +363,13 @@
   .C...C....<..... 8d 43 00 80 8d 43 05 00 00 00 3c 00 00 00 01 02
   .............    00 00 00 00 00 00 00 00 00 00 00 00 00
 004850-004859 StringBlock "NewState"
-004860-004875 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00
-004876-004928 ImagePathBlock "ui/skins/default/button_square_large_text_hover.png"
-004929-004947 StringBlock "smoke_clip_parent"
+004860-004871 DataBlock
+  ............     00 00 00 00 00 00 00 00 00 00 00 00
+004872-004928 ImagePathListBlock 1 elements:
+  004876-004928 ImagePathBlock "ui/skins/default/button_square_large_text_hover.png"
+004929-004947 DataBlock
+  ..smoke_clip_par 11 00 73 6d 6f 6b 65 5f 63 6c 69 70 5f 70 61 72
+  ent              65 6e 74
 004948-004966 StringBlock "smoke_clip_parent"
 004967-005011 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 c0 00 80
@@ -396,14 +401,13 @@
   .C..LB....<..... a9 43 00 00 4c 42 05 00 00 00 3c 00 00 00 01 02
   .............    00 00 00 00 00 00 00 00 00 00 00 00 00
 005354-005363 StringBlock "NewState"
-005364-005379 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00
-005380-005431 ImagePathBlock "ui/skins/default/button_square_large_text_mask.png"
-005432-005433 DataBlock
-  ..               00 00
-005434-005448 StringBlock "button_cancel"
-005449-005450 DataBlock
-  ..               00 00
+005364-005375 DataBlock
+  ............     00 00 00 00 00 00 00 00 00 00 00 00
+005376-005431 ImagePathListBlock 1 elements:
+  005380-005431 ImagePathBlock "ui/skins/default/button_square_large_text_mask.png"
+005432-005450 DataBlock
+  ....button_cance 00 00 0d 00 62 75 74 74 6f 6e 5f 63 61 6e 63 65
+  l..              6c 00 00
 005451-005462 StringBlock "TextButton"
 005463-005497 StringBlock "UI_GBL_HUD_Generic_Cancel_Decline"
 005498-005536 DataBlock
@@ -426,23 +430,21 @@
 005610-005621 DataBlock
   ............     00 00 00 00 00 00 00 00 01 00 00 00
 005622-005637 StringBlock "override_sound"
-005638-005643 DataBlock
-  ......           00 00 05 00 00 00
-005644-005698 ImagePathBlock "ui/skins/default/button_square_large_text_pressed.png"
-005699-005752 ImagePathBlock "ui/skins/default/button_square_large_text_active.png"
-005753-005805 ImagePathBlock "ui/skins/default/button_square_large_text_hover.png"
-005806-005861 ImagePathBlock "ui/skins/default/button_square_large_text_inactive.png"
-005862-005917 ImagePathBlock "ui/skins/default/button_square_large_text_underlay.png"
-005918-005937 DataBlock
+005638-005639 DataBlock
+  ..               00 00
+005640-005917 ImagePathListBlock 5 elements:
+  005644-005698 ImagePathBlock "ui/skins/default/button_square_large_text_pressed.png"
+  005699-005752 ImagePathBlock "ui/skins/default/button_square_large_text_active.png"
+  005753-005805 ImagePathBlock "ui/skins/default/button_square_large_text_hover.png"
+  005806-005861 ImagePathBlock "ui/skins/default/button_square_large_text_inactive.png"
+  005862-005917 ImagePathBlock "ui/skins/default/button_square_large_text_underlay.png"
+005918-006013 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-  .Nx.             00 4e 78 1f
-005938-005948 StringBlock "busy_info"
-005949-006013 DataBlock
-  ....Y...\....... 00 00 00 00 59 00 00 00 5c 00 00 00 01 01 00 00
-  ................ 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00
+  .Nx...busy_info. 00 4e 78 1f 09 00 62 75 73 79 5f 69 6e 66 6f 00
+  ...Y...\........ 00 00 00 59 00 00 00 5c 00 00 00 01 01 00 00 00
+  ................ 00 00 00 00 00 00 01 00 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-  .............`Qx 00 00 00 00 00 00 00 00 00 01 00 00 00 60 51 78
-  .                1f
+  ............`Qx. 00 00 00 00 00 00 00 00 01 00 00 00 60 51 78 1f
 006014-006023 StringBlock "NewState"
 006024-006031 DataBlock
   ?...0...         3f 01 00 00 30 00 00 00
@@ -470,19 +472,17 @@
   ....<........... 00 00 00 00 3c 00 00 00 00 00 00 00 01 00 00 00
   ..`Sx.           00 00 60 53 78 1f
 006340-006356 StringBlock "refreshing_icon"
-006357-006405 DataBlock
+006357-006401 DataBlock
   ........3....... 00 00 00 00 8c 00 00 00 33 00 00 00 01 01 00 00
   ................ 00 00 01 00 00 00 00 01 00 00 00 00 00 00 00 00
-  ..........Vx.... 00 00 00 00 00 00 00 00 00 c0 56 78 1f 01 00 00
-  .                00
-006406-006451 ImageBlock id=185866320 xsize=40 ysize=40 path="ui/skins/default/spinner.png" unknown=0
-006452-006464 DataBlock
-  ..........Vx.    00 00 00 00 00 01 00 00 00 c0 56 78 1f
-006465-006474 StringBlock "NewState"
-006475-006513 DataBlock
-  (...(........... 28 00 00 00 28 00 00 00 00 00 00 00 02 00 00 00
-  ................ 00 00 00 00 00 00 00 00 01 00 00 00 01 00 00 00
-  .......          00 00 00 00 00 00 00
+  ..........Vx.    00 00 00 00 00 00 00 00 00 c0 56 78 1f
+006402-006451 ImageListBlock 1 elements:
+  006406-006451 ImageBlock id=185866320 xsize=40 ysize=40 path="ui/skins/default/spinner.png" unknown=0
+006452-006513 DataBlock
+  ..........Vx...N 00 00 00 00 00 01 00 00 00 c0 56 78 1f 08 00 4e
+  ewState(...(.... 65 77 53 74 61 74 65 28 00 00 00 28 00 00 00 00
+  ................ 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 01
+  ..............   00 00 00 01 00 00 00 00 00 00 00 00 00 00
 006514-006525 FontNameBlock "Norse-Bold"
 006526-006541 DataBlock
   ................ 0a 00 00 00 02 00 00 00 01 00 00 00 dd da fa ff
@@ -608,19 +608,17 @@
   ....<........... 00 00 00 00 3c 00 00 00 00 00 00 00 00 00 00 00
   ............@... 00 00 00 00 00 00 00 00 00 00 00 00 40 8c f8 14
 008026-008036 StringBlock "bar_frame"
-008037-008085 DataBlock
+008037-008081 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ................ 00 00 01 00 00 00 00 01 00 00 00 00 05 00 00 00
-  .........`...... 00 00 00 00 00 00 00 00 00 60 8f f8 14 01 00 00
-  .                00
-008086-008140 ImageBlock id=547565760 xsize=95 ysize=20 path="ui/skins/default/bop_bar_underlay.png" unknown=0
-008141-008153 DataBlock
-  .........`...    00 00 00 00 00 01 00 00 00 60 8f f8 14
-008154-008163 StringBlock "NewState"
-008164-008202 DataBlock
-  ................ 15 01 00 00 14 00 00 00 00 00 00 00 04 00 00 00
-  ................ 04 00 00 00 00 00 00 00 01 00 00 00 01 00 00 00
-  .......          00 00 00 00 00 00 00
+  .........`...    00 00 00 00 00 00 00 00 00 60 8f f8 14
+008082-008140 ImageListBlock 1 elements:
+  008086-008140 ImageBlock id=547565760 xsize=95 ysize=20 path="ui/skins/default/bop_bar_underlay.png" unknown=0
+008141-008202 DataBlock
+  .........`.....N 00 00 00 00 00 01 00 00 00 60 8f f8 14 08 00 4e
+  ewState......... 65 77 53 74 61 74 65 15 01 00 00 14 00 00 00 00
+  ................ 00 00 00 04 00 00 00 04 00 00 00 00 00 00 00 01
+  ..............   00 00 00 01 00 00 00 00 00 00 00 00 00 00
 008203-008225 FontNameBlock "la_gioconda_uppercase"
 008226-008241 DataBlock
   .............\.. 12 00 00 00 01 00 00 00 00 00 00 00 00 5c b9 ff
@@ -632,7 +630,7 @@
 008287-008302 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
 008303-008313 T0Block "normal_t0"
-008314-008530 DataBlock
+008314-008526 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   .....0. ........ 01 00 00 00 c0 30 a3 20 00 00 00 00 00 00 00 00
   ................ 15 01 00 00 14 00 00 00 ff ff ff ff 00 00 00 00
@@ -646,15 +644,14 @@
   .....bar........ 86 f8 14 03 00 62 61 72 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 01 00 00 00 00 00 01 00 01 00 00 01
   ................ 00 00 00 00 04 00 00 00 00 00 00 00 00 00 00 00
-  .........        00 80 89 f8 14 01 00 00 00
-008531-008583 ImageBlock id=351809216 xsize=95 ysize=20 path="ui/skins/default/bop_bar_yellow.png" unknown=0
-008584-008596 DataBlock
-  .............    00 00 00 00 00 01 00 00 00 80 89 f8 14
-008597-008606 StringBlock "NewState"
-008607-008645 DataBlock
-  ................ 15 01 00 00 14 00 00 00 00 00 00 00 04 00 00 00
-  ................ 04 00 00 00 00 00 00 00 01 00 00 00 01 00 00 00
-  .......          00 00 00 00 00 00 00
+  .....            00 80 89 f8 14
+008527-008583 ImageListBlock 1 elements:
+  008531-008583 ImageBlock id=351809216 xsize=95 ysize=20 path="ui/skins/default/bop_bar_yellow.png" unknown=0
+008584-008645 DataBlock
+  ...............N 00 00 00 00 00 01 00 00 00 80 89 f8 14 08 00 4e
+  ewState......... 65 77 53 74 61 74 65 15 01 00 00 14 00 00 00 00
+  ................ 00 00 00 04 00 00 00 04 00 00 00 00 00 00 00 01
+  ..............   00 00 00 01 00 00 00 00 00 00 00 00 00 00
 008646-008668 FontNameBlock "la_gioconda_uppercase"
 008669-008684 DataBlock
   .............\.. 12 00 00 00 01 00 00 00 00 00 00 00 00 5c b9 ff
@@ -687,18 +684,17 @@
   .C..lB....<..... fa 43 00 00 6c 42 02 00 00 00 3c 00 00 00 01 02
   .............    00 00 00 00 00 00 00 00 00 00 00 00 00
 009001-009010 StringBlock "NewState"
-009011-009026 DataBlock
+009011-009022 DataBlock
+  ............     00 00 00 00 00 00 00 00 00 00 00 00
+009023-009060 ImagePathListBlock 1 elements:
+  009027-009060 ImagePathBlock "ui/skins/default/panel_title.png"
+009061-009144 DataBlock
+  ......; ..tx_hea 01 00 00 00 00 cb 3b 20 09 00 74 78 5f 68 65 61
+  der....y........ 64 65 72 00 00 00 00 79 00 00 00 09 00 00 00 01
+  ................ 01 00 00 00 00 01 00 00 00 00 01 00 00 00 00 02
+  ............@.;  00 00 00 00 00 00 00 09 00 00 00 00 40 ce 3b 20
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00
-009027-009060 ImagePathBlock "ui/skins/default/panel_title.png"
-009061-009068 DataBlock
-  ......;          01 00 00 00 00 cb 3b 20
-009069-009079 StringBlock "tx_header"
-009080-009144 DataBlock
-  ....y........... 00 00 00 00 79 00 00 00 09 00 00 00 01 01 00 00
-  ................ 00 00 01 00 00 00 00 01 00 00 00 00 02 00 00 00
-  .........@.; ... 00 00 00 00 09 00 00 00 00 40 ce 3b 20 00 00 00
-  .............@.; 00 00 00 00 00 00 00 00 00 01 00 00 00 40 ce 3b
-                   20
+  @.;              40 ce 3b 20
 009145-009154 StringBlock "NewState"
 009155-009162 DataBlock
   ....(...         01 01 00 00 28 00 00 00

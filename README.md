@@ -37,3 +37,15 @@ and even for games it supports (Empire, Napoleon, Shogun 2) it's not prfect.
 
 * * uint32 count
 * * that many `Image` blocks
+
+* `ImagePathList` block:
+* * uint32 count
+* * that many `String` blocks with image paths
+
+### Files
+
+* `data` - sample files from various games
+* `converted` - `.xml` files created by old converter based on files in `data`, or `.fail` files in converter crashed (nothing if unsupported)
+* `output` - current output of analysis of files in `data`
+* `lib` - code
+* `bin` - scripts
