@@ -1,19 +1,19 @@
+require "pry"
+
 class String
   # Escape characters for output as XML attribute values (< > & ' ")
   def xml_escape
     replacements = {"<" => "&lt;", ">" => "&gt;", "&" => "&amp;", "\"" => "&quot;", "'" => "&apos;"}
-    gsub(/([<>&\'\"])/) { replacements[$1] }
+    b.gsub(/([<>&\'\"])/) { replacements[$1] }
   end
 end
 
 class UiFile
-  def initialize(path)
+  def initialize(path, output)
     @data = File.open(path, 'rb').read
     @size = @data.size
     @ofs = 0
-
-    # This is for xml output and should probably go to another class
-    @stack = []
+    @output = output
   end
 
   def get(sz)
@@ -61,6 +61,10 @@ class UiFile
     v.to_i
   end
 
+  def version_string
+    "%03d" % @version
+  end
+
   def eof?
     @size == @ofs
   end
@@ -74,49 +78,6 @@ class UiFile
     @data[16,4] == "root"
   end
 
-  def convert!
-    @version = get_version
-
-    case @version
-    when 2
-      convert_cml_002!
-    when 32
-      convert_032!
-    when 44
-      if starts_with_root_ui_entry?
-        raise "Not supported yet"
-      else
-        convert_fc_044!
-      end
-    when 50
-      if starts_with_root_ui_entry?
-        raise "Not supported yet"
-      else
-        convert_fc_050!
-      end
-    when 51
-      if starts_with_root_ui_entry?
-        raise "Not supported yet"
-      else
-        convert_fc_051!
-      end
-    when 52
-      if starts_with_root_ui_entry?
-        raise "Not supported yet"
-      else
-        convert_fc_052!
-      end
-    when 53
-      if starts_with_root_ui_entry?
-        raise "Not supported yet"
-      else
-        convert_fc_053!
-      end
-    else
-      raise "Not supported yet"
-    end
-  end
-
   def convert_u!(comment=nil)
     if comment
       out! "<u>#{get_u}</u><!-- #{comment} -->"
@@ -127,9 +88,9 @@ class UiFile
 
   def convert_i!(comment=nil)
     if comment
-      out! "<i>#{get_u}</i><!-- #{comment} -->"
+      out! "<i>#{get_i}</i><!-- #{comment} -->"
     else
-      out! "<i>#{get_u}</i>"
+      out! "<i>#{get_i}</i>"
     end
   end
 
@@ -157,6 +118,27 @@ class UiFile
     end
   end
 
+  def convert_bool!(comment=nil)
+    v = get_bool ? "<yes />" : "<no />"
+    if comment
+      out! "#{v}<!-- #{comment }-->"
+    else
+      out! v
+    end
+  end
+
+  def convert_u2!(comment=nil)
+    v = get_u2
+    if v != 0
+      binding.pry
+    end
+    if comment
+      out! "#{v}<!-- #{comment }-->"
+    else
+      out! v
+    end
+  end
+
   def convert_image_list!
     tag! "images" do
       get_u.times do
@@ -176,7 +158,7 @@ class UiFile
       get_u.times do
         tag! "state" do
           convert_u! "ID"
-          convert_s! "ttile"
+          convert_s! "title - NewState"
           convert_i! "x size"
           convert_i! "y size"
 
@@ -185,50 +167,241 @@ class UiFile
           5.times do
             convert_i!
           end
-          out!(get_bool ? "<yes />" : "<no />")
+          convert_bool!
 
-          out! "<uni>#{get_unicode.xml_escape}</uni><!-- localization id -->"
-          out! "<uni>#{get_unicode.xml_escape}</uni><!-- tooltip id -->"
+          convert_unicode! "localization id"
+          convert_unicode! "tooltip id"
+          convert_s! "font"
+          convert_i!
+          convert_i!
+          convert_i!
+          if @version >= 43
+            convert_s! "twui"
+          end
+          convert_i!
+          convert_i!
+          convert_i!
+
+          convert_bool!
+          convert_bool!
+          convert_bool!
+
+          convert_s! "T0"
+
+          convert_i!
+          convert_i!
+          convert_i!
+          convert_i!
+
+          convert_s! "state description"
+          convert_s! "event text"
+
+          convert_image_uses!
+
+          convert_i!
+          convert_i!
+
+          convert_transitions!
         end
       end
     end
   end
 
-  def convert_uientry_032!
-    tag! "uientry" do
-      out! "<u>#{get_u}</u><!-- ID -->"
-      out! "<s>#{get_s.xml_escape}</s><!-- title -->"
-      out! "<i>#{get_i}</i><!-- x offset -->"
-      out! "<i>#{get_i}</i><!-- y offset -->"
-      7.times do
-        out!(get_bool ? "<yes />" : "<no />")
+  def convert_transitions!
+    tag! "transitions" do
+      get_u.times do
+        tag! "transition" do
+          convert_i! "type"
+          convert_u! "ID"
+          if @version >= 39
+            convert_u2! # this looks like bs, probably string
+            convert_i!
+            convert_i!
+          end
+          if @version >= 43
+            convert_u2! # this looks like bs, probably string
+            convert_i!
+          end
+        end
       end
-      out! "<s>#{get_s.xml_escape}</s><!-- parent name -->"
-      out! "<i>#{get_i}</i>"
-      out! "<uni>#{get_unicode.xml_escape}</uni><!-- tooltip -->"
-      out! "<uni>#{get_unicode.xml_escape}</uni><!-- tooltip text -->"
-      out! "<i>#{get_i}</i>"
-      out! "<s>#{get_s.xml_escape}</s><!-- script -->"
-      convert_image_list!
-      out! "<i>#{get_i}</i>"
-      out! "<i>#{get_i}</i>"
-      convert_state_list!
-
-      # s
-      # int
-      # s, s, i, i, f, script, images etc.
     end
   end
 
-  def convert_032!
-    tag! "ui", version: "032" do
-      convert_uientry_032!
-      out! "<todo>#{bytes_left} bytes</todo>"
+  def convert_image_uses!
+    tag! "image_uses" do
+      get_u.times do
+        tag! "image_use" do
+          out! "<!-- #{@ofs} -->"
+          convert_u! "ID"
+          convert_u! "x offset"
+          convert_u! "y offset"
+          convert_u! "x size"
+          convert_u! "y size"
+          convert_byte! "B multiply"
+          convert_byte! "R multiply"
+          convert_byte! "G multiply"
+          convert_byte! "A multiply"
+          convert_bool!
+          convert_bool!
+          convert_bool!
+          convert_i! "position"
+          convert_bool!
+          convert_bool!
+          convert_i!
+          convert_i!
+          convert_i!
+          if @version >= 51
+            convert_bool!
+          end
+          if @version <= 32
+            convert_i!
+          end
+        end
+      end
+    end
+  end
+
+  def convert_uientry!
+    tag! "uientry" do
+      convert_u! "ID"
+      convert_s! "title"
+      if @version >= 43
+        convert_s! "title2"
+      end
+      convert_i! "x offset"
+      convert_i! "y offset"
+      7.times do
+        convert_bool!
+      end
+      if @version >= 47
+        convert_bool!
+      end
+      if @version >= 50
+        convert_bool!
+        convert_bool!
+        convert_bool!
+      end
+      if @version >= 52
+        convert_bool!
+      end
+      convert_s! "parent name"
+      convert_i!
+      convert_unicode! "tooltip"
+      convert_unicode! "tooltip text"
+      convert_i!
+
+      if @version >= 33
+        convert_bool!
+      end
+      if @version >= 39
+        convert_i!
+      end
+      convert_s! "script"
+      convert_image_list!
+      convert_i!
+      if @version >= 33
+        convert_i!
+      end
+      convert_state_list!
+      convert_i!
+      convert_event_list!
+      convert_i!
+
+      if @version >= 39
+        convert_effects!
+      end
+
+      convert_children!
+
+      convert_s! "template"
+
+      if @version >= 44
+        # weird things happen here, so hexdump or sth
+        binding.pry
+      end
+
+      # if self.version >= 44:
+      #   self.flag5 = handle.readByte()
+      #   if self.flag5 != 0:
+      #     # This decoding works only sometimes
+      #     flag5_name = handle.readASCII()
+      #     flag5_count = handle.readInt()
+      #     self.flag5data = {
+      #         "name": flag5_name,
+      #         "data": map(int, list(handle.readInt() for i in range(flag5_count))),
+      #         "i1": handle.readInt(),
+      #         "i2": handle.readInt(),
+      #         "f1": handle.readByte(),
+      #         "i3": handle.readInt(),
+      #         "f2": handle.readByte(),
+      #     }
+      # if self.version >= 49:
+      #   self.string10 = handle.readASCII()
+    end
+  end
+
+  def convert_children!
+    tag! "children" do
+      get_u.times do
+        convert_uientry!
+      end
+    end
+  end
+
+  def convert_effects!
+    tag! "effects" do
+      get_u.times do
+        tag! "effect" do
+          binding.pry
+        end
+      end
+    end
+    # Data is mix of ints and floats actually
+    # def readFrom(self, handle):
+    #     self.name = handle.readASCII()
+    #     self.flag = handle.readShort()
+    #     phase_count = handle.readInt()
+    #     for i in range(phase_count):
+    #         phase = []
+    #         phase.append(handle.readFloat())
+    #         phase.append(handle.readFloat())
+    #         # This changes between versions
+    #         # It also seems that some Version039 files have 15-size not 12-size phases ???s
+    #         if self.version >= 50:
+    #             for j in range(13):
+    #                 phase.append(handle.readInt())
+    #         else:
+    #             for j in range(10):
+    #                 phase.append(handle.readInt())
+    #         self.phases.append(phase)
+  end
+
+  def convert_event_list!
+    events = []
+    while true
+      s = get_s
+      break if s == "events_end"
+      events << s
+    end
+    tag! "events" do
+      events.each do |ev|
+        out! "<event>#{ev.xml_escape}</event>"
+      end
+    end
+  end
+
+  def convert_ui!
+    tag! "ui", version: version_string do
+      convert_uientry!
+      if bytes_left > 0
+        out! "<todo>#{bytes_left} bytes</todo>"
+        binding.pry
+      end
     end
   end
 
   def convert_cml_002!
-    tag! "cml", version: "002" do
+    tag! "cml", version: version_string do
       until eof?
         out! "<key>#{get_s.xml_escape}</key>"
         out! "<value>#{get_s.xml_escape}</value>"
@@ -236,8 +409,8 @@ class UiFile
     end
   end
 
-  def convert_fc_044!
-    tag! "fc", version: "044" do
+  def convert_fc!
+    tag! "fc", version: version_string do
       until eof?
         tag! "fcentry" do
           convert_s!
@@ -245,129 +418,56 @@ class UiFile
           convert_s!
           convert_u!
           convert_u!
+          if @version >= 50
+            convert_u!
+            convert_u!
+          end
+          if @version >= 51
+            convert_u!
+          end
           convert_byte! "B"
           convert_byte! "G"
           convert_byte! "R"
           convert_byte! "A"
+          if @version >= 53
+            convert_s!
+          end
+          if @version >= 52
+            convert_s! "T0"
+            convert_u!
+            convert_u!
+            convert_u!
+            convert_u!
+          end
         end
       end
     end
   end
 
-  def convert_fc_050!
-    tag! "fc", version: "050" do
-      until eof?
-        tag! "fcentry" do
-          convert_s!
-          convert_u!
-          convert_s!
-          convert_u!
-          convert_u!
-          convert_u!
-          convert_u!
-          convert_byte! "B"
-          convert_byte! "G"
-          convert_byte! "R"
-          convert_byte! "A"
-        end
+  def convert!
+    @version = get_version
+
+    case @version
+    when 2
+      convert_cml_002!
+    when 44, 50, 51, 52, 53
+      if starts_with_root_ui_entry?
+        convert_ui!
+      else
+        convert_fc!
       end
-    end
-  end
-
-  def convert_fc_051!
-    tag! "fc", version: "051" do
-      until eof?
-        tag! "fcentry" do
-          convert_s!
-          convert_u!
-          convert_s!
-          convert_u!
-          convert_u!
-          convert_u!
-          convert_u!
-          convert_u!
-          convert_byte! "B"
-          convert_byte! "G"
-          convert_byte! "R"
-          convert_byte! "A"
-        end
-      end
-    end
-  end
-
-  def convert_fc_052!
-    tag! "fc", version: "052" do
-      until eof?
-        tag! "fcentry" do
-          convert_s!
-          convert_u!
-          convert_s!
-          convert_u!
-          convert_u!
-          convert_u!
-          convert_u!
-          convert_u!
-          convert_byte! "B"
-          convert_byte! "G"
-          convert_byte! "R"
-          convert_byte! "A"
-          convert_s! "T0"
-          convert_u!
-          convert_u!
-          convert_u!
-          convert_u!
-        end
-      end
-    end
-  end
-
-  def convert_fc_053!
-    tag! "fc", version: "053" do
-      until eof?
-        tag! "fcentry" do
-          convert_s!
-          convert_u!
-          convert_s!
-          convert_u!
-          convert_u!
-          convert_u!
-          convert_u!
-          convert_u!
-          convert_byte! "B"
-          convert_byte! "G"
-          convert_byte! "R"
-          convert_byte! "A"
-          convert_s!
-          convert_s! "T0"
-          convert_u!
-          convert_u!
-          convert_u!
-          convert_u!
-        end
-      end
-    end
-  end
-
-  # XML Builder, maybe more it to another class
-
-  def out!(s)
-    puts("  " * @stack.size + s)
-  end
-
-  def tag!(name, attrs=nil)
-    attrs = attrs_to_s(attrs) if attrs
-    if block_given?
-      out! "<#{name}#{attrs}>"
-      @stack << name
-      yield
-      @stack.pop
-      out! "</#{name}>"
+    when 25..54
+      convert_ui!
     else
-      out! "<#{name}#{attrs}/>"
+      raise "Not supported yet"
     end
   end
 
-  def attrs_to_s(attrs={})
-    attrs.to_a.map{|k,v| v.nil? ? "" : " #{k}=\"#{v.to_s.xml_escape}\""}.sort.join
+  def out!(*args)
+    @output.out!(*args)
+  end
+
+  def tag!(*args, &blk)
+    @output.tag!(*args, &blk)
   end
 end

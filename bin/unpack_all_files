@@ -15,16 +15,15 @@ end
 
 todo = todo.select{|path|
   if path.to_s =~ /(\.fc|\.cml)\z/
-    true
+    false
   else
     version = path.read(10)[7,3].to_i
-    # version == 32
-    false
+    (31..31).include?(version)
   end
 }
 
 # In 4 threads
-cores = 4
+cores = 1
 cores.times.map{|i|
   Thread.new{
     while true
@@ -38,13 +37,15 @@ cores.times.map{|i|
 
       output_path.parent.mkpath
       puts "#{i} #{path}"
-      err = system %Q[#{converter_path} "#{path}" >"#{output_path}"]
+      err = system %Q[#{converter_path} "#{path}" "#{output_path}"]
 
       if err
         # OK
+        fail_path.unlink if fail_path.exist?
       else
-        output_path.unlink
-        fail_path.write("")
+        # output_path.unlink
+        # fail_path.write("")
+        output_path.rename fail_path
       end
     end
   }
