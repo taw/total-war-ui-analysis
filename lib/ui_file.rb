@@ -27,12 +27,22 @@ class UiFile
     get(1).unpack1("C")
   end
 
+  def get_bool
+    v = get_u1
+    raise "Invalid boolean value: #{v}" if v > 1
+    v == 1
+  end
+
   def get_u2
     get(2).unpack1("v")
   end
 
   def get_u
     get(4).unpack1("V")
+  end
+
+  def get_i
+    get(4).unpack1("i")
   end
 
   def get_s
@@ -107,22 +117,113 @@ class UiFile
     end
   end
 
+  def convert_u!(comment=nil)
+    if comment
+      out! "<u>#{get_u}</u><!-- #{comment} -->"
+    else
+      out! "<u>#{get_u}</u>"
+    end
+  end
+
+  def convert_i!(comment=nil)
+    if comment
+      out! "<i>#{get_u}</i><!-- #{comment} -->"
+    else
+      out! "<i>#{get_u}</i>"
+    end
+  end
+
+  def convert_byte!(comment=nil)
+    if comment
+      out! "<byte>#{get_u1}</byte><!-- #{comment} -->"
+    else
+      out! "<byte>#{get_u1}</byte>"
+    end
+  end
+
+  def convert_s!(comment=nil)
+    if comment
+      out! "<s>#{get_s.xml_escape}</s><!-- #{comment} -->"
+    else
+      out! "<s>#{get_s.xml_escape}</s>"
+    end
+  end
+
+  def convert_unicode!(comment=nil)
+    if comment
+      out! "<unicode>#{get_unicode.xml_escape}</unicode><!-- #{comment} -->"
+    else
+      out! "<unicode>#{get_unicode.xml_escape}</unicode>"
+    end
+  end
+
+  def convert_image_list!
+    tag! "images" do
+      get_u.times do
+        tag! "image" do
+          convert_u! "ID"
+          convert_s! "path"
+          convert_i! "x size"
+          convert_i! "y size"
+          convert_u! "mask or rgba or something?"
+        end
+      end
+    end
+  end
+
+  def convert_state_list!
+    tag! "states" do
+      get_u.times do
+        tag! "state" do
+          convert_u! "ID"
+          convert_s! "ttile"
+          convert_i! "x size"
+          convert_i! "y size"
+
+          convert_unicode! "state text"
+          convert_unicode! "tooltip"
+          5.times do
+            convert_i!
+          end
+          out!(get_bool ? "<yes />" : "<no />")
+
+          out! "<uni>#{get_unicode.xml_escape}</uni><!-- localization id -->"
+          out! "<uni>#{get_unicode.xml_escape}</uni><!-- tooltip id -->"
+        end
+      end
+    end
+  end
+
   def convert_uientry_032!
-    out! "<u>#{get_u}</u><!-- ID -->"
-    out! "<s>#{get_s.xml_escape}</s><!-- title -->"
-    out! "<s>#{get_s.xml_escape}</s><!-- title2 -->"
-    out! "<u>#{get_u}</u><!-- x offset -->"
-    out! "<u>#{get_u}</u><!-- y offset -->"
-    # 9x flags
-    # s
-    # int
-    # s, s, i, i, f, script, images etc.
-    out! "<todo>#{bytes_left}</todo>"
+    tag! "uientry" do
+      out! "<u>#{get_u}</u><!-- ID -->"
+      out! "<s>#{get_s.xml_escape}</s><!-- title -->"
+      out! "<i>#{get_i}</i><!-- x offset -->"
+      out! "<i>#{get_i}</i><!-- y offset -->"
+      7.times do
+        out!(get_bool ? "<yes />" : "<no />")
+      end
+      out! "<s>#{get_s.xml_escape}</s><!-- parent name -->"
+      out! "<i>#{get_i}</i>"
+      out! "<uni>#{get_unicode.xml_escape}</uni><!-- tooltip -->"
+      out! "<uni>#{get_unicode.xml_escape}</uni><!-- tooltip text -->"
+      out! "<i>#{get_i}</i>"
+      out! "<s>#{get_s.xml_escape}</s><!-- script -->"
+      convert_image_list!
+      out! "<i>#{get_i}</i>"
+      out! "<i>#{get_i}</i>"
+      convert_state_list!
+
+      # s
+      # int
+      # s, s, i, i, f, script, images etc.
+    end
   end
 
   def convert_032!
-    tag "ui", version: "032" do
+    tag! "ui", version: "032" do
       convert_uientry_032!
+      out! "<todo>#{bytes_left} bytes</todo>"
     end
   end
 
@@ -139,15 +240,15 @@ class UiFile
     tag! "fc", version: "044" do
       until eof?
         tag! "fcentry" do
-          out! "<s>#{get_s.xml_escape}</s>"
-          out! "<u>#{get_u}</u>"
-          out! "<s>#{get_s.xml_escape}</s>"
-          out! "<u>#{get_u}</u>"
-          out! "<u>#{get_u}</u>"
-          out! "<byte>#{get_u1}</byte><!-- B -->"
-          out! "<byte>#{get_u1}</byte><!-- G -->"
-          out! "<byte>#{get_u1}</byte><!-- R -->"
-          out! "<byte>#{get_u1}</byte><!-- A -->"
+          convert_s!
+          convert_u!
+          convert_s!
+          convert_u!
+          convert_u!
+          convert_byte! "B"
+          convert_byte! "G"
+          convert_byte! "R"
+          convert_byte! "A"
         end
       end
     end
@@ -157,17 +258,17 @@ class UiFile
     tag! "fc", version: "050" do
       until eof?
         tag! "fcentry" do
-          out! "<s>#{get_s.xml_escape}</s>"
-          out! "<u>#{get_u}</u>"
-          out! "<s>#{get_s.xml_escape}</s>"
-          out! "<u>#{get_u}</u>"
-          out! "<u>#{get_u}</u>"
-          out! "<u>#{get_u}</u>"
-          out! "<u>#{get_u}</u>"
-          out! "<byte>#{get_u1}</byte><!-- B -->"
-          out! "<byte>#{get_u1}</byte><!-- G -->"
-          out! "<byte>#{get_u1}</byte><!-- R -->"
-          out! "<byte>#{get_u1}</byte><!-- A -->"
+          convert_s!
+          convert_u!
+          convert_s!
+          convert_u!
+          convert_u!
+          convert_u!
+          convert_u!
+          convert_byte! "B"
+          convert_byte! "G"
+          convert_byte! "R"
+          convert_byte! "A"
         end
       end
     end
@@ -177,18 +278,18 @@ class UiFile
     tag! "fc", version: "051" do
       until eof?
         tag! "fcentry" do
-          out! "<s>#{get_s.xml_escape}</s>"
-          out! "<u>#{get_u}</u>"
-          out! "<s>#{get_s.xml_escape}</s>"
-          out! "<u>#{get_u}</u>"
-          out! "<u>#{get_u}</u>"
-          out! "<u>#{get_u}</u>"
-          out! "<u>#{get_u}</u>"
-          out! "<u>#{get_u}</u>"
-          out! "<byte>#{get_u1}</byte><!-- B -->"
-          out! "<byte>#{get_u1}</byte><!-- G -->"
-          out! "<byte>#{get_u1}</byte><!-- R -->"
-          out! "<byte>#{get_u1}</byte><!-- A -->"
+          convert_s!
+          convert_u!
+          convert_s!
+          convert_u!
+          convert_u!
+          convert_u!
+          convert_u!
+          convert_u!
+          convert_byte! "B"
+          convert_byte! "G"
+          convert_byte! "R"
+          convert_byte! "A"
         end
       end
     end
@@ -198,23 +299,23 @@ class UiFile
     tag! "fc", version: "052" do
       until eof?
         tag! "fcentry" do
-          out! "<s>#{get_s.xml_escape}</s>"
-          out! "<u>#{get_u}</u>"
-          out! "<s>#{get_s.xml_escape}</s>"
-          out! "<u>#{get_u}</u>"
-          out! "<u>#{get_u}</u>"
-          out! "<u>#{get_u}</u>"
-          out! "<u>#{get_u}</u>"
-          out! "<u>#{get_u}</u>"
-          out! "<byte>#{get_u1}</byte><!-- B -->"
-          out! "<byte>#{get_u1}</byte><!-- G -->"
-          out! "<byte>#{get_u1}</byte><!-- R -->"
-          out! "<byte>#{get_u1}</byte><!-- A -->"
-          out! "<s>#{get_s.xml_escape}</s><!-- T0 -->"
-          out! "<u>#{get_u}</u>"
-          out! "<u>#{get_u}</u>"
-          out! "<u>#{get_u}</u>"
-          out! "<u>#{get_u}</u>"
+          convert_s!
+          convert_u!
+          convert_s!
+          convert_u!
+          convert_u!
+          convert_u!
+          convert_u!
+          convert_u!
+          convert_byte! "B"
+          convert_byte! "G"
+          convert_byte! "R"
+          convert_byte! "A"
+          convert_s! "T0"
+          convert_u!
+          convert_u!
+          convert_u!
+          convert_u!
         end
       end
     end
@@ -224,24 +325,24 @@ class UiFile
     tag! "fc", version: "053" do
       until eof?
         tag! "fcentry" do
-          out! "<s>#{get_s.xml_escape}</s>"
-          out! "<u>#{get_u}</u>"
-          out! "<s>#{get_s.xml_escape}</s>"
-          out! "<u>#{get_u}</u>"
-          out! "<u>#{get_u}</u>"
-          out! "<u>#{get_u}</u>"
-          out! "<u>#{get_u}</u>"
-          out! "<u>#{get_u}</u>"
-          out! "<byte>#{get_u1}</byte><!-- B -->"
-          out! "<byte>#{get_u1}</byte><!-- G -->"
-          out! "<byte>#{get_u1}</byte><!-- R -->"
-          out! "<byte>#{get_u1}</byte><!-- A -->"
-          out! "<s>#{get_s.xml_escape}</s>"
-          out! "<s>#{get_s.xml_escape}</s><!-- T0 -->"
-          out! "<u>#{get_u}</u>"
-          out! "<u>#{get_u}</u>"
-          out! "<u>#{get_u}</u>"
-          out! "<u>#{get_u}</u>"
+          convert_s!
+          convert_u!
+          convert_s!
+          convert_u!
+          convert_u!
+          convert_u!
+          convert_u!
+          convert_u!
+          convert_byte! "B"
+          convert_byte! "G"
+          convert_byte! "R"
+          convert_byte! "A"
+          convert_s!
+          convert_s! "T0"
+          convert_u!
+          convert_u!
+          convert_u!
+          convert_u!
         end
       end
     end
