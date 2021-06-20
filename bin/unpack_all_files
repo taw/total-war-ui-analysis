@@ -14,8 +14,13 @@ else
 end
 
 todo = todo.select{|path|
-  version = path.read(10)[7,3].to_i
-  path.to_s =~ /(\.fc|\.cml)\z/
+  if path.to_s =~ /(\.fc|\.cml)\z/
+    true
+  else
+    version = path.read(10)[7,3].to_i
+    # version == 32
+    false
+  end
 }
 
 # In 4 threads

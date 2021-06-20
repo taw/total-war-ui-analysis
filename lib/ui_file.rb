@@ -11,6 +11,9 @@ class UiFile
     @data = File.open(path, 'rb').read
     @size = @data.size
     @ofs = 0
+
+    # This is for xml output and should probably go to another class
+    @stack = []
   end
 
   def get(sz)
@@ -52,8 +55,13 @@ class UiFile
     @size == @ofs
   end
 
-  def supported?
-    @version == 2
+  def bytes_left
+    @size - @ofs
+  end
+
+  # Most UI formats except the latest ones do
+  def starts_with_root_ui_entry?
+    @data[16,4] == "root"
   end
 
   def convert!
@@ -61,33 +69,35 @@ class UiFile
 
     case @version
     when 2
-      convert_002!
+      convert_cml_002!
+    when 32
+      convert_032!
     when 44
-      if @data[16,4] == "root"
+      if starts_with_root_ui_entry?
         raise "Not supported yet"
       else
         convert_fc_044!
       end
     when 50
-      if @data[16,4] == "root"
+      if starts_with_root_ui_entry?
         raise "Not supported yet"
       else
         convert_fc_050!
       end
     when 51
-      if @data[16,4] == "root"
+      if starts_with_root_ui_entry?
         raise "Not supported yet"
       else
         convert_fc_051!
       end
     when 52
-      if @data[16,4] == "root"
+      if starts_with_root_ui_entry?
         raise "Not supported yet"
       else
         convert_fc_052!
       end
     when 53
-      if @data[16,4] == "root"
+      if starts_with_root_ui_entry?
         raise "Not supported yet"
       else
         convert_fc_053!
@@ -97,140 +107,166 @@ class UiFile
     end
   end
 
-  def convert_002!
-    out! %Q[<cml version="002">]
+  def convert_uientry_032!
+    out! "<u>#{get_u}</u><!-- ID -->"
+    out! "<s>#{get_s.xml_escape}</s><!-- title -->"
+    out! "<s>#{get_s.xml_escape}</s><!-- title2 -->"
+    out! "<u>#{get_u}</u><!-- x offset -->"
+    out! "<u>#{get_u}</u><!-- y offset -->"
+    # 9x flags
+    # s
+    # int
+    # s, s, i, i, f, script, images etc.
+    out! "<todo>#{bytes_left}</todo>"
+  end
 
-    until eof?
-      out! "  <key>#{get_s.xml_escape}</key>"
-      out! "  <value>#{get_s.xml_escape}</value>"
+  def convert_032!
+    tag "ui", version: "032" do
+      convert_uientry_032!
     end
+  end
 
-    out! %Q[</cml>]
+  def convert_cml_002!
+    tag! "cml", version: "002" do
+      until eof?
+        out! "<key>#{get_s.xml_escape}</key>"
+        out! "<value>#{get_s.xml_escape}</value>"
+      end
+    end
   end
 
   def convert_fc_044!
-    out! %Q[<fc version="044">]
-
-    until eof?
-      out! "  <fcentry>"
-      out! "    <s>#{get_s.xml_escape}</s>"
-      out! "    <u>#{get_u}</u>"
-      out! "    <s>#{get_s.xml_escape}</s>"
-      out! "    <u>#{get_u}</u>"
-      out! "    <u>#{get_u}</u>"
-      out! "    <byte>#{get_u1}</byte><!-- B -->"
-      out! "    <byte>#{get_u1}</byte><!-- G -->"
-      out! "    <byte>#{get_u1}</byte><!-- R -->"
-      out! "    <byte>#{get_u1}</byte><!-- A -->"
-      out! "  </fcentry>"
+    tag! "fc", version: "044" do
+      until eof?
+        tag! "fcentry" do
+          out! "<s>#{get_s.xml_escape}</s>"
+          out! "<u>#{get_u}</u>"
+          out! "<s>#{get_s.xml_escape}</s>"
+          out! "<u>#{get_u}</u>"
+          out! "<u>#{get_u}</u>"
+          out! "<byte>#{get_u1}</byte><!-- B -->"
+          out! "<byte>#{get_u1}</byte><!-- G -->"
+          out! "<byte>#{get_u1}</byte><!-- R -->"
+          out! "<byte>#{get_u1}</byte><!-- A -->"
+        end
+      end
     end
-
-    out! %Q[</fc>]
   end
 
   def convert_fc_050!
-    out! %Q[<fc version="050">]
-
-    until eof?
-      out! "  <fcentry>"
-      out! "    <s>#{get_s.xml_escape}</s>"
-      out! "    <u>#{get_u}</u>"
-      out! "    <s>#{get_s.xml_escape}</s>"
-      out! "    <u>#{get_u}</u>"
-      out! "    <u>#{get_u}</u>"
-      out! "    <u>#{get_u}</u>"
-      out! "    <u>#{get_u}</u>"
-      out! "    <byte>#{get_u1}</byte><!-- B -->"
-      out! "    <byte>#{get_u1}</byte><!-- G -->"
-      out! "    <byte>#{get_u1}</byte><!-- R -->"
-      out! "    <byte>#{get_u1}</byte><!-- A -->"
-      out! "  </fcentry>"
+    tag! "fc", version: "050" do
+      until eof?
+        tag! "fcentry" do
+          out! "<s>#{get_s.xml_escape}</s>"
+          out! "<u>#{get_u}</u>"
+          out! "<s>#{get_s.xml_escape}</s>"
+          out! "<u>#{get_u}</u>"
+          out! "<u>#{get_u}</u>"
+          out! "<u>#{get_u}</u>"
+          out! "<u>#{get_u}</u>"
+          out! "<byte>#{get_u1}</byte><!-- B -->"
+          out! "<byte>#{get_u1}</byte><!-- G -->"
+          out! "<byte>#{get_u1}</byte><!-- R -->"
+          out! "<byte>#{get_u1}</byte><!-- A -->"
+        end
+      end
     end
-
-    out! %Q[</fc>]
   end
 
   def convert_fc_051!
-    out! %Q[<fc version="051">]
-
-    until eof?
-      out! "  <fcentry>"
-      out! "    <s>#{get_s.xml_escape}</s>"
-      out! "    <u>#{get_u}</u>"
-      out! "    <s>#{get_s.xml_escape}</s>"
-      out! "    <u>#{get_u}</u>"
-      out! "    <u>#{get_u}</u>"
-      out! "    <u>#{get_u}</u>"
-      out! "    <u>#{get_u}</u>"
-      out! "    <u>#{get_u}</u>"
-      out! "    <byte>#{get_u1}</byte><!-- B -->"
-      out! "    <byte>#{get_u1}</byte><!-- G -->"
-      out! "    <byte>#{get_u1}</byte><!-- R -->"
-      out! "    <byte>#{get_u1}</byte><!-- A -->"
-      out! "  </fcentry>"
+    tag! "fc", version: "051" do
+      until eof?
+        tag! "fcentry" do
+          out! "<s>#{get_s.xml_escape}</s>"
+          out! "<u>#{get_u}</u>"
+          out! "<s>#{get_s.xml_escape}</s>"
+          out! "<u>#{get_u}</u>"
+          out! "<u>#{get_u}</u>"
+          out! "<u>#{get_u}</u>"
+          out! "<u>#{get_u}</u>"
+          out! "<u>#{get_u}</u>"
+          out! "<byte>#{get_u1}</byte><!-- B -->"
+          out! "<byte>#{get_u1}</byte><!-- G -->"
+          out! "<byte>#{get_u1}</byte><!-- R -->"
+          out! "<byte>#{get_u1}</byte><!-- A -->"
+        end
+      end
     end
-
-    out! %Q[</fc>]
   end
 
   def convert_fc_052!
-    out! %Q[<fc version="052">]
-
-    until eof?
-      out! "  <fcentry>"
-      out! "    <s>#{get_s.xml_escape}</s>"
-      out! "    <u>#{get_u}</u>"
-      out! "    <s>#{get_s.xml_escape}</s>"
-      out! "    <u>#{get_u}</u>"
-      out! "    <u>#{get_u}</u>"
-      out! "    <u>#{get_u}</u>"
-      out! "    <u>#{get_u}</u>"
-      out! "    <u>#{get_u}</u>"
-      out! "    <byte>#{get_u1}</byte><!-- B -->"
-      out! "    <byte>#{get_u1}</byte><!-- G -->"
-      out! "    <byte>#{get_u1}</byte><!-- R -->"
-      out! "    <byte>#{get_u1}</byte><!-- A -->"
-      out! "    <s>#{get_s.xml_escape}</s><!-- T0 -->"
-      out! "    <u>#{get_u}</u>"
-      out! "    <u>#{get_u}</u>"
-      out! "    <u>#{get_u}</u>"
-      out! "    <u>#{get_u}</u>"
-      out! "  </fcentry>"
+    tag! "fc", version: "052" do
+      until eof?
+        tag! "fcentry" do
+          out! "<s>#{get_s.xml_escape}</s>"
+          out! "<u>#{get_u}</u>"
+          out! "<s>#{get_s.xml_escape}</s>"
+          out! "<u>#{get_u}</u>"
+          out! "<u>#{get_u}</u>"
+          out! "<u>#{get_u}</u>"
+          out! "<u>#{get_u}</u>"
+          out! "<u>#{get_u}</u>"
+          out! "<byte>#{get_u1}</byte><!-- B -->"
+          out! "<byte>#{get_u1}</byte><!-- G -->"
+          out! "<byte>#{get_u1}</byte><!-- R -->"
+          out! "<byte>#{get_u1}</byte><!-- A -->"
+          out! "<s>#{get_s.xml_escape}</s><!-- T0 -->"
+          out! "<u>#{get_u}</u>"
+          out! "<u>#{get_u}</u>"
+          out! "<u>#{get_u}</u>"
+          out! "<u>#{get_u}</u>"
+        end
+      end
     end
-
-    out! %Q[</fc>]
   end
 
   def convert_fc_053!
-    out! %Q[<fc version="053">]
-
-    until eof?
-      out! "  <fcentry>"
-      out! "    <s>#{get_s.xml_escape}</s>"
-      out! "    <u>#{get_u}</u>"
-      out! "    <s>#{get_s.xml_escape}</s>"
-      out! "    <u>#{get_u}</u>"
-      out! "    <u>#{get_u}</u>"
-      out! "    <u>#{get_u}</u>"
-      out! "    <u>#{get_u}</u>"
-      out! "    <u>#{get_u}</u>"
-      out! "    <byte>#{get_u1}</byte><!-- B -->"
-      out! "    <byte>#{get_u1}</byte><!-- G -->"
-      out! "    <byte>#{get_u1}</byte><!-- R -->"
-      out! "    <byte>#{get_u1}</byte><!-- A -->"
-      out! "    <s>#{get_s.xml_escape}</s>"
-      out! "    <s>#{get_s.xml_escape}</s><!-- T0 -->"
-      out! "    <u>#{get_u}</u>"
-      out! "    <u>#{get_u}</u>"
-      out! "    <u>#{get_u}</u>"
-      out! "    <u>#{get_u}</u>"
-      out! "  </fcentry>"
+    tag! "fc", version: "053" do
+      until eof?
+        tag! "fcentry" do
+          out! "<s>#{get_s.xml_escape}</s>"
+          out! "<u>#{get_u}</u>"
+          out! "<s>#{get_s.xml_escape}</s>"
+          out! "<u>#{get_u}</u>"
+          out! "<u>#{get_u}</u>"
+          out! "<u>#{get_u}</u>"
+          out! "<u>#{get_u}</u>"
+          out! "<u>#{get_u}</u>"
+          out! "<byte>#{get_u1}</byte><!-- B -->"
+          out! "<byte>#{get_u1}</byte><!-- G -->"
+          out! "<byte>#{get_u1}</byte><!-- R -->"
+          out! "<byte>#{get_u1}</byte><!-- A -->"
+          out! "<s>#{get_s.xml_escape}</s>"
+          out! "<s>#{get_s.xml_escape}</s><!-- T0 -->"
+          out! "<u>#{get_u}</u>"
+          out! "<u>#{get_u}</u>"
+          out! "<u>#{get_u}</u>"
+          out! "<u>#{get_u}</u>"
+        end
+      end
     end
-
-    out! %Q[</fc>]
   end
 
+  # XML Builder, maybe more it to another class
+
   def out!(s)
-    puts s
+    puts("  " * @stack.size + s)
+  end
+
+  def tag!(name, attrs=nil)
+    attrs = attrs_to_s(attrs) if attrs
+    if block_given?
+      out! "<#{name}#{attrs}>"
+      @stack << name
+      yield
+      @stack.pop
+      out! "</#{name}>"
+    else
+      out! "<#{name}#{attrs}/>"
+    end
+  end
+
+  def attrs_to_s(attrs={})
+    attrs.to_a.map{|k,v| v.nil? ? "" : " #{k}=\"#{v.to_s.xml_escape}\""}.sort.join
   end
 end
