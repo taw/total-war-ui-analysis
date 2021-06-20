@@ -49,3 +49,33 @@ and even for games it supports (Empire, Napoleon, Shogun 2) it's not prfect.
 * `output` - current output of analysis of files in `data`
 * `lib` - code
 * `bin` - scripts
+
+### Format - Version002
+
+This format is a bit fake, as these are `.cml` files just being in same folder and with similar-looking headers, but otherwise unrelated, and appeared long after real UI file formats (Rome 2+).
+
+Format is:
+
+* `Version002` header
+* any number of (until EOF):
+* * `String` key
+* * `String` value
+
+### Games
+
+Games currently in repository:
+
+* Empire
+* Napoleon
+* Shogun 2
+* Rome 2
+* Warhammer 1
+* Warhammer 2
+* 3 Kingdoms
+
+Games currently missing:
+
+* Attila
+* Thrones
+* Troy
+* Warhammer 3

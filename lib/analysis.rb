@@ -74,6 +74,9 @@ end
 class FontNameBlock < StringBlock
 end
 
+class NewStateBlock < StringBlock
+end
+
 class U32ListBlock < Block
   def initialize(file, s, e, blocks)
     super(file, s, e)
@@ -124,8 +127,22 @@ class EventListBlock < Block
     @list = []
   end
 
-  def report
-    puts "#{range} #{self.class} #{@list.inspect}"
+  def to_s
+     "#{range} #{self.class} #{@list.inspect}"
+  end
+end
+
+class Version002FileBlock < Block
+  def initialize(file, s, e, strs)
+    super(file, s, e)
+    @strs = strs
+  end
+
+  def to_s
+    "#{range} #{self.class}\n" +
+    @strs.each_slice(2).map do |k,v|
+      "  KEY #{k.inspect}\n  VALUE #{v.inspect}\n"
+    end.join
   end
 end
 
@@ -179,12 +196,14 @@ class Analysis
       if str.size == sz and str =~ /\A[\r\n\t\x20-\x7f]+\z/
         if str =~ /(\.png|\.tga)\z/ and str =~ %r[/|\\]
           add_block ofs, ofs+2+sz, ImagePathBlock
-        elsif str =~ /\A(FiraSans-Regular|bardi_\d.*|Ingame \d+,|Frontend \d+,|la_gioconda|Norse\z|Norse-Bold|Iskra-Bold)/
+        elsif str =~ /\A(FiraSans-Regular|bardi_\d.*|Ingame \d+,|Frontend \d+,|la_gioconda|Norse\z|Norse-Bold|Iskra-Bold|georgia_italic)/
           add_block ofs, ofs+2+sz, FontNameBlock
         elsif str =~ /\A(normal_t0|[a-z_]+_t0)\z/
           add_block ofs, ofs+2+sz, T0Block
         elsif str == "events_end"
           add_block ofs, ofs+2+sz, EventListBlock
+        elsif str == "NewState"
+          add_block ofs, ofs+2+sz, NewStateBlock
         else
           add_block ofs, ofs+2+sz, StringBlock
         end
@@ -275,8 +294,39 @@ class Analysis
     @blocks.compact!
   end
 
+  def analyze_version_2
+    strs = []
+    ofs = 10
+    while ofs < size
+      return if ofs + 2 > size
+      sz = @data[ofs,2].unpack1("v")
+      ofs += 2
+      return if ofs + sz > size
+      strs << @data[ofs,sz]
+      ofs += sz
+    end
+    return if strs.size.odd?
+    @blocks << Version002FileBlock.new(self, 10, size, strs)
+  end
+
+  # some blocks aren't actually fully decoded and could use more processing
+  # but mostly they'd have some undecoded data near them,
+  # so we don't really need to check
+  def fully_decoded?
+    return false unless @blocks.first.s == 0
+    return false unless @blocks.last.e == size
+    @blocks.each_cons(2) do |a,b|
+      return false unless a.e == b.s
+    end
+    true
+  end
+
   def analysis
     analyze_version
+    if @version == 2
+      analyze_version_2
+      return if fully_decoded?
+    end
     analyze_rootid
     analyze_strings
     analyze_images

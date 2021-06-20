@@ -17,7 +17,12 @@ cores.times.map{|i|
   Thread.new{
     while true
       path = todo.shift or break
-      output_path = output_dir + (path.relative_path_from(data_dir).to_s + ".txt")
+      magic = path.read(10)
+      next unless magic =~ /\AVersion(\d\d\d)\z/
+      version = $1
+      game_name = path.dirname.basename.to_s
+      file_name = path.basename.to_s
+      output_path = output_dir + version + "#{game_name}-#{file_name}.txt"
 
       output_path.parent.mkpath
       puts "#{i} #{path}"
