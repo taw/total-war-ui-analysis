@@ -231,7 +231,6 @@ class UiFile
     tag! "image_uses" do
       get_u.times do
         tag! "image_use" do
-          out! "<!-- #{@ofs} -->"
           convert_u! "ID"
           convert_u! "x offset"
           convert_u! "y offset"
@@ -303,7 +302,8 @@ class UiFile
         convert_i!
       end
       convert_state_list!
-      convert_i!
+      out_ofs!
+      convert_i!          # For version 30 1 or 4 bytes wat
       convert_event_list!
       convert_i!
 
@@ -469,5 +469,9 @@ class UiFile
 
   def tag!(*args, &blk)
     @output.tag!(*args, &blk)
+  end
+
+  def out_ofs!
+    out! "<!-- #{@ofs} -->"
   end
 end

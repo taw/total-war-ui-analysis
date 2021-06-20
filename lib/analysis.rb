@@ -1,4 +1,5 @@
 require "pry"
+require "set"
 
 class Block
   attr_reader :file, :s, :e, :data
@@ -78,6 +79,8 @@ class NewStateBlock < StringBlock
 end
 
 class U32ListBlock < Block
+  attr_reader :blocks
+
   def initialize(file, s, e, blocks)
     super(file, s, e)
     @count = data[0,4].unpack1("V")
@@ -96,13 +99,19 @@ class U32ListBlock < Block
 end
 
 class ImageBlock < Block
+  attr_reader :id
+
+  def initialize(*)
+    super
+    @id = data[0,4].unpack1("V")
+    @str = data[6...-12]
+    @xsize = data[-12,4].unpack1("V")
+    @ysize = data[-8,4].unpack1("V")
+    @unknown = data[-4,4].unpack1("V")
+  end
+
   def to_s
-    id = data[0,4].unpack1("V")
-    str = data[6...-12]
-    xsize = data[-12,4].unpack1("V")
-    ysize = data[-8,4].unpack1("V")
-    unknown = data[-4,4].unpack1("V")
-    "#{range} #{self.class} id=#{id} xsize=#{xsize} ysize=#{ysize} path=#{str.inspect} unknown=#{unknown}"
+    "#{range} #{self.class} id=#{@id} xsize=#{@xsize} ysize=#{@ysize} path=#{@str.inspect} unknown=#{@unknown}"
   end
 end
 
@@ -139,6 +148,22 @@ class XSizeBlock < Uint32Block
 end
 
 class YSizeBlock < Uint32Block
+end
+
+class ImageUseBlock < Block
+  def initialize(*)
+    super
+    @id = data[0,4].unpack1("V")
+    @xofs = data[4,4].unpack1("V")
+    @yofs = data[8,4].unpack1("V")
+    @xsize = data[12,4].unpack1("V")
+    @ysize = data[16,4].unpack1("V")
+    @brga = data[20,4].unpack1("V")
+  end
+
+  def to_s
+    "#{range} #{self.class} id=#{@id} xofs=#{@xofs} yofs=#{@yofs} xsize=#{@xsize} ysize=#{@ysize} brga=#{@brga}"
+  end
 end
 
 class Version002FileBlock < Block
@@ -248,6 +273,14 @@ class Analysis
     e - s
   end
 
+  def free_space?(s, e)
+    return false if s < 0
+    return false if e > @size
+    @blocks.all?{|b|
+      b.e <= s or b.s >= e
+    }
+  end
+
   def analyze_images
     @blocks.each_with_index do |b,i|
       next unless b.is_a?(ImagePathBlock)
@@ -319,7 +352,6 @@ class Analysis
   end
 
   def analyze_new_state_context
-
     i = 0
     while i < @blocks.size
       b = @blocks[i]
@@ -339,6 +371,23 @@ class Analysis
     end
   end
 
+  def analyze_image_uses
+    image_blocks = @blocks.grep(ImageListBlock).flat_map(&:blocks) + @blocks.grep(ImageBlock)
+    block_ids = image_blocks.map(&:id).map{|u| [u].pack("V") }.to_set
+    indexes = []
+    (0...@size-4).each do |i|
+      if block_ids.include?(@data[i,4])
+        indexes << i
+      end
+    end
+    indexes.each do |i|
+      if free_space?(i, i+24)
+        add_block i, i+24, ImageUseBlock
+      end
+    end
+    @blocks.sort_by!(&:s)
+  end
+
   def analysis
     analyze_version
     if @version == 2
@@ -352,6 +401,7 @@ class Analysis
     analyze_u32_lists(ImageBlock, ImageListBlock)
     analyze_u32_lists(ImagePathBlock, ImagePathListBlock)
     analyze_new_state_context
+    analyze_image_uses
   end
 
   # some blocks aren't actually fully decoded and could use more processing
