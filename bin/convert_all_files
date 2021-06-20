@@ -24,10 +24,12 @@ cores.times.map{|i|
   Thread.new{
     while true
       path = todo.shift or break
-      version = path.read(10)[7,3].to_i
+      version = path.read(10)[7,3]
+      game_name = path.dirname.basename.to_s
+      file_name = path.basename.to_s
 
-      output_path = output_dir + (path.relative_path_from(data_dir).to_s + ".xml")
-      fail_path = output_dir + (path.relative_path_from(data_dir).to_s + ".fail")
+      output_path = output_dir + version + "#{game_name}-#{file_name}.xml"
+      fail_path = output_dir + version + "#{game_name}-#{file_name}.fail"
 
       output_path.parent.mkpath
       puts "#{i} #{path}"

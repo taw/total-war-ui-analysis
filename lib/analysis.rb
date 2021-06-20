@@ -95,12 +95,6 @@ class U32ListBlock < Block
   end
 end
 
-class RootIDBlock < Block
-  def to_s
-    "#{range} #{self.class} #{data.unpack1("V")}"
-  end
-end
-
 class ImageBlock < Block
   def to_s
     id = data[0,4].unpack1("V")
@@ -130,6 +124,21 @@ class EventListBlock < Block
   def to_s
      "#{range} #{self.class} #{@list.inspect}"
   end
+end
+
+class Uint32Block < Block
+  def to_s
+     "#{range} #{self.class} #{data.unpack1("V")}"
+  end
+end
+
+class RootIDBlock < Uint32Block
+end
+
+class XSizeBlock < Uint32Block
+end
+
+class YSizeBlock < Uint32Block
 end
 
 class Version002FileBlock < Block
@@ -309,16 +318,25 @@ class Analysis
     @blocks << Version002FileBlock.new(self, 10, size, strs)
   end
 
-  # some blocks aren't actually fully decoded and could use more processing
-  # but mostly they'd have some undecoded data near them,
-  # so we don't really need to check
-  def fully_decoded?
-    return false unless @blocks.first.s == 0
-    return false unless @blocks.last.e == size
-    @blocks.each_cons(2) do |a,b|
-      return false unless a.e == b.s
+  def analyze_new_state_context
+
+    i = 0
+    while i < @blocks.size
+      b = @blocks[i]
+      if b.is_a?(NewStateBlock) and free_space_after(i) >= 8
+        s = b.e
+        xsz = @data[s,4].unpack1("V")
+        ysz = @data[s+4,4].unpack1("V")
+        if xsz < 0x1_0000 and ysz < 0x1_0000
+          @blocks[i+1,0] = [
+            XSizeBlock.new(self, s, s+4),
+            YSizeBlock.new(self, s+4, s+8),
+          ]
+          i += 2
+        end
+      end
+      i += 1
     end
-    true
   end
 
   def analysis
@@ -333,6 +351,19 @@ class Analysis
     analyze_event_lists
     analyze_u32_lists(ImageBlock, ImageListBlock)
     analyze_u32_lists(ImagePathBlock, ImagePathListBlock)
+    analyze_new_state_context
+  end
+
+  # some blocks aren't actually fully decoded and could use more processing
+  # but mostly they'd have some undecoded data near them,
+  # so we don't really need to check
+  def fully_decoded?
+    return false unless @blocks.first.s == 0
+    return false unless @blocks.last.e == size
+    @blocks.each_cons(2) do |a,b|
+      return false unless a.e == b.s
+    end
+    true
   end
 
   def report
