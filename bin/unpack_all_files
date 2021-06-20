@@ -3,9 +3,9 @@
 require "pathname"
 
 data_dir = Pathname("#{__dir__}") + "../data"
-output_dir = Pathname("#{__dir__}") + "../converted"
+output_dir = Pathname("#{__dir__}") + "../unpacked"
 
-converter_path = "#{__dir__}/convert_ui.py"
+converter_path = "#{__dir__}/ui2xml"
 
 if ARGV.empty?
   todo = data_dir.find.reject(&:directory?)
@@ -15,7 +15,7 @@ end
 
 todo = todo.select{|path|
   version = path.read(10)[7,3].to_i
-  [32, 33, 39, 43, 44, 46, 47, 49, 50, 51, 52, 54].include?(version) and path.to_s !~ /(\.fc|\.cml)\z/
+  path.to_s =~ /(\.fc|\.cml)\z/
 }
 
 # In 4 threads
@@ -33,7 +33,7 @@ cores.times.map{|i|
 
       output_path.parent.mkpath
       puts "#{i} #{path}"
-      err = system %Q[#{converter_path} -u "#{path}" "#{output_path}"]
+      err = system %Q[#{converter_path} "#{path}" >"#{output_path}"]
 
       if err
         # OK

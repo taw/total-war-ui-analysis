@@ -50,17 +50,6 @@ and even for games it supports (Empire, Napoleon, Shogun 2) it's not prfect.
 * `lib` - code
 * `bin` - scripts
 
-### Format - Version002
-
-This format is a bit fake, as these are `.cml` (Component Model List) files just being in same folder and with similar-looking headers, but otherwise unrelated, and appeared long after real UI file formats (Rome 2+).
-
-Format is:
-
-* `Version002` header
-* any number of (until EOF):
-* * `String` key
-* * `String` value
-
 ### Games
 
 Games currently in repository:
