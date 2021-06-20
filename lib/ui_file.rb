@@ -118,9 +118,9 @@ class UiFile
       out! "    <s>#{get_s.xml_escape}</s>"
       out! "    <u>#{get_u}</u>"
       out! "    <u>#{get_u}</u>"
-      out! "    <byte>#{get_u1}</byte><!-- R -->"
-      out! "    <byte>#{get_u1}</byte><!-- G -->"
       out! "    <byte>#{get_u1}</byte><!-- B -->"
+      out! "    <byte>#{get_u1}</byte><!-- G -->"
+      out! "    <byte>#{get_u1}</byte><!-- R -->"
       out! "    <byte>#{get_u1}</byte><!-- A -->"
       out! "  </fcentry>"
     end
@@ -140,9 +140,9 @@ class UiFile
       out! "    <u>#{get_u}</u>"
       out! "    <u>#{get_u}</u>"
       out! "    <u>#{get_u}</u>"
-      out! "    <byte>#{get_u1}</byte><!-- R -->"
-      out! "    <byte>#{get_u1}</byte><!-- G -->"
       out! "    <byte>#{get_u1}</byte><!-- B -->"
+      out! "    <byte>#{get_u1}</byte><!-- G -->"
+      out! "    <byte>#{get_u1}</byte><!-- R -->"
       out! "    <byte>#{get_u1}</byte><!-- A -->"
       out! "  </fcentry>"
     end
@@ -163,10 +163,67 @@ class UiFile
       out! "    <u>#{get_u}</u>"
       out! "    <u>#{get_u}</u>"
       out! "    <u>#{get_u}</u>"
-      out! "    <byte>#{get_u1}</byte><!-- R -->"
-      out! "    <byte>#{get_u1}</byte><!-- G -->"
       out! "    <byte>#{get_u1}</byte><!-- B -->"
+      out! "    <byte>#{get_u1}</byte><!-- G -->"
+      out! "    <byte>#{get_u1}</byte><!-- R -->"
       out! "    <byte>#{get_u1}</byte><!-- A -->"
+      out! "  </fcentry>"
+    end
+
+    out! %Q[</fc>]
+  end
+
+  def convert_fc_052!
+    out! %Q[<fc version="052">]
+
+    until eof?
+      out! "  <fcentry>"
+      out! "    <s>#{get_s.xml_escape}</s>"
+      out! "    <u>#{get_u}</u>"
+      out! "    <s>#{get_s.xml_escape}</s>"
+      out! "    <u>#{get_u}</u>"
+      out! "    <u>#{get_u}</u>"
+      out! "    <u>#{get_u}</u>"
+      out! "    <u>#{get_u}</u>"
+      out! "    <u>#{get_u}</u>"
+      out! "    <byte>#{get_u1}</byte><!-- B -->"
+      out! "    <byte>#{get_u1}</byte><!-- G -->"
+      out! "    <byte>#{get_u1}</byte><!-- R -->"
+      out! "    <byte>#{get_u1}</byte><!-- A -->"
+      out! "    <s>#{get_s.xml_escape}</s><!-- T0 -->"
+      out! "    <u>#{get_u}</u>"
+      out! "    <u>#{get_u}</u>"
+      out! "    <u>#{get_u}</u>"
+      out! "    <u>#{get_u}</u>"
+      out! "  </fcentry>"
+    end
+
+    out! %Q[</fc>]
+  end
+
+  def convert_fc_053!
+    out! %Q[<fc version="053">]
+
+    until eof?
+      out! "  <fcentry>"
+      out! "    <s>#{get_s.xml_escape}</s>"
+      out! "    <u>#{get_u}</u>"
+      out! "    <s>#{get_s.xml_escape}</s>"
+      out! "    <u>#{get_u}</u>"
+      out! "    <u>#{get_u}</u>"
+      out! "    <u>#{get_u}</u>"
+      out! "    <u>#{get_u}</u>"
+      out! "    <u>#{get_u}</u>"
+      out! "    <byte>#{get_u1}</byte><!-- B -->"
+      out! "    <byte>#{get_u1}</byte><!-- G -->"
+      out! "    <byte>#{get_u1}</byte><!-- R -->"
+      out! "    <byte>#{get_u1}</byte><!-- A -->"
+      out! "    <s>#{get_s.xml_escape}</s>"
+      out! "    <s>#{get_s.xml_escape}</s><!-- T0 -->"
+      out! "    <u>#{get_u}</u>"
+      out! "    <u>#{get_u}</u>"
+      out! "    <u>#{get_u}</u>"
+      out! "    <u>#{get_u}</u>"
       out! "  </fcentry>"
     end
 

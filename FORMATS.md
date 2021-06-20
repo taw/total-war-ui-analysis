@@ -26,7 +26,7 @@ It appears in Napoleon.
 * * `String`
 * * `Uint32`
 * * `Uint32`
-* * `RGBA32`
+* * `BGRA32`
 
 ### Format - Font Categories Version050
 
@@ -45,7 +45,7 @@ It appears in Shogun 2.
 * * `Uint32`
 * * `Uint32`
 * * `Uint32`
-* * `RGBA32`
+* * `BGRA32`
 
 ### Format - Font Categories Version051
 
@@ -65,7 +65,7 @@ It appears in Rome 2.
 * * `Uint32`
 * * `Uint32`
 * * `Uint32`
-* * `RGBA32`
+* * `BGRA32`
 
 ### Format - Font Categories Version052
 
@@ -77,7 +77,20 @@ It appears in Attila, Thrones, and Warhammer 1.
 
 * `Version052` header
 * any number of (until EOF):
-* * [TODO]
+* * `String`
+* * `Uint32`
+* * `String`
+* * `Uint32`
+* * `Uint32`
+* * `Uint32`
+* * `Uint32`
+* * `Uint32`
+* * `BGRA32`
+* * `String`
+* * `Uint32`
+* * `Uint32`
+* * `Uint32`
+* * `Uint32`
 
 ### Format - Font Categories Version053
 
@@ -89,4 +102,18 @@ It appears in 3 Kingdoms, Troy, and Warhammer 2.
 
 * `Version053` header
 * any number of (until EOF):
-* [TODO]
+* * `String`
+* * `Uint32`
+* * `String`
+* * `Uint32`
+* * `Uint32`
+* * `Uint32`
+* * `Uint32`
+* * `Uint32`
+* * `BGRA32`
+* * `String`
+* * `String`
+* * `Uint32`
+* * `Uint32`
+* * `Uint32`
+* * `Uint32`
