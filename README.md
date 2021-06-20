@@ -52,7 +52,7 @@ and even for games it supports (Empire, Napoleon, Shogun 2) it's not prfect.
 
 ### Format - Version002
 
-This format is a bit fake, as these are `.cml` files just being in same folder and with similar-looking headers, but otherwise unrelated, and appeared long after real UI file formats (Rome 2+).
+This format is a bit fake, as these are `.cml` (Component Model List) files just being in same folder and with similar-looking headers, but otherwise unrelated, and appeared long after real UI file formats (Rome 2+).
 
 Format is:
 
@@ -69,13 +69,13 @@ Games currently in repository:
 * Napoleon
 * Shogun 2
 * Rome 2
+* Attila
 * Warhammer 1
 * Warhammer 2
 * 3 Kingdoms
+* Thrones
+* Troy
 
 Games currently missing:
 
-* Attila
-* Thrones
-* Troy
 * Warhammer 3
