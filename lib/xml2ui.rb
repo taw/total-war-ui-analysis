@@ -104,8 +104,15 @@ module XmlTagHandlers
   end
 
   def on_start_node_additional_data(attributes)
-    @ui.put_str attributes[:type]
-    [true, nil, {}]
+    type = attributes[:type]
+    if type == 'none'
+      @ui.put_no
+      [false, nil, {}]
+    else
+      @ui.put_yes
+      @ui.put_str type
+      [true, nil, {}]
+    end
   end
 
   def on_end_node_additional_data(attributes, buf, ctx)
@@ -123,6 +130,8 @@ module XmlTagHandlers
     effects
     children
     phases
+    table
+    row
   ].each do |m|
     # TODO: it would be better if count was actually automatically determined and didn't require hand checking
     OnStart[m] = :on_start_array_node
@@ -138,6 +147,7 @@ module XmlTagHandlers
     transition
     effect
     phase
+    col
   ].each do |m|
     OnStart[m] = :on_start_passthrough_node
     OnEnd[m]   = :on_end_passthrough_node

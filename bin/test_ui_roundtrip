@@ -22,24 +22,30 @@ todo = todo.select{|path|
   end
 }
 
-while true
-  path = todo.shift or break
-  version = path.read(10)[7,3]
-  game_name = path.dirname.basename.to_s
-  file_name = path.basename.to_s
+# In 4 threads
+cores = 4
+cores.times.map{|i|
+  Thread.new{
+    while true
+      path = todo.shift or break
+      version = path.read(10)[7,3]
+      game_name = path.dirname.basename.to_s
+      file_name = path.basename.to_s
 
-  output_path = output_dir + version + "#{game_name}-#{file_name}.xml"
-  recreated_path = Pathname("tmp/recreated") + version + "#{game_name}-#{file_name}"
+      output_path = output_dir + version + "#{game_name}-#{file_name}.xml"
+      recreated_path = Pathname("tmp/recreated") + version + "#{game_name}-#{file_name}"
 
-  next unless output_path.exist?
+      next unless output_path.exist?
 
-  recreated_path.parent.mkpath
-  ok = system %Q[#{converter_path} "#{output_path}" "#{recreated_path}"]
-  if !ok
-    puts "ERR:  #{path}"
-  elsif path.read == recreated_path.read
-    puts "OK:   #{path}"
-  else
-    puts "DIFF: #{path} #{output_path} #{recreated_path}"
-  end
-end
+      recreated_path.parent.mkpath
+      ok = system %Q[#{converter_path} "#{output_path}" "#{recreated_path}"]
+      if !ok
+        puts "ERR:  #{path}"
+      elsif path.read == recreated_path.read
+        puts "OK:   #{path}"
+      else
+        puts "DIFF: #{path} #{output_path} #{recreated_path}"
+      end
+    end
+  }
+}.map(&:join)

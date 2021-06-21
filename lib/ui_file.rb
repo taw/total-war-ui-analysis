@@ -395,12 +395,16 @@ class UiFile
             convert_bool! "mystery5"
           end
         elsif type == "Table"
-          get_u.times do
-            tag! "row" do
-              get_u.times do
-                tag! "col" do
-                  5.times do
-                    convert_flt! "data point"
+          row_count = get_u
+          tag! "table", count: row_count do
+            row_count.times do
+              col_count = get_u
+              tag! "row", count: col_count do
+                col_count.times do
+                  tag! "col" do
+                    5.times do
+                      convert_flt! "data point"
+                    end
                   end
                 end
               end
