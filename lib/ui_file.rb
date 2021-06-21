@@ -345,31 +345,25 @@ class UiFile
       convert_s! "template"
 
       if @version >= 44
-        out_ofs! "Version 44 weird stuff"
+        out_ofs! "Version 44+ mystery section"
         flag = get_bool
         if flag
           out! "<yes/><!-- optional section -->"
           convert_s! "name"
-          raise "FIXME, HEXDUMP"
+          count = get_u
+          out!("<i>#{count}</i><!-- count data points -->") # generallly 0-5
+          count.times do
+            convert_i! "data point"
+          end
+          convert_i! "mystery1"     # generally -2 to 5, but one 130
+          convert_i! "mystery2"     # generally 0-2
+          convert_bool! "mystery3"  # generally 0 (bool?)
+          convert_i! "mystery4"     # generally 1-10
+          convert_bool! "mystery5"  # generally 0 or 1 (bool?)
         else
           out! "<no/><!-- optional section -->"
         end
       end
-
-      #   self.flag5 = handle.readByte()
-      #   if self.flag5 != 0:
-      #     # This decoding works only sometimes
-      #     flag5_name = handle.readASCII()
-      #     flag5_count = handle.readInt()
-      #     self.flag5data = {
-      #         "name": flag5_name,
-      #         "data": map(int, list(handle.readInt() for i in range(flag5_count))),
-      #         "i1": handle.readInt(),
-      #         "i2": handle.readInt(),
-      #         "f1": handle.readByte(),
-      #         "i3": handle.readInt(),
-      #         "f2": handle.readByte(),
-      #     }
 
       if @version >= 49
         convert_s!
