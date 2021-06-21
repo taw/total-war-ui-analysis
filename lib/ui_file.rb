@@ -95,6 +95,16 @@ class UiFile
     end
   end
 
+  def convert_ix!(comment=nil)
+    v = get_i
+    hex = @data[@ofs-4,4].bytes.map{|x| "%02x" % x }.join(":")
+    if comment
+      out! "<i>#{v}</i><!-- #{hex} --><!-- #{comment} -->"
+    else
+      out! "<i>#{v}</i><!-- #{hex} -->"
+    end
+  end
+
   def convert_byte!(comment=nil)
     if comment
       out! "<byte>#{get_u1}</byte><!-- #{comment} -->"
@@ -176,7 +186,7 @@ class UiFile
           convert_unicode! "localization id"
           convert_unicode! "tooltip id"
           convert_s! "font"
-          out_ofs!
+          out_ofs! "font done"
           convert_i!
           convert_i!
           convert_u!
@@ -200,16 +210,17 @@ class UiFile
           convert_i!
           convert_i!
 
+          out_ofs! "state description start"
           convert_s! "state description"
           convert_s! "event text"
-
+          out_ofs! "image uses start"
           convert_image_uses!
 
           if @version >= 26 # ???
             convert_i!
             convert_i!
           end
-
+          out_ofs! "transitions start"
           convert_transitions!
         end
       end
@@ -381,32 +392,37 @@ class UiFile
       count.times do
         tag! "effect" do
           convert_s! "name"
-          out_ofs! "i don't believe this is u2"
           convert_bool!
           convert_bool!
-          out_ofs! "effect data"
-          raise "Effects present"
+          phases_count = get_u
+          tag! "phases", count: phases_count do
+            phases_count.times do
+              out_ofs! "phase data"
+              tag! "phase" do
+                11.times do
+                  convert_ix!
+                end
+                if @version >= 50
+                  out! "<!-- extra 3 -->"
+                  convert_ix!
+                  convert_ix!
+                  convert_ix!
+                end
+                v = get_i
+                out! "<i>#{v}</i><!-- include optional extra phase details? -->"
+                if v != 0
+                  out_ofs! "optional phase details"
+                  convert_ix!
+                  convert_s!
+                  convert_s!
+                end
+              end
+            end
+          end
         end
       end
     end
-    # Data is mix of ints and floats actually
-    # def readFrom(self, handle):
-    #     self.name = handle.readASCII()
-    #     self.flag = handle.readShort()
-    #     phase_count = handle.readInt()
-    #     for i in range(phase_count):
-    #         phase = []
-    #         phase.append(handle.readFloat())
-    #         phase.append(handle.readFloat())
-    #         # This changes between versions
-    #         # It also seems that some Version039 files have 15-size not 12-size phases ???s
-    #         if self.version >= 50:
-    #             for j in range(13):
-    #                 phase.append(handle.readInt())
-    #         else:
-    #             for j in range(10):
-    #                 phase.append(handle.readInt())
-    #         self.phases.append(phase)
+    out_ofs! "effects end"
   end
 
   def convert_event_list!
@@ -428,7 +444,7 @@ class UiFile
       convert_uientry!
       if bytes_left > 0
         out! "<todo>#{bytes_left} bytes</todo>"
-        binding.pry
+        raise "TODO"
       end
     end
   end
