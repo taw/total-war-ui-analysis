@@ -1446,11 +1446,11 @@
                     <unicode></unicode><!-- tooltip text -->
                     <i>0</i>
                     <no />
-                    <s>local this = UIComponent(Address)
-local scroll = UIComponent(this:Parent(&quot;diplomatic_relations&quot;))
-
-function OnLClickUp()
-	scroll:LuaCall(&quot;ToggleAttitude&quot;)
+                    <s>local this = UIComponent(Address)&#xD;
+local scroll = UIComponent(this:Parent(&quot;diplomatic_relations&quot;))&#xD;
+&#xD;
+function OnLClickUp()&#xD;
+	scroll:LuaCall(&quot;ToggleAttitude&quot;)&#xD;
 end</s><!-- script -->
                     <images count="2">
                       <image>
@@ -1791,12 +1791,12 @@ end</s><!-- script -->
                     <unicode></unicode><!-- tooltip text -->
                     <i>0</i>
                     <no />
-                    <s>local this = UIComponent(Address)
-local scroll = UIComponent(this:Parent(&quot;diplomatic_relations&quot;))
-
-function OnLClickUp()
-	scroll:LuaCall(&quot;ToggleAttitude&quot;)
-end
+                    <s>local this = UIComponent(Address)&#xD;
+local scroll = UIComponent(this:Parent(&quot;diplomatic_relations&quot;))&#xD;
+&#xD;
+function OnLClickUp()&#xD;
+	scroll:LuaCall(&quot;ToggleAttitude&quot;)&#xD;
+end&#xD;
 </s><!-- script -->
                     <images count="2">
                       <image>
@@ -2217,8 +2217,8 @@ end
                     <unicode></unicode><!-- tooltip text -->
                     <i>0</i>
                     <no />
-                    <s>function Layout()
-	-- This function doesn&apos;t need to do anything it just needs to exist to have the desired functionality
+                    <s>function Layout()&#xD;
+	-- This function doesn&apos;t need to do anything it just needs to exist to have the desired functionality&#xD;
 end</s><!-- script -->
                     <images count="1">
                       <image>
@@ -2963,8 +2963,8 @@ end</s><!-- script -->
                     <unicode></unicode><!-- tooltip text -->
                     <i>0</i>
                     <no />
-                    <s>function Layout()
-	-- This function doesn&apos;t need to do anything it just needs to exist to have the desired functionality
+                    <s>function Layout()&#xD;
+	-- This function doesn&apos;t need to do anything it just needs to exist to have the desired functionality&#xD;
 end</s><!-- script -->
                     <images count="1">
                       <image>
@@ -3413,8 +3413,8 @@ end</s><!-- script -->
                     <unicode></unicode><!-- tooltip text -->
                     <i>0</i>
                     <no />
-                    <s>function Layout()
-	-- This function doesn&apos;t need to do anything it just needs to exist to have the desired functionality
+                    <s>function Layout()&#xD;
+	-- This function doesn&apos;t need to do anything it just needs to exist to have the desired functionality&#xD;
 end</s><!-- script -->
                     <images count="1">
                       <image>
@@ -3863,8 +3863,8 @@ end</s><!-- script -->
                     <unicode></unicode><!-- tooltip text -->
                     <i>0</i>
                     <no />
-                    <s>function Layout()
-	-- This function doesn&apos;t need to do anything it just needs to exist to have the desired functionality
+                    <s>function Layout()&#xD;
+	-- This function doesn&apos;t need to do anything it just needs to exist to have the desired functionality&#xD;
 end</s><!-- script -->
                     <images count="1">
                       <image>
@@ -11179,40 +11179,40 @@ end</s><!-- script -->
                                 <unicode></unicode><!-- tooltip text -->
                                 <i>0</i>
                                 <no />
-                                <s>local this = UIComponent(Address)
-local parent = UIComponent(this:Parent(&quot;diplomatic_relations&quot;))
-
-sort_columns = { }
-
-function OnMouseLClickUp()
-	parent:LuaCall( &quot;SetDisplayedFaction&quot;, this:GetProperty( &quot;Faction&quot; ) )
-end
-
-function Initialise( name, attitude )
-	sort_columns = { name, attitude }
-end
-
-function LessThan(c, column)
-	-- If the sort column is equal to the rhs value then use column 0 (the name)
-	local rhs_value = UIComponent(c):GlobalExists(&quot;sort_columns&quot;)[column+1]
-	return (column ~= 0 and sort_columns[column+1] == rhs_value) and sort_columns[1] &lt; UIComponent(c):GlobalExists(&quot;sort_columns&quot;)[1] or sort_columns[column+1] &lt; rhs_value
-end
-
-function OnMouseOn()
-	if (this:CurrentState() == &quot;A_normal&quot;) then
-		this:SetState(&quot;A_roll&quot;)
-	elseif (this:CurrentState() == &quot;B_normal&quot;) then
-		this:SetState(&quot;B_roll&quot;)
-	end
-end
-
-function OnMouseOff()
-	if (this:CurrentState() == &quot;A_roll&quot;) then
-		this:SetState(&quot;A_normal&quot;)
-	elseif (this:CurrentState() == &quot;B_roll&quot;) then
-		this:SetState(&quot;B_normal&quot;)
-	end
-end
+                                <s>local this = UIComponent(Address)&#xD;
+local parent = UIComponent(this:Parent(&quot;diplomatic_relations&quot;))&#xD;
+&#xD;
+sort_columns = { }&#xD;
+&#xD;
+function OnMouseLClickUp()&#xD;
+	parent:LuaCall( &quot;SetDisplayedFaction&quot;, this:GetProperty( &quot;Faction&quot; ) )&#xD;
+end&#xD;
+&#xD;
+function Initialise( name, attitude )&#xD;
+	sort_columns = { name, attitude }&#xD;
+end&#xD;
+&#xD;
+function LessThan(c, column)&#xD;
+	-- If the sort column is equal to the rhs value then use column 0 (the name)&#xD;
+	local rhs_value = UIComponent(c):GlobalExists(&quot;sort_columns&quot;)[column+1]&#xD;
+	return (column ~= 0 and sort_columns[column+1] == rhs_value) and sort_columns[1] &lt; UIComponent(c):GlobalExists(&quot;sort_columns&quot;)[1] or sort_columns[column+1] &lt; rhs_value&#xD;
+end&#xD;
+&#xD;
+function OnMouseOn()&#xD;
+	if (this:CurrentState() == &quot;A_normal&quot;) then&#xD;
+		this:SetState(&quot;A_roll&quot;)&#xD;
+	elseif (this:CurrentState() == &quot;B_normal&quot;) then&#xD;
+		this:SetState(&quot;B_roll&quot;)&#xD;
+	end&#xD;
+end&#xD;
+&#xD;
+function OnMouseOff()&#xD;
+	if (this:CurrentState() == &quot;A_roll&quot;) then&#xD;
+		this:SetState(&quot;A_normal&quot;)&#xD;
+	elseif (this:CurrentState() == &quot;B_roll&quot;) then&#xD;
+		this:SetState(&quot;B_normal&quot;)&#xD;
+	end&#xD;
+end&#xD;
 </s><!-- script -->
                                 <images count="3">
                                   <image>

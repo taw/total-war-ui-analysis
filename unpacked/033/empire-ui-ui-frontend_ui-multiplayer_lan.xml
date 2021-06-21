@@ -17,22 +17,22 @@
     <unicode></unicode><!-- tooltip text -->
     <i>0</i>
     <no />
-    <s>local this = UIComponent(Address)
- 
-function ShowMenu(menu)
-    this:PropagateVisibility(false)
-    this:SetVisible(true)
- 
-    Component.Call(menu..&quot;.PropogateVisibility&quot;, true)
-end
-
-local this = UIComponent(Address)
- 
-function HideMenu(menu)
-    this:PropagateVisibility(false)
-    this:SetVisible(true)
- 
-    Component.Call(menu..&quot;.PropogateVisibility&quot;, true)
+    <s>local this = UIComponent(Address)&#xD;
+ &#xD;
+function ShowMenu(menu)&#xD;
+    this:PropagateVisibility(false)&#xD;
+    this:SetVisible(true)&#xD;
+ &#xD;
+    Component.Call(menu..&quot;.PropogateVisibility&quot;, true)&#xD;
+end&#xD;
+&#xD;
+local this = UIComponent(Address)&#xD;
+ &#xD;
+function HideMenu(menu)&#xD;
+    this:PropagateVisibility(false)&#xD;
+    this:SetVisible(true)&#xD;
+ &#xD;
+    Component.Call(menu..&quot;.PropogateVisibility&quot;, true)&#xD;
 end</s><!-- script -->
     <images count="1">
       <image>
@@ -711,11 +711,11 @@ end</s><!-- script -->
                 <unicode>button_back_Tooltip_180029</unicode><!-- tooltip text -->
                 <i>0</i>
                 <no />
-                <s>function OnSelect()
-	local this = UIComponent(Address)
-	local p = UIComponent(this:Parent(&quot;multiplayer_lan&quot;))
-	
-	p:LuaCall(&quot;TransitionBack&quot;)
+                <s>function OnSelect()&#xD;
+	local this = UIComponent(Address)&#xD;
+	local p = UIComponent(this:Parent(&quot;multiplayer_lan&quot;))&#xD;
+	&#xD;
+	p:LuaCall(&quot;TransitionBack&quot;)&#xD;
 end</s><!-- script -->
                 <images count="4">
                   <image>
@@ -1500,109 +1500,109 @@ end</s><!-- script -->
                                 <unicode></unicode><!-- tooltip text -->
                                 <i>0</i>
                                 <no />
-                                <s>
-utils = require &quot;Utilities&quot;
-
-local min = Component.GetProperty(&quot;minValue&quot;)
-local max = Component.GetProperty(&quot;maxValue&quot;)
-local width = Component.Call(&quot;Height&quot;) - Component.Call(&quot;handle.Height&quot;)
-local scale = 1
-local prev_value = min - 1
-
-function Reset()
-	min = Component.GetProperty(&quot;minValue&quot;)
-	max = Component.GetProperty(&quot;maxValue&quot;)
-	if max - min &gt; 0 then
-		scale = width / (max - min)
-	else
-		scale = 0
-	end
-	
-	Component.Call(&quot;handle.LuaCall&quot;, &quot;Reset&quot;)
-end
-
-function InitState()
-	Update()
-end
-
-function ValueSet( value )
-
-	Component.SetProperty( &quot;Value&quot;, utils.RoundToInt( value ) )
-	Update()
-end
-
-function ValueGet()
-
-	return utils.RoundToInt(Component.GetProperty(&quot;Value&quot;))
-
-end
-
-function Update()
-
-	local value = utils.RoundToInt(Component.GetProperty(&quot;Value&quot;))
-	
-	if (value &lt; min) then
-		value = min
-	else
-		if (value &gt; max) then
-			value = max
-		end
-	end
-	Component.SetProperty(&quot;Value&quot;, value)
-	
-	handleX, handleY = Component.Call(&quot;handle.Position&quot;)
-	ourX, ourY = Component.Call(&quot;Position&quot;)
-	
-	handleY = utils.RoundToInt(scale * value)
-	
-	Component.Call(&quot;handle.MoveTo&quot;, handleX, ourY + handleY)
-	
-	if prev_value ~= value then
-		prev_value = value
-		notify = Component.GetProperty(&quot;Notify&quot;)
-		if notify ~= nil then
-			Component.CallByAddress(notify, &quot;LuaCall&quot;, &quot;Notify&quot;, Address, value)
-		end
-	end	
-	
-	--[[
-	local value = Component.GetProperty(&quot;Value&quot;)
-	if (value &lt; min) then
-		value = min
-	else
-		if (value &gt; max) then
-			value = max
-		end
-	end
-	Component.SetProperty(&quot;Value&quot;, value)
-	
-	handleX, handleY = Component.Call(&quot;handle.Position&quot;)
-	ourX, ourY = Component.Call(&quot;Position&quot;)
-	
-	handleY = scale * value
-	
-	Component.Call(&quot;handle.MoveTo&quot;, handleX, ourY + handleY)
-
-	out.shane( &quot;Updating VSlider: Prev value &quot;..prev_value..&quot;, New value &quot;..value )
-
-	if prev_value ~= value then
-		prev_value = value
-		notify = Component.GetProperty(&quot;Notify&quot;)
-		if notify ~= nil then
-
-			out.shane( &quot;Notifying&quot; )
-			Component.CallByAddress(notify, &quot;LuaCall&quot;, &quot;Notify&quot;)
-
-		end
-	end	
-	--]]
-	
-	
-end
-
-function Layout(children)
-	Update()
-end
+                                <s>&#xD;
+utils = require &quot;Utilities&quot;&#xD;
+&#xD;
+local min = Component.GetProperty(&quot;minValue&quot;)&#xD;
+local max = Component.GetProperty(&quot;maxValue&quot;)&#xD;
+local width = Component.Call(&quot;Height&quot;) - Component.Call(&quot;handle.Height&quot;)&#xD;
+local scale = 1&#xD;
+local prev_value = min - 1&#xD;
+&#xD;
+function Reset()&#xD;
+	min = Component.GetProperty(&quot;minValue&quot;)&#xD;
+	max = Component.GetProperty(&quot;maxValue&quot;)&#xD;
+	if max - min &gt; 0 then&#xD;
+		scale = width / (max - min)&#xD;
+	else&#xD;
+		scale = 0&#xD;
+	end&#xD;
+	&#xD;
+	Component.Call(&quot;handle.LuaCall&quot;, &quot;Reset&quot;)&#xD;
+end&#xD;
+&#xD;
+function InitState()&#xD;
+	Update()&#xD;
+end&#xD;
+&#xD;
+function ValueSet( value )&#xD;
+&#xD;
+	Component.SetProperty( &quot;Value&quot;, utils.RoundToInt( value ) )&#xD;
+	Update()&#xD;
+end&#xD;
+&#xD;
+function ValueGet()&#xD;
+&#xD;
+	return utils.RoundToInt(Component.GetProperty(&quot;Value&quot;))&#xD;
+&#xD;
+end&#xD;
+&#xD;
+function Update()&#xD;
+&#xD;
+	local value = utils.RoundToInt(Component.GetProperty(&quot;Value&quot;))&#xD;
+	&#xD;
+	if (value &lt; min) then&#xD;
+		value = min&#xD;
+	else&#xD;
+		if (value &gt; max) then&#xD;
+			value = max&#xD;
+		end&#xD;
+	end&#xD;
+	Component.SetProperty(&quot;Value&quot;, value)&#xD;
+	&#xD;
+	handleX, handleY = Component.Call(&quot;handle.Position&quot;)&#xD;
+	ourX, ourY = Component.Call(&quot;Position&quot;)&#xD;
+	&#xD;
+	handleY = utils.RoundToInt(scale * value)&#xD;
+	&#xD;
+	Component.Call(&quot;handle.MoveTo&quot;, handleX, ourY + handleY)&#xD;
+	&#xD;
+	if prev_value ~= value then&#xD;
+		prev_value = value&#xD;
+		notify = Component.GetProperty(&quot;Notify&quot;)&#xD;
+		if notify ~= nil then&#xD;
+			Component.CallByAddress(notify, &quot;LuaCall&quot;, &quot;Notify&quot;, Address, value)&#xD;
+		end&#xD;
+	end	&#xD;
+	&#xD;
+	--[[&#xD;
+	local value = Component.GetProperty(&quot;Value&quot;)&#xD;
+	if (value &lt; min) then&#xD;
+		value = min&#xD;
+	else&#xD;
+		if (value &gt; max) then&#xD;
+			value = max&#xD;
+		end&#xD;
+	end&#xD;
+	Component.SetProperty(&quot;Value&quot;, value)&#xD;
+	&#xD;
+	handleX, handleY = Component.Call(&quot;handle.Position&quot;)&#xD;
+	ourX, ourY = Component.Call(&quot;Position&quot;)&#xD;
+	&#xD;
+	handleY = scale * value&#xD;
+	&#xD;
+	Component.Call(&quot;handle.MoveTo&quot;, handleX, ourY + handleY)&#xD;
+&#xD;
+	out.shane( &quot;Updating VSlider: Prev value &quot;..prev_value..&quot;, New value &quot;..value )&#xD;
+&#xD;
+	if prev_value ~= value then&#xD;
+		prev_value = value&#xD;
+		notify = Component.GetProperty(&quot;Notify&quot;)&#xD;
+		if notify ~= nil then&#xD;
+&#xD;
+			out.shane( &quot;Notifying&quot; )&#xD;
+			Component.CallByAddress(notify, &quot;LuaCall&quot;, &quot;Notify&quot;)&#xD;
+&#xD;
+		end&#xD;
+	end	&#xD;
+	--]]&#xD;
+	&#xD;
+	&#xD;
+end&#xD;
+&#xD;
+function Layout(children)&#xD;
+	Update()&#xD;
+end&#xD;
 </s><!-- script -->
                                 <images count="1">
                                   <image>
@@ -1716,10 +1716,10 @@ end
                                     <unicode></unicode><!-- tooltip text -->
                                     <i>2</i>
                                     <no />
-                                    <s>function UpdateSlider()
-	local value = Component.GetProperty(&quot;Parent.Value&quot;) - Component.GetProperty(&quot;stepSize&quot;)
-	Component.SetProperty(&quot;Parent.Value&quot;, value)
-	Component.Call(&quot;Parent.LuaCall&quot;, &quot;Update&quot;)
+                                    <s>function UpdateSlider()&#xD;
+	local value = Component.GetProperty(&quot;Parent.Value&quot;) - Component.GetProperty(&quot;stepSize&quot;)&#xD;
+	Component.SetProperty(&quot;Parent.Value&quot;, value)&#xD;
+	Component.Call(&quot;Parent.LuaCall&quot;, &quot;Update&quot;)&#xD;
 end</s><!-- script -->
                                     <images count="1">
                                       <image>
@@ -1832,10 +1832,10 @@ end</s><!-- script -->
                                     <unicode></unicode><!-- tooltip text -->
                                     <i>8</i>
                                     <no />
-                                    <s>function UpdateSlider()
-	local value = Component.GetProperty(&quot;Parent.Value&quot;) + Component.GetProperty(&quot;stepSize&quot;)
-	Component.SetProperty(&quot;Parent.Value&quot;, value)
-	Component.Call(&quot;Parent.LuaCall&quot;, &quot;Update&quot;)
+                                    <s>function UpdateSlider()&#xD;
+	local value = Component.GetProperty(&quot;Parent.Value&quot;) + Component.GetProperty(&quot;stepSize&quot;)&#xD;
+	Component.SetProperty(&quot;Parent.Value&quot;, value)&#xD;
+	Component.Call(&quot;Parent.LuaCall&quot;, &quot;Update&quot;)&#xD;
 end</s><!-- script -->
                                     <images count="1">
                                       <image>
@@ -1948,43 +1948,43 @@ end</s><!-- script -->
                                     <unicode></unicode><!-- tooltip text -->
                                     <i>0</i>
                                     <no />
-                                    <s>
-local origX, origY = Component.Call(&quot;Position&quot;)
-local sliderLength = Component.Call(&quot;Parent.Height&quot;) - Component.Call(&quot;Height&quot;)
-local sliderMin = Component.GetProperty(&quot;Parent.minValue&quot;)
-local sliderMax = Component.GetProperty(&quot;Parent.maxValue&quot;)
-
-function Reset()
-	sliderMin = Component.GetProperty(&quot;Parent.minValue&quot;)
-	sliderMax = Component.GetProperty(&quot;Parent.maxValue&quot;)
-
-	origX, origY = Component.Call(&quot;Position&quot;)
-end
-
-function HandleMove()
-	local unused, newY = Component.Call(&quot;Position&quot;)
-	local sliderX, sliderY = Component.Call(&quot;Parent.Position&quot;)
-
-	if (newY &lt; sliderY) then
-		newY = sliderY		
-	else
-		if (newY &gt; sliderY + sliderLength) then
-			newY = sliderY + sliderLength
-		end
-	end
-	Component.Call(&quot;MoveTo&quot;, origX, newY)
-	
-	local value = (sliderMax - sliderMin) * ((newY - sliderY) / sliderLength)
-	Component.SetProperty(&quot;Parent.Value&quot;, value)
-	
-	Component.Call(&quot;Parent.LuaCall&quot;, &quot;Update&quot;)	
-end
-
-function LimitHandle(newX, newY)
-	x,y = Component.Call(&quot;Position&quot;)
-	
-	return x, newY
-end
+                                    <s>&#xD;
+local origX, origY = Component.Call(&quot;Position&quot;)&#xD;
+local sliderLength = Component.Call(&quot;Parent.Height&quot;) - Component.Call(&quot;Height&quot;)&#xD;
+local sliderMin = Component.GetProperty(&quot;Parent.minValue&quot;)&#xD;
+local sliderMax = Component.GetProperty(&quot;Parent.maxValue&quot;)&#xD;
+&#xD;
+function Reset()&#xD;
+	sliderMin = Component.GetProperty(&quot;Parent.minValue&quot;)&#xD;
+	sliderMax = Component.GetProperty(&quot;Parent.maxValue&quot;)&#xD;
+&#xD;
+	origX, origY = Component.Call(&quot;Position&quot;)&#xD;
+end&#xD;
+&#xD;
+function HandleMove()&#xD;
+	local unused, newY = Component.Call(&quot;Position&quot;)&#xD;
+	local sliderX, sliderY = Component.Call(&quot;Parent.Position&quot;)&#xD;
+&#xD;
+	if (newY &lt; sliderY) then&#xD;
+		newY = sliderY		&#xD;
+	else&#xD;
+		if (newY &gt; sliderY + sliderLength) then&#xD;
+			newY = sliderY + sliderLength&#xD;
+		end&#xD;
+	end&#xD;
+	Component.Call(&quot;MoveTo&quot;, origX, newY)&#xD;
+	&#xD;
+	local value = (sliderMax - sliderMin) * ((newY - sliderY) / sliderLength)&#xD;
+	Component.SetProperty(&quot;Parent.Value&quot;, value)&#xD;
+	&#xD;
+	Component.Call(&quot;Parent.LuaCall&quot;, &quot;Update&quot;)	&#xD;
+end&#xD;
+&#xD;
+function LimitHandle(newX, newY)&#xD;
+	x,y = Component.Call(&quot;Position&quot;)&#xD;
+	&#xD;
+	return x, newY&#xD;
+end&#xD;
 </s><!-- script -->
                                     <images count="1">
                                       <image>
@@ -10748,11 +10748,11 @@ end
                                     <unicode></unicode><!-- tooltip text -->
                                     <i>0</i>
                                     <no />
-                                    <s>local parent = UIComponent(UIComponent(Address):Parent(3))
-
-
-function OnSelect()
-	parent:LuaCall(&quot;SelectOption&quot;, Address)
+                                    <s>local parent = UIComponent(UIComponent(Address):Parent(3))&#xD;
+&#xD;
+&#xD;
+function OnSelect()&#xD;
+	parent:LuaCall(&quot;SelectOption&quot;, Address)&#xD;
 end</s><!-- script -->
                                     <images count="5">
                                       <image>
@@ -11520,13 +11520,13 @@ end</s><!-- script -->
                         <unicode></unicode><!-- tooltip text -->
                         <i>0</i>
                         <no />
-                        <s>local this 		= UIComponent(Address)
-local parent 	= UIComponent(this:Parent())
-local textfield 	= UIComponent(this:Find(&quot;text_field&quot;))
-
-function OnSelect()
-	local txt = textfield:LuaCall(&quot;Value&quot;)
-	parent:LuaCall(&quot;SearchForGame&quot;, txt)
+                        <s>local this 		= UIComponent(Address)&#xD;
+local parent 	= UIComponent(this:Parent())&#xD;
+local textfield 	= UIComponent(this:Find(&quot;text_field&quot;))&#xD;
+&#xD;
+function OnSelect()&#xD;
+	local txt = textfield:LuaCall(&quot;Value&quot;)&#xD;
+	parent:LuaCall(&quot;SearchForGame&quot;, txt)&#xD;
 end</s><!-- script -->
                         <images count="8">
                           <image>
