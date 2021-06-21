@@ -11,8 +11,8 @@ end
 class String
   # Escape characters for output as XML attribute values (< > & ' ")
   def xml_escape
-    replacements = {"<" => "&lt;", ">" => "&gt;", "&" => "&amp;", "\"" => "&quot;", "'" => "&apos;"}
-    b.gsub(/([<>&\'\"])/) { replacements[$1] }
+    replacements = {"<" => "&lt;", ">" => "&gt;", "&" => "&amp;", "\"" => "&quot;", "'" => "&apos;", "\r" => "&#xD;"}
+    b.gsub(/([<>&\'\"\r])/) { replacements[$1] }
   end
 end
 

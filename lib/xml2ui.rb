@@ -188,6 +188,10 @@ class Xml2Ui < Nokogiri::XML::SAX::Document
     send(OnEnd[name], attrs, buf, ctx)
   end
 
+  def error(str)
+    raise "XML parse error: #{str}"
+  end
+
   def characters(chars)
     if buf = @stack[-1][2]
       buf << chars
