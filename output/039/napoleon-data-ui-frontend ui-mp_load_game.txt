@@ -1,15 +1,17 @@
 000000-000009 VersionBlock 39
 000010-000013 RootIDBlock 288745320
 000014-000019 StringBlock "root"
-000020-000053 DataBlock
-  ................ 00 00 00 00 00 00 00 00 01 01 00 01 00 00 00 00
-  ..............H. 00 ff ff ff ff 00 00 00 00 00 00 00 00 00 48 0b
-  ,.               2c 11
+000020-000023 XOffsetBlock 0
+000024-000027 YOffsetBlock 0
+000028-000053 DataBlock
+  ................ 01 01 00 01 00 00 00 00 00 ff ff ff ff 00 00 00
+  ......H.,.       00 00 00 00 00 00 48 0b 2c 11
 000054-000241 StringBlock "local this = UIComponent(Address)\n \nfunction ShowMenu(name)\n\tfor i = 0, this:ChildCount() - 1 do\n\t\tlocal child = UIComponent(this:Find(i))\n\t\tchild:SetVisible(child:Id() == name)\n\tend\nend"
-000242-000279 DataBlock
+000242-000275 DataBlock
   ................ 01 00 00 00 d8 ca 8f 12 00 00 00 05 00 00 c0 03
   ..4&............ 00 00 34 26 1b ff 00 00 00 00 00 00 00 00 01 00
-  ..H.,.           00 00 48 0b 2c 11
+  ..               00 00
+000276-000279 StateIDBlock 288099144
 000280-000289 NewStateBlock "NewState"
 000290-000293 XSizeBlock 1280
 000294-000297 YSizeBlock 960
@@ -35,10 +37,11 @@
 000511-000525 DataBlock
   ...............  00 00 00 00 ff ff ff ff 01 01 00 01 01 00 00
 000526-000539 StringBlock "sp_load_game"
-000540-000578 DataBlock
+000540-000574 DataBlock
   ..............\. ff ff ff ff 00 00 00 00 05 00 00 00 00 a8 5c 90
   ................ 12 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01
-  ....\..          00 00 00 a8 5c 90 12
+  ...              00 00 00
+000575-000578 StateIDBlock 311450792
 000579-000588 NewStateBlock "NewState"
 000589-000592 XSizeBlock 1280
 000593-000596 YSizeBlock 961
@@ -73,11 +76,13 @@
   001036-001098 ImageBlock id=311436128 xsize=48 ysize=48 path="UI/FrontEnd UI\\Skins\\button_left_down_off.tga" unknown=4294967295
   001099-001161 ImageBlock id=310178000 xsize=48 ysize=48 path="UI/FrontEnd UI\\Skins\\button_left_inactive.tga" unknown=4294967295
   001162-001220 ImageBlock id=311723032 xsize=48 ysize=48 path="UI/FrontEnd UI\\Skins\\button_left_roll.tga" unknown=4294967295
-001221-001281 DataBlock
+001221-001236 DataBlock
   ..............}. 00 00 00 00 00 00 00 00 05 00 00 00 f8 d9 7d 12
-  ..normal0...0... 06 00 6e 6f 72 6d 61 6c 30 00 00 00 30 00 00 00
-  ................ 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00
-  .............    01 00 00 00 01 00 00 00 00 00 00 00 00
+001237-001244 StringBlock "normal"
+001245-001281 DataBlock
+  0...0........... 30 00 00 00 30 00 00 00 00 00 00 00 00 00 00 00
+  ................ 02 00 00 00 00 00 00 00 01 00 00 00 01 00 00 00
+  .....            00 00 00 00 00
 001282-001300 FontNameBlock "Ingame 12, Normal"
 001301-001327 DataBlock
   ................ 02 00 00 00 01 00 00 00 ff 00 00 00 00 00 00 00
@@ -187,11 +192,15 @@
 002481-002598 ImageListBlock 2 elements:
   002485-002541 ImageBlock id=311391832 xsize=571 ysize=77 path="UI/FrontEnd UI\\Skins\\heading_center.tga" unknown=4294967295
   002542-002598 ImageBlock id=311392200 xsize=17 ysize=77 path="UI/FrontEnd UI\\Skins\\heading_corner.tga" unknown=4294967295
-002599-002661 DataBlock
-  .............o.. 00 00 00 00 00 00 00 00 01 00 00 00 c8 6f 8f 12
-  ..NewStatem...M. 08 00 4e 65 77 53 74 61 74 65 6d 01 00 00 4d 00
-  ................ 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00
-  ...............  00 00 01 00 00 00 01 00 00 00 00 00 00 00 00
+002599-002610 DataBlock
+  ............     00 00 00 00 00 00 00 00 01 00 00 00
+002611-002614 StateIDBlock 311390152
+002615-002624 NewStateBlock "NewState"
+002625-002628 XSizeBlock 365
+002629-002632 YSizeBlock 77
+002633-002661 DataBlock
+  ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
+  .............    01 00 00 00 01 00 00 00 00 00 00 00 00
 002662-002680 FontNameBlock "Ingame 12, Normal"
 002681-002707 DataBlock
   ................ 02 00 00 00 01 00 00 00 ff 00 00 00 00 00 00 00
@@ -225,11 +234,15 @@
   ...              12 00 00
 002980-003036 ImageListBlock 1 elements:
   002984-003036 ImageBlock id=311382328 xsize=14 ysize=69 path="UI/FrontEnd UI\\Skins\\chain_left.tga" unknown=4294967295
-003037-003099 DataBlock
-  ............ R.. 00 00 00 00 00 00 00 00 01 00 00 00 20 52 8f 12
-  ..NewState....E. 08 00 4e 65 77 53 74 61 74 65 0e 00 00 00 45 00
-  ................ 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00
-  ...............  00 00 01 00 00 00 01 00 00 00 00 00 00 00 00
+003037-003048 DataBlock
+  ............     00 00 00 00 00 00 00 00 01 00 00 00
+003049-003052 StateIDBlock 311382560
+003053-003062 NewStateBlock "NewState"
+003063-003066 XSizeBlock 14
+003067-003070 YSizeBlock 69
+003071-003099 DataBlock
+  ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
+  .............    01 00 00 00 01 00 00 00 00 00 00 00 00
 003100-003118 FontNameBlock "Ingame 12, Normal"
 003119-003145 DataBlock
   ................ 02 00 00 00 01 00 00 00 ff 00 00 00 00 00 00 00
@@ -256,11 +269,15 @@
   ...              12 00 00
 003332-003389 ImageListBlock 1 elements:
   003336-003389 ImageBlock id=311353776 xsize=15 ysize=69 path="UI/FrontEnd UI\\Skins\\chain_right.tga" unknown=4294967295
-003390-003452 DataBlock
-  ................ 00 00 00 00 00 00 00 00 01 00 00 00 d0 ac 97 12
-  ..NewState....E. 08 00 4e 65 77 53 74 61 74 65 0f 00 00 00 45 00
-  ................ 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00
-  ...............  00 00 01 00 00 00 01 00 00 00 00 00 00 00 00
+003390-003401 DataBlock
+  ............     00 00 00 00 00 00 00 00 01 00 00 00
+003402-003405 StateIDBlock 311930064
+003406-003415 NewStateBlock "NewState"
+003416-003419 XSizeBlock 15
+003420-003423 YSizeBlock 69
+003424-003452 DataBlock
+  ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
+  .............    01 00 00 00 01 00 00 00 00 00 00 00 00
 003453-003471 FontNameBlock "Ingame 12, Normal"
 003472-003498 DataBlock
   ................ 02 00 00 00 01 00 00 00 ff 00 00 00 00 00 00 00
@@ -282,10 +299,11 @@
 003638-003652 DataBlock
   ...............  11 00 00 00 11 00 00 00 01 01 00 01 00 00 00
 003653-003665 StringBlock "heading_txt"
-003666-003704 DataBlock
+003666-003700 DataBlock
   ..............\. ff ff ff ff 00 00 00 00 05 00 00 00 00 a0 5c 8f
   ................ 12 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01
-  ....\..          00 00 00 a0 5c 8f 12
+  ...              00 00 00
+003701-003704 StateIDBlock 311385248
 003705-003714 NewStateBlock "NewState"
 003715-003718 XSizeBlock 331
 003719-003722 YSizeBlock 43
@@ -315,10 +333,11 @@
 003997-004011 DataBlock
   ...............  00 00 00 00 a0 00 00 00 01 01 00 01 00 00 00
 004012-004023 StringBlock "main_panel"
-004024-004062 DataBlock
+004024-004058 DataBlock
   ...............l ff ff ff ff 00 00 00 00 00 00 00 00 00 90 96 6c
   ................ 12 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01
-  .....l.          00 00 00 90 96 6c 12
+  ...              00 00 00
+004059-004062 StateIDBlock 309106320
 004063-004072 NewStateBlock "NewState"
 004073-004076 XSizeBlock 1280
 004077-004080 YSizeBlock 590
@@ -351,11 +370,15 @@
   004475-004533 ImageBlock id=285220696 xsize=11 ysize=34 path="UI/FrontEnd UI\\Skins\\panel_corner_top.tga" unknown=4294967295
   004534-004593 ImageBlock id=285221072 xsize=11 ysize=1 path="UI/FrontEnd UI\\Skins\\panel_side_center.tga" unknown=4294967295
   004594-004652 ImageBlock id=311265728 xsize=1 ysize=34 path="UI/FrontEnd UI\\Skins\\panel_top_center.tga" unknown=4294967295
-004653-004715 DataBlock
-  ............8... 00 00 00 00 00 00 00 00 01 00 00 00 38 8b 8d 12
-  ..NewState,...9. 08 00 4e 65 77 53 74 61 74 65 2c 02 00 00 39 02
-  ................ 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00
-  ...............  00 00 01 00 00 00 01 00 00 00 00 00 00 00 00
+004653-004664 DataBlock
+  ............     00 00 00 00 00 00 00 00 01 00 00 00
+004665-004668 StateIDBlock 311266104
+004669-004678 NewStateBlock "NewState"
+004679-004682 XSizeBlock 556
+004683-004686 YSizeBlock 569
+004687-004715 DataBlock
+  ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
+  .............    01 00 00 00 01 00 00 00 00 00 00 00 00
 004716-004734 FontNameBlock "Ingame 12, Normal"
 004735-004761 DataBlock
   ................ 02 00 00 00 01 00 00 00 ff 00 00 00 00 00 00 00
@@ -412,9 +435,10 @@
   ....             ff ff ff ff
 005287-005578 UnicodeBlock "This section lists your games, turns played, date and time of saving.||You can sort them by name, turns and date by clicking on the column title."
 005579-005630 UnicodeBlock "heading_tx_Tooltip_200045"
-005631-005661 DataBlock
+005631-005657 DataBlock
   .......v........ 00 00 00 00 00 f8 d0 76 12 00 00 00 00 00 00 00
-  .............v.  00 00 00 00 00 00 00 01 00 00 00 f8 d0 76 12
+  ...........      00 00 00 00 00 00 00 01 00 00 00
+005658-005661 StateIDBlock 309776632
 005662-005671 NewStateBlock "NewState"
 005672-005675 XSizeBlock 532
 005676-005679 YSizeBlock 24
@@ -448,11 +472,15 @@
 005974-006087 ImageListBlock 2 elements:
   005978-006028 ImageBlock id=309778200 xsize=1 ysize=1 path="UI/FrontEnd UI\\Skins\\1x1black.tga" unknown=4294967295
   006029-006087 ImageBlock id=310905736 xsize=1 ysize=1 path="UI/FrontEnd UI\\Skins\\1x1_verydarkgrey.tga" unknown=4294967295
-006088-006150 DataBlock
-  ................ 00 00 00 00 00 00 00 00 01 00 00 00 f0 10 88 12
-  ..NewState...... 08 00 4e 65 77 53 74 61 74 65 1f 02 00 00 01 02
-  ................ 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00
-  ...............  00 00 01 00 00 00 01 00 00 00 00 00 00 00 00
+006088-006099 DataBlock
+  ............     00 00 00 00 00 00 00 00 01 00 00 00
+006100-006103 StateIDBlock 310907120
+006104-006113 NewStateBlock "NewState"
+006114-006117 XSizeBlock 543
+006118-006121 YSizeBlock 513
+006122-006150 DataBlock
+  ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
+  .............    01 00 00 00 01 00 00 00 00 00 00 00 00
 006151-006169 FontNameBlock "Ingame 12, Normal"
 006170-006196 DataBlock
   ................ 02 00 00 00 01 00 00 00 ff 00 00 00 00 00 00 00
@@ -481,10 +509,11 @@
 006420-006434 DataBlock
   ...............  00 00 00 00 00 00 00 00 01 00 00 01 00 00 00
 006435-006443 StringBlock "headers"
-006444-006482 DataBlock
+006444-006478 DataBlock
   .............8p. ff ff ff ff 00 00 00 00 00 00 00 00 00 38 70 85
   ................ 12 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01
-  ...8p..          00 00 00 38 70 85 12
+  ...              00 00 00
+006479-006482 StateIDBlock 310734904
 006483-006492 NewStateBlock "NewState"
 006493-006496 XSizeBlock 510
 006497-006500 YSizeBlock 30
@@ -516,12 +545,13 @@
   006823-006886 ImageBlock id=311066912 xsize=1 ysize=29 path="UI/FrontEnd UI\\Skins\\table_header_selected.tga" unknown=4294967295
   006887-006952 ImageBlock id=311067144 xsize=1 ysize=29 path="UI/FrontEnd UI\\Skins\\table_header_unselected.tga" unknown=4294967295
   006953-007012 ImageBlock id=311067376 xsize=1 ysize=29 path="UI/FrontEnd UI\\Skins\\table_header_roll.tga" unknown=4294967295
-007013-007078 DataBlock
+007013-007028 DataBlock
   ................ 00 00 00 00 00 00 00 00 05 00 00 00 d8 83 8a 12
-  ..selected_up... 0b 00 73 65 6c 65 63 74 65 64 5f 75 70 fa 00 00
-  ................ 00 1d 00 00 00 00 00 00 00 02 00 00 00 00 00 00
-  ................ 00 00 00 00 00 01 00 00 00 01 00 00 00 00 00 00
-  ..               00 00
+007029-007041 StringBlock "selected_up"
+007042-007078 DataBlock
+  ................ fa 00 00 00 1d 00 00 00 00 00 00 00 02 00 00 00
+  ................ 00 00 00 00 00 00 00 00 01 00 00 00 01 00 00 00
+  .....            00 00 00 00 00
 007079-007097 FontNameBlock "Ingame 12, Normal"
 007098-007124 DataBlock
   ................ 02 00 00 00 01 00 00 00 ff 00 00 00 00 00 00 00
@@ -633,10 +663,11 @@
 008288-008302 DataBlock
   ...............  00 00 00 00 00 00 00 00 01 01 00 01 00 00 00
 008303-008314 StringBlock "button_txt"
-008315-008353 DataBlock
+008315-008349 DataBlock
   ...............k ff ff ff ff 00 00 00 00 08 00 00 00 00 88 c7 6b
   ................ 12 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01
-  .....k.          00 00 00 88 c7 6b 12
+  ...              00 00 00
+008350-008353 StateIDBlock 309053320
 008354-008363 NewStateBlock "NewState"
 008364-008367 XSizeBlock 250
 008368-008371 YSizeBlock 29
@@ -675,12 +706,13 @@
   008792-008855 ImageBlock id=310836816 xsize=1 ysize=29 path="UI/FrontEnd UI\\Skins\\table_header_selected.tga" unknown=4294967295
   008856-008921 ImageBlock id=310837048 xsize=1 ysize=29 path="UI/FrontEnd UI\\Skins\\table_header_unselected.tga" unknown=4294967295
   008922-008981 ImageBlock id=310837440 xsize=1 ysize=29 path="UI/FrontEnd UI\\Skins\\table_header_roll.tga" unknown=4294967295
-008982-009047 DataBlock
+008982-008997 DataBlock
   .............A.. 00 00 00 00 00 00 00 00 05 00 00 00 e8 41 98 12
-  ..selected_upP.. 0b 00 73 65 6c 65 63 74 65 64 5f 75 70 50 00 00
-  ................ 00 1d 00 00 00 00 00 00 00 02 00 00 00 00 00 00
-  ................ 00 00 00 00 00 01 00 00 00 01 00 00 00 00 00 00
-  ..               00 00
+008998-009010 StringBlock "selected_up"
+009011-009047 DataBlock
+  P............... 50 00 00 00 1d 00 00 00 00 00 00 00 02 00 00 00
+  ................ 00 00 00 00 00 00 00 00 01 00 00 00 01 00 00 00
+  .....            00 00 00 00 00
 009048-009066 FontNameBlock "Ingame 12, Normal"
 009067-009093 DataBlock
   ................ 02 00 00 00 01 00 00 00 ff 00 00 00 00 00 00 00
@@ -792,10 +824,11 @@
 010257-010271 DataBlock
   ...............  00 00 00 00 00 00 00 00 01 01 00 01 00 00 00
 010272-010283 StringBlock "button_txt"
-010284-010322 DataBlock
+010284-010318 DataBlock
   ...............} ff ff ff ff 00 00 00 00 08 00 00 00 00 98 1a 7d
   ................ 12 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01
-  .....}.          00 00 00 98 1a 7d 12
+  ...              00 00 00
+010319-010322 StateIDBlock 310188696
 010323-010332 NewStateBlock "NewState"
 010333-010336 XSizeBlock 80
 010337-010340 YSizeBlock 29
@@ -834,12 +867,13 @@
   010773-010836 ImageBlock id=310398776 xsize=1 ysize=29 path="UI/FrontEnd UI\\Skins\\table_header_selected.tga" unknown=4294967295
   010837-010902 ImageBlock id=310399008 xsize=1 ysize=29 path="UI/FrontEnd UI\\Skins\\table_header_unselected.tga" unknown=4294967295
   010903-010962 ImageBlock id=310399400 xsize=1 ysize=29 path="UI/FrontEnd UI\\Skins\\table_header_roll.tga" unknown=4294967295
-010963-011028 DataBlock
+010963-010978 DataBlock
   .............\.. 00 00 00 00 00 00 00 00 05 00 00 00 98 5c 92 12
-  ..selected_up... 0b 00 73 65 6c 65 63 74 65 64 5f 75 70 b4 00 00
-  ................ 00 1d 00 00 00 00 00 00 00 02 00 00 00 00 00 00
-  ................ 00 00 00 00 00 01 00 00 00 01 00 00 00 00 00 00
-  ..               00 00
+010979-010991 StringBlock "selected_up"
+010992-011028 DataBlock
+  ................ b4 00 00 00 1d 00 00 00 00 00 00 00 02 00 00 00
+  ................ 00 00 00 00 00 00 00 00 01 00 00 00 01 00 00 00
+  .....            00 00 00 00 00
 011029-011047 FontNameBlock "Ingame 12, Normal"
 011048-011074 DataBlock
   ................ 02 00 00 00 01 00 00 00 ff 00 00 00 00 00 00 00
@@ -951,10 +985,11 @@
 012238-012252 DataBlock
   ...............  00 00 00 00 00 00 00 00 01 01 00 01 00 00 00
 012253-012264 StringBlock "button_txt"
-012265-012303 DataBlock
+012265-012299 DataBlock
   ................ ff ff ff ff 00 00 00 00 08 00 00 00 00 d0 8e 92
   ................ 12 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01
-  .......          00 00 00 d0 8e 92 12
+  ...              00 00 00
+012300-012303 StateIDBlock 311594704
 012304-012313 NewStateBlock "NewState"
 012314-012317 XSizeBlock 180
 012318-012321 YSizeBlock 29
@@ -989,11 +1024,15 @@
   ...              12 00 00
 012640-012698 ImageListBlock 1 elements:
   012644-012698 ImageBlock id=310168912 xsize=4 ysize=1 path="UI/FrontEnd UI\\Skins\\v_slider_bar.tga" unknown=4294967295
-012699-012761 DataBlock
-  ............H.|. 00 00 00 00 00 00 00 00 01 00 00 00 48 cf 7c 12
-  ..NewState...... 08 00 4e 65 77 53 74 61 74 65 04 00 00 00 cc 01
-  ................ 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00
-  ...............  00 00 01 00 00 00 01 00 00 00 00 00 00 00 00
+012699-012710 DataBlock
+  ............     00 00 00 00 00 00 00 00 01 00 00 00
+012711-012714 StateIDBlock 310169416
+012715-012724 NewStateBlock "NewState"
+012725-012728 XSizeBlock 4
+012729-012732 YSizeBlock 460
+012733-012761 DataBlock
+  ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
+  .............    01 00 00 00 01 00 00 00 00 00 00 00 00
 012762-012780 FontNameBlock "Ingame 12, Normal"
 012781-012807 DataBlock
   ................ 02 00 00 00 01 00 00 00 00 00 00 ff 00 00 00 00
@@ -1027,11 +1066,15 @@
   ......8.n...     00 02 00 00 00 00 38 06 6e 12 00 00
 013024-013082 ImageListBlock 1 elements:
   013028-013082 ImageBlock id=309199936 xsize=10 ysize=10 path="UI/FrontEnd UI\\Skins\\v_slider_end.tga" unknown=4294967295
-013083-013145 DataBlock
-  ............8.n. 00 00 00 00 00 00 00 00 01 00 00 00 38 06 6e 12
-  ..NewState...... 08 00 4e 65 77 53 74 61 74 65 0a 00 00 00 0a 00
-  ................ 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00
-  ...............  00 00 01 00 00 00 01 00 00 00 00 00 00 00 00
+013083-013094 DataBlock
+  ............     00 00 00 00 00 00 00 00 01 00 00 00
+013095-013098 StateIDBlock 309200440
+013099-013108 NewStateBlock "NewState"
+013109-013112 XSizeBlock 10
+013113-013116 YSizeBlock 10
+013117-013145 DataBlock
+  ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
+  .............    01 00 00 00 01 00 00 00 00 00 00 00 00
 013146-013164 FontNameBlock "Ingame 12, Normal"
 013165-013191 DataBlock
   ................ 02 00 00 00 01 00 00 00 00 00 00 ff 00 00 00 00
@@ -1061,11 +1104,15 @@
   ...              12 00 00
 013413-013471 ImageListBlock 1 elements:
   013417-013471 ImageBlock id=309201824 xsize=10 ysize=10 path="UI/FrontEnd UI\\Skins\\v_slider_end.tga" unknown=4294967295
-013472-013534 DataBlock
-  ..............{. 00 00 00 00 00 00 00 00 01 00 00 00 90 f7 7b 12
-  ..NewState...... 08 00 4e 65 77 53 74 61 74 65 0a 00 00 00 0a 00
-  ................ 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00
-  ...............  00 00 01 00 00 00 01 00 00 00 00 00 00 00 00
+013472-013483 DataBlock
+  ............     00 00 00 00 00 00 00 00 01 00 00 00
+013484-013487 StateIDBlock 310114192
+013488-013497 NewStateBlock "NewState"
+013498-013501 XSizeBlock 10
+013502-013505 YSizeBlock 10
+013506-013534 DataBlock
+  ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
+  .............    01 00 00 00 01 00 00 00 00 00 00 00 00
 013535-013553 FontNameBlock "Ingame 12, Normal"
 013554-013580 DataBlock
   ................ 02 00 00 00 01 00 00 00 00 00 00 ff 00 00 00 00
@@ -1095,11 +1142,15 @@
   ...              11 00 00
 013802-013863 ImageListBlock 1 elements:
   013806-013863 ImageBlock id=290918232 xsize=21 ysize=22 path="UI/FrontEnd UI\\Skins\\v_slider_handle.tga" unknown=4294967295
-013864-013926 DataBlock
-  ............X.W. 00 00 00 00 00 00 00 00 01 00 00 00 58 11 57 11
-  ..NewState...... 08 00 4e 65 77 53 74 61 74 65 15 00 00 00 16 00
-  ................ 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00
-  ...............  00 00 01 00 00 00 01 00 00 00 00 00 00 00 00
+013864-013875 DataBlock
+  ............     00 00 00 00 00 00 00 00 01 00 00 00
+013876-013879 StateIDBlock 290918744
+013880-013889 NewStateBlock "NewState"
+013890-013893 XSizeBlock 21
+013894-013897 YSizeBlock 22
+013898-013926 DataBlock
+  ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
+  .............    01 00 00 00 01 00 00 00 00 00 00 00 00
 013927-013945 FontNameBlock "Ingame 12, Normal"
 013946-013972 DataBlock
   ................ 02 00 00 00 01 00 00 00 00 00 00 ff 00 00 00 00
@@ -1124,10 +1175,11 @@
 014200-014214 DataBlock
   ...............  00 00 00 00 1f 00 00 00 01 01 00 01 01 00 00
 014215-014225 StringBlock "list_clip"
-014226-014264 DataBlock
+014226-014260 DataBlock
   .............HYH ff ff ff ff 00 00 00 00 00 00 00 00 00 48 59 48
   ................ 11 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01
-  ...HYH.          00 00 00 48 59 48 11
+  ...              00 00 00
+014261-014264 StateIDBlock 289954120
 014265-014274 NewStateBlock "NewState"
 014275-014278 XSizeBlock 510
 014279-014282 YSizeBlock 480
@@ -1155,11 +1207,15 @@
   ...              12 00 00
 014491-014548 ImageListBlock 1 elements:
   014495-014548 ImageBlock id=310748160 xsize=1 ysize=48 path="UI/FrontEnd UI\\Skins\\list_box_bg.tga" unknown=4294967295
-014549-014611 DataBlock
-  ................ 00 00 00 00 00 00 00 00 01 00 00 00 c8 a6 85 12
-  ..NewState...... 08 00 4e 65 77 53 74 61 74 65 fe 01 00 00 e0 01
-  ................ 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00
-  ...............  00 00 01 00 00 00 01 00 00 00 00 00 00 00 00
+014549-014560 DataBlock
+  ............     00 00 00 00 00 00 00 00 01 00 00 00
+014561-014564 StateIDBlock 310748872
+014565-014574 NewStateBlock "NewState"
+014575-014578 XSizeBlock 510
+014579-014582 YSizeBlock 480
+014583-014611 DataBlock
+  ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
+  .............    01 00 00 00 01 00 00 00 00 00 00 00 00
 014612-014630 FontNameBlock "Ingame 12, Normal"
 014631-014657 DataBlock
   ................ 02 00 00 00 01 00 00 00 ff 00 00 00 00 00 00 00
@@ -1187,12 +1243,13 @@
   014894-014944 ImageBlock id=309952728 xsize=1 ysize=24 path="UI/FrontEnd UI\\Skins\\row_roll.tga" unknown=4294967295
   014945-014999 ImageBlock id=309953168 xsize=1 ysize=24 path="UI/FrontEnd UI\\Skins\\row_selected.tga" unknown=4294967295
   015000-015059 ImageBlock id=309953736 xsize=1 ysize=24 path="UI/FrontEnd UI\\Skins\\row_selected_roll.tga" unknown=4294967295
-015060-015124 DataBlock
+015060-015075 DataBlock
   ............8.G. 00 00 00 00 00 00 00 00 04 00 00 00 38 a0 47 11
-  ..unselected.... 0a 00 75 6e 73 65 6c 65 63 74 65 64 fe 01 00 00
-  ................ 18 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00
-  ................ 00 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00
-  .                00
+015076-015087 StringBlock "unselected"
+015088-015124 DataBlock
+  ................ fe 01 00 00 18 00 00 00 00 00 00 00 02 00 00 00
+  ................ 00 00 00 00 00 00 00 00 01 00 00 00 01 00 00 00
+  .....            00 00 00 00 00
 015125-015143 FontNameBlock "Ingame 12, Normal"
 015144-015170 DataBlock
   ................ 02 00 00 00 01 00 00 00 ff 00 00 00 00 00 00 00
@@ -1267,10 +1324,11 @@
 015953-015967 DataBlock
   ...............  00 00 00 00 00 00 00 00 01 01 00 01 00 00 00
 015968-015973 StringBlock "name"
-015974-016012 DataBlock
+015974-016008 DataBlock
   .............@[. ff ff ff ff 00 00 00 00 00 00 00 00 00 40 5b 9e
   ................ 12 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01
-  ...@[..          00 00 00 40 5b 9e 12
+  ...              00 00 00
+016009-016012 StateIDBlock 312367936
 016013-016022 NewStateBlock "NewState"
 016023-016026 XSizeBlock 250
 016027-016030 YSizeBlock 24
@@ -1300,10 +1358,11 @@
 016284-016298 DataBlock
   ...............  fa 00 00 00 00 00 00 00 01 01 00 01 00 00 00
 016299-016304 StringBlock "name"
-016305-016343 DataBlock
+016305-016339 DataBlock
   ..............g. ff ff ff ff 00 00 00 00 00 00 00 00 00 b0 67 82
   ................ 12 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01
-  ....g..          00 00 00 b0 67 82 12
+  ...              00 00 00
+016340-016343 StateIDBlock 310536112
 016344-016353 NewStateBlock "NewState"
 016354-016357 XSizeBlock 80
 016358-016361 YSizeBlock 24
@@ -1332,10 +1391,11 @@
 016618-016632 DataBlock
   J..............  4a 01 00 00 00 00 00 00 01 01 00 01 00 00 00
 016633-016641 StringBlock "players"
-016642-016680 DataBlock
+016642-016676 DataBlock
   ...............y ff ff ff ff 00 00 00 00 00 00 00 00 00 08 ce 79
   ................ 12 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01
-  .....y.          00 00 00 08 ce 79 12
+  ...              00 00 00
+016677-016680 StateIDBlock 309972488
 016681-016690 NewStateBlock "NewState"
 016691-016694 XSizeBlock 180
 016695-016698 YSizeBlock 24
@@ -1380,11 +1440,13 @@
   017284-017349 ImageBlock id=309362672 xsize=32 ysize=32 path="UI/FrontEnd UI\\Skins\\button_unit_remove_down.tga" unknown=4294967295
   017350-017419 ImageBlock id=310956416 xsize=32 ysize=32 path="UI/FrontEnd UI\\Skins\\button_unit_remove_down_off.tga" unknown=4294967295
   017420-017485 ImageBlock id=310956880 xsize=32 ysize=32 path="UI/FrontEnd UI\\Skins\\button_unit_remove_roll.tga" unknown=4294967295
-017486-017546 DataBlock
+017486-017501 DataBlock
   ............xH.. 00 00 00 00 00 00 00 00 05 00 00 00 78 48 9e 12
-  ..normal ... ... 06 00 6e 6f 72 6d 61 6c 20 00 00 00 20 00 00 00
-  ................ 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00
-  .............    01 00 00 00 01 00 00 00 00 00 00 00 00
+017502-017509 StringBlock "normal"
+017510-017546 DataBlock
+   ... ........... 20 00 00 00 20 00 00 00 00 00 00 00 00 00 00 00
+  ................ 02 00 00 00 00 00 00 00 01 00 00 00 01 00 00 00
+  .....            00 00 00 00 00
 017547-017565 FontNameBlock "Ingame 12, Normal"
 017566-017592 DataBlock
   ................ 02 00 00 00 01 00 00 00 ff 00 00 00 00 00 00 00
@@ -1498,11 +1560,15 @@
   018889-018947 ImageBlock id=310947496 xsize=11 ysize=34 path="UI/FrontEnd UI\\Skins\\panel_corner_top.tga" unknown=4294967295
   018948-019007 ImageBlock id=310947016 xsize=11 ysize=1 path="UI/FrontEnd UI\\Skins\\panel_side_center.tga" unknown=4294967295
   019008-019066 ImageBlock id=310945816 xsize=1 ysize=34 path="UI/FrontEnd UI\\Skins\\panel_top_center.tga" unknown=4294967295
-019067-019129 DataBlock
-  ..............J. 00 00 00 00 00 00 00 00 01 00 00 00 00 dc 4a 11
-  ..NewState,...9. 08 00 4e 65 77 53 74 61 74 65 2c 02 00 00 39 02
-  ................ 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00
-  ...............  00 00 01 00 00 00 01 00 00 00 00 00 00 00 00
+019067-019078 DataBlock
+  ............     00 00 00 00 00 00 00 00 01 00 00 00
+019079-019082 StateIDBlock 290118656
+019083-019092 NewStateBlock "NewState"
+019093-019096 XSizeBlock 556
+019097-019100 YSizeBlock 569
+019101-019129 DataBlock
+  ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
+  .............    01 00 00 00 01 00 00 00 00 00 00 00 00
 019130-019148 FontNameBlock "Ingame 12, Normal"
 019149-019175 DataBlock
   ................ 02 00 00 00 01 00 00 00 ff 00 00 00 00 00 00 00
@@ -1559,9 +1625,10 @@
   ....             ff ff ff ff
 019701-020020 UnicodeBlock "This section details your nation, territories, campaign year and season at the time of saving.||Move your cursor over the different areas for more information."
 020021-020072 UnicodeBlock "heading_tx_Tooltip_3e000a"
-020073-020103 DataBlock
+020073-020099 DataBlock
   .....X.......... 00 00 00 00 00 58 a9 88 12 00 00 00 00 00 00 00
-  ...........X...  00 00 00 00 00 00 00 01 00 00 00 58 a9 88 12
+  ...........      00 00 00 00 00 00 00 01 00 00 00
+020100-020103 StateIDBlock 310946136
 020104-020113 NewStateBlock "NewState"
 020114-020117 XSizeBlock 532
 020118-020121 YSizeBlock 24
@@ -1593,11 +1660,11 @@
   ....             ff ff ff ff
 020413-020568 UnicodeBlock "This shows the regions you control in Egypt.||The regions in green are yours."
 020569-020624 UnicodeBlock "map_nap_egypt_Tooltip_c004e"
-020625-020673 DataBlock
+020625-020669 DataBlock
   ......]........8 00 00 00 00 00 00 5d 83 12 00 00 01 00 00 00 38
   ................ a6 88 12 00 00 10 00 00 00 10 00 00 00 d8 e9 ec
-  ..............]. ff 00 00 00 00 00 00 00 00 01 00 00 00 00 5d 83
-  .                12
+  .............    ff 00 00 00 00 00 00 00 00 01 00 00 00
+020670-020673 StateIDBlock 310598912
 020674-020683 NewStateBlock "NewState"
 020684-020687 XSizeBlock 253
 020688-020691 YSizeBlock 300
@@ -1628,11 +1695,15 @@
   ...              11 00 00
 020992-021053 ImageListBlock 1 elements:
   020996-021053 ImageBlock id=290968536 xsize=19 ysize=307 path="UI/FrontEnd UI\\Skins\\map_scroll_edge.tga" unknown=4294967295
-021054-021116 DataBlock
-  ............hrH. 00 00 00 00 00 00 00 00 01 00 00 00 68 72 48 11
-  ..NewState....6. 08 00 4e 65 77 53 74 61 74 65 0a 00 00 00 36 01
-  ................ 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00
-  ...............  00 00 01 00 00 00 01 00 00 00 00 00 00 00 00
+021054-021065 DataBlock
+  ............     00 00 00 00 00 00 00 00 01 00 00 00
+021066-021069 StateIDBlock 289960552
+021070-021079 NewStateBlock "NewState"
+021080-021083 XSizeBlock 10
+021084-021087 YSizeBlock 310
+021088-021116 DataBlock
+  ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
+  .............    01 00 00 00 01 00 00 00 00 00 00 00 00
 021117-021135 FontNameBlock "Ingame 12, Normal"
 021136-021162 DataBlock
   ................ 02 00 00 00 01 00 00 00 ff 00 00 00 00 00 00 00
@@ -1658,11 +1729,15 @@
   ...              12 00 00
 021367-021428 ImageListBlock 1 elements:
   021371-021428 ImageBlock id=290117616 xsize=19 ysize=307 path="UI/FrontEnd UI\\Skins\\map_scroll_edge.tga" unknown=4294967295
-021429-021491 DataBlock
-  ............8... 00 00 00 00 00 00 00 00 01 00 00 00 38 f0 89 12
-  ..NewState....6. 08 00 4e 65 77 53 74 61 74 65 0a 00 00 00 36 01
-  ................ 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00
-  ...............  00 00 01 00 00 00 01 00 00 00 00 00 00 00 00
+021429-021440 DataBlock
+  ............     00 00 00 00 00 00 00 00 01 00 00 00
+021441-021444 StateIDBlock 311029816
+021445-021454 NewStateBlock "NewState"
+021455-021458 XSizeBlock 10
+021459-021462 YSizeBlock 310
+021463-021491 DataBlock
+  ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
+  .............    01 00 00 00 01 00 00 00 00 00 00 00 00
 021492-021510 FontNameBlock "Ingame 12, Normal"
 021511-021537 DataBlock
   ................ 02 00 00 00 01 00 00 00 ff 00 00 00 00 00 00 00
@@ -1688,11 +1763,11 @@
   ....             ff ff ff ff
 021719-021876 UnicodeBlock "This shows the regions you control in Europe.||The regions in green are yours."
 021877-021936 UnicodeBlock "map_nap_europe_Tooltip_1e003b"
-021937-021985 DataBlock
+021937-021981 DataBlock
   .....X.........p 00 00 00 00 00 58 f6 89 12 00 00 01 00 00 00 70
   .J.............. d5 4a 11 00 00 10 00 00 00 10 00 00 00 d8 e9 ec
-  .............X.. ff 00 00 00 00 00 00 00 00 01 00 00 00 58 f6 89
-  .                12
+  .............    ff 00 00 00 00 00 00 00 00 01 00 00 00
+021982-021985 StateIDBlock 311031384
 021986-021995 NewStateBlock "NewState"
 021996-021999 XSizeBlock 510
 022000-022003 YSizeBlock 254
@@ -1723,11 +1798,15 @@
   ...              12 00 00
 022304-022365 ImageListBlock 1 elements:
   022308-022365 ImageBlock id=311408528 xsize=19 ysize=307 path="UI/FrontEnd UI\\Skins\\map_scroll_edge.tga" unknown=4294967295
-022366-022428 DataBlock
-  ............ ,.. 00 00 00 00 00 00 00 00 01 00 00 00 20 2c 81 12
-  ..NewState...... 08 00 4e 65 77 53 74 61 74 65 0a 00 00 00 06 01
-  ................ 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00
-  ...............  00 00 01 00 00 00 01 00 00 00 00 00 00 00 00
+022366-022377 DataBlock
+  ............     00 00 00 00 00 00 00 00 01 00 00 00
+022378-022381 StateIDBlock 310455328
+022382-022391 NewStateBlock "NewState"
+022392-022395 XSizeBlock 10
+022396-022399 YSizeBlock 262
+022400-022428 DataBlock
+  ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
+  .............    01 00 00 00 01 00 00 00 00 00 00 00 00
 022429-022447 FontNameBlock "Ingame 12, Normal"
 022448-022474 DataBlock
   ................ 02 00 00 00 01 00 00 00 ff 00 00 00 00 00 00 00
@@ -1753,11 +1832,15 @@
   ...              12 00 00
 022679-022740 ImageListBlock 1 elements:
   022683-022740 ImageBlock id=309046832 xsize=19 ysize=307 path="UI/FrontEnd UI\\Skins\\map_scroll_edge.tga" unknown=4294967295
-022741-022803 DataBlock
-  ............0... 00 00 00 00 00 00 00 00 01 00 00 00 30 d3 81 12
-  ..NewState...... 08 00 4e 65 77 53 74 61 74 65 0a 00 00 00 06 01
-  ................ 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00
-  ...............  00 00 01 00 00 00 01 00 00 00 00 00 00 00 00
+022741-022752 DataBlock
+  ............     00 00 00 00 00 00 00 00 01 00 00 00
+022753-022756 StateIDBlock 310498096
+022757-022766 NewStateBlock "NewState"
+022767-022770 XSizeBlock 10
+022771-022774 YSizeBlock 262
+022775-022803 DataBlock
+  ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
+  .............    01 00 00 00 01 00 00 00 00 00 00 00 00
 022804-022822 FontNameBlock "Ingame 12, Normal"
 022823-022849 DataBlock
   ................ 02 00 00 00 01 00 00 00 ff 00 00 00 00 00 00 00
@@ -1783,11 +1866,11 @@
   ....             ff ff ff ff
 023029-023184 UnicodeBlock "This shows the regions you control in Italy.||The regions in green are yours."
 023185-023240 UnicodeBlock "map_nap_italy_Tooltip_30057"
-023241-023289 DataBlock
+023241-023285 DataBlock
   .....P.......... 00 00 00 00 00 50 d9 81 12 00 00 01 00 00 00 90
   |............... 7c 1f 00 00 00 10 00 00 00 10 00 00 00 d8 e9 ec
-  .............P.. ff 00 00 00 00 00 00 00 00 01 00 00 00 50 d9 81
-  .                12
+  .............    ff 00 00 00 00 00 00 00 00 01 00 00 00
+023286-023289 StateIDBlock 310499664
 023290-023299 NewStateBlock "NewState"
 023300-023303 XSizeBlock 513
 023304-023307 YSizeBlock 300
@@ -1818,11 +1901,15 @@
   ...              10 00 00
 023608-023669 ImageListBlock 1 elements:
   023612-023669 ImageBlock id=310456040 xsize=19 ysize=307 path="UI/FrontEnd UI\\Skins\\map_scroll_edge.tga" unknown=4294967295
-023670-023732 DataBlock
-  ............`h.. 00 00 00 00 00 00 00 00 01 00 00 00 60 68 a8 10
-  ..NewState....6. 08 00 4e 65 77 53 74 61 74 65 0a 00 00 00 36 01
-  ................ 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00
-  ...............  00 00 01 00 00 00 01 00 00 00 00 00 00 00 00
+023670-023681 DataBlock
+  ............     00 00 00 00 00 00 00 00 01 00 00 00
+023682-023685 StateIDBlock 279472224
+023686-023695 NewStateBlock "NewState"
+023696-023699 XSizeBlock 10
+023700-023703 YSizeBlock 310
+023704-023732 DataBlock
+  ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
+  .............    01 00 00 00 01 00 00 00 00 00 00 00 00
 023733-023751 FontNameBlock "Ingame 12, Normal"
 023752-023778 DataBlock
   ................ 02 00 00 00 01 00 00 00 ff 00 00 00 00 00 00 00
@@ -1848,11 +1935,15 @@
   ...              10 00 00
 023983-024044 ImageListBlock 1 elements:
   023987-024044 ImageBlock id=310327968 xsize=19 ysize=307 path="UI/FrontEnd UI\\Skins\\map_scroll_edge.tga" unknown=4294967295
-024045-024107 DataBlock
-  .............n.. 00 00 00 00 00 00 00 00 01 00 00 00 80 6e a8 10
-  ..NewState....6. 08 00 4e 65 77 53 74 61 74 65 0a 00 00 00 36 01
-  ................ 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00
-  ...............  00 00 01 00 00 00 01 00 00 00 00 00 00 00 00
+024045-024056 DataBlock
+  ............     00 00 00 00 00 00 00 00 01 00 00 00
+024057-024060 StateIDBlock 279473792
+024061-024070 NewStateBlock "NewState"
+024071-024074 XSizeBlock 10
+024075-024078 YSizeBlock 310
+024079-024107 DataBlock
+  ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
+  .............    01 00 00 00 01 00 00 00 00 00 00 00 00
 024108-024126 FontNameBlock "Ingame 12, Normal"
 024127-024153 DataBlock
   ................ 02 00 00 00 01 00 00 00 ff 00 00 00 00 00 00 00
@@ -1878,11 +1969,11 @@
   ....             ff ff ff ff
 024333-024488 UnicodeBlock "This shows the regions you control in Spain.||The regions in green are yours."
 024489-024544 UnicodeBlock "map_nap_spain_Tooltip_2005a"
-024545-024593 DataBlock
+024545-024589 DataBlock
   .....0r........H 00 00 00 00 00 30 72 a8 10 00 00 01 00 00 00 48
   q............... 71 a8 10 00 00 10 00 00 00 10 00 00 00 d8 e9 ec
-  .............0r. ff 00 00 00 00 00 00 00 00 01 00 00 00 30 72 a8
-  .                10
+  .............    ff 00 00 00 00 00 00 00 00 01 00 00 00
+024590-024593 StateIDBlock 279474736
 024594-024603 NewStateBlock "NewState"
 024604-024607 XSizeBlock 337
 024608-024611 YSizeBlock 300
@@ -1913,11 +2004,15 @@
   ...              12 00 00
 024912-024973 ImageListBlock 1 elements:
   024916-024973 ImageBlock id=310572784 xsize=19 ysize=307 path="UI/FrontEnd UI\\Skins\\map_scroll_edge.tga" unknown=4294967295
-024974-025036 DataBlock
-  ............ ... 00 00 00 00 00 00 00 00 01 00 00 00 20 f8 82 12
-  ..NewState....6. 08 00 4e 65 77 53 74 61 74 65 0a 00 00 00 36 01
-  ................ 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00
-  ...............  00 00 01 00 00 00 01 00 00 00 00 00 00 00 00
+024974-024985 DataBlock
+  ............     00 00 00 00 00 00 00 00 01 00 00 00
+024986-024989 StateIDBlock 310573088
+024990-024999 NewStateBlock "NewState"
+025000-025003 XSizeBlock 10
+025004-025007 YSizeBlock 310
+025008-025036 DataBlock
+  ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
+  .............    01 00 00 00 01 00 00 00 00 00 00 00 00
 025037-025055 FontNameBlock "Ingame 12, Normal"
 025056-025082 DataBlock
   ................ 02 00 00 00 01 00 00 00 ff 00 00 00 00 00 00 00
@@ -1943,11 +2038,15 @@
   ...              11 00 00
 025287-025348 ImageListBlock 1 elements:
   025291-025348 ImageBlock id=290945928 xsize=19 ysize=307 path="UI/FrontEnd UI\\Skins\\map_scroll_edge.tga" unknown=4294967295
-025349-025411 DataBlock
-  .............}W. 00 00 00 00 00 00 00 00 01 00 00 00 00 7d 57 11
-  ..NewState....6. 08 00 4e 65 77 53 74 61 74 65 0a 00 00 00 36 01
-  ................ 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00
-  ...............  00 00 01 00 00 00 01 00 00 00 00 00 00 00 00
+025349-025360 DataBlock
+  ............     00 00 00 00 00 00 00 00 01 00 00 00
+025361-025364 StateIDBlock 290946304
+025365-025374 NewStateBlock "NewState"
+025375-025378 XSizeBlock 10
+025379-025382 YSizeBlock 310
+025383-025411 DataBlock
+  ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
+  .............    01 00 00 00 01 00 00 00 00 00 00 00 00
 025412-025430 FontNameBlock "Ingame 12, Normal"
 025431-025457 DataBlock
   ................ 02 00 00 00 01 00 00 00 ff 00 00 00 00 00 00 00
@@ -1974,11 +2073,15 @@
   ...              12 00 00
 025644-025705 ImageListBlock 1 elements:
   025648-025705 ImageBlock id=290948680 xsize=91 ysize=46 path="UI/FrontEnd UI\\Skins\\cartouche_91x46.tga" unknown=4294967295
-025706-025768 DataBlock
-  ............ =.. 00 00 00 00 00 00 00 00 01 00 00 00 20 3d 86 12
-  ..NewStaten..... 08 00 4e 65 77 53 74 61 74 65 6e 00 00 00 2e 00
-  ................ 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00
-  ...............  00 00 01 00 00 00 01 00 00 00 00 00 00 00 00
+025706-025717 DataBlock
+  ............     00 00 00 00 00 00 00 00 01 00 00 00
+025718-025721 StateIDBlock 310787360
+025722-025731 NewStateBlock "NewState"
+025732-025735 XSizeBlock 110
+025736-025739 YSizeBlock 46
+025740-025768 DataBlock
+  ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
+  .............    01 00 00 00 01 00 00 00 00 00 00 00 00
 025769-025787 FontNameBlock "Ingame 12, Normal"
 025788-025814 DataBlock
   ................ 02 00 00 00 01 00 00 00 ff 00 00 00 00 00 00 00
@@ -2003,9 +2106,10 @@
   ....             ff ff ff ff
 025976-026073 UnicodeBlock "The year of your campaign at the time of saving."
 026074-026119 UnicodeBlock "dy_date_Tooltip_5a0070"
-026120-026150 DataBlock
+026120-026146 DataBlock
   ......E......... 00 00 00 00 00 a8 45 86 12 00 00 00 00 00 00 00
-  ............E..  00 00 00 00 00 00 00 01 00 00 00 a8 45 86 12
+  ...........      00 00 00 00 00 00 00 01 00 00 00
+026147-026150 StateIDBlock 310789544
 026151-026160 NewStateBlock "NewState"
 026161-026164 XSizeBlock 80
 026165-026168 YSizeBlock 20
@@ -2033,9 +2137,10 @@
   ....             ff ff ff ff
 026366-026469 UnicodeBlock "The season of your campaign at the time for saving."
 026470-026519 UnicodeBlock "dy_season_Tooltip_360064"
-026520-026550 DataBlock
+026520-026546 DataBlock
   .....8`......... 00 00 00 00 00 38 60 94 12 00 00 00 00 00 00 00
-  ...........8`..  00 00 00 00 00 00 00 01 00 00 00 38 60 94 12
+  ...........      00 00 00 00 00 00 00 01 00 00 00
+026547-026550 StateIDBlock 311713848
 026551-026560 NewStateBlock "NewState"
 026561-026564 XSizeBlock 80
 026565-026568 YSizeBlock 16
@@ -2075,11 +2180,13 @@
   027373-027440 ImageBlock id=311718608 xsize=41 ysize=46 path="UI/FrontEnd UI\\Skins\\big_button_right_down_off.tga" unknown=4294967295
   027441-027504 ImageBlock id=289173704 xsize=41 ysize=46 path="UI/FrontEnd UI\\Skins\\big_button_right_roll.tga" unknown=4294967295
   027505-027562 ImageBlock id=289173936 xsize=40 ysize=46 path="UI/FrontEnd UI\\Skins\\big_button_left.tga" unknown=4294967295
-027563-027623 DataBlock
+027563-027578 DataBlock
   .............r<. 00 00 00 00 00 00 00 00 05 00 00 00 98 72 3c 11
-  ..normal........ 06 00 6e 6f 72 6d 61 6c 00 01 00 00 2e 00 00 00
-  ................ 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00
-  .............    01 00 00 00 01 00 00 00 00 00 00 00 00
+027579-027586 StringBlock "normal"
+027587-027623 DataBlock
+  ................ 00 01 00 00 2e 00 00 00 00 00 00 00 00 00 00 00
+  ................ 02 00 00 00 00 00 00 00 01 00 00 00 01 00 00 00
+  .....            00 00 00 00 00
 027624-027642 FontNameBlock "Ingame 12, Normal"
 027643-027669 DataBlock
   ................ 02 00 00 00 01 00 00 00 ff 00 00 00 00 00 00 00
@@ -2220,10 +2327,11 @@
 029197-029211 DataBlock
   !..............  21 00 00 00 06 00 00 00 01 01 00 01 00 00 00
 029212-029223 StringBlock "button_txt"
-029224-029262 DataBlock
+029224-029258 DataBlock
   ...............v ff ff ff ff 00 00 00 00 00 00 00 00 00 90 99 76
   ................ 12 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01
-  .....v.          00 00 00 90 99 76 12
+  ...              00 00 00
+029259-029262 StateIDBlock 309762448
 029263-029272 NewStateBlock "NewState"
 029273-029276 XSizeBlock 191
 029277-029280 YSizeBlock 32
@@ -2256,11 +2364,15 @@
   ...              11 00 00
 029568-029621 ImageListBlock 1 elements:
   029572-029621 ImageBlock id=290170712 xsize=80 ysize=40 path="UI/FrontEnd UI\\Skins\\flag_80.tga" unknown=4294967295
-029622-029684 DataBlock
-  ..............K. 00 00 00 00 00 00 00 00 01 00 00 00 d0 a8 4b 11
-  ..NewStateP...(. 08 00 4e 65 77 53 74 61 74 65 50 00 00 00 28 00
-  ................ 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00
-  ...............  00 00 01 00 00 00 01 00 00 00 00 00 00 00 00
+029622-029633 DataBlock
+  ............     00 00 00 00 00 00 00 00 01 00 00 00
+029634-029637 StateIDBlock 290171088
+029638-029647 NewStateBlock "NewState"
+029648-029651 XSizeBlock 80
+029652-029655 YSizeBlock 40
+029656-029684 DataBlock
+  ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
+  .............    01 00 00 00 01 00 00 00 00 00 00 00 00
 029685-029703 FontNameBlock "Ingame 12, Normal"
 029704-029730 DataBlock
   ................ 02 00 00 00 01 00 00 00 ff 00 00 00 00 00 00 00
@@ -2281,10 +2393,11 @@
 029862-029876 DataBlock
   ...............  f9 ff ff ff e7 ff ff ff 01 01 00 01 00 00 00
 029877-029882 StringBlock "name"
-029883-029921 DataBlock
+029883-029917 DataBlock
   ...............K ff ff ff ff 00 00 00 00 00 00 00 00 00 d8 b1 4b
   ................ 11 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01
-  .....K.          00 00 00 d8 b1 4b 11
+  ...              00 00 00
+029918-029921 StateIDBlock 290173400
 029922-029931 NewStateBlock "NewState"
 029932-029935 XSizeBlock 90
 029936-029939 YSizeBlock 24
@@ -2317,11 +2430,15 @@
   ...              12 00 00
 030235-030288 ImageListBlock 1 elements:
   030239-030288 ImageBlock id=310134272 xsize=80 ysize=40 path="UI/FrontEnd UI\\Skins\\flag_80.tga" unknown=4294967295
-030289-030351 DataBlock
-  ............hG|. 00 00 00 00 00 00 00 00 01 00 00 00 68 47 7c 12
-  ..NewStateP...(. 08 00 4e 65 77 53 74 61 74 65 50 00 00 00 28 00
-  ................ 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00
-  ...............  00 00 01 00 00 00 01 00 00 00 00 00 00 00 00
+030289-030300 DataBlock
+  ............     00 00 00 00 00 00 00 00 01 00 00 00
+030301-030304 StateIDBlock 310134632
+030305-030314 NewStateBlock "NewState"
+030315-030318 XSizeBlock 80
+030319-030322 YSizeBlock 40
+030323-030351 DataBlock
+  ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
+  .............    01 00 00 00 01 00 00 00 00 00 00 00 00
 030352-030370 FontNameBlock "Ingame 12, Normal"
 030371-030397 DataBlock
   ................ 02 00 00 00 01 00 00 00 ff 00 00 00 00 00 00 00
@@ -2342,10 +2459,11 @@
 030529-030543 DataBlock
   ...............  f9 ff ff ff e7 ff ff ff 01 01 00 01 00 00 00
 030544-030549 StringBlock "name"
-030550-030588 DataBlock
+030550-030584 DataBlock
   ..............Q| ff ff ff ff 00 00 00 00 00 00 00 00 00 08 51 7c
   ................ 12 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01
-  ....Q|.          00 00 00 08 51 7c 12
+  ...              00 00 00
+030585-030588 StateIDBlock 310137096
 030589-030598 NewStateBlock "NewState"
 030599-030602 XSizeBlock 90
 030603-030606 YSizeBlock 24

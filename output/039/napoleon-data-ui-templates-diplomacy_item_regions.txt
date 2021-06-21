@@ -1,12 +1,14 @@
 000000-000009 VersionBlock 39
 000010-000013 RootIDBlock 306597760
 000014-000019 StringBlock "root"
-000020-000093 DataBlock
-  ................ 00 00 00 00 00 00 00 00 01 01 00 01 00 00 00 00
-  ................ 00 ff ff ff ff 00 00 00 00 00 00 00 00 00 98 91
-  J........>E..... 4a 12 00 00 01 00 00 00 88 3e 45 12 00 00 00 05
-  ................ 00 00 c0 03 00 00 c0 c0 c0 ff 00 00 00 00 00 00
-  ........J.       00 00 01 00 00 00 98 91 4a 12
+000020-000023 XOffsetBlock 0
+000024-000027 YOffsetBlock 0
+000028-000089 DataBlock
+  ................ 01 01 00 01 00 00 00 00 00 ff ff ff ff 00 00 00
+  ........J....... 00 00 00 00 00 00 98 91 4a 12 00 00 01 00 00 00
+  .>E............. 88 3e 45 12 00 00 00 05 00 00 c0 03 00 00 c0 c0
+  ..............   c0 ff 00 00 00 00 00 00 00 00 01 00 00 00
+000090-000093 StateIDBlock 306876824
 000094-000103 NewStateBlock "NewState"
 000104-000107 XSizeBlock 1280
 000108-000111 YSizeBlock 960
@@ -69,11 +71,13 @@
   000849-000907 ImageBlock id=306488408 xsize=32 ysize=32 path="UI/Templates\\Skins\\button_delete_down.tga" unknown=4294967295
   000908-000970 ImageBlock id=306482984 xsize=32 ysize=32 path="UI/Templates\\Skins\\button_delete_down_off.tga" unknown=4294967295
   000971-001029 ImageBlock id=306479280 xsize=32 ysize=32 path="UI/Templates\\Skins\\button_delete_roll.tga" unknown=4294967295
-001030-001090 DataBlock
+001030-001045 DataBlock
   ............0TD. 00 00 00 00 00 00 00 00 05 00 00 00 30 54 44 12
-  ..normal........ 06 00 6e 6f 72 6d 61 6c 14 00 00 00 14 00 00 00
-  ................ 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00
-  .............    01 00 00 00 01 00 00 00 00 00 00 00 00
+001046-001053 StringBlock "normal"
+001054-001090 DataBlock
+  ................ 14 00 00 00 14 00 00 00 00 00 00 00 00 00 00 00
+  ................ 02 00 00 00 00 00 00 00 01 00 00 00 01 00 00 00
+  .....            00 00 00 00 00
 001091-001109 FontNameBlock "Ingame 12, Normal"
 001110-001136 DataBlock
   ................ 02 00 00 00 01 00 00 00 ff 00 00 00 00 00 00 00
@@ -181,9 +185,9 @@
   ................ ff ff ff ff 00 00 00 00 00 00 00 00 00 00 00 00
   .                00
 002286-002772 StringBlock "local this = UIComponent(Address)\n\nregion = nil\n\nfunction Initialise( r )\n\tregion = r\nend\n\nfunction OnMouseOn()\n\tlocal tooltip = UIComponent( Component.Root() ):LuaCall( \"SetTooltipMethod\", \"dipl_region\" )\n\tif tooltip ~= nil then\n\t\tUIComponent(tooltip):LuaCall( \"Initialise\", region )\n\tend\nend\n\nfunction OnMouseOff()\n\tUIComponent( Component.Root() ):LuaCall( \"SetTooltipMethod\", \"standard\" )\nend\n\nfunction ShowRegion()\n\tUIComponent( this:Parent() ):LuaCall( \"ShowRegion\", region )\nend\n"
-002773-002792 DataBlock
+002773-002788 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00
-  84..             38 34 17 00
+002789-002792 StateIDBlock 1520696
 002793-002802 NewStateBlock "NewState"
 002803-002806 XSizeBlock 158
 002807-002810 YSizeBlock 44
@@ -220,11 +224,13 @@
 003374-003502 ImageListBlock 2 elements:
   003378-003438 ImageBlock id=306466080 xsize=35 ysize=35 path="UI/Templates\\Skins\\button_details_small.tga" unknown=4294967295
   003439-003502 ImageBlock id=306464272 xsize=35 ysize=35 path="UI/Templates\\Skins\\button_details_selected.tga" unknown=4294967295
-003503-003563 DataBlock
+003503-003518 DataBlock
   .............;.. 00 00 00 00 00 00 00 00 05 00 00 00 d8 3b 17 00
-  ..normal........ 06 00 6e 6f 72 6d 61 6c 16 00 00 00 16 00 00 00
-  ................ 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00
-  .............    01 00 00 00 01 00 00 00 00 00 00 00 00
+003519-003526 StringBlock "normal"
+003527-003563 DataBlock
+  ................ 16 00 00 00 16 00 00 00 00 00 00 00 00 00 00 00
+  ................ 02 00 00 00 00 00 00 00 01 00 00 00 01 00 00 00
+  .....            00 00 00 00 00
 003564-003582 FontNameBlock "Ingame 12, Normal"
 003583-003609 DataBlock
   ................ 02 00 00 00 01 00 00 00 ff 00 00 00 00 00 00 00

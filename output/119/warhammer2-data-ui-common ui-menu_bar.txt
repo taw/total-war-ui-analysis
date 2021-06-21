@@ -1,12 +1,15 @@
 000000-000009 VersionBlock 119
 000010-000013 RootIDBlock 128692400
 000014-000019 StringBlock "root"
-000020-000097 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 01
-  ................ 00 00 00 00 01 00 00 00 00 01 00 00 00 00 00 00
-  ........... ~... 00 00 00 00 00 00 00 00 00 00 00 20 7e a9 07 01
-  .........@...... 00 00 00 f0 cd a9 07 00 00 40 06 00 00 c0 03 00
-  .......... ~..   00 00 00 00 00 00 01 00 00 00 20 7e a9 07
+000020-000021 StringBlock ""
+000022-000025 XOffsetBlock 0
+000026-000029 YOffsetBlock 0
+000030-000093 DataBlock
+  ................ 00 00 00 00 01 01 00 00 00 00 01 00 00 00 00 01
+  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  . ~............@ 00 20 7e a9 07 01 00 00 00 f0 cd a9 07 00 00 40
+  ................ 06 00 00 c0 03 00 00 00 00 00 00 00 01 00 00 00
+000094-000097 StateIDBlock 128548384
 000098-000107 NewStateBlock "NewState"
 000108-000111 XSizeBlock 1280
 000112-000115 YSizeBlock 1024
@@ -39,11 +42,12 @@
 000404-000409 DataBlock
   ......           00 00 01 00 00 00
 000410-000418 StringBlock "MenuBar"
-000419-000479 DataBlock
+000419-000475 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ................ 00 00 01 00 00 00 00 01 00 00 00 00 01 00 00 00
   ..........A..... 00 00 00 00 00 00 00 00 00 a0 41 89 05 00 00 00
-  ..........A..    00 00 00 00 00 01 00 00 00 a0 41 89 05
+  .........        00 00 00 00 00 01 00 00 00
+000476-000479 StateIDBlock 92881312
 000480-000489 NewStateBlock "NewState"
 000490-000493 XSizeBlock 50
 000494-000497 YSizeBlock 50
@@ -103,9 +107,10 @@
 001092-001092 DataBlock
   .                19
 001093-001134 ImagePathBlock "ui\\skins\\default\\bar_top_left_corner.png"
-001135-001155 DataBlock
+001135-001151 DataBlock
   ....4........... 8b 00 00 00 34 00 00 00 00 00 00 00 00 01 00 00
-  ..^..            00 10 5e 89 05
+  .                00
+001152-001155 StateIDBlock 92888592
 001156-001165 NewStateBlock "NewState"
 001166-001169 XSizeBlock 170
 001170-001173 YSizeBlock 38
@@ -182,10 +187,11 @@
   001971-002018 ImagePathBlock "ui\\skins\\default\\button_round_small_active.png"
   002019-002068 ImagePathBlock "ui\\skins\\default\\button_round_small_inactive.png"
   002069-002118 ImagePathBlock "ui\\skins\\default\\button_round_small_underlay.png"
-002119-002152 DataBlock
-  ......round_smal 00 00 00 00 12 00 72 6f 75 6e 64 5f 73 6d 61 6c
-  l_button..E7.... 6c 5f 62 75 74 74 6f 6e 80 19 45 37 01 00 00 00
-  ..               00 00
+002119-002122 DataBlock
+  ....             00 00 00 00
+002123-002142 StringBlock "round_small_button"
+002143-002152 DataBlock
+  ..E7......       80 19 45 37 01 00 00 00 00 00
 002153-002169 StringBlock "button_hud_chat"
 002170-002175 DataBlock
   ......           00 00 01 00 00 00
@@ -221,19 +227,24 @@
   002566-002613 ImagePathBlock "ui\\skins\\default\\button_round_small_active.png"
   002614-002663 ImagePathBlock "ui\\skins\\default\\button_round_small_inactive.png"
   002664-002713 ImagePathBlock "ui\\skins\\default\\button_round_small_underlay.png"
-002714-002785 DataBlock
-  ..........chat_a 01 00 00 00 f0 ee dc 0c 0f 00 63 68 61 74 5f 61
-  lert_icon....... 6c 65 72 74 5f 69 63 6f 6e 00 00 00 00 00 00 18
-  ................ 00 00 00 18 00 00 00 00 00 00 00 00 00 01 00 00
-  ................ 00 00 01 00 00 00 00 06 00 00 00 02 00 00 00 0d
-  ........         00 00 00 00 a0 c0 a9 07
+002714-002721 DataBlock
+  ........         01 00 00 00 f0 ee dc 0c
+002722-002738 StringBlock "chat_alert_icon"
+002739-002785 DataBlock
+  ................ 00 00 00 00 00 00 18 00 00 00 18 00 00 00 00 00
+  ................ 00 00 00 00 01 00 00 00 00 01 00 00 00 00 06 00
+  ...............  00 00 02 00 00 00 0d 00 00 00 00 a0 c0 a9 07
 002786-002846 ImageListBlock 1 elements:
   002790-002846 ImageBlock id=117096288 xsize=24 ysize=24 path="ui\\skins\\default\\icon_alert_message.png" unknown=0
-002847-002900 DataBlock
-  ...........NewSt 00 01 00 00 00 a0 c0 a9 07 08 00 4e 65 77 53 74
-  ate............. 61 74 65 10 00 00 00 10 00 00 00 00 00 00 00 02
-  ................ 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 00
-  ......           00 00 00 00 00 00
+002847-002851 DataBlock
+  .....            00 01 00 00 00
+002852-002855 StateIDBlock 128565408
+002856-002865 NewStateBlock "NewState"
+002866-002869 XSizeBlock 16
+002870-002873 YSizeBlock 16
+002874-002900 DataBlock
+  ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
+  ...........      01 00 00 00 00 00 00 00 00 00 00
 002901-002912 FontNameBlock "Norse-Bold"
 002913-002928 DataBlock
   ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
@@ -323,10 +334,11 @@
   004066-004124 ImagePathBlock "ui\\skins\\default\\button_round_small_selected_underlay.png"
   004125-004183 ImagePathBlock "ui\\skins\\default\\button_round_small_selected_inactive.png"
   004184-004241 ImagePathBlock "ui\\skins\\default\\button_round_small_selected_pressed.png"
-004242-004275 DataBlock
-  ......round_smal 00 00 00 00 12 00 72 6f 75 6e 64 5f 73 6d 61 6c
-  l_button@..5.... 6c 5f 62 75 74 74 6f 6e 40 bb b8 35 01 00 00 00
-  ..               00 00
+004242-004245 DataBlock
+  ....             00 00 00 00
+004246-004265 StringBlock "round_small_button"
+004266-004275 DataBlock
+  @..5......       40 bb b8 35 01 00 00 00 00 00
 004276-004294 StringBlock "button_help_panel"
 004295-004300 DataBlock
   ......           00 00 01 00 00 00
@@ -362,10 +374,11 @@
   004693-004740 ImagePathBlock "ui\\skins\\default\\button_round_small_active.png"
   004741-004790 ImagePathBlock "ui\\skins\\default\\button_round_small_inactive.png"
   004791-004840 ImagePathBlock "ui\\skins\\default\\button_round_small_underlay.png"
-004841-004874 DataBlock
-  ......round_smal 00 00 00 00 12 00 72 6f 75 6e 64 5f 73 6d 61 6c
-  l_button..E7.... 6c 5f 62 75 74 74 6f 6e c0 a0 45 37 01 00 00 00
-  ..               00 00
+004841-004844 DataBlock
+  ....             00 00 00 00
+004845-004864 StringBlock "round_small_button"
+004865-004874 DataBlock
+  ..E7......       c0 a0 45 37 01 00 00 00 00 00
 004875-004896 StringBlock "button_spell_browser"
 004897-004902 DataBlock
   ......           00 00 01 00 00 00
@@ -404,10 +417,11 @@
   005320-005367 ImagePathBlock "ui\\skins\\default\\button_round_small_active.png"
   005368-005417 ImagePathBlock "ui\\skins\\default\\button_round_small_inactive.png"
   005418-005467 ImagePathBlock "ui\\skins\\default\\button_round_small_underlay.png"
-005468-005508 DataBlock
-  ......round_smal 00 00 00 00 19 00 72 6f 75 6e 64 5f 73 6d 61 6c
-  l_button_toggle. 6c 5f 62 75 74 74 6f 6e 5f 74 6f 67 67 6c 65 c0
-  .........        dd e6 0a 01 00 00 00 00 00
+005468-005471 DataBlock
+  ....             00 00 00 00
+005472-005498 StringBlock "round_small_button_toggle"
+005499-005508 DataBlock
+  ..........       c0 dd e6 0a 01 00 00 00 00 00
 005509-005525 StringBlock "button_settings"
 005526-005531 DataBlock
   ......           00 00 01 00 00 00
@@ -463,13 +477,15 @@
   006306-006364 ImagePathBlock "ui\\skins\\default\\button_round_small_selected_underlay.png"
   006365-006423 ImagePathBlock "ui\\skins\\default\\button_round_small_selected_inactive.png"
   006424-006481 ImagePathBlock "ui\\skins\\default\\button_round_small_selected_pressed.png"
-006482-006577 DataBlock
-  .......Horizonta 00 00 00 00 01 0e 00 48 6f 72 69 7a 6f 6e 74 61
-  lList........... 6c 4c 69 73 74 00 00 00 00 00 00 00 00 00 00 00
-  ................ 00 00 01 00 00 00 01 00 12 00 00 00 00 00 00 00
-  ................ 02 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+006482-006486 DataBlock
+  .....            00 00 00 00 01
+006487-006502 StringBlock "HorizontalList"
+006503-006577 DataBlock
+  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 01 00 00
+  ................ 00 01 00 12 00 00 00 00 00 00 00 02 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-  .......?........ 00 00 00 00 00 00 80 3f 00 00 00 00 00 00 00 00
+  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  ..?........      00 80 3f 00 00 00 00 00 00 00 00
 006578-006604 StringBlock "round_small_button_toggle"
 006605-006614 DataBlock
   .T.:......       c0 54 c7 3a 01 00 00 00 00 00

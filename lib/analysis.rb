@@ -47,6 +47,12 @@ class VersionBlock < Block
   end
 end
 
+class Uint32Block < Block
+  def to_s
+     "#{range} #{self.class} #{data.unpack1("V")}"
+  end
+end
+
 class StringBlock < Block
   attr_reader :str
 
@@ -76,6 +82,15 @@ class FontNameBlock < StringBlock
 end
 
 class NewStateBlock < StringBlock
+end
+
+class XOffsetBlock < Uint32Block
+end
+
+class YOffsetBlock < Uint32Block
+end
+
+class StateIDBlock < Uint32Block
 end
 
 class U32ListBlock < Block
@@ -132,12 +147,6 @@ class EventListBlock < Block
 
   def to_s
      "#{range} #{self.class} #{@list.inspect}"
-  end
-end
-
-class Uint32Block < Block
-  def to_s
-     "#{range} #{self.class} #{data.unpack1("V")}"
   end
 end
 
@@ -329,7 +338,7 @@ class Analysis
       e = subblocks.last.e
       new_block = list_class.new(self, s, e, subblocks)
       @blocks[i] = new_block
-      ((i+1)..(i+count)).each do |j|
+      ((i+1)...(i+count)).each do |j|
         @blocks[j] = nil
       end
     end
@@ -355,16 +364,19 @@ class Analysis
     i = 0
     while i < @blocks.size
       b = @blocks[i]
-      if b.is_a?(NewStateBlock) and free_space_after(i) >= 8
-        s = b.e
-        xsz = @data[s,4].unpack1("V")
-        ysz = @data[s+4,4].unpack1("V")
+      if b.is_a?(NewStateBlock) and free_space_after(i) >= 8 and free_space_before(i) >= 4
+        s = b.s
+        e = b.e
+        xsz = @data[e,4].unpack1("V")
+        ysz = @data[e+4,4].unpack1("V")
         if xsz < 0x1_0000 and ysz < 0x1_0000
-          @blocks[i+1,0] = [
-            XSizeBlock.new(self, s, s+4),
-            YSizeBlock.new(self, s+4, s+8),
+          @blocks[i,1] = [
+            StateIDBlock.new(self, s-4, s),
+            @blocks[i],
+            XSizeBlock.new(self, e, e+4),
+            YSizeBlock.new(self, e+4, e+8),
           ]
-          i += 2
+          i += 3
         end
       end
       i += 1
@@ -388,6 +400,29 @@ class Analysis
     @blocks.sort_by!(&:s)
   end
 
+  # This could apply to all uientity, but others are difficult to locate
+  def analyze_root_context
+    return unless @blocks[2].is_a?(StringBlock) and @blocks[2].e == 20 and @blocks[2].str == "root"
+    ofs = 20
+    block_idx = 2
+    # title 2
+    if free_space_after(block_idx) >= 2 and @version >= 43
+      sz = @data[ofs, 2].unpack1("v")
+      @blocks[block_idx,0] = StringBlock.new(self, ofs, ofs+2+sz)
+      block_idx += 1
+      ofs += 2+sz
+    end
+    if free_space_after(block_idx) >= 8
+      @blocks[block_idx,0] = [
+        XOffsetBlock.new(self, ofs, ofs+4),
+        YOffsetBlock.new(self, ofs+4, ofs+8),
+      ]
+      block_idx += 1
+      ofs += 8
+    end
+    # then some booleans etc.
+  end
+
   def analysis
     analyze_version
     if @version == 2
@@ -402,6 +437,7 @@ class Analysis
     analyze_u32_lists(ImagePathBlock, ImagePathListBlock)
     analyze_new_state_context
     analyze_image_uses
+    analyze_root_context
   end
 
   # some blocks aren't actually fully decoded and could use more processing

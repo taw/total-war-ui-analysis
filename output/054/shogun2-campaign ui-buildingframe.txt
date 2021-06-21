@@ -1,13 +1,16 @@
 000000-000009 VersionBlock 54
 000010-000013 RootIDBlock 393614252
 000014-000019 StringBlock "root"
-000020-000100 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 01 01 00 00 00
-  ................ 00 01 00 00 00 00 00 00 ff ff ff ff 00 00 00 00
-  .......v........ 00 00 00 00 00 ec b7 76 17 00 00 01 00 00 00 d4
-  .u.............. 9f 75 17 00 00 00 05 00 00 c0 03 00 00 be ff bb
-  ...............v ff 00 00 00 00 00 00 00 00 01 00 00 00 ec b7 76
-  .                17
+000020-000021 StringBlock ""
+000022-000025 XOffsetBlock 0
+000026-000029 YOffsetBlock 0
+000030-000096 DataBlock
+  ................ 00 01 01 00 00 00 00 01 00 00 00 00 00 00 ff ff
+  .............v.. ff ff 00 00 00 00 00 00 00 00 00 ec b7 76 17 00
+  .......u........ 00 01 00 00 00 d4 9f 75 17 00 00 00 05 00 00 c0
+  ................ 03 00 00 be ff bb ff 00 00 00 00 00 00 00 00 01
+  ...              00 00 00
+000097-000100 StateIDBlock 393656300
 000101-000110 NewStateBlock "NewState"
 000111-000114 XSizeBlock 1280
 000115-000118 YSizeBlock 960
@@ -43,11 +46,13 @@
 000439-000571 ImageListBlock 2 elements:
   000443-000505 ImageBlock id=393584804 xsize=1 ysize=0 path="UI\\Campaign UI\\Skins\\building-frame_basic.tga" unknown=4294967295
   000506-000571 ImageBlock id=393583764 xsize=1 ysize=0 path="UI\\Campaign UI\\Skins\\building-frame_selected.tga" unknown=4294967295
-000572-000634 DataBlock
+000572-000587 DataBlock
   ..............v. 00 00 00 00 00 00 00 00 04 00 00 00 d4 b9 76 17
-  ..selectedL...9. 08 00 73 65 6c 65 63 74 65 64 4c 00 00 00 39 00
-  ................ 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00
-  ...............  00 00 01 00 00 00 01 00 00 00 00 00 00 00 00
+000588-000597 StringBlock "selected"
+000598-000634 DataBlock
+  L...9........... 4c 00 00 00 39 00 00 00 00 00 00 00 02 00 00 00
+  ................ 00 00 00 00 00 00 00 00 01 00 00 00 01 00 00 00
+  .....            00 00 00 00 00
 000635-000652 FontNameBlock "bardi_12, Normal"
 000653-000664 DataBlock
   ............     02 00 00 00 01 00 00 00 00 00 00 ff
@@ -145,11 +150,13 @@
   001832-001899 ImageBlock id=393583972 xsize=1 ysize=0 path="UI\\Campaign UI\\Skins\\building_slot_undeveloped.tga" unknown=4294967295
   001900-001962 ImageBlock id=393585012 xsize=96 ysize=72 path="UI\\Campaign UI\\Skins\\building_slot_locked.tga" unknown=4294967295
   001963-002020 ImageBlock id=393585220 xsize=4 ysize=4 path="UI\\Campaign UI\\Skins\\inactive_shader.tga" unknown=4294967295
-002021-002081 DataBlock
+002021-002036 DataBlock
   ............t.v. 00 00 00 00 00 00 00 00 03 00 00 00 74 c1 76 17
-  ..normalL...9... 06 00 6e 6f 72 6d 61 6c 4c 00 00 00 39 00 00 00
-  ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
-  .............    01 00 00 00 01 00 00 00 00 00 00 00 00
+002037-002044 StringBlock "normal"
+002045-002081 DataBlock
+  L...9........... 4c 00 00 00 39 00 00 00 00 00 00 00 02 00 00 00
+  ................ 00 00 00 00 00 00 00 00 01 00 00 00 01 00 00 00
+  .....            00 00 00 00 00
 002082-002099 FontNameBlock "bardi_12, Normal"
 002100-002111 DataBlock
   ............     02 00 00 00 01 00 00 00 ff ff ff ff
@@ -221,10 +228,11 @@
   ..0............. 00 00 30 00 00 00 02 00 00 00 00 00 00 00 00 00
   ......           00 00 00 00 00 00
 002823-002828 StringBlock "tech"
-002829-002867 DataBlock
+002829-002863 DataBlock
   ................ ff ff ff ff 00 00 00 00 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01
-  ...,.v.          00 00 00 2c c7 76 17
+  ...              00 00 00
+002864-002867 StateIDBlock 393660204
 002868-002877 NewStateBlock "NewState"
 002878-002881 XSizeBlock 26
 002882-002885 YSizeBlock 26
@@ -260,11 +268,13 @@
 003253-003393 StringBlock "function OnSelect()\n\tlocal this = UIComponent(Address)\n\tlocal scroll = UIComponent(this:Parent(\"event_window\"))\n\tscroll:LuaCall(\"OnOk\")\nend"
 003394-003453 ImageListBlock 1 elements:
   003398-003453 ImageBlock id=393585428 xsize=26 ysize=26 path="UI\\Campaign UI\\Skins\\required_tech.tga" unknown=4294967295
-003454-003513 DataBlock
+003454-003469 DataBlock
   ..............v. 00 00 00 00 00 00 00 00 04 00 00 00 14 c9 76 17
-  ..hover......... 05 00 68 6f 76 65 72 1a 00 00 00 1a 00 00 00 00
-  ................ 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 01
-  ............     00 00 00 01 00 00 00 00 00 00 00 00
+003470-003476 StringBlock "hover"
+003477-003513 DataBlock
+  ................ 1a 00 00 00 1a 00 00 00 00 00 00 00 02 00 00 00
+  ................ 00 00 00 00 00 00 00 00 01 00 00 00 01 00 00 00
+  .....            00 00 00 00 00
 003514-003531 FontNameBlock "bardi_10, Normal"
 003532-003543 DataBlock
   ............     02 00 00 00 01 00 00 00 00 00 00 ff
@@ -366,10 +376,11 @@
   ................ 00 00 18 00 00 00 02 00 00 00 00 00 00 00 00 00
   ......           00 00 00 00 00 00
 004590-004599 StringBlock "resource"
-004600-004638 DataBlock
+004600-004634 DataBlock
   ................ ff ff ff ff 00 00 00 00 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01
-  ....M..          00 00 00 9c 4d 80 17
+  ...              00 00 00
+004635-004638 StateIDBlock 394284444
 004639-004648 NewStateBlock "NewState"
 004649-004652 XSizeBlock 26
 004653-004656 YSizeBlock 26
@@ -417,12 +428,13 @@
   005821-005893 ImageBlock id=393588132 xsize=26 ysize=26 path="UI\\Campaign UI\\Skins\\bos_resource_machines_required.tga" unknown=4294967295
   005894-005962 ImageBlock id=393588340 xsize=26 ysize=26 path="UI\\Campaign UI\\Skins\\bos_resource_silk_required.tga" unknown=4294967295
   005963-006030 ImageBlock id=393588548 xsize=26 ysize=26 path="UI\\Campaign UI\\Skins\\bos_resource_tea_required.tga" unknown=4294967295
-006031-006101 DataBlock
+006031-006046 DataBlock
   .............O.. 00 00 00 00 00 00 00 00 10 00 00 00 84 4f 80 17
-  ..res_sho_medici 10 00 72 65 73 5f 73 68 6f 5f 6d 65 64 69 63 69
-  ne.............. 6e 65 1a 00 00 00 1a 00 00 00 00 00 00 00 02 00
-  ................ 00 00 00 00 00 00 00 00 00 00 01 00 00 00 01 00
-  .......          00 00 00 00 00 00 00
+006047-006064 StringBlock "res_sho_medicine"
+006065-006101 DataBlock
+  ................ 1a 00 00 00 1a 00 00 00 00 00 00 00 02 00 00 00
+  ................ 00 00 00 00 00 00 00 00 01 00 00 00 01 00 00 00
+  .....            00 00 00 00 00
 006102-006119 FontNameBlock "bardi_10, Normal"
 006120-006131 DataBlock
   ............     02 00 00 00 01 00 00 00 00 00 00 ff
@@ -752,10 +764,11 @@
   ................ 00 00 02 00 00 00 02 00 00 00 00 00 00 00 00 00
   ......           00 00 00 00 00 00
 009600-009611 StringBlock "icon_slot2"
-009612-009650 DataBlock
+009612-009646 DataBlock
   ................ ff ff ff ff 00 00 00 00 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01
-  .......          00 00 00 ec e2 91 17
+  ...              00 00 00
+009647-009650 StateIDBlock 395436780
 009651-009660 NewStateBlock "NewState"
 009661-009664 XSizeBlock 26
 009665-009668 YSizeBlock 26
@@ -791,13 +804,13 @@
   009984-010042 ImageBlock id=393588756 xsize=26 ysize=26 path="UI\\Campaign UI\\Skins\\required_britain.tga" unknown=4294967295
   010043-010100 ImageBlock id=393588964 xsize=26 ysize=26 path="UI\\Campaign UI\\Skins\\required_france.tga" unknown=4294967295
   010101-010155 ImageBlock id=393589172 xsize=26 ysize=26 path="UI\\Campaign UI\\Skins\\required_usa.tga" unknown=4294967295
-010156-010246 DataBlock
+010156-010171 DataBlock
   ................ 00 00 00 00 00 00 00 00 03 00 00 00 d4 e4 91 17
-  $.bos_port_4_ame 24 00 62 6f 73 5f 70 6f 72 74 5f 34 5f 61 6d 65
-  rican_trading_di 72 69 63 61 6e 5f 74 72 61 64 69 6e 67 5f 64 69
-  strict.......... 73 74 72 69 63 74 1a 00 00 00 1a 00 00 00 00 00
-  ................ 00 00 02 00 00 00 00 00 00 00 00 00 00 00 01 00
-  ...........      00 00 01 00 00 00 00 00 00 00 00
+010172-010209 StringBlock "bos_port_4_american_trading_district"
+010210-010246 DataBlock
+  ................ 1a 00 00 00 1a 00 00 00 00 00 00 00 02 00 00 00
+  ................ 00 00 00 00 00 00 00 00 01 00 00 00 01 00 00 00
+  .....            00 00 00 00 00
 010247-010264 FontNameBlock "bardi_10, Normal"
 010265-010276 DataBlock
   ............     02 00 00 00 01 00 00 00 00 00 00 ff
@@ -885,13 +898,14 @@
   011501-011557 ImageBlock id=393591044 xsize=1 ysize=0 path="UI\\Campaign UI\\Skins\\constructing_9.tga" unknown=4294967295
   011558-011615 ImageBlock id=394212228 xsize=1 ysize=0 path="UI\\Campaign UI\\Skins\\constructing_10.tga" unknown=4294967295
   011616-011673 ImageBlock id=394212436 xsize=1 ysize=0 path="UI\\Campaign UI\\Skins\\constructing_11.tga" unknown=4294967295
-011674-011759 DataBlock
+011674-011729 DataBlock
   ................ 00 00 00 00 00 00 00 00 0c 00 00 00 8c ea 91 17
   ..1H...4........ 01 00 31 48 00 00 00 34 00 00 00 00 00 00 00 02
   ................ 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 01
-  ..........bardi_ 00 00 00 00 00 00 00 00 10 00 62 61 72 64 69 5f
-  12, Normal...... 31 32 2c 20 4e 6f 72 6d 61 6c 02 00 00 00 01 00
-  ......           00 00 ff ff ff ff
+  ........         00 00 00 00 00 00 00 00
+011730-011747 FontNameBlock "bardi_12, Normal"
+011748-011759 DataBlock
+  ............     02 00 00 00 01 00 00 00 ff ff ff ff
 011760-011776 StringBlock "fe_tooltip_text"
 011777-011791 DataBlock
   ...............  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -1107,11 +1121,15 @@
   014462-014521 ImageBlock id=394213684 xsize=6 ysize=6 path="UI\\Campaign UI\\Skins\\selected_frame_bl.tga" unknown=4294967295
   014522-014585 ImageBlock id=394213892 xsize=30 ysize=6 path="UI\\Campaign UI\\Skins\\selected_frame_bottom.tga" unknown=4294967295
   014586-014645 ImageBlock id=394214100 xsize=6 ysize=6 path="UI\\Campaign UI\\Skins\\selected_frame_br.tga" unknown=4294967295
-014646-014708 DataBlock
-  ................ 00 00 00 00 00 00 00 00 01 00 00 00 ec bf 83 17
-  ..NewStateJ...6. 08 00 4e 65 77 53 74 61 74 65 4a 00 00 00 36 00
-  ................ 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00
-  ...............  00 00 01 00 00 00 01 00 00 00 00 00 00 00 00
+014646-014657 DataBlock
+  ............     00 00 00 00 00 00 00 00 01 00 00 00
+014658-014661 StateIDBlock 394510316
+014662-014671 NewStateBlock "NewState"
+014672-014675 XSizeBlock 74
+014676-014679 YSizeBlock 54
+014680-014708 DataBlock
+  ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
+  .............    01 00 00 00 01 00 00 00 00 00 00 00 00
 014709-014726 FontNameBlock "bardi_10, Normal"
 014727-014738 DataBlock
   ............     02 00 00 00 01 00 00 00 00 00 00 ff
@@ -1172,10 +1190,10 @@
 015581-015636 ImageBlock id=394215348 xsize=6 ysize=6 path="UI\\Campaign UI\\Skins\\card_frame_tl.tga" unknown=4294967295
 015637-015693 ImageBlock id=394215556 xsize=48 ysize=6 path="UI\\Campaign UI\\Skins\\card_frame_top.tga" unknown=4294967295
 015694-015749 ImageBlock id=394215764 xsize=6 ysize=6 path="UI\\Campaign UI\\Skins\\card_frame_tr.tga" unknown=4294967295
-015750-015783 DataBlock
+015750-015779 DataBlock
   $B............. 24 42 7f 17 00 00 06 00 00 00 06 00 00 00 ff ff
-  ................ ff ff 00 00 00 00 00 00 00 00 01 00 00 00 d4 c1
-  ..               83 17
+  ..............   ff ff 00 00 00 00 00 00 00 00 01 00 00 00
+015780-015783 StateIDBlock 394510804
 015784-015793 NewStateBlock "NewState"
 015794-015797 XSizeBlock 76
 015798-015801 YSizeBlock 57
@@ -1246,11 +1264,13 @@
 016644-016758 ImageListBlock 2 elements:
   016648-016702 ImageBlock id=394216180 xsize=1 ysize=0 path="UI\\Campaign UI\\Skins\\turns_queued.tga" unknown=4294967295
   016703-016758 ImageBlock id=394216388 xsize=28 ysize=28 path="UI\\Campaign UI\\Skins\\turns_blocked.tga" unknown=4294967295
-016759-016815 DataBlock
+016759-016774 DataBlock
   ................ 00 00 00 00 00 00 00 00 02 00 00 00 bc c3 83 17
-  ..text.......... 04 00 74 65 78 74 1c 00 00 00 1c 00 00 00 01 00
-  1............... 31 00 00 00 04 00 00 00 04 00 00 00 00 00 00 00
-  .........        01 00 00 00 01 00 00 00 00
+016775-016780 StringBlock "text"
+016781-016815 DataBlock
+  ..........1..... 1c 00 00 00 1c 00 00 00 01 00 31 00 00 00 04 00
+  ................ 00 00 04 00 00 00 00 00 00 00 01 00 00 00 01 00
+  ...              00 00 00
 016816-016867 UnicodeBlock "turns_center_text_Text_31"
 016868-016869 DataBlock
   ..               00 00
@@ -1311,11 +1331,15 @@
   ...........      00 00 00 00 00 00 00 00 00 00 00
 017946-018014 ImageListBlock 1 elements:
   017950-018014 ImageBlock id=394216596 xsize=1 ysize=0 path="UI\\Campaign UI\\Skins\\building_damaged_frame.tga" unknown=4294967295
-018015-018077 DataBlock
-  ................ 00 00 00 00 00 00 00 00 01 00 00 00 8c c7 83 17
-  ..NewState...... 08 00 4e 65 77 53 74 61 74 65 07 00 00 00 1e 00
-  ................ 00 00 00 00 00 00 04 00 00 00 04 00 00 00 00 00
-  ...............  00 00 01 00 00 00 01 00 00 00 00 00 00 00 00
+018015-018026 DataBlock
+  ............     00 00 00 00 00 00 00 00 01 00 00 00
+018027-018030 StateIDBlock 394512268
+018031-018040 NewStateBlock "NewState"
+018041-018044 XSizeBlock 7
+018045-018048 YSizeBlock 30
+018049-018077 DataBlock
+  ................ 00 00 00 00 04 00 00 00 04 00 00 00 00 00 00 00
+  .............    01 00 00 00 01 00 00 00 00 00 00 00 00
 018078-018095 FontNameBlock "bardi_12, Normal"
 018096-018107 DataBlock
   ............     02 00 00 00 01 00 00 00 ff ff ff ff
@@ -1343,9 +1367,10 @@
   ....             ff ff ff ff
 018313-018628 UnicodeBlock "Damage||This building needs repair.||Click the repair button to the right to start repairing.||None of the building's effects will work until it is repaired."
 018629-018674 UnicodeBlock "damaged_Tooltip_5f0024"
-018675-018705 DataBlock
+018675-018701 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-  ...........t...  00 00 00 00 00 00 00 01 00 00 00 74 c9 83 17
+  ...........      00 00 00 00 00 00 00 01 00 00 00
+018702-018705 StateIDBlock 394512756
 018706-018715 NewStateBlock "NewState"
 018716-018719 XSizeBlock 5
 018720-018723 YSizeBlock 28
@@ -1376,11 +1401,15 @@
   ...              00 00 00
 018955-019022 ImageListBlock 1 elements:
   018959-019022 ImageBlock id=394216804 xsize=5 ysize=28 path="UI\\Campaign UI\\Skins\\building_damaged_fill.tga" unknown=4292927459
-019023-019085 DataBlock
-  ............\... 00 00 00 00 00 00 00 00 01 00 00 00 5c cb 83 17
-  ..NewState...... 08 00 4e 65 77 53 74 61 74 65 05 00 00 00 1c 00
-  ................ 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00
-  ...............  00 00 01 00 00 00 01 00 00 00 00 00 00 00 00
+019023-019034 DataBlock
+  ............     00 00 00 00 00 00 00 00 01 00 00 00
+019035-019038 StateIDBlock 394513244
+019039-019048 NewStateBlock "NewState"
+019049-019052 XSizeBlock 5
+019053-019056 YSizeBlock 28
+019057-019085 DataBlock
+  ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
+  .............    01 00 00 00 01 00 00 00 00 00 00 00 00
 019086-019103 FontNameBlock "bardi_10, Normal"
 019104-019115 DataBlock
   ............     02 00 00 00 01 00 00 00 ff 00 00 00
@@ -1419,10 +1448,11 @@
 019385-019502 ImageListBlock 2 elements:
   019389-019447 ImageBlock id=394217012 xsize=1 ysize=0 path="UI\\Campaign UI\\Skins\\turns_not_queued.tga" unknown=4294967295
   019448-019502 ImageBlock id=394217220 xsize=1 ysize=0 path="UI\\Campaign UI\\Skins\\turns_queued.tga" unknown=4294967295
-019503-019536 DataBlock
+019503-019518 DataBlock
   ............D... 00 00 00 00 00 00 00 00 02 00 00 00 44 cd 83 17
-  ..normal........ 06 00 6e 6f 72 6d 61 6c 1c 00 00 00 1c 00 00 00
-  ..               01 00
+019519-019526 StringBlock "normal"
+019527-019536 DataBlock
+  ..........       1c 00 00 00 1c 00 00 00 01 00
 019537-019636 UnicodeBlock "NConstruction turns||This shows how many turns it"
 019637-019717 DataBlock
    .w.i.l.l. .t.a. 20 00 77 00 69 00 6c 00 6c 00 20 00 74 00 61 00
@@ -1491,13 +1521,14 @@
   020567-020622 ImageBlock id=394217636 xsize=1 ysize=0 path="UI\\Campaign UI\\Skins\\upgrades_left.tga" unknown=4294967295
   020623-020679 ImageBlock id=394217844 xsize=1 ysize=0 path="UI\\Campaign UI\\Skins\\upgrades_right.tga" unknown=4294967295
   020680-020734 ImageBlock id=394218052 xsize=1 ysize=0 path="UI\\Campaign UI\\Skins\\upgrades_one.tga" unknown=4294967295
-020735-020822 DataBlock
+020735-020792 DataBlock
   ................ 00 00 00 00 00 00 00 00 04 00 00 00 14 d1 83 17
   ..oneR...B...... 03 00 6f 6e 65 52 00 00 00 42 00 00 00 00 00 00
   ................ 00 02 00 00 00 00 00 00 00 00 00 00 00 01 00 00
-  ............bard 00 01 00 00 00 00 00 00 00 00 10 00 62 61 72 64
-  i_12, Normal.... 69 5f 31 32 2c 20 4e 6f 72 6d 61 6c 02 00 00 00
-  ........         01 00 00 00 ff ff ff ff
+  ..........       00 01 00 00 00 00 00 00 00 00
+020793-020810 FontNameBlock "bardi_12, Normal"
+020811-020822 DataBlock
+  ............     02 00 00 00 01 00 00 00 ff ff ff ff
 020823-020839 StringBlock "fe_tooltip_text"
 020840-020854 DataBlock
   ...............  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -1583,11 +1614,13 @@
   ...              00 00 00
 021648-021717 ImageListBlock 1 elements:
   021652-021717 ImageBlock id=394218260 xsize=1 ysize=0 path="UI\\Campaign UI\\Skins\\construction_arrow_down.tga" unknown=4294967295
-021718-021778 DataBlock
+021718-021733 DataBlock
   ................ 00 00 00 00 00 00 00 00 01 00 00 00 b4 d8 83 17
-  ..normal#....... 06 00 6e 6f 72 6d 61 6c 23 00 00 00 1c 00 00 00
-  ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
-  .............    01 00 00 00 01 00 00 00 00 00 00 00 00
+021734-021741 StringBlock "normal"
+021742-021778 DataBlock
+  #............... 23 00 00 00 1c 00 00 00 00 00 00 00 02 00 00 00
+  ................ 00 00 00 00 00 00 00 00 01 00 00 00 01 00 00 00
+  .....            00 00 00 00 00
 021779-021796 FontNameBlock "bardi_12, Normal"
 021797-021808 DataBlock
   ............     02 00 00 00 01 00 00 00 ff ff ff ff
@@ -1619,11 +1652,13 @@
   ...              00 00 00
 022033-022092 ImageListBlock 1 elements:
   022037-022092 ImageBlock id=394218468 xsize=1 ysize=0 path="UI\\Campaign UI\\Skins\\building_cost.tga" unknown=4294967295
-022093-022153 DataBlock
+022093-022108 DataBlock
   ................ 00 00 00 00 00 00 00 00 02 00 00 00 9c da 83 17
-  ..normal6....... 06 00 6e 6f 72 6d 61 6c 36 00 00 00 15 00 00 00
-  ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
-  .............    01 00 00 00 01 00 00 00 00 00 00 00 00
+022109-022116 StringBlock "normal"
+022117-022153 DataBlock
+  6............... 36 00 00 00 15 00 00 00 00 00 00 00 02 00 00 00
+  ................ 00 00 00 00 00 00 00 00 01 00 00 00 01 00 00 00
+  .....            00 00 00 00 00
 022154-022171 FontNameBlock "bardi_12, Normal"
 022172-022183 DataBlock
   ............     02 00 00 00 01 00 00 00 ff ff ff ff
@@ -1728,11 +1763,13 @@
   023220-023283 ImageBlock id=394218676 xsize=26 ysize=26 path="UI\\Campaign UI\\Skins\\religion_jodo_shinshu.tga" unknown=4294967295
   023284-023342 ImageBlock id=394218884 xsize=26 ysize=26 path="UI\\Campaign UI\\Skins\\religion_buddist.tga" unknown=4294967295
   023343-023403 ImageBlock id=394219092 xsize=26 ysize=26 path="UI\\Campaign UI\\Skins\\religion_christian.tga" unknown=4294967295
-023404-023467 DataBlock
+023404-023419 DataBlock
   ............L.. 00 00 00 00 00 00 00 00 03 00 00 00 4c 9b 7f 17
-  ..christian..... 09 00 63 68 72 69 73 74 69 61 6e 1a 00 00 00 1a
-  ................ 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00
-  ................ 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00 00
+023420-023430 StringBlock "christian"
+023431-023467 DataBlock
+  ................ 1a 00 00 00 1a 00 00 00 00 00 00 00 02 00 00 00
+  ................ 00 00 00 00 00 00 00 00 01 00 00 00 01 00 00 00
+  .....            00 00 00 00 00
 023468-023485 FontNameBlock "bardi_10, Normal"
 023486-023497 DataBlock
   ............     02 00 00 00 01 00 00 00 00 00 00 ff
@@ -1802,10 +1839,14 @@
   ...              00 00 00
 024151-024208 ImageListBlock 1 elements:
   024155-024208 ImageBlock id=394219300 xsize=32 ysize=32 path="UI\\Campaign UI\\Skins\\can_upgrade.tga" unknown=4294967295
-024209-024244 DataBlock
-  ............... 00 00 00 00 00 00 00 00 01 00 00 00 04 a1 7f 17
-  ..NewState...... 08 00 4e 65 77 53 74 61 74 65 13 00 00 00 18 00
-  ....             00 00 00 00
+024209-024220 DataBlock
+  ............     00 00 00 00 00 00 00 00 01 00 00 00
+024221-024224 StateIDBlock 394240260
+024225-024234 NewStateBlock "NewState"
+024235-024238 XSizeBlock 19
+024239-024242 YSizeBlock 24
+024243-024244 DataBlock
+  ..               00 00
 024245-024306 UnicodeBlock "This building can be upgraded."
 024307-024329 DataBlock
   ................ 02 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00

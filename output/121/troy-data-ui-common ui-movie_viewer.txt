@@ -1,14 +1,18 @@
 000000-000009 VersionBlock 121
 000010-000013 RootIDBlock 555140480
 000014-000019 StringBlock "root"
-000020-000034 DataBlock
-  ...............  00 00 00 00 00 00 00 00 00 00 00 00 00 00 01
+000020-000021 StringBlock ""
+000022-000025 XOffsetBlock 0
+000026-000029 YOffsetBlock 0
+000030-000034 DataBlock
+  .....            00 00 00 00 01
 000035-000058 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=0 ysize=0 brga=0
 000059-000066 DataBlock
   ........         00 00 00 00 a0 ea 14 12
 000067-000090 ImageUseBlock id=1 xofs=303320832 yofs=83886080 xsize=67108864 ysize=0 brga=16777216
-000091-000097 DataBlock
-  .......          00 00 00 a0 ea 14 12
+000091-000093 DataBlock
+  ...              00 00 00
+000094-000097 StateIDBlock 303360672
 000098-000107 NewStateBlock "NewState"
 000108-000111 XSizeBlock 1600
 000112-000115 YSizeBlock 900
@@ -46,11 +50,10 @@
 000453-000464 DataBlock
   ............     00 00 00 00 00 00 00 00 00 00 00 00
 000465-000488 ImageUseBlock id=1 xofs=257 yofs=65536 xsize=16777216 ysize=0 brga=5
-000489-000492 DataBlock
-  ....             00 00 00 00
-000493-000516 ImageUseBlock id=1 xofs=905354240 yofs=36 xsize=0 ysize=256 brga=905354240
-000517-000517 DataBlock
-  $                24
+000489-000513 DataBlock
+  ...........5$... 00 00 00 00 01 00 00 00 00 9c f6 35 24 00 00 00
+  .........        00 00 00 00 00 01 00 00 00
+000514-000517 StateIDBlock 607516316
 000518-000527 NewStateBlock "NewState"
 000528-000531 XSizeBlock 1600
 000532-000535 YSizeBlock 900
@@ -88,9 +91,9 @@
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             00 00 00 00
 000870-000893 ImageUseBlock id=1 xofs=256 yofs=327680 xsize=0 ysize=0 brga=3959422976
-000894-000912 DataBlock
-  .<$............. 96 3c 24 00 00 00 00 00 00 00 00 01 00 00 00 ec
-  .<$              96 3c 24
+000894-000908 DataBlock
+  .<$............  96 3c 24 00 00 00 00 00 00 00 00 01 00 00 00
+000909-000912 StateIDBlock 607950572
 000913-000922 NewStateBlock "NewState"
 000923-000926 XSizeBlock 1600
 000927-000930 YSizeBlock 900
@@ -124,11 +127,12 @@
 001248-001248 DataBlock
   .                00
 001249-001272 ImageUseBlock id=1 xofs=608015644 yofs=1734475779 xsize=256114 ysize=211968 brga=0
-001273-001328 DataBlock
+001273-001298 DataBlock
   ................ 00 04 00 00 00 04 00 00 00 00 00 00 00 02 00 00
-  ............tw_t 00 00 00 00 00 00 00 00 00 00 0c 00 74 77 5f 74
-  roy_bold........ 72 6f 79 5f 62 6f 6c 64 0a 00 00 00 02 00 00 00
-  ........         00 00 00 00 dd da fa ff
+  ..........       00 00 00 00 00 00 00 00 00 00
+001299-001312 StringBlock "tw_troy_bold"
+001313-001328 DataBlock
+  ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
 001329-001351 StringBlock "Default Font Category"
 001352-001371 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -164,8 +168,9 @@
 001739-001747 DataBlock
   .........        00 02 00 00 00 02 00 00 00
 001748-001807 ImageBlock id=172002876 xsize=256 ysize=256 path="ui\\skins\\default\\troy_crack_texture_10.png" unknown=0
-001808-001816 DataBlock
-  .....d^@$        00 01 00 00 00 64 5e 40 24
+001808-001812 DataBlock
+  .....            00 01 00 00 00
+001813-001816 StateIDBlock 608198244
 001817-001826 NewStateBlock "NewState"
 001827-001830 XSizeBlock 986
 001831-001834 YSizeBlock 44
@@ -220,9 +225,10 @@
   .8..tx......n... fa 38 02 00 74 78 00 00 00 00 00 00 6e 01 00 00
   .....            0b 00 00 00 01
 002370-002393 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=83886080 ysize=0 brga=67108864
-002394-002417 DataBlock
+002394-002413 DataBlock
   .....[@$........ 00 00 00 00 cc 5b 40 24 00 00 00 00 00 00 00 00
-  .....[@$         01 00 00 00 cc 5b 40 24
+  ....             01 00 00 00
+002414-002417 StateIDBlock 608197580
 002418-002427 NewStateBlock "NewState"
 002428-002431 XSizeBlock 253
 002432-002435 YSizeBlock 30
@@ -261,9 +267,10 @@
 002796-002810 DataBlock
   ...............  00 00 00 00 00 00 00 00 00 00 00 00 00 00 01
 002811-002834 ImageUseBlock id=1 xofs=65536 yofs=65536 xsize=83886080 ysize=0 brga=0
-002835-002858 DataBlock
+002835-002854 DataBlock
   ....4.@$........ 00 00 00 00 34 ac 40 24 00 00 00 00 00 00 00 00
-  ....4.@$         01 00 00 00 34 ac 40 24
+  ....             01 00 00 00
+002855-002858 StateIDBlock 608218164
 002859-002868 NewStateBlock "NewState"
 002869-002872 XSizeBlock 986
 002873-002876 YSizeBlock 44
@@ -302,10 +309,11 @@
   .......@$..wh1.. 00 02 00 00 00 f4 c0 40 24 03 00 77 68 31 a2 04
   ...              00 00 8f
 003260-003283 ImageUseBlock id=1 xofs=33554432 yofs=0 xsize=0 ysize=33554432 brga=0
-003284-003321 DataBlock
-  ..........tw_tro 00 00 00 00 00 00 00 00 0c 00 74 77 5f 74 72 6f
-  y_bold.......... 79 5f 62 6f 6c 64 0a 00 00 00 02 00 00 00 00 00
-  ......           00 00 dd da fa ff
+003284-003291 DataBlock
+  ........         00 00 00 00 00 00 00 00
+003292-003305 StringBlock "tw_troy_bold"
+003306-003321 DataBlock
+  ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
 003322-003344 StringBlock "Default Font Category"
 003345-003364 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -375,12 +383,15 @@
   .....            00 01 00 00 00
 004136-004202 ImageListBlock 1 elements:
   004140-004202 ImageBlock id=172046668 xsize=64 ysize=4 path="ui\\skins\\default\\dark_gradient_horizontal.png" unknown=0
-004203-004203 DataBlock
-  .                00
-004204-004227 ImageUseBlock id=1 xofs=347092524 yofs=1699610632 xsize=1635013495 ysize=65561972 brga=3801088
-004228-004258 DataBlock
-  ................ 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00
-  ...............  00 00 02 00 00 00 00 00 00 00 00 00 00 00 00
+004203-004207 DataBlock
+  .....            00 01 00 00 00
+004208-004211 StateIDBlock 347092524
+004212-004221 NewStateBlock "NewState"
+004222-004225 XSizeBlock 1000
+004226-004229 YSizeBlock 58
+004230-004258 DataBlock
+  ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
+  .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 004259-004272 StringBlock "tw_troy_bold"
 004273-004288 DataBlock
   ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
@@ -432,9 +443,10 @@
 004853-004853 DataBlock
   .                0a
 004854-004891 ImagePathBlock "ui\\skins\\default\\wave_ornament_3.png"
-004892-004912 DataBlock
+004892-004908 DataBlock
   ....(........... 07 01 00 00 28 00 00 00 00 00 00 00 00 01 00 00
-  ..8..            00 c4 38 b0 14
+  .                00
+004909-004912 StateIDBlock 347093188
 004913-004922 NewStateBlock "NewState"
 004923-004926 XSizeBlock 987
 004927-004930 YSizeBlock 49
@@ -482,12 +494,15 @@
   ......G..        fa ff ff ff 00 8c 47 af 14
 005420-005489 ImageListBlock 1 elements:
   005424-005489 ImageBlock id=172057524 xsize=32 ysize=10 path="ui\\skins\\default\\border_horizontal_detail_01.png" unknown=0
-005490-005490 DataBlock
-  .                00
-005491-005514 ImageUseBlock id=1 xofs=347031436 yofs=1699610632 xsize=1635013495 ysize=65561972 brga=655360
-005515-005545 DataBlock
-  ................ 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00
-  ...............  00 00 02 00 00 00 00 00 00 00 00 00 00 00 00
+005490-005494 DataBlock
+  .....            00 01 00 00 00
+005495-005498 StateIDBlock 347031436
+005499-005508 NewStateBlock "NewState"
+005509-005512 XSizeBlock 1000
+005513-005516 YSizeBlock 10
+005517-005545 DataBlock
+  ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
+  .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 005546-005559 StringBlock "tw_troy_bold"
 005560-005575 DataBlock
   ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
@@ -521,12 +536,15 @@
   ......D..        05 00 00 00 00 f4 44 af 14
 005903-005965 ImageListBlock 1 elements:
   005907-005965 ImageBlock id=172057708 xsize=870 ysize=12 path="ui\\skins\\default\\separator_horizontal.png" unknown=0
-005966-005966 DataBlock
-  .                00
-005967-005990 ImageUseBlock id=1 xofs=347030772 yofs=1699610632 xsize=1635013495 ysize=65955188 brga=786432
-005991-006021 DataBlock
-  ................ 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00
-  ...............  00 00 02 00 00 00 00 00 00 00 00 00 00 00 00
+005966-005970 DataBlock
+  .....            00 01 00 00 00
+005971-005974 StateIDBlock 347030772
+005975-005984 NewStateBlock "NewState"
+005985-005988 XSizeBlock 1006
+005989-005992 YSizeBlock 12
+005993-006021 DataBlock
+  ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
+  .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 006022-006035 StringBlock "tw_troy_bold"
 006036-006051 DataBlock
   ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
@@ -563,12 +581,13 @@
   .=$              8d 3d 24
 006393-006451 ImageListBlock 1 elements:
   006397-006451 ImageBlock id=278771660 xsize=250 ysize=256 path="ui\\skins\\default\\plate_borders_v1.png" unknown=0
-006452-006452 DataBlock
-  .                00
-006453-006476 ImageUseBlock id=1 xofs=608013652 yofs=1868693510 xsize=1919247474 ysize=1000 brga=822
-006477-006505 DataBlock
-  ................ 00 00 00 00 04 00 00 00 04 00 00 00 00 00 00 00
-  .............    02 00 00 00 00 00 00 00 00 00 00 00 00
+006452-006460 DataBlock
+  .....T.=$        00 01 00 00 00 54 8d 3d 24
+006461-006468 StringBlock "border"
+006469-006505 DataBlock
+  ....6........... e8 03 00 00 36 03 00 00 00 00 00 00 04 00 00 00
+  ................ 04 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00
+  .....            00 00 00 00 00
 006506-006519 StringBlock "tw_troy_bold"
 006520-006535 DataBlock
   ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
@@ -601,12 +620,15 @@
   .......=$        fd ff ff ff 00 bc 8a 3d 24
 006840-006909 ImageListBlock 1 elements:
   006844-006909 ImageBlock id=278771476 xsize=32 ysize=10 path="ui\\skins\\default\\border_horizontal_detail_01.png" unknown=0
-006910-006910 DataBlock
-  .                00
-006911-006934 ImageUseBlock id=1 xofs=608012988 yofs=1699610632 xsize=1635013495 ysize=65561972 brga=655360
-006935-006965 DataBlock
-  ................ 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00
-  ...............  00 00 02 00 00 00 00 00 00 00 00 00 00 00 00
+006910-006914 DataBlock
+  .....            00 01 00 00 00
+006915-006918 StateIDBlock 608012988
+006919-006928 NewStateBlock "NewState"
+006929-006932 XSizeBlock 1000
+006933-006936 YSizeBlock 10
+006937-006965 DataBlock
+  ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
+  .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 006966-006979 StringBlock "tw_troy_bold"
 006980-006995 DataBlock
   ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
@@ -640,12 +662,15 @@
   .......=$        03 00 00 00 00 84 92 3d 24
 007325-007394 ImageListBlock 1 elements:
   007329-007394 ImageBlock id=278770740 xsize=32 ysize=10 path="ui\\skins\\default\\border_horizontal_detail_01.png" unknown=0
-007395-007395 DataBlock
-  .                00
-007396-007419 ImageUseBlock id=1 xofs=608014980 yofs=1699610632 xsize=1635013495 ysize=65561972 brga=655360
-007420-007450 DataBlock
-  ................ 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00
-  ...............  00 00 02 00 00 00 00 00 00 00 00 00 00 00 00
+007395-007399 DataBlock
+  .....            00 01 00 00 00
+007400-007403 StateIDBlock 608014980
+007404-007413 NewStateBlock "NewState"
+007414-007417 XSizeBlock 1000
+007418-007421 YSizeBlock 10
+007422-007450 DataBlock
+  ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
+  .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 007451-007464 StringBlock "tw_troy_bold"
 007465-007480 DataBlock
   ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
@@ -681,9 +706,9 @@
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ......           00 00 00 00 00 00
 007815-007838 ImageUseBlock id=1 xofs=256 yofs=131072 xsize=0 ysize=0 brga=1006632960
-007839-007857 DataBlock
-  .J$............< 06 4a 24 00 00 00 00 00 00 00 00 01 00 00 00 3c
-  .J$              06 4a 24
+007839-007853 DataBlock
+  .J$............  06 4a 24 00 00 00 00 00 00 00 00 01 00 00 00
+007854-007857 StateIDBlock 608831036
 007858-007867 NewStateBlock "NewState"
 007868-007871 XSizeBlock 1000
 007872-007875 YSizeBlock 821
@@ -757,9 +782,9 @@
   ............<... 00 00 00 00 00 00 00 00 00 00 00 00 3c 00 00 00
   .......          00 00 00 00 00 00 01
 008586-008609 ImageUseBlock id=1 xofs=1 yofs=1280 xsize=0 ysize=0 brga=1444151296
-008610-008627 DataBlock
-  <$.............V 3c 24 00 00 00 00 00 00 00 00 01 00 00 00 14 56
-  <$               3c 24
+008610-008623 DataBlock
+  <$............   3c 24 00 00 00 00 00 00 00 00 01 00 00 00
+008624-008627 StateIDBlock 607933972
 008628-008637 NewStateBlock "NewState"
 008638-008641 XSizeBlock 1000
 008642-008645 YSizeBlock 700
@@ -787,9 +812,9 @@
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   .....            00 00 00 00 01
 008872-008895 ImageUseBlock id=1 xofs=1 yofs=512 xsize=0 ysize=0 brga=1531183104
-008896-008913 DataBlock
-  <$............D[ 3c 24 00 00 00 00 00 00 00 00 01 00 00 00 44 5b
-  <$               3c 24
+008896-008909 DataBlock
+  <$............   3c 24 00 00 00 00 00 00 00 00 01 00 00 00
+008910-008913 StateIDBlock 607935300
 008914-008923 NewStateBlock "NewState"
 008924-008927 XSizeBlock 1000
 008928-008931 YSizeBlock 700
@@ -820,9 +845,10 @@
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   .                00
 009165-009188 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=0 ysize=0 brga=0
-009189-009212 DataBlock
+009189-009208 DataBlock
   ....`.u......... 00 00 00 00 60 db 75 18 00 00 00 00 00 00 00 00
-  ....`.u.         01 00 00 00 60 db 75 18
+  ....             01 00 00 00
+009209-009212 StateIDBlock 410377056
 009213-009222 NewStateBlock "NewState"
 009223-009226 XSizeBlock 1000
 009227-009230 YSizeBlock 298
@@ -849,9 +875,10 @@
 009443-009457 DataBlock
   ...............  00 00 00 00 00 00 00 00 00 00 00 00 00 00 01
 009458-009481 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=0 ysize=0 brga=0
-009482-009505 DataBlock
+009482-009501 DataBlock
   ......u......... 00 00 00 00 00 de 75 18 00 00 00 00 00 00 00 00
-  ......u.         01 00 00 00 00 de 75 18
+  ....             01 00 00 00
+009502-009505 StateIDBlock 410377728
 009506-009515 NewStateBlock "NewState"
 009516-009519 XSizeBlock 1000
 009520-009523 YSizeBlock 298
@@ -882,9 +909,9 @@
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             00 00 00 00
 009785-009808 ImageUseBlock id=1 xofs=256 yofs=0 xsize=0 ysize=0 brga=2684354560
-009809-009827 DataBlock
-  .u.............. e0 75 18 00 00 00 00 00 00 00 00 01 00 00 00 a0
-  .u.              e0 75 18
+009809-009823 DataBlock
+  .u.............  e0 75 18 00 00 00 00 00 00 00 00 01 00 00 00
+009824-009827 StateIDBlock 410378400
 009828-009837 NewStateBlock "NewState"
 009838-009841 XSizeBlock 1000
 009842-009845 YSizeBlock 48
@@ -916,9 +943,10 @@
 010169-010183 DataBlock
   ..........0....  00 00 00 00 00 00 00 00 00 00 30 00 00 00 00
 010184-010207 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=0 ysize=0 brga=0
-010208-010231 DataBlock
+010208-010227 DataBlock
   ....@.u......... 00 00 00 00 40 e3 75 18 00 00 00 00 00 00 00 00
-  ....@.u.         01 00 00 00 40 e3 75 18
+  ....             01 00 00 00
+010228-010231 StateIDBlock 410379072
 010232-010241 NewStateBlock "NewState"
 010242-010245 XSizeBlock 1000
 010246-010249 YSizeBlock 250
@@ -949,9 +977,9 @@
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             00 00 00 00
 010522-010545 ImageUseBlock id=1 xofs=256 yofs=0 xsize=0 ysize=0 brga=3758096384
-010546-010564 DataBlock
-  ................ 89 a5 17 00 00 00 00 00 00 00 00 01 00 00 00 e0
-  ...              89 a5 17
+010546-010560 DataBlock
+  ...............  89 a5 17 00 00 00 00 00 00 00 00 01 00 00 00
+010561-010564 StateIDBlock 396724704
 010565-010574 NewStateBlock "NewState"
 010575-010578 XSizeBlock 1000
 010579-010582 YSizeBlock 250
@@ -981,9 +1009,10 @@
 010826-010840 DataBlock
   ...............  00 00 00 00 00 00 00 00 00 00 00 00 00 00 01
 010841-010864 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=33554432 ysize=0 brga=0
-010865-010888 DataBlock
+010865-010884 DataBlock
   ....@........... 00 00 00 00 40 87 a5 17 00 00 00 00 00 00 00 00
-  ....@...         01 00 00 00 40 87 a5 17
+  ....             01 00 00 00
+010885-010888 StateIDBlock 396724032
 010889-010898 NewStateBlock "NewState"
 010899-010902 XSizeBlock 1000
 010903-010906 YSizeBlock 250
@@ -1026,9 +1055,10 @@
 011372-011372 DataBlock
   .                0d
 011373-011422 ImagePathBlock "ui\\skins\\default\\border_horizontal_detail_01.png"
-011423-011443 DataBlock
+011423-011439 DataBlock
    ............... 20 00 00 00 0a 00 00 00 00 00 00 00 00 01 00 00
-  .....            00 00 fc a6 17
+  .                00
+011440-011443 StateIDBlock 396819456
 011444-011453 NewStateBlock "NewState"
 011454-011457 XSizeBlock 416
 011458-011461 YSizeBlock 202
@@ -1098,9 +1128,9 @@
   ................ 00 00 00 00 00 00 08 00 00 00 08 00 00 00 00 00
   ....             00 00 00 00
 012218-012241 ImageUseBlock id=1 xofs=256 yofs=0 xsize=0 ysize=0 brga=1610612736
-012242-012260 DataBlock
-  ...............` f9 a6 17 00 00 00 00 00 00 00 00 01 00 00 00 60
-  ...              f9 a6 17
+012242-012256 DataBlock
+  ...............  f9 a6 17 00 00 00 00 00 00 00 00 01 00 00 00
+012257-012260 StateIDBlock 396818784
 012261-012270 NewStateBlock "NewState"
 012271-012274 XSizeBlock 400
 012275-012278 YSizeBlock 1
@@ -1136,9 +1166,10 @@
 012626-012626 DataBlock
   .                0d
 012627-012668 ImagePathBlock "ui\\skins\\default\\plate_border_medium.png"
-012669-012689 DataBlock
+012669-012685 DataBlock
   ................ 80 00 00 00 80 00 00 00 00 00 00 00 00 01 00 00
-  .@...            00 40 ec a6 17
+  .                00
+012686-012689 StateIDBlock 396815424
 012690-012699 NewStateBlock "NewState"
 012700-012703 XSizeBlock 400
 012704-012707 YSizeBlock 36
@@ -1182,9 +1213,10 @@
 013143-013156 DataBlock
   ..............   00 00 00 00 00 00 00 00 00 00 e2 ff ff ff
 013157-013180 ImageUseBlock id=1 xofs=65536 yofs=16777216 xsize=0 ysize=2 brga=0
-013181-013205 DataBlock
+013181-013201 DataBlock
   ......W......... e2 ff ff ff 00 e0 57 a7 17 00 00 00 00 00 00 00
-  ......W..        00 01 00 00 00 e0 57 a7 17
+  .....            00 01 00 00 00
+013202-013205 StateIDBlock 396842976
 013206-013215 NewStateBlock "NewState"
 013216-013219 XSizeBlock 400
 013220-013223 YSizeBlock 36
@@ -1211,9 +1243,10 @@
 013432-013445 DataBlock
   ......X.......   00 00 00 00 00 00 58 00 00 00 f2 ff ff ff
 013446-013469 ImageUseBlock id=1 xofs=65536 yofs=16777216 xsize=0 ysize=8 brga=0
-013470-013494 DataBlock
+013470-013490 DataBlock
   ................ fe ff ff ff 00 00 00 00 00 00 00 00 00 00 00 00
-  .........        00 01 00 00 00 e0 ee a6 17
+  .....            00 01 00 00 00
+013491-013494 StateIDBlock 396816096
 013495-013504 NewStateBlock "NewState"
 013505-013508 XSizeBlock 224
 013509-013512 YSizeBlock 48
@@ -1248,12 +1281,15 @@
   ...              00 00 00
 013798-013865 ImageListBlock 1 elements:
   013802-013865 ImageBlock id=228287008 xsize=60 ysize=48 path="ui\\skins\\default\\cmp_nameplate_golden_left.png" unknown=0
-013866-013866 DataBlock
-  .                00
-013867-013890 ImageUseBlock id=1 xofs=396816768 yofs=1699610632 xsize=1635013495 ysize=3958132 brga=3145728
-013891-013921 DataBlock
-  ................ 00 00 00 00 00 00 04 00 00 00 04 00 00 00 00 00
-  ...............  00 00 02 00 00 00 00 00 00 00 00 00 00 00 00
+013866-013870 DataBlock
+  .....            00 01 00 00 00
+013871-013874 StateIDBlock 396816768
+013875-013884 NewStateBlock "NewState"
+013885-013888 XSizeBlock 60
+013889-013892 YSizeBlock 48
+013893-013921 DataBlock
+  ................ 00 00 00 00 04 00 00 00 04 00 00 00 00 00 00 00
+  .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 013922-013935 StringBlock "tw_troy_bold"
 013936-013951 DataBlock
   ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
@@ -1292,11 +1328,12 @@
   .........        00 00 00 00 00 00 00 00 00
 014316-014383 ImageListBlock 1 elements:
   014320-014383 ImageBlock id=228287200 xsize=239 ysize=48 path="ui\\skins\\default\\cmp_nameplate_golden_base.png" unknown=0
-014384-014384 DataBlock
-  .                00
-014385-014408 ImageUseBlock id=1 xofs=396725376 yofs=1699610632 xsize=1635013495 ysize=6841716 brga=2490368
-014409-014410 DataBlock
-  ..               00 00
+014384-014388 DataBlock
+  .....            00 01 00 00 00
+014389-014392 StateIDBlock 396725376
+014393-014402 NewStateBlock "NewState"
+014403-014406 XSizeBlock 104
+014407-014410 YSizeBlock 38
 014411-014426 UnicodeBlock "???????"
 014427-014445 DataBlock
   ................ 00 00 04 00 00 00 00 00 00 00 00 00 00 00 03 00
@@ -1338,12 +1375,15 @@
   ...              00 00 00
 014863-014930 ImageListBlock 1 elements:
   014867-014930 ImageBlock id=228287392 xsize=60 ysize=48 path="ui\\skins\\default\\cmp_nameplate_golden_left.png" unknown=0
-014931-014931 DataBlock
-  .                00
-014932-014955 ImageUseBlock id=1 xofs=396822816 yofs=1699610632 xsize=1635013495 ysize=3958132 brga=3145728
-014956-014986 DataBlock
-  ................ 00 00 00 00 00 00 04 00 00 00 04 00 00 00 00 00
-  ...............  00 00 02 00 00 00 00 00 00 00 00 00 00 00 00
+014931-014935 DataBlock
+  .....            00 01 00 00 00
+014936-014939 StateIDBlock 396822816
+014940-014949 NewStateBlock "NewState"
+014950-014953 XSizeBlock 60
+014954-014957 YSizeBlock 48
+014958-014986 DataBlock
+  ................ 00 00 00 00 04 00 00 00 04 00 00 00 00 00 00 00
+  .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 014987-015000 StringBlock "tw_troy_bold"
 015001-015016 DataBlock
   ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
@@ -1386,12 +1426,15 @@
   .........        07 00 00 00 00 80 06 a7 17
 015454-015523 ImageListBlock 1 elements:
   015458-015523 ImageBlock id=228287584 xsize=1 ysize=0 path="ui\\skins\\default\\separator_horizontal_golden.png" unknown=0
-015524-015524 DataBlock
-  .                00
-015525-015548 ImageUseBlock id=1 xofs=396822144 yofs=1699610632 xsize=1635013495 ysize=26633588 brga=786432
-015549-015579 DataBlock
-  ................ 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00
-  ...............  00 00 02 00 00 00 00 00 00 00 00 00 00 00 00
+015524-015528 DataBlock
+  .....            00 01 00 00 00
+015529-015532 StateIDBlock 396822144
+015533-015542 NewStateBlock "NewState"
+015543-015546 XSizeBlock 406
+015547-015550 YSizeBlock 12
+015551-015579 DataBlock
+  ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
+  .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 015580-015593 StringBlock "tw_troy_bold"
 015594-015609 DataBlock
   ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
@@ -1895,12 +1938,15 @@
   ........         00 00 00 00 00 00 00 00
 021336-021403 ImageListBlock 1 elements:
   021340-021403 ImageBlock id=228289504 xsize=256 ysize=256 path="ui\\skins\\default\\illustration_frame_golden.png" unknown=0
-021404-021404 DataBlock
-  .                00
-021405-021428 ImageUseBlock id=1 xofs=396803328 yofs=1699610632 xsize=1635013495 ysize=26240372 brga=12124160
-021429-021459 DataBlock
-  ................ 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00
-  ...............  00 00 01 00 00 00 00 00 00 00 00 00 00 00 00
+021404-021408 DataBlock
+  .....            00 01 00 00 00
+021409-021412 StateIDBlock 396803328
+021413-021422 NewStateBlock "NewState"
+021423-021426 XSizeBlock 400
+021427-021430 YSizeBlock 185
+021431-021459 DataBlock
+  ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
+  .............    01 00 00 00 00 00 00 00 00 00 00 00 00
 021460-021477 StringBlock "profile_offc_pro"
 021478-021493 DataBlock
   ................ 0c 00 00 00 00 00 00 00 00 00 00 00 a0 ad b4 ff
@@ -1957,9 +2003,10 @@
 022140-022140 DataBlock
   .                0d
 022141-022190 ImagePathBlock "ui\\skins\\default\\border_horizontal_detail_01.png"
-022191-022211 DataBlock
+022191-022207 DataBlock
    ............... 20 00 00 00 0a 00 00 00 00 00 00 00 00 01 00 00
-  .....            00 a0 d4 a6 17
+  .                00
+022208-022211 StateIDBlock 396809376
 022212-022221 NewStateBlock "NewState"
 022222-022225 XSizeBlock 416
 022226-022229 YSizeBlock 202
@@ -2026,9 +2073,9 @@
   ................ 00 00 00 00 00 00 08 00 00 00 08 00 00 00 00 00
   ....             00 00 00 00
 022957-022980 ImageUseBlock id=1 xofs=256 yofs=0 xsize=0 ysize=0 brga=1610612736
-022981-022999 DataBlock
-  ...............` fd a5 17 00 00 00 00 00 00 00 00 01 00 00 00 60
-  ...              fd a5 17
+022981-022995 DataBlock
+  ...............  fd a5 17 00 00 00 00 00 00 00 00 01 00 00 00
+022996-022999 StateIDBlock 396754272
 023000-023009 NewStateBlock "NewState"
 023010-023013 XSizeBlock 400
 023014-023017 YSizeBlock 1
@@ -2064,9 +2111,10 @@
 023365-023365 DataBlock
   .                0d
 023366-023407 ImagePathBlock "ui\\skins\\default\\plate_border_medium.png"
-023408-023428 DataBlock
+023408-023424 DataBlock
   ................ 80 00 00 00 80 00 00 00 00 00 00 00 00 01 00 00
-  .....            00 80 dc a6 17
+  .                00
+023425-023428 StateIDBlock 396811392
 023429-023438 NewStateBlock "NewState"
 023439-023442 XSizeBlock 400
 023443-023446 YSizeBlock 36
@@ -2110,9 +2158,10 @@
 023882-023895 DataBlock
   ..............   00 00 00 00 00 00 00 00 00 00 e2 ff ff ff
 023896-023919 ImageUseBlock id=1 xofs=65536 yofs=16777216 xsize=0 ysize=2 brga=0
-023920-023944 DataBlock
+023920-023940 DataBlock
   ..... H......... e2 ff ff ff 00 20 48 a7 17 00 00 00 00 00 00 00
-  ..... H..        00 01 00 00 00 20 48 a7 17
+  .....            00 01 00 00 00
+023941-023944 StateIDBlock 396838944
 023945-023954 NewStateBlock "NewState"
 023955-023958 XSizeBlock 400
 023959-023962 YSizeBlock 36
@@ -2139,9 +2188,10 @@
 024171-024184 DataBlock
   ......N.......   00 00 00 00 00 00 4e 00 00 00 f2 ff ff ff
 024185-024208 ImageUseBlock id=1 xofs=65536 yofs=16777216 xsize=0 ysize=8 brga=0
-024209-024233 DataBlock
+024209-024229 DataBlock
   ................ fe ff ff ff 00 00 00 00 00 00 00 00 00 00 00 00
-  .........        00 01 00 00 00 c0 fa a5 17
+  .....            00 01 00 00 00
+024230-024233 StateIDBlock 396753600
 024234-024243 NewStateBlock "NewState"
 024244-024247 XSizeBlock 243
 024248-024251 YSizeBlock 48
@@ -2173,12 +2223,15 @@
   ...              00 00 00
 024508-024575 ImageListBlock 1 elements:
   024512-024575 ImageBlock id=228291232 xsize=60 ysize=48 path="ui\\skins\\default\\cmp_nameplate_golden_left.png" unknown=0
-024576-024576 DataBlock
-  .                00
-024577-024600 ImageUseBlock id=1 xofs=396791232 yofs=1699610632 xsize=1635013495 ysize=3958132 brga=3145728
-024601-024631 DataBlock
-  ................ 00 00 00 00 00 00 04 00 00 00 04 00 00 00 00 00
-  ...............  00 00 02 00 00 00 00 00 00 00 00 00 00 00 00
+024576-024580 DataBlock
+  .....            00 01 00 00 00
+024581-024584 StateIDBlock 396791232
+024585-024594 NewStateBlock "NewState"
+024595-024598 XSizeBlock 60
+024599-024602 YSizeBlock 48
+024603-024631 DataBlock
+  ................ 00 00 00 00 04 00 00 00 04 00 00 00 00 00 00 00
+  .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 024632-024645 StringBlock "tw_troy_bold"
 024646-024661 DataBlock
   ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
@@ -2217,11 +2270,12 @@
   .........        00 00 00 00 00 00 00 00 00
 025026-025093 ImageListBlock 1 elements:
   025030-025093 ImageBlock id=228291424 xsize=239 ysize=48 path="ui\\skins\\default\\cmp_nameplate_golden_base.png" unknown=0
-025094-025094 DataBlock
-  .                00
-025095-025118 ImageUseBlock id=1 xofs=396790560 yofs=1699610632 xsize=1635013495 ysize=8086900 brga=2490368
-025119-025120 DataBlock
-  ..               00 00
+025094-025098 DataBlock
+  .....            00 01 00 00 00
+025099-025102 StateIDBlock 396790560
+025103-025112 NewStateBlock "NewState"
+025113-025116 XSizeBlock 123
+025117-025120 YSizeBlock 38
 025121-025136 UnicodeBlock "dy_name"
 025137-025155 DataBlock
   ................ 00 00 04 00 00 00 00 00 00 00 00 00 00 00 03 00
@@ -2263,12 +2317,15 @@
   ...              00 00 00
 025573-025640 ImageListBlock 1 elements:
   025577-025640 ImageBlock id=228291616 xsize=60 ysize=48 path="ui\\skins\\default\\cmp_nameplate_golden_left.png" unknown=0
-025641-025641 DataBlock
-  .                00
-025642-025665 ImageUseBlock id=1 xofs=396789888 yofs=1699610632 xsize=1635013495 ysize=3958132 brga=3145728
-025666-025696 DataBlock
-  ................ 00 00 00 00 00 00 04 00 00 00 04 00 00 00 00 00
-  ...............  00 00 02 00 00 00 00 00 00 00 00 00 00 00 00
+025641-025645 DataBlock
+  .....            00 01 00 00 00
+025646-025649 StateIDBlock 396789888
+025650-025659 NewStateBlock "NewState"
+025660-025663 XSizeBlock 60
+025664-025667 YSizeBlock 48
+025668-025696 DataBlock
+  ................ 00 00 00 00 04 00 00 00 04 00 00 00 00 00 00 00
+  .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 025697-025710 StringBlock "tw_troy_bold"
 025711-025726 DataBlock
   ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
@@ -2311,12 +2368,15 @@
   .........        07 00 00 00 00 e0 85 a6 17
 026164-026233 ImageListBlock 1 elements:
   026168-026233 ImageBlock id=228291808 xsize=1 ysize=0 path="ui\\skins\\default\\separator_horizontal_golden.png" unknown=0
-026234-026234 DataBlock
-  .                00
-026235-026258 ImageUseBlock id=1 xofs=396789216 yofs=1699610632 xsize=1635013495 ysize=26633588 brga=786432
-026259-026289 DataBlock
-  ................ 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00
-  ...............  00 00 02 00 00 00 00 00 00 00 00 00 00 00 00
+026234-026238 DataBlock
+  .....            00 01 00 00 00
+026239-026242 StateIDBlock 396789216
+026243-026252 NewStateBlock "NewState"
+026253-026256 XSizeBlock 406
+026257-026260 YSizeBlock 12
+026261-026289 DataBlock
+  ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
+  .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 026290-026303 StringBlock "tw_troy_bold"
 026304-026319 DataBlock
   ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
@@ -2820,12 +2880,15 @@
   ........         00 00 00 00 00 00 00 00
 032046-032113 ImageListBlock 1 elements:
   032050-032113 ImageBlock id=228293728 xsize=256 ysize=256 path="ui\\skins\\default\\illustration_frame_golden.png" unknown=0
-032114-032114 DataBlock
-  .                00
-032115-032138 ImageUseBlock id=1 xofs=396764352 yofs=1699610632 xsize=1635013495 ysize=26240372 brga=12124160
-032139-032169 DataBlock
-  ................ 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00
-  ...............  00 00 01 00 00 00 00 00 00 00 00 00 00 00 00
+032114-032118 DataBlock
+  .....            00 01 00 00 00
+032119-032122 StateIDBlock 396764352
+032123-032132 NewStateBlock "NewState"
+032133-032136 XSizeBlock 400
+032137-032140 YSizeBlock 185
+032141-032169 DataBlock
+  ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
+  .............    01 00 00 00 00 00 00 00 00 00 00 00 00
 032170-032187 StringBlock "profile_offc_pro"
 032188-032203 DataBlock
   ................ 0c 00 00 00 00 00 00 00 00 00 00 00 a0 ad b4 ff
@@ -2881,9 +2944,10 @@
 032850-032850 DataBlock
   .                0d
 032851-032900 ImagePathBlock "ui\\skins\\default\\border_horizontal_detail_01.png"
-032901-032921 DataBlock
+032901-032917 DataBlock
    ............... 20 00 00 00 0a 00 00 00 00 00 00 00 00 01 00 00
-  ..,..            00 a0 2c a6 17
+  .                00
+032918-032921 StateIDBlock 396766368
 032922-032931 NewStateBlock "NewState"
 032932-032935 XSizeBlock 416
 032936-032939 YSizeBlock 202
@@ -2950,9 +3014,9 @@
   ................ 00 00 00 00 00 00 08 00 00 00 08 00 00 00 00 00
   ....             00 00 00 00
 033667-033690 ImageUseBlock id=1 xofs=256 yofs=0 xsize=0 ysize=0 brga=0
-033691-033709 DataBlock
-  *............... 2a a6 17 00 00 00 00 00 00 00 00 01 00 00 00 00
-  *..              2a a6 17
+033691-033705 DataBlock
+  *..............  2a a6 17 00 00 00 00 00 00 00 00 01 00 00 00
+033706-033709 StateIDBlock 396765696
 033710-033719 NewStateBlock "NewState"
 033720-033723 XSizeBlock 400
 033724-033727 YSizeBlock 1
@@ -2988,9 +3052,10 @@
 034075-034075 DataBlock
   .                0d
 034076-034117 ImagePathBlock "ui\\skins\\default\\plate_border_medium.png"
-034118-034138 DataBlock
+034118-034134 DataBlock
   ................ 80 00 00 00 80 00 00 00 00 00 00 00 00 01 00 00
-  ..t..            00 e0 74 a5 17
+  .                00
+034135-034138 StateIDBlock 396719328
 034139-034148 NewStateBlock "NewState"
 034149-034152 XSizeBlock 400
 034153-034156 YSizeBlock 36
@@ -3034,9 +3099,10 @@
 034592-034605 DataBlock
   ..............   00 00 00 00 00 00 00 00 00 00 e2 ff ff ff
 034606-034629 ImageUseBlock id=1 xofs=65536 yofs=16777216 xsize=0 ysize=2 brga=0
-034630-034654 DataBlock
+034630-034650 DataBlock
   .....@r......... e2 ff ff ff 00 40 72 a5 17 00 00 00 00 00 00 00
-  .....@r..        00 01 00 00 00 40 72 a5 17
+  .....            00 01 00 00 00
+034651-034654 StateIDBlock 396718656
 034655-034664 NewStateBlock "NewState"
 034665-034668 XSizeBlock 400
 034669-034672 YSizeBlock 36
@@ -3063,9 +3129,10 @@
 034881-034894 DataBlock
   ......N.......   00 00 00 00 00 00 4e 00 00 00 f2 ff ff ff
 034895-034918 ImageUseBlock id=1 xofs=65536 yofs=16777216 xsize=0 ysize=8 brga=0
-034919-034943 DataBlock
+034919-034939 DataBlock
   ................ fe ff ff ff 00 00 00 00 00 00 00 00 00 00 00 00
-  ......o..        00 01 00 00 00 a0 6f a5 17
+  .....            00 01 00 00 00
+034940-034943 StateIDBlock 396717984
 034944-034953 NewStateBlock "NewState"
 034954-034957 XSizeBlock 243
 034958-034961 YSizeBlock 48
@@ -3097,12 +3164,15 @@
   ...              00 00 00
 035218-035285 ImageListBlock 1 elements:
   035222-035285 ImageBlock id=228295456 xsize=60 ysize=48 path="ui\\skins\\default\\cmp_nameplate_golden_left.png" unknown=0
-035286-035286 DataBlock
-  .                00
-035287-035310 ImageUseBlock id=1 xofs=396717312 yofs=1699610632 xsize=1635013495 ysize=3958132 brga=3145728
-035311-035341 DataBlock
-  ................ 00 00 00 00 00 00 04 00 00 00 04 00 00 00 00 00
-  ...............  00 00 02 00 00 00 00 00 00 00 00 00 00 00 00
+035286-035290 DataBlock
+  .....            00 01 00 00 00
+035291-035294 StateIDBlock 396717312
+035295-035304 NewStateBlock "NewState"
+035305-035308 XSizeBlock 60
+035309-035312 YSizeBlock 48
+035313-035341 DataBlock
+  ................ 00 00 00 00 04 00 00 00 04 00 00 00 00 00 00 00
+  .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 035342-035355 StringBlock "tw_troy_bold"
 035356-035371 DataBlock
   ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
@@ -3141,11 +3211,12 @@
   .........        00 00 00 00 00 00 00 00 00
 035736-035803 ImageListBlock 1 elements:
   035740-035803 ImageBlock id=228295648 xsize=239 ysize=48 path="ui\\skins\\default\\cmp_nameplate_golden_base.png" unknown=0
-035804-035804 DataBlock
-  .                00
-035805-035828 ImageUseBlock id=1 xofs=396716640 yofs=1699610632 xsize=1635013495 ysize=8086900 brga=2490368
-035829-035830 DataBlock
-  ..               00 00
+035804-035808 DataBlock
+  .....            00 01 00 00 00
+035809-035812 StateIDBlock 396716640
+035813-035822 NewStateBlock "NewState"
+035823-035826 XSizeBlock 123
+035827-035830 YSizeBlock 38
 035831-035846 UnicodeBlock "dy_name"
 035847-035865 DataBlock
   ................ 00 00 04 00 00 00 00 00 00 00 00 00 00 00 03 00
@@ -3187,12 +3258,15 @@
   ...              00 00 00
 036283-036350 ImageListBlock 1 elements:
   036287-036350 ImageBlock id=228295840 xsize=60 ysize=48 path="ui\\skins\\default\\cmp_nameplate_golden_left.png" unknown=0
-036351-036351 DataBlock
-  .                00
-036352-036375 ImageUseBlock id=1 xofs=396770400 yofs=1699610632 xsize=1635013495 ysize=3958132 brga=3145728
-036376-036406 DataBlock
-  ................ 00 00 00 00 00 00 04 00 00 00 04 00 00 00 00 00
-  ...............  00 00 02 00 00 00 00 00 00 00 00 00 00 00 00
+036351-036355 DataBlock
+  .....            00 01 00 00 00
+036356-036359 StateIDBlock 396770400
+036360-036369 NewStateBlock "NewState"
+036370-036373 XSizeBlock 60
+036374-036377 YSizeBlock 48
+036378-036406 DataBlock
+  ................ 00 00 00 00 04 00 00 00 04 00 00 00 00 00 00 00
+  .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 036407-036420 StringBlock "tw_troy_bold"
 036421-036436 DataBlock
   ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
@@ -3235,12 +3309,15 @@
   ......9..        07 00 00 00 00 c0 39 a6 17
 036874-036943 ImageListBlock 1 elements:
   036878-036943 ImageBlock id=228296032 xsize=1 ysize=0 path="ui\\skins\\default\\separator_horizontal_golden.png" unknown=0
-036944-036944 DataBlock
-  .                00
-036945-036968 ImageUseBlock id=1 xofs=396769728 yofs=1699610632 xsize=1635013495 ysize=26633588 brga=786432
-036969-036999 DataBlock
-  ................ 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00
-  ...............  00 00 02 00 00 00 00 00 00 00 00 00 00 00 00
+036944-036948 DataBlock
+  .....            00 01 00 00 00
+036949-036952 StateIDBlock 396769728
+036953-036962 NewStateBlock "NewState"
+036963-036966 XSizeBlock 406
+036967-036970 YSizeBlock 12
+036971-036999 DataBlock
+  ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
+  .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 037000-037013 StringBlock "tw_troy_bold"
 037014-037029 DataBlock
   ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
@@ -3577,11 +3654,13 @@
   ...              f2 a5 17
 040900-040990 ImageListBlock 1 elements:
   040904-040990 ImageBlock id=228297760 xsize=1553 ysize=810 path="ui\\skins\\default\\fm_achilles_greatestwarrior_bg_three_challengers.png" unknown=0
-040991-041044 DataBlock
-  ...........activ 00 05 00 00 00 e0 f2 a5 17 06 00 61 63 74 69 76
-  e............... 65 90 01 00 00 b9 00 00 00 00 00 00 00 02 00 00
-  ................ 00 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00
-  ......           00 00 00 00 00 00
+040991-040999 DataBlock
+  .........        00 05 00 00 00 e0 f2 a5 17
+041000-041007 StringBlock "active"
+041008-041044 DataBlock
+  ................ 90 01 00 00 b9 00 00 00 00 00 00 00 02 00 00 00
+  ................ 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00
+  .....            00 00 00 00 00
 041045-041058 StringBlock "tw_troy_bold"
 041059-041074 DataBlock
   ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
@@ -3739,12 +3818,15 @@
   ........         00 00 00 00 00 00 00 00
 042704-042771 ImageListBlock 1 elements:
   042708-042771 ImageBlock id=228297952 xsize=256 ysize=256 path="ui\\skins\\default\\illustration_frame_golden.png" unknown=0
-042772-042772 DataBlock
-  .                00
-042773-042796 ImageUseBlock id=1 xofs=396748224 yofs=1699610632 xsize=1635013495 ysize=26240372 brga=12124160
-042797-042827 DataBlock
-  ................ 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00
-  ...............  00 00 01 00 00 00 00 00 00 00 00 00 00 00 00
+042772-042776 DataBlock
+  .....            00 01 00 00 00
+042777-042780 StateIDBlock 396748224
+042781-042790 NewStateBlock "NewState"
+042791-042794 XSizeBlock 400
+042795-042798 YSizeBlock 185
+042799-042827 DataBlock
+  ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
+  .............    01 00 00 00 00 00 00 00 00 00 00 00 00
 042828-042845 StringBlock "profile_offc_pro"
 042846-042861 DataBlock
   ................ 0c 00 00 00 00 00 00 00 00 00 00 00 a0 ad b4 ff
@@ -3800,9 +3882,10 @@
 043508-043508 DataBlock
   .                0d
 043509-043558 ImagePathBlock "ui\\skins\\default\\border_horizontal_detail_01.png"
-043559-043579 DataBlock
+043559-043575 DataBlock
    ............... 20 00 00 00 0a 00 00 00 00 00 00 00 00 01 00 00
-  . ...            00 20 e3 a5 17
+  .                00
+043576-043579 StateIDBlock 396747552
 043580-043589 NewStateBlock "NewState"
 043590-043593 XSizeBlock 416
 043594-043597 YSizeBlock 202
@@ -3869,9 +3952,9 @@
   ................ 00 00 00 00 00 00 08 00 00 00 08 00 00 00 00 00
   ....             00 00 00 00
 044325-044348 ImageUseBlock id=1 xofs=256 yofs=0 xsize=0 ysize=0 brga=2147483648
-044349-044367 DataBlock
-  ................ e0 a5 17 00 00 00 00 00 00 00 00 01 00 00 00 80
-  ...              e0 a5 17
+044349-044363 DataBlock
+  ...............  e0 a5 17 00 00 00 00 00 00 00 00 01 00 00 00
+044364-044367 StateIDBlock 396746880
 044368-044377 NewStateBlock "NewState"
 044378-044381 XSizeBlock 400
 044382-044385 YSizeBlock 1
@@ -3907,9 +3990,10 @@
 044733-044733 DataBlock
   .                0d
 044734-044775 ImagePathBlock "ui\\skins\\default\\plate_border_medium.png"
-044776-044796 DataBlock
+044776-044792 DataBlock
   ................ 80 00 00 00 80 00 00 00 00 00 00 00 00 01 00 00
-  .`#..            00 60 23 a7 17
+  .                00
+044793-044796 StateIDBlock 396829536
 044797-044806 NewStateBlock "NewState"
 044807-044810 XSizeBlock 400
 044811-044814 YSizeBlock 36
@@ -3953,9 +4037,10 @@
 045250-045263 DataBlock
   ..............   00 00 00 00 00 00 00 00 00 00 e2 ff ff ff
 045264-045287 ImageUseBlock id=1 xofs=65536 yofs=16777216 xsize=0 ysize=2 brga=0
-045288-045312 DataBlock
+045288-045308 DataBlock
   .....`f......... e2 ff ff ff 00 60 66 a6 17 00 00 00 00 00 00 00
-  .....`f..        00 01 00 00 00 60 66 a6 17
+  .....            00 01 00 00 00
+045309-045312 StateIDBlock 396781152
 045313-045322 NewStateBlock "NewState"
 045323-045326 XSizeBlock 400
 045327-045330 YSizeBlock 36
@@ -3982,9 +4067,10 @@
 045539-045552 DataBlock
   ......N.......   00 00 00 00 00 00 4e 00 00 00 f2 ff ff ff
 045553-045576 ImageUseBlock id=1 xofs=65536 yofs=16777216 xsize=0 ysize=8 brga=0
-045577-045601 DataBlock
+045577-045597 DataBlock
   ................ fe ff ff ff 00 00 00 00 00 00 00 00 00 00 00 00
-  ......t..        00 01 00 00 00 c0 74 a7 17
+  .....            00 01 00 00 00
+045598-045601 StateIDBlock 396850368
 045602-045611 NewStateBlock "NewState"
 045612-045615 XSizeBlock 243
 045616-045619 YSizeBlock 48
@@ -4016,12 +4102,15 @@
   ...              00 00 00
 045876-045943 ImageListBlock 1 elements:
   045880-045943 ImageBlock id=228299680 xsize=60 ysize=48 path="ui\\skins\\default\\cmp_nameplate_golden_left.png" unknown=0
-045944-045944 DataBlock
-  .                00
-045945-045968 ImageUseBlock id=1 xofs=396849696 yofs=1699610632 xsize=1635013495 ysize=3958132 brga=3145728
-045969-045999 DataBlock
-  ................ 00 00 00 00 00 00 04 00 00 00 04 00 00 00 00 00
-  ...............  00 00 02 00 00 00 00 00 00 00 00 00 00 00 00
+045944-045948 DataBlock
+  .....            00 01 00 00 00
+045949-045952 StateIDBlock 396849696
+045953-045962 NewStateBlock "NewState"
+045963-045966 XSizeBlock 60
+045967-045970 YSizeBlock 48
+045971-045999 DataBlock
+  ................ 00 00 00 00 04 00 00 00 04 00 00 00 00 00 00 00
+  .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 046000-046013 StringBlock "tw_troy_bold"
 046014-046029 DataBlock
   ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
@@ -4060,11 +4149,12 @@
   .........        00 00 00 00 00 00 00 00 00
 046394-046461 ImageListBlock 1 elements:
   046398-046461 ImageBlock id=228299872 xsize=239 ysize=48 path="ui\\skins\\default\\cmp_nameplate_golden_base.png" unknown=0
-046462-046462 DataBlock
-  .                00
-046463-046486 ImageUseBlock id=1 xofs=396849024 yofs=1699610632 xsize=1635013495 ysize=8086900 brga=2490368
-046487-046488 DataBlock
-  ..               00 00
+046462-046466 DataBlock
+  .....            00 01 00 00 00
+046467-046470 StateIDBlock 396849024
+046471-046480 NewStateBlock "NewState"
+046481-046484 XSizeBlock 123
+046485-046488 YSizeBlock 38
 046489-046504 UnicodeBlock "dy_name"
 046505-046523 DataBlock
   ................ 00 00 04 00 00 00 00 00 00 00 00 00 00 00 03 00
@@ -4106,12 +4196,15 @@
   ...              00 00 00
 046941-047008 ImageListBlock 1 elements:
   046945-047008 ImageBlock id=228300064 xsize=60 ysize=48 path="ui\\skins\\default\\cmp_nameplate_golden_left.png" unknown=0
-047009-047009 DataBlock
-  .                00
-047010-047033 ImageUseBlock id=1 xofs=396848352 yofs=1699610632 xsize=1635013495 ysize=3958132 brga=3145728
-047034-047064 DataBlock
-  ................ 00 00 00 00 00 00 04 00 00 00 04 00 00 00 00 00
-  ...............  00 00 02 00 00 00 00 00 00 00 00 00 00 00 00
+047009-047013 DataBlock
+  .....            00 01 00 00 00
+047014-047017 StateIDBlock 396848352
+047018-047027 NewStateBlock "NewState"
+047028-047031 XSizeBlock 60
+047032-047035 YSizeBlock 48
+047036-047064 DataBlock
+  ................ 00 00 00 00 04 00 00 00 04 00 00 00 00 00 00 00
+  .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 047065-047078 StringBlock "tw_troy_bold"
 047079-047094 DataBlock
   ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
@@ -4154,12 +4247,15 @@
   .....@j..        07 00 00 00 00 40 6a a7 17
 047532-047601 ImageListBlock 1 elements:
   047536-047601 ImageBlock id=228300256 xsize=1 ysize=0 path="ui\\skins\\default\\separator_horizontal_golden.png" unknown=0
-047602-047602 DataBlock
-  .                00
-047603-047626 ImageUseBlock id=1 xofs=396847680 yofs=1699610632 xsize=1635013495 ysize=26633588 brga=786432
-047627-047657 DataBlock
-  ................ 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00
-  ...............  00 00 02 00 00 00 00 00 00 00 00 00 00 00 00
+047602-047606 DataBlock
+  .....            00 01 00 00 00
+047607-047610 StateIDBlock 396847680
+047611-047620 NewStateBlock "NewState"
+047621-047624 XSizeBlock 406
+047625-047628 YSizeBlock 12
+047629-047657 DataBlock
+  ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
+  .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 047658-047671 StringBlock "tw_troy_bold"
 047672-047687 DataBlock
   ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
@@ -4496,11 +4592,13 @@
   Z..              5a a7 17
 051558-051648 ImageListBlock 1 elements:
   051562-051648 ImageBlock id=228301984 xsize=1553 ysize=810 path="ui\\skins\\default\\fm_achilles_greatestwarrior_bg_three_challengers.png" unknown=0
-051649-051702 DataBlock
-  ......Z....activ 00 05 00 00 00 80 5a a7 17 06 00 61 63 74 69 76
-  e............... 65 90 01 00 00 b9 00 00 00 00 00 00 00 02 00 00
-  ................ 00 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00
-  ......           00 00 00 00 00 00
+051649-051657 DataBlock
+  ......Z..        00 05 00 00 00 80 5a a7 17
+051658-051665 StringBlock "active"
+051666-051702 DataBlock
+  ................ 90 01 00 00 b9 00 00 00 00 00 00 00 02 00 00 00
+  ................ 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00
+  .....            00 00 00 00 00
 051703-051716 StringBlock "tw_troy_bold"
 051717-051732 DataBlock
   ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
@@ -4658,12 +4756,15 @@
   ........         00 00 00 00 00 00 00 00
 053362-053429 ImageListBlock 1 elements:
   053366-053429 ImageBlock id=228302176 xsize=256 ysize=256 path="ui\\skins\\default\\illustration_frame_golden.png" unknown=0
-053430-053430 DataBlock
-  .                00
-053431-053454 ImageUseBlock id=1 xofs=396834912 yofs=1699610632 xsize=1635013495 ysize=26240372 brga=12124160
-053455-053485 DataBlock
-  ................ 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00
-  ...............  00 00 01 00 00 00 00 00 00 00 00 00 00 00 00
+053430-053434 DataBlock
+  .....            00 01 00 00 00
+053435-053438 StateIDBlock 396834912
+053439-053448 NewStateBlock "NewState"
+053449-053452 XSizeBlock 400
+053453-053456 YSizeBlock 185
+053457-053485 DataBlock
+  ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
+  .............    01 00 00 00 00 00 00 00 00 00 00 00 00
 053486-053503 StringBlock "profile_offc_pro"
 053504-053519 DataBlock
   ................ 0c 00 00 00 00 00 00 00 00 00 00 00 a0 ad b4 ff
@@ -4738,10 +4839,11 @@
   ........         e0 d4 eb 1c 06 00 00 00
 054335-054348 StringBlock "frame_bottom"
 054349-054362 StringBlock "frame_bottom"
-054363-054409 DataBlock
+054363-054405 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ...A...B....-... 00 00 d0 41 00 00 08 42 11 00 00 00 2d 00 00 00
-  ...............  01 02 00 00 00 00 00 00 00 00 00 00 00 00 00
+  ...........      01 02 00 00 00 00 00 00 00 00 00
+054406-054409 StateIDBlock 0
 054410-054419 NewStateBlock "NewState"
 054420-054423 XSizeBlock 0
 054424-054427 YSizeBlock 0
@@ -4749,8 +4851,7 @@
   ....             00 00 00 00
 054432-054486 ImagePathListBlock 1 elements:
   054436-054486 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_bottom.png"
-054487-054494 DataBlock
-  ..handle         06 00 68 61 6e 64 6c 65
+054487-054494 StringBlock "handle"
 054495-054502 StringBlock "handle"
 054503-054508 DataBlock
   ......           00 00 01 00 00 00
@@ -4785,8 +4886,7 @@
   054753-054804 ImagePathBlock "ui\\skins\\default\\square_vertical_handler_hover.png"
   054805-054859 ImagePathBlock "ui\\skins\\default\\square_vertical_handler_inactive.png"
   054860-054914 ImagePathBlock "ui\\skins\\default\\square_vertical_handler_underlay.png"
-054915-054922 DataBlock
-  ..bottom         06 00 62 6f 74 74 6f 6d
+054915-054922 StringBlock "bottom"
 054923-054930 StringBlock "bottom"
 054931-054936 DataBlock
   ......           00 00 01 00 00 00
@@ -4834,11 +4934,11 @@
   055466-055511 ImagePathBlock "ui\\skins\\default\\scroll_icon_dawn_active.png"
   055512-055556 ImagePathBlock "ui\\skins\\default\\scroll_icon_dawn_hover.png"
   055557-055604 ImagePathBlock "ui\\skins\\default\\scroll_icon_dawn_inactive.png"
-055605-055616 DataBlock
-  ..top..top..     03 00 74 6f 70 03 00 74 6f 70 00 00
-055617-055640 ImageUseBlock id=1 xofs=1817378837 yofs=1919247465 xsize=1919116612 ysize=1852140901 brga=1953841780
-055641-055651 DataBlock
-  ton........      74 6f 6e 00 00 00 00 00 00 00 00
+055605-055620 DataBlock
+  ..top..top...... 03 00 74 6f 70 03 00 74 6f 70 00 00 01 00 00 00
+055621-055643 StringBlock "SliderDecrementButton"
+055644-055651 DataBlock
+  ........         00 00 00 00 00 00 00 00
 055652-055677 StringBlock "UI_GBL_TMP_Slider_Arrows"
 055678-055716 DataBlock
   ...........A...A 00 00 00 00 00 00 00 00 00 00 b0 41 00 00 b0 41
@@ -4880,13 +4980,13 @@
   056150-056193 ImagePathBlock "ui\\skins\\default\\scroll_icon_up_active.png"
   056194-056236 ImagePathBlock "ui\\skins\\default\\scroll_icon_up_hover.png"
   056237-056282 ImagePathBlock "ui\\skins\\default\\scroll_icon_up_inactive.png"
-056283-056293 DataBlock
-  ..frame_top      09 00 66 72 61 6d 65 5f 74 6f 70
+056283-056293 StringBlock "frame_top"
 056294-056304 StringBlock "frame_top"
-056305-056351 DataBlock
+056305-056347 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ...A...B....-... 00 00 d0 41 00 00 08 42 0b 00 00 00 2d 00 00 00
-  ...............  01 02 00 00 00 00 00 00 00 00 00 00 00 00 00
+  ...........      01 02 00 00 00 00 00 00 00 00 00
+056348-056351 StateIDBlock 0
 056352-056361 NewStateBlock "NewState"
 056362-056365 XSizeBlock 0
 056366-056369 YSizeBlock 0
@@ -4894,9 +4994,11 @@
   ....             00 00 00 00
 056374-056425 ImagePathListBlock 1 elements:
   056378-056425 ImagePathBlock "ui\\skins\\default\\panel_slider_vertical_top.png"
-056426-056442 DataBlock
-  ....vslider..... 00 00 07 00 76 73 6c 69 64 65 72 00 00 01 00 00
-  .                00
+056426-056427 DataBlock
+  ..               00 00
+056428-056436 StringBlock "vslider"
+056437-056442 DataBlock
+  ......           00 00 01 00 00 00
 056443-056451 StringBlock "VSlider"
 056452-056500 DataBlock
   ............@... 00 00 00 00 00 00 00 00 00 00 00 00 40 c1 00 00
@@ -4948,8 +5050,9 @@
   ..........!..... 00 00 00 00 00 00 fe 01 00 00 21 00 00 00 00 00
   .........        00 00 00 00 00 00 00 00 00
 056780-056803 ImageUseBlock id=1 xofs=1280 yofs=53760 xsize=0 ysize=1713635328 brga=9270
-056804-056817 DataBlock
-  ..........$f6$   00 00 00 00 00 00 01 00 00 00 24 66 36 24
+056804-056813 DataBlock
+  ..........       00 00 00 00 00 00 01 00 00 00
+056814-056817 StateIDBlock 607544868
 056818-056827 NewStateBlock "NewState"
 056828-056831 XSizeBlock 400
 056832-056835 YSizeBlock 755
@@ -4976,9 +5079,10 @@
 057038-057052 DataBlock
   ..........<....  00 00 00 00 00 00 00 00 00 00 3c 00 00 00 00
 057053-057076 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=33554432 ysize=0 brga=1006632960
-057077-057100 DataBlock
+057077-057096 DataBlock
   ....,.6$........ 00 00 00 00 2c 06 36 24 00 00 00 00 00 00 00 00
-  ....,.6$         01 00 00 00 2c 06 36 24
+  ....             01 00 00 00
+057097-057100 StateIDBlock 607520300
 057101-057110 NewStateBlock "NewState"
 057111-057114 XSizeBlock 400
 057115-057118 YSizeBlock 185
@@ -5217,9 +5321,9 @@
   ................ 00 00 00 00 00 00 fc ff ff ff 90 00 00 00 00 00
   ....             00 00 00 00
 059728-059751 ImageUseBlock id=1 xofs=256 yofs=524288 xsize=0 ysize=0 brga=3154116608
-059752-059770 DataBlock
-  .6$............. 15 36 24 00 00 00 00 00 00 00 00 01 00 00 00 bc
-  .6$              15 36 24
+059752-059766 DataBlock
+  .6$............  15 36 24 00 00 00 00 00 00 00 00 01 00 00 00
+059767-059770 StateIDBlock 607524284
 059771-059780 NewStateBlock "NewState"
 059781-059784 XSizeBlock 409
 059785-059788 YSizeBlock 41
@@ -5273,8 +5377,9 @@
 060348-060355 DataBlock
   ......J$         ff ff ff 00 a4 03 4a 24
 060356-060379 ImageUseBlock id=1 xofs=278767796 yofs=85917696 xsize=65667072 ysize=0 brga=16777216
-060380-060386 DataBlock
-  .....J$          00 00 00 a4 03 4a 24
+060380-060382 DataBlock
+  ...              00 00 00
+060383-060386 StateIDBlock 608830372
 060387-060396 NewStateBlock "NewState"
 060397-060400 XSizeBlock 1311
 060401-060404 YSizeBlock 1002
@@ -5373,8 +5478,9 @@
 061301-061308 DataBlock
   .....i=$         ff ff ff 00 04 69 3d 24
 061309-061332 ImageUseBlock id=1 xofs=279059620 yofs=85917696 xsize=65667072 ysize=0 brga=16777216
-061333-061339 DataBlock
-  ....i=$          00 00 00 04 69 3d 24
+061333-061335 DataBlock
+  ...              00 00 00
+061336-061339 StateIDBlock 608004356
 061340-061349 NewStateBlock "NewState"
 061350-061353 XSizeBlock 1311
 061354-061357 YSizeBlock 1002
@@ -5467,9 +5573,9 @@
   ..........L..... 00 00 00 00 00 00 02 03 00 00 4c 03 00 00 00 00
   ....             00 00 00 00
 062211-062234 ImageUseBlock id=1 xofs=256 yofs=524288 xsize=0 ysize=4293263360 brga=65535
-062235-062253 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 d4
-  .J$              08 4a 24
+062235-062249 DataBlock
+  ...............  00 00 00 00 00 00 00 00 00 00 00 01 00 00 00
+062250-062253 StateIDBlock 608831700
 062254-062263 NewStateBlock "NewState"
 062264-062267 XSizeBlock 60
 062268-062271 YSizeBlock 30
@@ -5529,10 +5635,11 @@
   062898-062937 ImagePathBlock "ui\\skins\\troy\\button_basic_pressed.png"
   062938-062981 ImagePathBlock "ui\\skins\\troy\\button_basic_pressed_off.png"
   062982-063016 ImagePathBlock "ui\\skins\\troy\\icon_arrow_left.png"
-063017-063055 DataBlock
-  ......cycle_butt 00 00 00 00 17 00 63 79 63 6c 65 5f 62 75 74 74
-  on_arrow_next|.. 6f 6e 5f 61 72 72 6f 77 5f 6e 65 78 74 7c 9c 01
-  9......          39 01 00 00 00 00 00
+063017-063020 DataBlock
+  ....             00 00 00 00
+063021-063045 StringBlock "cycle_button_arrow_next"
+063046-063055 DataBlock
+  |..9......       7c 9c 01 39 01 00 00 00 00 00
 063056-063065 StringBlock "button_R"
 063066-063071 DataBlock
   ......           00 00 01 00 00 00
@@ -5568,21 +5675,26 @@
   063445-063484 ImagePathBlock "ui\\skins\\troy\\button_basic_pressed.png"
   063485-063528 ImagePathBlock "ui\\skins\\troy\\button_basic_pressed_off.png"
   063529-063564 ImagePathBlock "ui\\skins\\troy\\icon_arrow_right.png"
-063565-063610 DataBlock
-  .........8..bott 00 00 00 00 00 00 c4 c5 fa 38 0e 00 62 6f 74 74
-  om_buttons...... 6f 6d 5f 62 75 74 74 6f 6e 73 00 00 00 00 00 00
-  ..............   f0 ff ff ff ef ff ff ff 00 00 00 00 00 00
+063565-063574 DataBlock
+  .........8       00 00 00 00 00 00 c4 c5 fa 38
+063575-063590 StringBlock "bottom_buttons"
+063591-063610 DataBlock
+  ................ 00 00 00 00 00 00 f0 ff ff ff ef ff ff ff 00 00
+  ....             00 00 00 00
 063611-063634 ImageUseBlock id=1 xofs=256 yofs=524288 xsize=0 ysize=4293656576 brga=2348875775
 063635-063637 DataBlock
   .=$              85 3d 24
 063638-063698 ImageListBlock 1 elements:
   063642-063698 ImageBlock id=278771292 xsize=91 ysize=27 path="ui\\skins\\default\\ok_button_plate_v1.png" unknown=0
-063699-063699 DataBlock
-  .                00
-063700-063723 ImageUseBlock id=1 xofs=608011660 yofs=1699610632 xsize=1635013495 ysize=6055284 brga=1769472
-063724-063754 DataBlock
-  ................ 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00
-  ...............  00 00 01 00 00 00 00 00 00 00 00 00 00 00 00
+063699-063703 DataBlock
+  .....            00 01 00 00 00
+063704-063707 StateIDBlock 608011660
+063708-063717 NewStateBlock "NewState"
+063718-063721 XSizeBlock 92
+063722-063725 YSizeBlock 27
+063726-063754 DataBlock
+  ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
+  .............    01 00 00 00 00 00 00 00 00 00 00 00 00
 063755-063768 StringBlock "tw_troy_bold"
 063769-063784 DataBlock
   ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
@@ -5880,12 +5992,15 @@
   .............<$  00 00 00 00 00 00 0f 00 00 00 00 bc 91 3c 24
 067234-067293 ImageListBlock 1 elements:
   067238-067293 ImageBlock id=279030732 xsize=769 ysize=69 path="ui\\skins\\default\\panel_title_large.png" unknown=0
-067294-067294 DataBlock
-  .                00
-067295-067318 ImageUseBlock id=1 xofs=607949244 yofs=1699610632 xsize=1635013495 ysize=20866420 brga=2424832
-067319-067349 DataBlock
-  ................ 00 00 00 00 00 00 02 00 00 00 00 00 00 00 00 00
-  ...............  00 00 01 00 00 00 00 00 00 00 00 00 00 00 00
+067294-067298 DataBlock
+  .....            00 01 00 00 00
+067299-067302 StateIDBlock 607949244
+067303-067312 NewStateBlock "NewState"
+067313-067316 XSizeBlock 318
+067317-067320 YSizeBlock 37
+067321-067349 DataBlock
+  ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
+  .............    01 00 00 00 00 00 00 00 00 00 00 00 00
 067350-067363 StringBlock "tw_troy_bold"
 067364-067379 DataBlock
   ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
@@ -5913,9 +6028,10 @@
 067630-067634 DataBlock
   .....            03 00 00 00 01
 067635-067658 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=83886080 ysize=0 brga=0
-067659-067682 DataBlock
+067659-067678 DataBlock
   .....];$........ 00 00 00 00 14 5d 3b 24 00 00 00 00 00 00 00 00
-  .....];$         01 00 00 00 14 5d 3b 24
+  ....             01 00 00 00
+067679-067682 StateIDBlock 607870228
 067683-067692 NewStateBlock "NewState"
 067693-067696 XSizeBlock 355
 067697-067700 YSizeBlock 30
@@ -5964,8 +6080,9 @@
 068238-068246 DataBlock
   ....*....        c7 01 00 00 2a 00 00 00 00
 068247-068306 ImageBlock id=279030364 xsize=256 ysize=256 path="ui\\skins\\default\\troy_crack_texture_14.png" unknown=0
-068307-068315 DataBlock
-  .......<$        00 01 00 00 00 84 99 3c 24
+068307-068311 DataBlock
+  .....            00 01 00 00 00
+068312-068315 StateIDBlock 607951236
 068316-068325 NewStateBlock "NewState"
 068326-068329 XSizeBlock 457
 068330-068333 YSizeBlock 42
@@ -6016,9 +6133,10 @@
 068843-068857 DataBlock
   ......B........  00 00 00 00 00 00 42 00 00 00 09 00 00 00 01
 068858-068881 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=83886080 ysize=0 brga=0
-068882-068905 DataBlock
+068882-068901 DataBlock
   ....L.=$........ 00 00 00 00 4c 9a 3d 24 00 00 00 00 00 00 00 00
-  ....L.=$         01 00 00 00 4c 9a 3d 24
+  ....             01 00 00 00
+068902-068905 StateIDBlock 608016972
 068906-068915 NewStateBlock "NewState"
 068916-068919 XSizeBlock 324
 068920-068923 YSizeBlock 24
@@ -6070,8 +6188,9 @@
 069422-069429 DataBlock
   ......:$         00 00 00 00 bc 9f 3a 24
 069430-069453 ImageUseBlock id=1 xofs=222390944 yofs=104857600 xsize=58982400 ysize=0 brga=16777216
-069454-069460 DataBlock
-  .....:$          00 00 00 bc 9f 3a 24
+069454-069456 DataBlock
+  ...              00 00 00
+069457-069460 StateIDBlock 607821756
 069461-069470 NewStateBlock "NewState"
 069471-069474 XSizeBlock 1600
 069475-069478 YSizeBlock 900
