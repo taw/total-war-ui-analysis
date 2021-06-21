@@ -410,7 +410,7 @@ class UiFile
                 end
                 v = get_i
                 out! "<i>#{v}</i><!-- include optional extra phase details? -->"
-                if v != 0
+                v.times do
                   out_ofs! "optional phase details"
                   convert_ix!
                   convert_s!
