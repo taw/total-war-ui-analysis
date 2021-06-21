@@ -122,7 +122,7 @@ class UiFile
   def convert_bool!(comment=nil)
     v = get_bool ? "<yes />" : "<no />"
     if comment
-      out! "#{v}<!-- #{comment }-->"
+      out! "#{v}<!-- #{comment} -->"
     else
       out! v
     end
@@ -131,18 +131,19 @@ class UiFile
   def convert_u2!(comment=nil)
     v = get_u2
     if v != 0
-      binding.pry
+      raise "Non zero U2?"
     end
     if comment
-      out! "#{v}<!-- #{comment }-->"
+      out! "<u2>#{v}</u2><!-- #{comment} -->"
     else
-      out! v
+      out! "<u2>#{v}</u2>"
     end
   end
 
   def convert_image_list!
-    tag! "images" do
-      get_u.times do
+    count = get_u
+    tag! "images", count: count do
+      count.times do
         tag! "image" do
           convert_u! "ID"
           convert_s! "path"
@@ -155,8 +156,10 @@ class UiFile
   end
 
   def convert_state_list!
-    tag! "states" do
-      get_u.times do
+    out_ofs!
+    count = get_u
+    tag! "states", count: count do
+      count.times do
         tag! "state" do
           convert_u! "ID"
           convert_s! "title - NewState"
@@ -173,9 +176,10 @@ class UiFile
           convert_unicode! "localization id"
           convert_unicode! "tooltip id"
           convert_s! "font"
+          out_ofs!
           convert_i!
           convert_i!
-          convert_i!
+          convert_u!
           if @version >= 43
             convert_s! "twui"
           end
@@ -187,7 +191,9 @@ class UiFile
           convert_bool!
           convert_bool!
 
-          convert_s! "T0"
+          if @version >= 29
+            convert_s! "T0"
+          end
 
           convert_i!
           convert_i!
@@ -199,8 +205,10 @@ class UiFile
 
           convert_image_uses!
 
-          convert_i!
-          convert_i!
+          if @version >= 26 # ???
+            convert_i!
+            convert_i!
+          end
 
           convert_transitions!
         end
@@ -209,18 +217,20 @@ class UiFile
   end
 
   def convert_transitions!
-    tag! "transitions" do
-      get_u.times do
+    out_ofs! "transitions"
+    count = get_u
+    tag! "transitions", count: count do
+      count.times do
         tag! "transition" do
           convert_i! "type"
           convert_u! "ID"
           if @version >= 39
-            convert_u2! # this looks like bs, probably string
+            convert_s!
             convert_i!
             convert_i!
           end
           if @version >= 43
-            convert_u2! # this looks like bs, probably string
+            convert_s!
             convert_i!
           end
         end
@@ -229,8 +239,9 @@ class UiFile
   end
 
   def convert_image_uses!
-    tag! "image_uses" do
-      get_u.times do
+    count = get_u
+    tag! "image_uses", count: count do
+      count.times do
         tag! "image_use" do
           convert_u! "ID"
           convert_u! "x offset"
@@ -254,8 +265,7 @@ class UiFile
           if @version >= 51
             convert_bool!
           end
-          out_ofs!
-          if @version <= 31
+          if @version == 31 # WTF ?
             convert_i!
           end
         end
@@ -300,15 +310,18 @@ class UiFile
       end
       convert_s! "script"
       convert_image_list!
-      convert_i!
+      if @version >= 28
+        convert_i!
+      end
       if @version >= 32
         convert_i!
       end
       convert_state_list!
-      out_ofs!
-      if @version >= 31
+      out_ofs! "state list just finished"
+      if @version >= 30
         convert_i!
       end
+      out_ofs! "do event list now"
       convert_event_list!
       convert_i!
 
@@ -321,11 +334,17 @@ class UiFile
       convert_s! "template"
 
       if @version >= 44
-        # weird things happen here, so hexdump or sth
-        binding.pry
+        out_ofs! "Version 44 weird stuff"
+        flag = get_bool
+        if flag
+          out! "<yes/><!-- optional section -->"
+          convert_s! "name"
+          raise "FIXME, HEXDUMP"
+        else
+          out! "<no/><!-- optional section -->"
+        end
       end
 
-      # if self.version >= 44:
       #   self.flag5 = handle.readByte()
       #   if self.flag5 != 0:
       #     # This decoding works only sometimes
@@ -340,24 +359,33 @@ class UiFile
       #         "i3": handle.readInt(),
       #         "f2": handle.readByte(),
       #     }
-      # if self.version >= 49:
-      #   self.string10 = handle.readASCII()
+
+      if @version >= 49
+        convert_s!
+      end
     end
   end
 
   def convert_children!
-    tag! "children" do
-      get_u.times do
+    count = get_u
+    tag! "children", count: count do
+      count.times do
         convert_uientry!
       end
     end
   end
 
   def convert_effects!
-    tag! "effects" do
-      get_u.times do
+    count = get_u
+    tag! "effects", count: count do
+      count.times do
         tag! "effect" do
-          binding.pry
+          convert_s! "name"
+          out_ofs! "i don't believe this is u2"
+          convert_bool!
+          convert_bool!
+          out_ofs! "effect data"
+          raise "Effects present"
         end
       end
     end
@@ -470,21 +498,10 @@ class UiFile
     out! "<error>"
     out! "  #{err}"
     out! "  Data before fail:"
-    @data[@save_ofs-64...@save_ofs].chars.each_slice(16).map do |slice|
-      slice = slice.join
-      asc = slice.chars.map{|c| c =~ /[\x20-\x7f]/ ? c : "."}.join
-      asc += " " * (16 - asc.size)
-      hex = slice.bytes.map{|c| "%02x" % c}.join(" ")
-      out! "  #{asc} #{hex}\n"
-    end.join
-    out! "  Data from fail #{@save_ofs}:"
-    @data[@save_ofs,256].chars.each_slice(16).map do |slice|
-      slice = slice.join
-      asc = slice.chars.map{|c| c =~ /[\x20-\x7f]/ ? c : "."}.join
-      asc += " " * (16 - asc.size)
-      hex = slice.bytes.map{|c| "%02x" % c}.join(" ")
-      out! "  #{asc} #{hex}\n"
-    end.join
+    ofs = @save_ofs || @ofs
+    hex_dump!(ofs-64, ofs)
+    out! "  Data from fail #{ofs}:"
+    hex_dump!(ofs, ofs+1024)
     out! "</error>"
     raise err
   end
@@ -497,8 +514,23 @@ class UiFile
     @output.tag!(*args, &blk)
   end
 
-  def out_ofs!
+  def out_ofs!(comment=nil)
     @save_ofs = @ofs
-    out! "<!-- #{@ofs} -->"
+    if comment
+      out! "<!-- #{@ofs} - #{comment} -->"
+    else
+      out! "<!-- #{@ofs} -->"
+    end
+  end
+
+  def hex_dump!(s, e)
+    s = 0 if s < 0
+    @data[s...e].chars.each_slice(16).each do |slice|
+      slice = slice.join
+      asc = slice.chars.map{|c| c =~ /[\x20-\x7f]/ ? c : "."}.join
+      asc += " " * (16 - asc.size)
+      hex = slice.bytes.map{|c| "%02x" % c}.join(" ")
+      out! "  #{asc} #{hex}\n"
+    end
   end
 end
