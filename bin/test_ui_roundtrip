@@ -1,0 +1,45 @@
+#!/usr/bin/env ruby
+
+require "pathname"
+
+data_dir = Pathname("#{__dir__}") + "../data"
+output_dir = Pathname("#{__dir__}") + "../unpacked"
+
+converter_path = "#{__dir__}/xml2ui"
+
+if ARGV.empty?
+  todo = data_dir.find.reject(&:directory?)
+else
+  todo = ARGV.map{|path| Pathname(path).realpath}
+end
+
+todo = todo.select{|path|
+  if path.to_s =~ /(\.fc|\.cml)\z/
+    true # all supported
+  else
+    version = path.read(10)[7,3].to_i
+    [*31..54].include?(version) # all supported
+  end
+}
+
+while true
+  path = todo.shift or break
+  version = path.read(10)[7,3]
+  game_name = path.dirname.basename.to_s
+  file_name = path.basename.to_s
+
+  output_path = output_dir + version + "#{game_name}-#{file_name}.xml"
+  recreated_path = Pathname("tmp/recreated") + version + "#{game_name}-#{file_name}"
+
+  next unless output_path.exist?
+
+  recreated_path.parent.mkpath
+  ok = system %Q[#{converter_path} "#{output_path}" "#{recreated_path}"]
+  if !ok
+    puts "ERR:  #{path}"
+  elsif path.read == recreated_path.read
+    puts "OK:   #{path}"
+  else
+    puts "DIFF: #{path} #{recreated_path}"
+  end
+end

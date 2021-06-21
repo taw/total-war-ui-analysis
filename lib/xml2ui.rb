@@ -1,0 +1,204 @@
+require "nokogiri"
+require "pry"
+
+module XmlTagHandlers
+  ## Basic low leveldata types
+  def on_text_node_u(attributes, buf, ctx)
+    @ui.put_u buf.to_i
+  end
+
+  def on_text_node_i(attributes, buf, ctx)
+    @ui.put_i buf.to_i
+  end
+
+  def on_text_node_u2(attributes, buf, ctx)
+    @ui.put_u2 buf.to_i
+  end
+
+  def on_text_node_byte(attributes, buf, ctx)
+    @ui.put_byte buf.to_i
+  end
+
+  def on_text_node_flt(attributes, buf, ctx)
+    @ui.put_flt buf.to_f
+  end
+
+  def on_empty_node_yes(attributes, buf, ctx)
+    @ui.put_yes
+  end
+
+  def on_empty_node_no(attributes, buf, ctx)
+    @ui.put_no
+  end
+
+  def on_text_node_s(attributes, buf, ctx)
+    @ui.put_str buf
+  end
+
+  def on_text_node_unicode(attributes, buf, ctx)
+    @ui.put_unicode buf
+  end
+
+  ## Top level file type nodes
+  def on_start_node_cml(attributes)
+    @ui.put_version attributes[:version].to_i(10)
+  end
+
+  def on_end_node_cml(attributes, buf, ctx)
+  end
+
+  def on_start_node_fc(attributes)
+    @ui.put_version attributes[:version].to_i(10)
+  end
+
+  def on_end_node_fc(attributes, buf, ctx)
+  end
+
+  def on_start_node_ui(attributes)
+    @ui.put_version attributes[:version].to_i(10)
+  end
+
+  def on_end_node_ui(attributes, buf, ctx)
+  end
+
+  ## Data structure nodes
+  def on_text_node_key(attributes, buf, ctx)
+    @ui.put_str buf
+  end
+
+  def on_text_node_value(attributes, buf, ctx)
+    @ui.put_str buf
+  end
+
+  def on_text_node_event(attributes, buf, ctx)
+    @ui.put_str buf
+  end
+
+  def on_start_node_events(attributes)
+    [true, nil, {}]
+  end
+
+  def on_end_node_events(attributes, buf, ctx)
+    @ui.put_str "events_end"
+  end
+
+  ## Common node types
+  def on_start_array_node(attributes)
+    @ui.put_u attributes[:count].to_i
+    [true, nil, {}]
+  end
+
+  def on_start_passthrough_node(attributes)
+    [true, nil, {}]
+  end
+
+  def on_end_passthrough_node(attributes, buf, ctx)
+  end
+
+  def on_start_text_node(attributes)
+    [false, "", {}]
+  end
+
+  def on_start_empty_node(attributes)
+    [false, nil, {}]
+  end
+
+  def on_start_node_additional_data(attributes)
+    @ui.put_str attributes[:type]
+    [true, nil, {}]
+  end
+
+  def on_end_node_additional_data(attributes, buf, ctx)
+  end
+
+  ## Autoconfigure
+  OnStart = Hash.new{|ht,k| raise "Unknown tag open #{k.inspect}"}
+  OnEnd = Hash.new{|ht,k| raise "Unknown tag close #{k.inspect}"}
+
+  %W[
+    images
+    states
+    image_uses
+    transitions
+    effects
+    children
+    phases
+  ].each do |m|
+    # TODO: it would be better if count was actually automatically determined and didn't require hand checking
+    OnStart[m] = :on_start_array_node
+    OnEnd[m]   = :on_end_passthrough_node
+  end
+
+  %W[
+    fcentry
+    uientry
+    image
+    state
+    image_use
+    transition
+    effect
+    phase
+  ].each do |m|
+    OnStart[m] = :on_start_passthrough_node
+    OnEnd[m]   = :on_end_passthrough_node
+  end
+
+  self.instance_methods.each do |m|
+    m = m.to_s
+    case m
+    when /\Aon_text_node_(.*)\z/
+      OnStart[$1] = :on_start_text_node
+      OnEnd[$1]   = m.to_sym
+    when /\Aon_empty_node_(.*)\z/
+      OnStart[$1] = :on_start_empty_node
+      OnEnd[$1]   = m.to_sym
+    when /\Aon_start_node_(.*)\z/
+      OnStart[$1] = m.to_sym
+    when /\Aon_end_node_(.*)\z/
+      OnEnd[$1] = m.to_sym
+    end
+  end
+end
+
+class Xml2Ui < Nokogiri::XML::SAX::Document
+  include XmlTagHandlers
+  attr_reader :ui
+
+  def initialize(input)
+    super()
+    @input = input
+    @ui = UiBuilder.new
+    @stack  = [[true, nil, {}, {}]]
+    parse_file(input)
+  end
+
+  ## Nokogiri callbacks
+  def start_element_namespace(name, attributes, *namespace_stuff)
+    raise "Cannot nest tags in this context" unless @stack[-1][0]
+    attrs = {}
+    attributes.each do |a|
+      attrs[a.localname.to_sym] = a.value
+    end
+    can_nest, buf, ctx = send(OnStart[name], attrs)
+    @stack << [can_nest, attrs, buf, ctx]
+  end
+
+  def end_element_namespace(name, *namespace_stuff)
+    can_nest, attrs, buf, ctx = *@stack.pop
+    send(OnEnd[name], attrs, buf, ctx)
+  end
+
+  def characters(chars)
+    if buf = @stack[-1][2]
+      buf << chars
+    elsif chars =~ /\S/
+      raise "Illegal place for non-whitespace characters: #{@stack.inspect} #{chars.inspect}"
+    end
+  end
+
+  def parse_file(path)
+    parser = Nokogiri::XML::SAX::Parser.new(self, 'UTF-8')
+    raise "No such file or directory: #{path}" unless File.exist?(path)
+    parser.parse_file(path)
+  end
+end
