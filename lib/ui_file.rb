@@ -1,5 +1,13 @@
 require "pry"
 
+class Float
+  def pretty_single
+    rv = (((100_000.0 * self).round / 100_000.0) rescue self)
+    return rv if [self].pack("f") == [rv].pack("f")
+    self
+  end
+end
+
 class String
   # Escape characters for output as XML attribute values (< > & ' ")
   def xml_escape
@@ -44,6 +52,10 @@ class UiFile
 
   def get_i
     get(4).unpack1("i")
+  end
+
+  def get_flt
+    get(4).unpack1("f").pretty_single
   end
 
   def get_s
@@ -147,6 +159,15 @@ class UiFile
       out! "<u2>#{v}</u2><!-- #{comment} -->"
     else
       out! "<u2>#{v}</u2>"
+    end
+  end
+
+  def convert_flt!(comment=nil)
+    i = @data[@ofs,4].unpack1("V")
+    if comment
+      out! "<flt>#{get_flt}</flt><!-- (#{i}) --><!-- #{comment} -->"
+    else
+      out! "<flt>#{get_flt}</flt><!-- (#{i}) -->"
     end
   end
 
@@ -345,29 +366,53 @@ class UiFile
       convert_s! "template"
 
       if @version >= 44
-        out_ofs! "Version 44+ mystery section"
-        flag = get_bool
-        if flag
-          out! "<yes/><!-- optional section -->"
-          convert_s! "name"
-          count = get_u
-          out!("<i>#{count}</i><!-- count data points -->") # generallly 0-5
-          count.times do
-            convert_i! "data point"
-          end
-          convert_i! "mystery1"     # generally -2 to 5, but one 130
-          convert_i! "mystery2"     # generally 0-2
-          convert_bool! "mystery3"  # generally 0 (bool?)
-          convert_i! "mystery4"     # generally 1-10
-          convert_bool! "mystery5"  # generally 0 or 1 (bool?)
-        else
-          out! "<no/><!-- optional section -->"
-        end
+        convert_additional_data!
       end
 
       if @version >= 49
         convert_s!
       end
+    end
+  end
+
+  def convert_additional_data!
+    out_ofs! "Version 44+ additional data section"
+    flag = get_bool
+    if flag
+      type = get_s
+      tag! "additional_data", type: type do
+        if type == "List"
+          count = get_u
+          out!("<i>#{count}</i><!-- count data points -->") # generallly 0-5
+          count.times do
+            convert_flt! "data point"
+          end
+          convert_i! "mystery1"     # generally -2 to 5, but one 130
+          convert_i! "mystery2"     # generally 0-2
+          convert_bool! "mystery3"
+          convert_i! "mystery4"     # generally 1-10
+          if @version >= 54
+            convert_bool! "mystery5"
+          end
+        elsif type == "Table"
+          get_u.times do
+            tag! "row" do
+              get_u.times do
+                tag! "col" do
+                  5.times do
+                    convert_flt! "data point"
+                  end
+                end
+              end
+            end
+          end
+          out_ofs! "end of table data"
+        else
+          raise "Unknown additional data section"
+        end
+      end
+    else
+      tag! "additional_data", type: "none"
     end
   end
 

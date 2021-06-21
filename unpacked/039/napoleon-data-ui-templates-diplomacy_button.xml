@@ -1,0 +1,1691 @@
+<ui version="039">
+  <uientry>
+    <u>385096048</u><!-- ID -->
+    <s>root</s><!-- title -->
+    <i>0</i><!-- x offset -->
+    <i>0</i><!-- y offset -->
+    <yes />
+    <yes />
+    <no />
+    <yes />
+    <no />
+    <no />
+    <no />
+    <s></s><!-- parent name -->
+    <i>-1</i>
+    <unicode></unicode><!-- tooltip -->
+    <unicode></unicode><!-- tooltip text -->
+    <i>0</i>
+    <no />
+    <i>402989760</i>
+    <s></s><!-- script -->
+    <images count="1">
+      <image>
+        <u>386032352</u><!-- ID -->
+        <s></s><!-- path -->
+        <i>1600</i><!-- x size -->
+        <i>960</i><!-- y size -->
+        <u>4290510782</u><!-- mask or rgba or something? -->
+      </image>
+    </images>
+    <i>0</i>
+    <i>0</i>
+    <!-- 86 -->
+    <states count="1">
+      <state>
+        <u>402989760</u><!-- ID -->
+        <s>NewState</s><!-- title - NewState -->
+        <i>1600</i><!-- x size -->
+        <i>960</i><!-- y size -->
+        <unicode></unicode><!-- state text -->
+        <unicode></unicode><!-- tooltip -->
+        <i>2</i>
+        <i>0</i>
+        <i>0</i>
+        <i>1</i>
+        <i>1</i>
+        <no />
+        <unicode></unicode><!-- localization id -->
+        <unicode></unicode><!-- tooltip id -->
+        <s>Ingame 12, Normal</s><!-- font -->
+        <!-- 160 - font done -->
+        <i>2</i>
+        <i>1</i>
+        <u>255</u>
+        <i>0</i>
+        <i>0</i>
+        <i>0</i>
+        <yes />
+        <no />
+        <no />
+        <s>normal_t0</s><!-- T0 -->
+        <i>0</i>
+        <i>0</i>
+        <i>0</i>
+        <i>0</i>
+        <!-- 214 - state description start -->
+        <s></s><!-- state description -->
+        <s></s><!-- event text -->
+        <!-- 218 - image uses start -->
+        <image_uses count="1">
+          <image_use>
+            <u>386032352</u><!-- ID -->
+            <u>0</u><!-- x offset -->
+            <u>0</u><!-- y offset -->
+            <u>1600</u><!-- x size -->
+            <u>960</u><!-- y size -->
+            <byte>190</byte><!-- B multiply -->
+            <byte>255</byte><!-- R multiply -->
+            <byte>187</byte><!-- G multiply -->
+            <byte>255</byte><!-- A multiply -->
+            <!-- 246 -->
+            <no />
+            <no />
+            <no />
+            <i>0</i><!-- position -->
+            <yes />
+            <yes />
+            <i>0</i>
+            <i>0</i>
+            <i>0</i>
+          </image_use>
+        </image_uses>
+        <i>0</i>
+        <i>0</i>
+        <!-- 275 - transitions start -->
+        <!-- 275 - transitions -->
+        <transitions count="0">
+        </transitions>
+      </state>
+    </states>
+    <!-- 279 - state list just finished -->
+    <i>0</i>
+    <!-- 283 - do event list now -->
+    <events>
+    </events>
+    <i>0</i>
+    <effects count="0">
+    </effects>
+    <!-- 303 - effects end -->
+    <children count="1">
+      <uientry>
+        <u>402990192</u><!-- ID -->
+        <s>diplomacy_button</s><!-- title -->
+        <i>10</i><!-- x offset -->
+        <i>40</i><!-- y offset -->
+        <yes />
+        <yes />
+        <no />
+        <yes />
+        <no />
+        <no />
+        <no />
+        <s>diplomacy_button</s><!-- parent name -->
+        <i>10</i>
+        <unicode></unicode><!-- tooltip -->
+        <unicode></unicode><!-- tooltip text -->
+        <i>0</i>
+        <no />
+        <i>0</i>
+        <s>local m_action = nil
+
+function SetAction(a)
+	m_action = a
+end
+
+function Action()
+	return m_action
+end
+
+function EnterClickDown()
+	local x,y = Component.Call(&quot;Position&quot;)
+	Component.Call(&quot;Children[0].MoveTo&quot;, x+2, y+2)
+end
+
+function ExitClickDown()
+	local x,y = Component.Call(&quot;Position&quot;)
+	Component.Call(&quot;Children[0].MoveTo&quot;, x+1, y+1)
+end
+
+function NotifySelected()
+	Component.CallByAddress(Component.GetProperty(&quot;Notify&quot;), &quot;LuaCall&quot;, &quot;Notify&quot;, Component.FindChildAddress(&quot;button_tx&quot;))
+end</s><!-- script -->
+        <images count="6">
+          <image>
+            <u>386032592</u><!-- ID -->
+            <s>UI/Templates/Skins/textbutton_small_center_down.tga</s><!-- path -->
+            <i>115</i><!-- x size -->
+            <i>27</i><!-- y size -->
+            <u>4294967295</u><!-- mask or rgba or something? -->
+          </image>
+          <image>
+            <u>402992960</u><!-- ID -->
+            <s>UI/Templates/Skins/textbutton_small_center_down_off.tga</s><!-- path -->
+            <i>115</i><!-- x size -->
+            <i>27</i><!-- y size -->
+            <u>4294967295</u><!-- mask or rgba or something? -->
+          </image>
+          <image>
+            <u>386583200</u><!-- ID -->
+            <s>UI/Templates/Skins/textbutton_small_center_up.tga</s><!-- path -->
+            <i>115</i><!-- x size -->
+            <i>27</i><!-- y size -->
+            <u>4294967295</u><!-- mask or rgba or something? -->
+          </image>
+          <image>
+            <u>386584816</u><!-- ID -->
+            <s>UI/Templates/Skins/textbutton_small_center_up_roll.tga</s><!-- path -->
+            <i>115</i><!-- x size -->
+            <i>27</i><!-- y size -->
+            <u>4294967295</u><!-- mask or rgba or something? -->
+          </image>
+          <image>
+            <u>386586640</u><!-- ID -->
+            <s>UI/Templates/Skins/textbutton_small_side_up.tga</s><!-- path -->
+            <i>5</i><!-- x size -->
+            <i>28</i><!-- y size -->
+            <u>4294967295</u><!-- mask or rgba or something? -->
+          </image>
+          <image>
+            <u>386588200</u><!-- ID -->
+            <s>UI/Templates/Skins/textbutton_small_side_down.tga</s><!-- path -->
+            <i>5</i><!-- x size -->
+            <i>28</i><!-- y size -->
+            <u>4294967295</u><!-- mask or rgba or something? -->
+          </image>
+        </images>
+        <i>0</i>
+        <i>0</i>
+        <!-- 1295 -->
+        <states count="5">
+          <state>
+            <u>402966392</u><!-- ID -->
+            <s>normal</s><!-- title - NewState -->
+            <i>249</i><!-- x size -->
+            <i>28</i><!-- y size -->
+            <unicode></unicode><!-- state text -->
+            <unicode></unicode><!-- tooltip -->
+            <i>0</i>
+            <i>2</i>
+            <i>0</i>
+            <i>1</i>
+            <i>1</i>
+            <no />
+            <unicode></unicode><!-- localization id -->
+            <unicode></unicode><!-- tooltip id -->
+            <s>Ingame 12, Normal</s><!-- font -->
+            <!-- 1367 - font done -->
+            <i>2</i>
+            <i>1</i>
+            <u>255</u>
+            <i>0</i>
+            <i>0</i>
+            <i>0</i>
+            <yes />
+            <no />
+            <no />
+            <s>normal_t0</s><!-- T0 -->
+            <i>0</i>
+            <i>0</i>
+            <i>0</i>
+            <i>0</i>
+            <!-- 1421 - state description start -->
+            <s></s><!-- state description -->
+            <s></s><!-- event text -->
+            <!-- 1425 - image uses start -->
+            <image_uses count="3">
+              <image_use>
+                <u>386583200</u><!-- ID -->
+                <u>5</u><!-- x offset -->
+                <u>0</u><!-- y offset -->
+                <u>239</u><!-- x size -->
+                <u>28</u><!-- y size -->
+                <byte>255</byte><!-- B multiply -->
+                <byte>255</byte><!-- R multiply -->
+                <byte>255</byte><!-- G multiply -->
+                <byte>255</byte><!-- A multiply -->
+                <!-- 1453 -->
+                <no />
+                <no />
+                <no />
+                <i>5</i><!-- position -->
+                <yes />
+                <no />
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+              </image_use>
+              <image_use>
+                <u>386586640</u><!-- ID -->
+                <u>0</u><!-- x offset -->
+                <u>0</u><!-- y offset -->
+                <u>5</u><!-- x size -->
+                <u>28</u><!-- y size -->
+                <byte>255</byte><!-- B multiply -->
+                <byte>255</byte><!-- R multiply -->
+                <byte>255</byte><!-- G multiply -->
+                <byte>255</byte><!-- A multiply -->
+                <!-- 1498 -->
+                <no />
+                <no />
+                <no />
+                <i>4</i><!-- position -->
+                <no />
+                <no />
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+              </image_use>
+              <image_use>
+                <u>386586640</u><!-- ID -->
+                <u>244</u><!-- x offset -->
+                <u>0</u><!-- y offset -->
+                <u>5</u><!-- x size -->
+                <u>28</u><!-- y size -->
+                <byte>255</byte><!-- B multiply -->
+                <byte>255</byte><!-- R multiply -->
+                <byte>255</byte><!-- G multiply -->
+                <byte>255</byte><!-- A multiply -->
+                <!-- 1543 -->
+                <no />
+                <yes />
+                <no />
+                <i>6</i><!-- position -->
+                <no />
+                <no />
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+              </image_use>
+            </image_uses>
+            <i>53</i>
+            <i>149</i>
+            <!-- 1572 - transitions start -->
+            <!-- 1572 - transitions -->
+            <transitions count="2">
+              <transition>
+                <i>0</i><!-- type -->
+                <u>402969136</u><!-- ID -->
+                <s></s>
+                <i>0</i>
+                <i>0</i>
+              </transition>
+              <transition>
+                <i>2</i><!-- type -->
+                <u>402972488</u><!-- ID -->
+                <s></s>
+                <i>0</i>
+                <i>0</i>
+              </transition>
+            </transitions>
+          </state>
+          <state>
+            <u>402967896</u><!-- ID -->
+            <s>inactive</s><!-- title - NewState -->
+            <i>249</i><!-- x size -->
+            <i>28</i><!-- y size -->
+            <unicode></unicode><!-- state text -->
+            <unicode></unicode><!-- tooltip -->
+            <i>2</i>
+            <i>0</i>
+            <i>0</i>
+            <i>1</i>
+            <i>1</i>
+            <no />
+            <unicode></unicode><!-- localization id -->
+            <unicode></unicode><!-- tooltip id -->
+            <s>Ingame 12, Normal</s><!-- font -->
+            <!-- 1682 - font done -->
+            <i>2</i>
+            <i>1</i>
+            <u>255</u>
+            <i>0</i>
+            <i>0</i>
+            <i>0</i>
+            <yes />
+            <yes />
+            <no />
+            <s>normal_t0</s><!-- T0 -->
+            <i>0</i>
+            <i>0</i>
+            <i>0</i>
+            <i>0</i>
+            <!-- 1736 - state description start -->
+            <s></s><!-- state description -->
+            <s></s><!-- event text -->
+            <!-- 1740 - image uses start -->
+            <image_uses count="3">
+              <image_use>
+                <u>386583200</u><!-- ID -->
+                <u>5</u><!-- x offset -->
+                <u>0</u><!-- y offset -->
+                <u>239</u><!-- x size -->
+                <u>28</u><!-- y size -->
+                <byte>255</byte><!-- B multiply -->
+                <byte>255</byte><!-- R multiply -->
+                <byte>255</byte><!-- G multiply -->
+                <byte>128</byte><!-- A multiply -->
+                <!-- 1768 -->
+                <no />
+                <no />
+                <no />
+                <i>5</i><!-- position -->
+                <yes />
+                <no />
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+              </image_use>
+              <image_use>
+                <u>386586640</u><!-- ID -->
+                <u>0</u><!-- x offset -->
+                <u>0</u><!-- y offset -->
+                <u>5</u><!-- x size -->
+                <u>28</u><!-- y size -->
+                <byte>255</byte><!-- B multiply -->
+                <byte>255</byte><!-- R multiply -->
+                <byte>255</byte><!-- G multiply -->
+                <byte>128</byte><!-- A multiply -->
+                <!-- 1813 -->
+                <no />
+                <no />
+                <no />
+                <i>4</i><!-- position -->
+                <no />
+                <no />
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+              </image_use>
+              <image_use>
+                <u>386586640</u><!-- ID -->
+                <u>244</u><!-- x offset -->
+                <u>0</u><!-- y offset -->
+                <u>5</u><!-- x size -->
+                <u>28</u><!-- y size -->
+                <byte>255</byte><!-- B multiply -->
+                <byte>255</byte><!-- R multiply -->
+                <byte>255</byte><!-- G multiply -->
+                <byte>128</byte><!-- A multiply -->
+                <!-- 1858 -->
+                <no />
+                <yes />
+                <no />
+                <i>6</i><!-- position -->
+                <no />
+                <no />
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+              </image_use>
+            </image_uses>
+            <i>0</i>
+            <i>0</i>
+            <!-- 1887 - transitions start -->
+            <!-- 1887 - transitions -->
+            <transitions count="0">
+            </transitions>
+          </state>
+          <state>
+            <u>402969136</u><!-- ID -->
+            <s>roll</s><!-- title - NewState -->
+            <i>249</i><!-- x size -->
+            <i>28</i><!-- y size -->
+            <unicode></unicode><!-- state text -->
+            <unicode></unicode><!-- tooltip -->
+            <i>2</i>
+            <i>0</i>
+            <i>0</i>
+            <i>1</i>
+            <i>1</i>
+            <no />
+            <unicode></unicode><!-- localization id -->
+            <unicode></unicode><!-- tooltip id -->
+            <s>Ingame 12, Normal</s><!-- font -->
+            <!-- 1957 - font done -->
+            <i>2</i>
+            <i>1</i>
+            <u>255</u>
+            <i>0</i>
+            <i>0</i>
+            <i>0</i>
+            <yes />
+            <no />
+            <no />
+            <s>normal_t0</s><!-- T0 -->
+            <i>0</i>
+            <i>0</i>
+            <i>0</i>
+            <i>0</i>
+            <!-- 2011 - state description start -->
+            <s></s><!-- state description -->
+            <s></s><!-- event text -->
+            <!-- 2015 - image uses start -->
+            <image_uses count="3">
+              <image_use>
+                <u>386584816</u><!-- ID -->
+                <u>5</u><!-- x offset -->
+                <u>0</u><!-- y offset -->
+                <u>239</u><!-- x size -->
+                <u>28</u><!-- y size -->
+                <byte>255</byte><!-- B multiply -->
+                <byte>255</byte><!-- R multiply -->
+                <byte>255</byte><!-- G multiply -->
+                <byte>255</byte><!-- A multiply -->
+                <!-- 2043 -->
+                <no />
+                <no />
+                <no />
+                <i>5</i><!-- position -->
+                <yes />
+                <no />
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+              </image_use>
+              <image_use>
+                <u>386586640</u><!-- ID -->
+                <u>0</u><!-- x offset -->
+                <u>0</u><!-- y offset -->
+                <u>5</u><!-- x size -->
+                <u>28</u><!-- y size -->
+                <byte>255</byte><!-- B multiply -->
+                <byte>255</byte><!-- R multiply -->
+                <byte>255</byte><!-- G multiply -->
+                <byte>255</byte><!-- A multiply -->
+                <!-- 2088 -->
+                <no />
+                <no />
+                <no />
+                <i>4</i><!-- position -->
+                <no />
+                <no />
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+              </image_use>
+              <image_use>
+                <u>386586640</u><!-- ID -->
+                <u>244</u><!-- x offset -->
+                <u>0</u><!-- y offset -->
+                <u>5</u><!-- x size -->
+                <u>28</u><!-- y size -->
+                <byte>255</byte><!-- B multiply -->
+                <byte>255</byte><!-- R multiply -->
+                <byte>255</byte><!-- G multiply -->
+                <byte>255</byte><!-- A multiply -->
+                <!-- 2133 -->
+                <no />
+                <yes />
+                <no />
+                <i>6</i><!-- position -->
+                <no />
+                <no />
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+              </image_use>
+            </image_uses>
+            <i>213</i>
+            <i>17</i>
+            <!-- 2162 - transitions start -->
+            <!-- 2162 - transitions -->
+            <transitions count="2">
+              <transition>
+                <i>1</i><!-- type -->
+                <u>402966392</u><!-- ID -->
+                <s></s>
+                <i>0</i>
+                <i>0</i>
+              </transition>
+              <transition>
+                <i>2</i><!-- type -->
+                <u>402972488</u><!-- ID -->
+                <s></s>
+                <i>0</i>
+                <i>0</i>
+              </transition>
+            </transitions>
+          </state>
+          <state>
+            <u>402970840</u><!-- ID -->
+            <s>mouse_off</s><!-- title - NewState -->
+            <i>249</i><!-- x size -->
+            <i>28</i><!-- y size -->
+            <unicode></unicode><!-- state text -->
+            <unicode></unicode><!-- tooltip -->
+            <i>2</i>
+            <i>0</i>
+            <i>0</i>
+            <i>1</i>
+            <i>1</i>
+            <no />
+            <unicode></unicode><!-- localization id -->
+            <unicode></unicode><!-- tooltip id -->
+            <s>Ingame 12, Normal</s><!-- font -->
+            <!-- 2273 - font done -->
+            <i>2</i>
+            <i>1</i>
+            <u>255</u>
+            <i>0</i>
+            <i>0</i>
+            <i>0</i>
+            <yes />
+            <no />
+            <no />
+            <s>normal_t0</s><!-- T0 -->
+            <i>0</i>
+            <i>0</i>
+            <i>0</i>
+            <i>0</i>
+            <!-- 2327 - state description start -->
+            <s></s><!-- state description -->
+            <s></s><!-- event text -->
+            <!-- 2331 - image uses start -->
+            <image_uses count="3">
+              <image_use>
+                <u>402992960</u><!-- ID -->
+                <u>5</u><!-- x offset -->
+                <u>0</u><!-- y offset -->
+                <u>239</u><!-- x size -->
+                <u>28</u><!-- y size -->
+                <byte>255</byte><!-- B multiply -->
+                <byte>255</byte><!-- R multiply -->
+                <byte>255</byte><!-- G multiply -->
+                <byte>255</byte><!-- A multiply -->
+                <!-- 2359 -->
+                <no />
+                <no />
+                <no />
+                <i>5</i><!-- position -->
+                <yes />
+                <no />
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+              </image_use>
+              <image_use>
+                <u>386588200</u><!-- ID -->
+                <u>0</u><!-- x offset -->
+                <u>0</u><!-- y offset -->
+                <u>5</u><!-- x size -->
+                <u>28</u><!-- y size -->
+                <byte>255</byte><!-- B multiply -->
+                <byte>255</byte><!-- R multiply -->
+                <byte>255</byte><!-- G multiply -->
+                <byte>255</byte><!-- A multiply -->
+                <!-- 2404 -->
+                <no />
+                <no />
+                <no />
+                <i>4</i><!-- position -->
+                <no />
+                <no />
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+              </image_use>
+              <image_use>
+                <u>386588200</u><!-- ID -->
+                <u>244</u><!-- x offset -->
+                <u>0</u><!-- y offset -->
+                <u>5</u><!-- x size -->
+                <u>28</u><!-- y size -->
+                <byte>255</byte><!-- B multiply -->
+                <byte>255</byte><!-- R multiply -->
+                <byte>255</byte><!-- G multiply -->
+                <byte>255</byte><!-- A multiply -->
+                <!-- 2449 -->
+                <no />
+                <yes />
+                <no />
+                <i>6</i><!-- position -->
+                <no />
+                <no />
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+              </image_use>
+            </image_uses>
+            <i>222</i>
+            <i>267</i>
+            <!-- 2478 - transitions start -->
+            <!-- 2478 - transitions -->
+            <transitions count="2">
+              <transition>
+                <i>0</i><!-- type -->
+                <u>402972488</u><!-- ID -->
+                <s></s>
+                <i>0</i>
+                <i>0</i>
+              </transition>
+              <transition>
+                <i>11</i><!-- type -->
+                <u>402966392</u><!-- ID -->
+                <s></s>
+                <i>0</i>
+                <i>0</i>
+              </transition>
+            </transitions>
+          </state>
+          <state>
+            <u>402972488</u><!-- ID -->
+            <s>down</s><!-- title - NewState -->
+            <i>249</i><!-- x size -->
+            <i>28</i><!-- y size -->
+            <unicode></unicode><!-- state text -->
+            <unicode></unicode><!-- tooltip -->
+            <i>0</i>
+            <i>2</i>
+            <i>0</i>
+            <i>1</i>
+            <i>1</i>
+            <no />
+            <unicode></unicode><!-- localization id -->
+            <unicode></unicode><!-- tooltip id -->
+            <s>Ingame 12, Normal</s><!-- font -->
+            <!-- 2584 - font done -->
+            <i>2</i>
+            <i>1</i>
+            <u>255</u>
+            <i>0</i>
+            <i>0</i>
+            <i>0</i>
+            <yes />
+            <no />
+            <no />
+            <s>normal_t0</s><!-- T0 -->
+            <i>0</i>
+            <i>0</i>
+            <i>0</i>
+            <i>0</i>
+            <!-- 2638 - state description start -->
+            <s>EnterClickDown</s><!-- state description -->
+            <s>ExitClickDown</s><!-- event text -->
+            <!-- 2669 - image uses start -->
+            <image_uses count="3">
+              <image_use>
+                <u>386032592</u><!-- ID -->
+                <u>5</u><!-- x offset -->
+                <u>0</u><!-- y offset -->
+                <u>239</u><!-- x size -->
+                <u>28</u><!-- y size -->
+                <byte>255</byte><!-- B multiply -->
+                <byte>255</byte><!-- R multiply -->
+                <byte>255</byte><!-- G multiply -->
+                <byte>255</byte><!-- A multiply -->
+                <!-- 2697 -->
+                <no />
+                <no />
+                <no />
+                <i>5</i><!-- position -->
+                <yes />
+                <no />
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+              </image_use>
+              <image_use>
+                <u>386588200</u><!-- ID -->
+                <u>0</u><!-- x offset -->
+                <u>0</u><!-- y offset -->
+                <u>5</u><!-- x size -->
+                <u>28</u><!-- y size -->
+                <byte>255</byte><!-- B multiply -->
+                <byte>255</byte><!-- R multiply -->
+                <byte>255</byte><!-- G multiply -->
+                <byte>255</byte><!-- A multiply -->
+                <!-- 2742 -->
+                <no />
+                <no />
+                <no />
+                <i>4</i><!-- position -->
+                <no />
+                <no />
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+              </image_use>
+              <image_use>
+                <u>386588200</u><!-- ID -->
+                <u>244</u><!-- x offset -->
+                <u>0</u><!-- y offset -->
+                <u>5</u><!-- x size -->
+                <u>28</u><!-- y size -->
+                <byte>255</byte><!-- B multiply -->
+                <byte>255</byte><!-- R multiply -->
+                <byte>255</byte><!-- G multiply -->
+                <byte>255</byte><!-- A multiply -->
+                <!-- 2787 -->
+                <no />
+                <yes />
+                <no />
+                <i>6</i><!-- position -->
+                <no />
+                <no />
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+              </image_use>
+            </image_uses>
+            <i>360</i>
+            <i>147</i>
+            <!-- 2816 - transitions start -->
+            <!-- 2816 - transitions -->
+            <transitions count="2">
+              <transition>
+                <i>1</i><!-- type -->
+                <u>402970840</u><!-- ID -->
+                <s></s>
+                <i>0</i>
+                <i>0</i>
+              </transition>
+              <transition>
+                <i>3</i><!-- type -->
+                <u>402969136</u><!-- ID -->
+                <s></s>
+                <i>0</i>
+                <i>0</i>
+              </transition>
+            </transitions>
+          </state>
+        </states>
+        <!-- 2856 - state list just finished -->
+        <i>2</i>
+        <!-- 2860 - do event list now -->
+        <events>
+          <event>Notify</event>
+          <event></event>
+          <event>Action</event>
+          <event></event>
+          <event>OnMouseLClickUp</event>
+          <event>NotifySelected</event>
+        </events>
+        <i>45</i>
+        <effects count="0">
+        </effects>
+        <!-- 2933 - effects end -->
+        <children count="1">
+          <uientry>
+            <u>385318952</u><!-- ID -->
+            <s>button_tx</s><!-- title -->
+            <i>1</i><!-- x offset -->
+            <i>1</i><!-- y offset -->
+            <yes />
+            <yes />
+            <no />
+            <yes />
+            <no />
+            <no />
+            <no />
+            <s>button_tx</s><!-- parent name -->
+            <i>-1</i>
+            <unicode></unicode><!-- tooltip -->
+            <unicode></unicode><!-- tooltip text -->
+            <i>0</i>
+            <no />
+            <i>0</i>
+            <s></s><!-- script -->
+            <images count="0">
+            </images>
+            <i>0</i>
+            <i>0</i>
+            <!-- 3009 -->
+            <states count="19">
+              <state>
+                <u>402974608</u><!-- ID -->
+                <s>state_gift</s><!-- title - NewState -->
+                <i>246</i><!-- x size -->
+                <i>25</i><!-- y size -->
+                <unicode>Present State Gift</unicode><!-- state text -->
+                <unicode>Do this as a sign of goodwill - particularly if your relations with this nation are a little strained.</unicode><!-- tooltip -->
+                <i>4</i>
+                <i>4</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <yes />
+                <unicode>button_tx_state_gift_Text_720052</unicode><!-- localization id -->
+                <unicode>button_tx_state_gift_Tooltip_76005b</unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <!-- 3459 - font done -->
+                <i>2</i>
+                <i>1</i>
+                <u>4278190080</u>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <no />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <!-- 3513 - state description start -->
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <!-- 3517 - image uses start -->
+                <image_uses count="0">
+                </image_uses>
+                <i>0</i>
+                <i>0</i>
+                <!-- 3529 - transitions start -->
+                <!-- 3529 - transitions -->
+                <transitions count="0">
+                </transitions>
+              </state>
+              <state>
+                <u>385320768</u><!-- ID -->
+                <s>access</s><!-- title - NewState -->
+                <i>246</i><!-- x size -->
+                <i>25</i><!-- y size -->
+                <unicode>Military Access</unicode><!-- state text -->
+                <unicode>Click here to negotiate military access. || If one nation wants to move their army into another&apos;s territory they have two choices: declare war or ask for military access. || Military access is not a permission given lightly, and once offered it can only be cancelled by declaring war. || If indefinite access has been offered a nation must wait twenty-five turns before cancelling it. || Allowing military access to your territories could leave you vulnerable to attack. || It also exposes your territories to scrutiny. || Click this button to see the military access panel and further details. </unicode><!-- tooltip -->
+                <i>4</i>
+                <i>4</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <yes />
+                <unicode>button_tx_access_Text_490072</unicode><!-- localization id -->
+                <unicode>button_tx_access_Tooltip_a005f</unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <!-- 4937 - font done -->
+                <i>2</i>
+                <i>1</i>
+                <u>4278190080</u>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <no />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <!-- 4991 - state description start -->
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <!-- 4995 - image uses start -->
+                <image_uses count="0">
+                </image_uses>
+                <i>0</i>
+                <i>0</i>
+                <!-- 5007 - transitions start -->
+                <!-- 5007 - transitions -->
+                <transitions count="0">
+                </transitions>
+              </state>
+              <state>
+                <u>385744952</u><!-- ID -->
+                <s>access_cancel</s><!-- title - NewState -->
+                <i>246</i><!-- x size -->
+                <i>25</i><!-- y size -->
+                <unicode>Cancel Military Access</unicode><!-- state text -->
+                <unicode>Cancelling military access will force this nation&apos;s armies from your territories. || If indefinite access has been offered you must wait twenty-five turns before cancelling, or declare war. || You may wish to cancel military access if you think they are becoming a threat. || Do not act rashly, as if your relationship with them is strong cancelling military access may damage your alliance.</unicode><!-- tooltip -->
+                <i>4</i>
+                <i>4</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <yes />
+                <unicode>button_tx_access_cancel_Text_1c0021</unicode><!-- localization id -->
+                <unicode>button_tx_access_cancel_Tooltip_270003</unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <!-- 6058 - font done -->
+                <i>2</i>
+                <i>1</i>
+                <u>4287299584</u>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <no />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <!-- 6112 - state description start -->
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <!-- 6116 - image uses start -->
+                <image_uses count="0">
+                </image_uses>
+                <i>0</i>
+                <i>0</i>
+                <!-- 6128 - transitions start -->
+                <!-- 6128 - transitions -->
+                <transitions count="0">
+                </transitions>
+              </state>
+              <state>
+                <u>385747864</u><!-- ID -->
+                <s>break_trade</s><!-- title - NewState -->
+                <i>246</i><!-- x size -->
+                <i>25</i><!-- y size -->
+                <unicode>Trade Embargoes</unicode><!-- state text -->
+                <unicode>Demand a trade embargo against another nation here. || Once an embargo has been made the nations involved will be unable to trade with each other for 10 turns. || Losing a trade agreement affects a nation&apos;s economy and could make them vulnerable. || Cancelling trade can also sour diplomatic relations between nations. || However, be aware that the targeted nation will be informed who was responsible for suggesting the embargo. </unicode><!-- tooltip -->
+                <i>4</i>
+                <i>4</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <yes />
+                <unicode>button_tx_break_trade_Text_380019</unicode><!-- localization id -->
+                <unicode>button_tx_break_trade_Tooltip_3f0012</unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <!-- 7233 - font done -->
+                <i>2</i>
+                <i>1</i>
+                <u>4278190080</u>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <no />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <!-- 7287 - state description start -->
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <!-- 7291 - image uses start -->
+                <image_uses count="0">
+                </image_uses>
+                <i>0</i>
+                <i>0</i>
+                <!-- 7303 - transitions start -->
+                <!-- 7303 - transitions -->
+                <transitions count="0">
+                </transitions>
+              </state>
+              <state>
+                <u>385751120</u><!-- ID -->
+                <s>payments</s><!-- title - NewState -->
+                <i>246</i><!-- x size -->
+                <i>25</i><!-- y size -->
+                <unicode>Payments</unicode><!-- state text -->
+                <unicode>Click here to demand or offer payments.||Money plays a key role in diplomacy.||Offer it as a sign of goodwill, a bribe to get your own way, or demand it in exchange for granting requests.||The bigger the request the more money you can ask for - of course you could ask for technology or a region instead.||Clicking here will bring up the payments panel with more information.</unicode><!-- tooltip -->
+                <i>4</i>
+                <i>4</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <yes />
+                <unicode>button_tx_payments_Text_110038</unicode><!-- localization id -->
+                <unicode>button_tx_payments_Tooltip_30011</unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <!-- 8267 - font done -->
+                <i>2</i>
+                <i>1</i>
+                <u>4278190080</u>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <no />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <!-- 8321 - state description start -->
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <!-- 8325 - image uses start -->
+                <image_uses count="0">
+                </image_uses>
+                <i>0</i>
+                <i>0</i>
+                <!-- 8337 - transitions start -->
+                <!-- 8337 - transitions -->
+                <transitions count="0">
+                </transitions>
+              </state>
+              <state>
+                <u>385752056</u><!-- ID -->
+                <s>protector</s><!-- title - NewState -->
+                <i>246</i><!-- x size -->
+                <i>25</i><!-- y size -->
+                <unicode>Become Protector</unicode><!-- state text -->
+                <unicode>Request the other nation come under your protection.||Though it may sound like extra work, becoming a nation&apos;s protector can actually have many advantages.||You will receive half of their income and gain unlimited military access to their regions.||When a nation becomes protectorate they must break all previous alliances.||Protectorate nations can still declare war on other nations - if this happens you will be dragged into the conflict.</unicode><!-- tooltip -->
+                <i>4</i>
+                <i>4</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <yes />
+                <unicode>button_tx_protector_Text_330066</unicode><!-- localization id -->
+                <unicode>button_tx_protector_Tooltip_3d0020</unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <!-- 9456 - font done -->
+                <i>2</i>
+                <i>1</i>
+                <u>4278190080</u>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <no />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <!-- 9510 - state description start -->
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <!-- 9514 - image uses start -->
+                <image_uses count="0">
+                </image_uses>
+                <i>0</i>
+                <i>0</i>
+                <!-- 9526 - transitions start -->
+                <!-- 9526 - transitions -->
+                <transitions count="0">
+                </transitions>
+              </state>
+              <state>
+                <u>385751624</u><!-- ID -->
+                <s>regions</s><!-- title - NewState -->
+                <i>246</i><!-- x size -->
+                <i>25</i><!-- y size -->
+                <unicode>Regions</unicode><!-- state text -->
+                <unicode>Click here to offer or demand regions.||Regions can be offered or demanded as part of peace negotiations, or even as gifts between friendly nations.||A regions value is assessed according to its income and strategic value in the game.||Clicking this button will bring up the regions panel.</unicode><!-- tooltip -->
+                <i>4</i>
+                <i>4</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <yes />
+                <unicode>button_tx_regions_Text_620029</unicode><!-- localization id -->
+                <unicode>button_tx_regions_Tooltip_11007b</unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <!-- 10313 - font done -->
+                <i>2</i>
+                <i>1</i>
+                <u>4278190080</u>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <no />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <!-- 10367 - state description start -->
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <!-- 10371 - image uses start -->
+                <image_uses count="0">
+                </image_uses>
+                <i>0</i>
+                <i>0</i>
+                <!-- 10383 - transitions start -->
+                <!-- 10383 - transitions -->
+                <transitions count="0">
+                </transitions>
+              </state>
+              <state>
+                <u>385814168</u><!-- ID -->
+                <s>protector_cancel</s><!-- title - NewState -->
+                <i>246</i><!-- x size -->
+                <i>25</i><!-- y size -->
+                <unicode>Demand Freedom</unicode><!-- state text -->
+                <unicode>You are currently a protectorate of this nation, but is the relative security worth the loss of your independence?||At the moment half of your nation&apos;s income is paid out in exchange for their protection.||They also have unlimited military access across all your regions.||If you choose to stand alone they will need military access to travel within your regions.</unicode><!-- tooltip -->
+                <i>4</i>
+                <i>4</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <yes />
+                <unicode>button_tx_protector_cancel_Text_4a001f</unicode><!-- localization id -->
+                <unicode>button_tx_protector_cancel_Tooltip_160031</unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <!-- 11377 - font done -->
+                <i>2</i>
+                <i>1</i>
+                <u>4278190080</u>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <no />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <!-- 11431 - state description start -->
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <!-- 11435 - image uses start -->
+                <image_uses count="0">
+                </image_uses>
+                <i>0</i>
+                <i>0</i>
+                <!-- 11447 - transitions start -->
+                <!-- 11447 - transitions -->
+                <transitions count="0">
+                </transitions>
+              </state>
+              <state>
+                <u>385817104</u><!-- ID -->
+                <s>trade_cancel</s><!-- title - NewState -->
+                <i>246</i><!-- x size -->
+                <i>25</i><!-- y size -->
+                <unicode>Cancel Trade Agreement</unicode><!-- state text -->
+                <unicode>This will close all trade routes between the two nations.||You will lose any trade income from this nation if you cancel this. </unicode><!-- tooltip -->
+                <i>4</i>
+                <i>4</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <yes />
+                <unicode>button_tx_trade_cancel_Text_79005f</unicode><!-- localization id -->
+                <unicode>button_tx_trade_cancel_Tooltip_4d0025</unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <!-- 11965 - font done -->
+                <i>2</i>
+                <i>1</i>
+                <u>4287299584</u>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <no />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <!-- 12019 - state description start -->
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <!-- 12023 - image uses start -->
+                <image_uses count="0">
+                </image_uses>
+                <i>0</i>
+                <i>0</i>
+                <!-- 12035 - transitions start -->
+                <!-- 12035 - transitions -->
+                <transitions count="0">
+                </transitions>
+              </state>
+              <state>
+                <u>385888912</u><!-- ID -->
+                <s>peace</s><!-- title - NewState -->
+                <i>246</i><!-- x size -->
+                <i>25</i><!-- y size -->
+                <unicode>Request peace</unicode><!-- state text -->
+                <unicode>You are currently at war with this nation.||If this nation has strong trade resources it may be advantageous to make peace and become a trade partner rather than an enemy.</unicode><!-- tooltip -->
+                <i>4</i>
+                <i>4</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <yes />
+                <unicode>button_tx_peace_Text_450046</unicode><!-- localization id -->
+                <unicode>button_tx_peace_Tooltip_4e0054</unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <!-- 12588 - font done -->
+                <i>2</i>
+                <i>1</i>
+                <u>4278190080</u>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <no />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <!-- 12642 - state description start -->
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <!-- 12646 - image uses start -->
+                <image_uses count="0">
+                </image_uses>
+                <i>0</i>
+                <i>0</i>
+                <!-- 12658 - transitions start -->
+                <!-- 12658 - transitions -->
+                <transitions count="0">
+                </transitions>
+              </state>
+              <state>
+                <u>385891048</u><!-- ID -->
+                <s>war</s><!-- title - NewState -->
+                <i>246</i><!-- x size -->
+                <i>25</i><!-- y size -->
+                <unicode>Declare war</unicode><!-- state text -->
+                <unicode>This will bring up a declare war panel where you can see potential allies for both sides. </unicode><!-- tooltip -->
+                <i>4</i>
+                <i>4</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <yes />
+                <unicode>button_tx_war_Text_3a0026</unicode><!-- localization id -->
+                <unicode>button_tx_war_Tooltip_320007</unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <!-- 13035 - font done -->
+                <i>2</i>
+                <i>1</i>
+                <u>4278190080</u>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <no />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <!-- 13089 - state description start -->
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <!-- 13093 - image uses start -->
+                <image_uses count="0">
+                </image_uses>
+                <i>0</i>
+                <i>0</i>
+                <!-- 13105 - transitions start -->
+                <!-- 13105 - transitions -->
+                <transitions count="0">
+                </transitions>
+              </state>
+              <state>
+                <u>385925432</u><!-- ID -->
+                <s>technology</s><!-- title - NewState -->
+                <i>246</i><!-- x size -->
+                <i>25</i><!-- y size -->
+                <unicode>Technology</unicode><!-- state text -->
+                <unicode>Click here to open up the negotiation panel for technologies.||Technology is important for the development of your nation&apos;s buildings and armies, among other things.||You must research a technology before it can be offered or demanded.||Clicking this button will bring up another panel that has more details.</unicode><!-- tooltip -->
+                <i>4</i>
+                <i>4</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <yes />
+                <unicode>button_tx_technology_Text_740052</unicode><!-- localization id -->
+                <unicode>button_tx_technology_Tooltip_2a0076</unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <!-- 13951 - font done -->
+                <i>2</i>
+                <i>1</i>
+                <u>4278190080</u>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <no />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <!-- 14005 - state description start -->
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <!-- 14009 - image uses start -->
+                <image_uses count="0">
+                </image_uses>
+                <i>0</i>
+                <i>0</i>
+                <!-- 14021 - transitions start -->
+                <!-- 14021 - transitions -->
+                <transitions count="0">
+                </transitions>
+              </state>
+              <state>
+                <u>385927968</u><!-- ID -->
+                <s>alliance_cancel</s><!-- title - NewState -->
+                <i>246</i><!-- x size -->
+                <i>25</i><!-- y size -->
+                <unicode>Cancel Your Alliance</unicode><!-- state text -->
+                <unicode>If you do this you will lose all the advantages that come with an alliance.||You may wish to do this if your ally has an enemy you want to impress.</unicode><!-- tooltip -->
+                <i>4</i>
+                <i>4</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <yes />
+                <unicode>button_tx_alliance_cancel_Text_6c005a</unicode><!-- localization id -->
+                <unicode>button_tx_alliance_cancel_Tooltip_1f002c</unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <!-- 14590 - font done -->
+                <i>2</i>
+                <i>1</i>
+                <u>4287299584</u>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <no />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <!-- 14644 - state description start -->
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <!-- 14648 - image uses start -->
+                <image_uses count="0">
+                </image_uses>
+                <i>0</i>
+                <i>0</i>
+                <!-- 14660 - transitions start -->
+                <!-- 14660 - transitions -->
+                <transitions count="0">
+                </transitions>
+              </state>
+              <state>
+                <u>385929368</u><!-- ID -->
+                <s>alliance</s><!-- title - NewState -->
+                <i>246</i><!-- x size -->
+                <i>25</i><!-- y size -->
+                <unicode>Request Alliance</unicode><!-- state text -->
+                <unicode>Click here to request an alliance with the other nation.||In the event of a battle you can call upon your allied nations to aid you.||Don&apos;t count on them too much though - they may refuse! </unicode><!-- tooltip -->
+                <i>4</i>
+                <i>4</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <yes />
+                <unicode>button_tx_alliance_Text_4d001d</unicode><!-- localization id -->
+                <unicode>button_tx_alliance_Tooltip_f0043</unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <!-- 15268 - font done -->
+                <i>2</i>
+                <i>1</i>
+                <u>4278190080</u>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <no />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <!-- 15322 - state description start -->
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <!-- 15326 - image uses start -->
+                <image_uses count="0">
+                </image_uses>
+                <i>0</i>
+                <i>0</i>
+                <!-- 15338 - transitions start -->
+                <!-- 15338 - transitions -->
+                <transitions count="0">
+                </transitions>
+              </state>
+              <state>
+                <u>385931720</u><!-- ID -->
+                <s>third_party</s><!-- title - NewState -->
+                <i>246</i><!-- x size -->
+                <i>25</i><!-- y size -->
+                <unicode>Change Policy towards ...</unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>4</i>
+                <i>4</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <yes />
+                <unicode>button_tx_third_party_Text_780018</unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <!-- 15531 - font done -->
+                <i>2</i>
+                <i>1</i>
+                <u>4278190080</u>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <no />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <!-- 15585 - state description start -->
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <!-- 15589 - image uses start -->
+                <image_uses count="0">
+                </image_uses>
+                <i>0</i>
+                <i>0</i>
+                <!-- 15601 - transitions start -->
+                <!-- 15601 - transitions -->
+                <transitions count="0">
+                </transitions>
+              </state>
+              <state>
+                <u>385945656</u><!-- ID -->
+                <s>trade</s><!-- title - NewState -->
+                <i>246</i><!-- x size -->
+                <i>25</i><!-- y size -->
+                <unicode>Request Trade Agreement</unicode><!-- state text -->
+                <unicode>A trade agreement will open up a trade route between the two nations.||The goods you export along trade routes will contribute towards your trade income. </unicode><!-- tooltip -->
+                <i>4</i>
+                <i>4</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <yes />
+                <unicode>button_tx_trade_Text_740025</unicode><!-- localization id -->
+                <unicode>button_tx_trade_Tooltip_e0041</unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <!-- 16138 - font done -->
+                <i>2</i>
+                <i>1</i>
+                <u>4278190080</u>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <no />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <!-- 16192 - state description start -->
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <!-- 16196 - image uses start -->
+                <image_uses count="0">
+                </image_uses>
+                <i>0</i>
+                <i>0</i>
+                <!-- 16208 - transitions start -->
+                <!-- 16208 - transitions -->
+                <transitions count="0">
+                </transitions>
+              </state>
+              <state>
+                <u>385946472</u><!-- ID -->
+                <s>request_join_war</s><!-- title - NewState -->
+                <i>246</i><!-- x size -->
+                <i>25</i><!-- y size -->
+                <unicode>Joining Wars</unicode><!-- state text -->
+                <unicode>Offer to fight with, or request assistance from, your allies. || Clicking here will open up a panel with a list of each nation&apos;s enemies to choose from. || Accepting an offer or a request will improve relations between nations, but a refusal will not break the alliance.</unicode><!-- tooltip -->
+                <i>4</i>
+                <i>4</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <yes />
+                <unicode>button_tx_request_join_war_Text_5d0008</unicode><!-- localization id -->
+                <unicode>button_tx_request_join_war_Tooltip_43ffe7</unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <!-- 17012 - font done -->
+                <i>2</i>
+                <i>1</i>
+                <u>4278190080</u>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <no />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <!-- 17066 - state description start -->
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <!-- 17070 - image uses start -->
+                <image_uses count="0">
+                </image_uses>
+                <i>0</i>
+                <i>0</i>
+                <!-- 17082 - transitions start -->
+                <!-- 17082 - transitions -->
+                <transitions count="0">
+                </transitions>
+              </state>
+              <state>
+                <u>385948096</u><!-- ID -->
+                <s>forces</s><!-- title - NewState -->
+                <i>246</i><!-- x size -->
+                <i>25</i><!-- y size -->
+                <unicode>Forces</unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>4</i>
+                <i>4</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <yes />
+                <unicode>button_tx_forces_Text_7f0051</unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <!-- 17222 - font done -->
+                <i>2</i>
+                <i>1</i>
+                <u>4278190080</u>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <no />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <!-- 17276 - state description start -->
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <!-- 17280 - image uses start -->
+                <image_uses count="0">
+                </image_uses>
+                <i>0</i>
+                <i>0</i>
+                <!-- 17292 - transitions start -->
+                <!-- 17292 - transitions -->
+                <transitions count="0">
+                </transitions>
+              </state>
+              <state>
+                <u>385948944</u><!-- ID -->
+                <s>break_alliance</s><!-- title - NewState -->
+                <i>246</i><!-- x size -->
+                <i>25</i><!-- y size -->
+                <unicode>Breaking Alliances</unicode><!-- state text -->
+                <unicode>Demand the other nation break one of their alliances.|| Losing a valuable ally can affect a nation&apos;s political strength. || Clicking this button opens a panel showing the other nation&apos;s alliances. || A broken alliance can seriously affect the relationship between nations.  </unicode><!-- tooltip -->
+                <i>4</i>
+                <i>4</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <yes />
+                <unicode>button_tx_break_alliance_Text_41000c</unicode><!-- localization id -->
+                <unicode>button_tx_break_alliance_Tooltip_720022</unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <!-- 18106 - font done -->
+                <i>2</i>
+                <i>1</i>
+                <u>4278190080</u>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <no />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <!-- 18160 - state description start -->
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <!-- 18164 - image uses start -->
+                <image_uses count="0">
+                </image_uses>
+                <i>0</i>
+                <i>0</i>
+                <!-- 18176 - transitions start -->
+                <!-- 18176 - transitions -->
+                <transitions count="0">
+                </transitions>
+              </state>
+            </states>
+            <!-- 18180 - state list just finished -->
+            <i>0</i>
+            <!-- 18184 - do event list now -->
+            <events>
+            </events>
+            <i>45</i>
+            <effects count="0">
+            </effects>
+            <!-- 18204 - effects end -->
+            <children count="0">
+            </children>
+            <s></s><!-- template -->
+          </uientry>
+        </children>
+        <s>template.diplomacy_button.lua</s><!-- template -->
+      </uientry>
+    </children>
+    <s></s><!-- template -->
+  </uientry>
+</ui>
