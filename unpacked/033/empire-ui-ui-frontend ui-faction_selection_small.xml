@@ -1,0 +1,4782 @@
+<ui version="033">
+  <uientry>
+    <u>192671284</u><!-- ID -->
+    <s>root</s><!-- title -->
+    <i>0</i><!-- x offset -->
+    <i>0</i><!-- y offset -->
+    <yes />
+    <yes />
+    <no />
+    <yes />
+    <no />
+    <no />
+    <no />
+    <s></s><!-- parent name -->
+    <i>-1</i>
+    <unicode></unicode><!-- tooltip -->
+    <unicode></unicode><!-- tooltip text -->
+    <i>0</i>
+    <no />
+    <s></s><!-- script -->
+    <images>
+      <image>
+        <u>191678060</u><!-- ID -->
+        <s></s><!-- path -->
+        <i>1280</i><!-- x size -->
+        <i>960</i><!-- y size -->
+        <u>4284900966</u><!-- mask or rgba or something? -->
+      </image>
+    </images>
+    <i>0</i>
+    <i>0</i>
+    <states>
+      <state>
+        <u>193243196</u><!-- ID -->
+        <s>NewState</s><!-- title - NewState -->
+        <i>1280</i><!-- x size -->
+        <i>960</i><!-- y size -->
+        <unicode></unicode><!-- state text -->
+        <unicode></unicode><!-- tooltip -->
+        <i>2</i>
+        <i>0</i>
+        <i>0</i>
+        <i>1</i>
+        <i>1</i>
+        <no />
+        <unicode></unicode><!-- localization id -->
+        <unicode></unicode><!-- tooltip id -->
+        <s>Ingame 12, Normal</s><!-- font -->
+        <i>2</i>
+        <i>1</i>
+        <i>255</i>
+        <i>0</i>
+        <i>0</i>
+        <i>0</i>
+        <yes />
+        <no />
+        <no />
+        <s>normal_t0</s><!-- T0 -->
+        <i>0</i>
+        <i>0</i>
+        <i>0</i>
+        <i>0</i>
+        <s></s><!-- state description -->
+        <s></s><!-- event text -->
+        <image_uses>
+          <image_use>
+            <u>191678060</u><!-- ID -->
+            <u>0</u><!-- x offset -->
+            <u>0</u><!-- y offset -->
+            <u>1280</u><!-- x size -->
+            <u>960</u><!-- y size -->
+            <byte>102</byte><!-- B multiply -->
+            <byte>102</byte><!-- R multiply -->
+            <byte>102</byte><!-- G multiply -->
+            <byte>255</byte><!-- A multiply -->
+            <!-- 242 -->
+            <no />
+            <no />
+            <no />
+            <i>0</i><!-- position -->
+            <yes />
+            <yes />
+            <i>0</i>
+            <i>0</i>
+            <i>0</i>
+            <!-- 263 -->
+          </image_use>
+        </image_uses>
+        <i>0</i>
+        <i>0</i>
+        <transitions>
+        </transitions>
+      </state>
+    </states>
+    <!-- 275 -->
+    <i>0</i>
+    <events>
+    </events>
+    <i>0</i>
+    <children>
+      <uientry>
+        <u>192770220</u><!-- ID -->
+        <s>faction_selection_small</s><!-- title -->
+        <i>10</i><!-- x offset -->
+        <i>10</i><!-- y offset -->
+        <yes />
+        <yes />
+        <no />
+        <yes />
+        <no />
+        <no />
+        <no />
+        <s>faction_selection_small</s><!-- parent name -->
+        <i>-1</i>
+        <unicode></unicode><!-- tooltip -->
+        <unicode></unicode><!-- tooltip text -->
+        <i>0</i>
+        <no />
+        <s></s><!-- script -->
+        <images>
+        </images>
+        <i>0</i>
+        <i>0</i>
+        <states>
+          <state>
+            <u>192494948</u><!-- ID -->
+            <s>NewState</s><!-- title - NewState -->
+            <i>760</i><!-- x size -->
+            <i>73</i><!-- y size -->
+            <unicode></unicode><!-- state text -->
+            <unicode></unicode><!-- tooltip -->
+            <i>2</i>
+            <i>0</i>
+            <i>0</i>
+            <i>1</i>
+            <i>1</i>
+            <no />
+            <unicode></unicode><!-- localization id -->
+            <unicode></unicode><!-- tooltip id -->
+            <s>Ingame 12, Normal</s><!-- font -->
+            <i>2</i>
+            <i>1</i>
+            <i>255</i>
+            <i>0</i>
+            <i>0</i>
+            <i>0</i>
+            <yes />
+            <no />
+            <no />
+            <s>normal_t0</s><!-- T0 -->
+            <i>0</i>
+            <i>0</i>
+            <i>0</i>
+            <i>0</i>
+            <s></s><!-- state description -->
+            <s></s><!-- event text -->
+            <image_uses>
+            </image_uses>
+            <i>0</i>
+            <i>0</i>
+            <transitions>
+            </transitions>
+          </state>
+        </states>
+        <!-- 543 -->
+        <i>0</i>
+        <events>
+        </events>
+        <i>0</i>
+        <children>
+          <uientry>
+            <u>193181676</u><!-- ID -->
+            <s>button_flags_left</s><!-- title -->
+            <i>308</i><!-- x offset -->
+            <i>15</i><!-- y offset -->
+            <no />
+            <no />
+            <no />
+            <yes />
+            <no />
+            <no />
+            <no />
+            <s>button_flags_left</s><!-- parent name -->
+            <i>-1</i>
+            <unicode>Scroll through playable nations</unicode><!-- tooltip -->
+            <unicode>button_flags_left_Tooltip_210039</unicode><!-- tooltip text -->
+            <i>0</i>
+            <no />
+            <s>local clicked = false
+local over     = false
+local last_upate = 0
+
+function OnMouseOn()
+	over = true
+end
+
+function OnMouseOff()
+	over = false
+end
+
+function OnClickDown()
+	clicked = true
+	last_update = 0
+end
+
+function OnClickUp()
+	clicked = false
+end
+
+function OnUpdate(time)
+	if over == true and clicked == true and time - last_update &gt; 500 then
+		last_update = time
+		OnSelect()
+	end
+end
+
+
+function OnSelect()
+
+	local this = UIComponent(Address)
+	local panel = UIComponent(this:Parent(&quot;faction_selection&quot;))
+
+	panel:LuaCall(&quot;SelectNextFaction&quot;)
+
+end	</s><!-- script -->
+            <images>
+              <image>
+                <u>192447020</u><!-- ID -->
+                <s>data\UI\FrontEnd UI\Skins\arrow_down_roll.tga</s><!-- path -->
+                <i>23</i><!-- x size -->
+                <i>34</i><!-- y size -->
+                <u>4294967295</u><!-- mask or rgba or something? -->
+              </image>
+              <image>
+                <u>189359020</u><!-- ID -->
+                <s>data\UI\FrontEnd UI\Skins\arrow_roll.tga</s><!-- path -->
+                <i>23</i><!-- x size -->
+                <i>34</i><!-- y size -->
+                <u>4294967295</u><!-- mask or rgba or something? -->
+              </image>
+              <image>
+                <u>192196052</u><!-- ID -->
+                <s>data\UI\FrontEnd UI\Skins\arrow_up.tga</s><!-- path -->
+                <i>23</i><!-- x size -->
+                <i>34</i><!-- y size -->
+                <u>4294967295</u><!-- mask or rgba or something? -->
+              </image>
+              <image>
+                <u>192169484</u><!-- ID -->
+                <s>data\UI\FrontEnd UI\Skins\arrow_down.tga</s><!-- path -->
+                <i>23</i><!-- x size -->
+                <i>34</i><!-- y size -->
+                <u>4294967295</u><!-- mask or rgba or something? -->
+              </image>
+            </images>
+            <i>0</i>
+            <i>0</i>
+            <states>
+              <state>
+                <u>192094396</u><!-- ID -->
+                <s>normal</s><!-- title - NewState -->
+                <i>23</i><!-- x size -->
+                <i>34</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>0</i>
+                <i>2</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>192196052</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>23</u><!-- x size -->
+                    <u>34</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 1756 -->
+                    <no />
+                    <yes />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 1777 -->
+                  </image_use>
+                </image_uses>
+                <i>53</i>
+                <i>149</i>
+                <transitions>
+                  <transition>
+                    <i>0</i><!-- type -->
+                    <u>191342180</u><!-- ID -->
+                  </transition>
+                  <transition>
+                    <i>2</i><!-- type -->
+                    <u>192585964</u><!-- ID -->
+                  </transition>
+                </transitions>
+              </state>
+              <state>
+                <u>192585964</u><!-- ID -->
+                <s>down</s><!-- title - NewState -->
+                <i>23</i><!-- x size -->
+                <i>34</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>0</i>
+                <i>2</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>192447020</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>23</u><!-- x size -->
+                    <u>34</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 1957 -->
+                    <no />
+                    <yes />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 1978 -->
+                  </image_use>
+                </image_uses>
+                <i>360</i>
+                <i>147</i>
+                <transitions>
+                  <transition>
+                    <i>1</i><!-- type -->
+                    <u>192715212</u><!-- ID -->
+                  </transition>
+                  <transition>
+                    <i>3</i><!-- type -->
+                    <u>191342180</u><!-- ID -->
+                  </transition>
+                </transitions>
+              </state>
+              <state>
+                <u>191342180</u><!-- ID -->
+                <s>roll</s><!-- title - NewState -->
+                <i>23</i><!-- x size -->
+                <i>34</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>2</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>189359020</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>23</u><!-- x size -->
+                    <u>34</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 2158 -->
+                    <no />
+                    <yes />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 2179 -->
+                  </image_use>
+                </image_uses>
+                <i>213</i>
+                <i>17</i>
+                <transitions>
+                  <transition>
+                    <i>1</i><!-- type -->
+                    <u>192094396</u><!-- ID -->
+                  </transition>
+                  <transition>
+                    <i>2</i><!-- type -->
+                    <u>192585964</u><!-- ID -->
+                  </transition>
+                </transitions>
+              </state>
+              <state>
+                <u>193329516</u><!-- ID -->
+                <s>inactive</s><!-- title - NewState -->
+                <i>23</i><!-- x size -->
+                <i>34</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>2</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <yes />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>192196052</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>23</u><!-- x size -->
+                    <u>34</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>50</byte><!-- A multiply -->
+                    <!-- 2363 -->
+                    <no />
+                    <yes />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 2384 -->
+                  </image_use>
+                </image_uses>
+                <i>0</i>
+                <i>0</i>
+                <transitions>
+                </transitions>
+              </state>
+              <state>
+                <u>192715212</u><!-- ID -->
+                <s>mouse_off</s><!-- title - NewState -->
+                <i>23</i><!-- x size -->
+                <i>34</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>2</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>192169484</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>23</u><!-- x size -->
+                    <u>34</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 2553 -->
+                    <no />
+                    <yes />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 2574 -->
+                  </image_use>
+                </image_uses>
+                <i>222</i>
+                <i>267</i>
+                <transitions>
+                  <transition>
+                    <i>0</i><!-- type -->
+                    <u>192585964</u><!-- ID -->
+                  </transition>
+                  <transition>
+                    <i>11</i><!-- type -->
+                    <u>192094396</u><!-- ID -->
+                  </transition>
+                </transitions>
+              </state>
+            </states>
+            <!-- 2602 -->
+            <i>0</i>
+            <events>
+              <event>OnMouseLClickDown</event>
+              <event>OnClickDown</event>
+              <event>OnMouseLClickUp</event>
+              <event>OnClickUp</event>
+              <event>OnUpdatePulse</event>
+              <event>OnUpdate</event>
+              <event>OnMouseOn</event>
+              <event>OnMouseOn</event>
+              <event>OnMouseOff</event>
+              <event>OnMouseOff</event>
+            </events>
+            <i>0</i>
+            <children>
+            </children>
+            <s></s><!-- template -->
+          </uientry>
+          <uientry>
+            <u>192834324</u><!-- ID -->
+            <s>button_flags_right</s><!-- title -->
+            <i>430</i><!-- x offset -->
+            <i>15</i><!-- y offset -->
+            <no />
+            <no />
+            <no />
+            <yes />
+            <no />
+            <no />
+            <no />
+            <s>button_flags_right</s><!-- parent name -->
+            <i>-1</i>
+            <unicode>Scroll through playable nations</unicode><!-- tooltip -->
+            <unicode>button_flags_right_Tooltip_210039</unicode><!-- tooltip text -->
+            <i>0</i>
+            <no />
+            <s>local clicked = false
+local over     = false
+local last_upate = 0
+
+function OnMouseOn()
+	over = true
+end
+
+function OnMouseOff()
+	over = false
+end
+
+function OnClickDown()
+	clicked = true
+	last_update = 0
+end
+
+function OnClickUp()
+	clicked = false
+end
+
+function OnUpdate(time)
+	if over == true and clicked == true and time - last_update &gt; 500 then
+		last_update = time
+		OnSelect()
+	end
+end
+
+function OnSelect()
+
+	local this = UIComponent(Address)
+	local panel = UIComponent(this:Parent(&quot;faction_selection&quot;))
+
+	panel:LuaCall(&quot;SelectPrevFaction&quot;)
+
+end	</s><!-- script -->
+            <images>
+              <image>
+                <u>192502300</u><!-- ID -->
+                <s>data\UI\FrontEnd UI\Skins\arrow_down_roll.tga</s><!-- path -->
+                <i>23</i><!-- x size -->
+                <i>34</i><!-- y size -->
+                <u>4294967295</u><!-- mask or rgba or something? -->
+              </image>
+              <image>
+                <u>192179756</u><!-- ID -->
+                <s>data\UI\FrontEnd UI\Skins\arrow_roll.tga</s><!-- path -->
+                <i>23</i><!-- x size -->
+                <i>34</i><!-- y size -->
+                <u>4294967295</u><!-- mask or rgba or something? -->
+              </image>
+              <image>
+                <u>191377876</u><!-- ID -->
+                <s>data\UI\FrontEnd UI\Skins\arrow_up.tga</s><!-- path -->
+                <i>23</i><!-- x size -->
+                <i>34</i><!-- y size -->
+                <u>4294967295</u><!-- mask or rgba or something? -->
+              </image>
+              <image>
+                <u>191377644</u><!-- ID -->
+                <s>data\UI\FrontEnd UI\Skins\arrow_down.tga</s><!-- path -->
+                <i>23</i><!-- x size -->
+                <i>34</i><!-- y size -->
+                <u>4294967295</u><!-- mask or rgba or something? -->
+              </image>
+            </images>
+            <i>0</i>
+            <i>0</i>
+            <states>
+              <state>
+                <u>192124988</u><!-- ID -->
+                <s>normal</s><!-- title - NewState -->
+                <i>23</i><!-- x size -->
+                <i>34</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>0</i>
+                <i>2</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>191377876</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>23</u><!-- x size -->
+                    <u>34</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 3950 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 3971 -->
+                  </image_use>
+                </image_uses>
+                <i>53</i>
+                <i>149</i>
+                <transitions>
+                  <transition>
+                    <i>0</i><!-- type -->
+                    <u>191570644</u><!-- ID -->
+                  </transition>
+                  <transition>
+                    <i>2</i><!-- type -->
+                    <u>191793652</u><!-- ID -->
+                  </transition>
+                </transitions>
+              </state>
+              <state>
+                <u>191793652</u><!-- ID -->
+                <s>down</s><!-- title - NewState -->
+                <i>23</i><!-- x size -->
+                <i>34</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>0</i>
+                <i>2</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>192502300</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>23</u><!-- x size -->
+                    <u>34</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 4151 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 4172 -->
+                  </image_use>
+                </image_uses>
+                <i>360</i>
+                <i>147</i>
+                <transitions>
+                  <transition>
+                    <i>1</i><!-- type -->
+                    <u>191742076</u><!-- ID -->
+                  </transition>
+                  <transition>
+                    <i>3</i><!-- type -->
+                    <u>191570644</u><!-- ID -->
+                  </transition>
+                </transitions>
+              </state>
+              <state>
+                <u>191570644</u><!-- ID -->
+                <s>roll</s><!-- title - NewState -->
+                <i>23</i><!-- x size -->
+                <i>34</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>2</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>192179756</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>23</u><!-- x size -->
+                    <u>34</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 4352 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 4373 -->
+                  </image_use>
+                </image_uses>
+                <i>213</i>
+                <i>17</i>
+                <transitions>
+                  <transition>
+                    <i>1</i><!-- type -->
+                    <u>192124988</u><!-- ID -->
+                  </transition>
+                  <transition>
+                    <i>2</i><!-- type -->
+                    <u>191793652</u><!-- ID -->
+                  </transition>
+                </transitions>
+              </state>
+              <state>
+                <u>192217948</u><!-- ID -->
+                <s>inactive</s><!-- title - NewState -->
+                <i>23</i><!-- x size -->
+                <i>34</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>2</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <yes />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>191377876</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>23</u><!-- x size -->
+                    <u>34</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>50</byte><!-- A multiply -->
+                    <!-- 4557 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 4578 -->
+                  </image_use>
+                </image_uses>
+                <i>0</i>
+                <i>0</i>
+                <transitions>
+                </transitions>
+              </state>
+              <state>
+                <u>191742076</u><!-- ID -->
+                <s>mouse_off</s><!-- title - NewState -->
+                <i>23</i><!-- x size -->
+                <i>34</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>2</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>191377644</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>23</u><!-- x size -->
+                    <u>34</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 4747 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 4768 -->
+                  </image_use>
+                </image_uses>
+                <i>222</i>
+                <i>267</i>
+                <transitions>
+                  <transition>
+                    <i>0</i><!-- type -->
+                    <u>191793652</u><!-- ID -->
+                  </transition>
+                  <transition>
+                    <i>11</i><!-- type -->
+                    <u>192124988</u><!-- ID -->
+                  </transition>
+                </transitions>
+              </state>
+            </states>
+            <!-- 4796 -->
+            <i>0</i>
+            <events>
+              <event>OnMouseLClickDown</event>
+              <event>OnClickDown</event>
+              <event>OnMouseLClickUp</event>
+              <event>OnClickUp</event>
+              <event>OnUpdatePulse</event>
+              <event>OnUpdate</event>
+              <event>OnMouseOn</event>
+              <event>OnMouseOn</event>
+              <event>OnMouseOff</event>
+              <event>OnMouseOff</event>
+            </events>
+            <i>0</i>
+            <children>
+            </children>
+            <s></s><!-- template -->
+          </uientry>
+          <uientry>
+            <u>189842740</u><!-- ID -->
+            <s>dy_selected_faction</s><!-- title -->
+            <i>280</i><!-- x offset -->
+            <i>63</i><!-- y offset -->
+            <yes />
+            <yes />
+            <no />
+            <yes />
+            <no />
+            <no />
+            <no />
+            <s>dy_selected_faction</s><!-- parent name -->
+            <i>-1</i>
+            <unicode></unicode><!-- tooltip -->
+            <unicode></unicode><!-- tooltip text -->
+            <i>0</i>
+            <no />
+            <s></s><!-- script -->
+            <images>
+              <image>
+                <u>192654884</u><!-- ID -->
+                <s>data\UI\FrontEnd UI\Skins\1x1_gold.tga</s><!-- path -->
+                <i>1</i><!-- x size -->
+                <i>1</i><!-- y size -->
+                <u>4294967295</u><!-- mask or rgba or something? -->
+              </image>
+              <image>
+                <u>192794748</u><!-- ID -->
+                <s>data\UI\FrontEnd UI\Skins\decorated_text_corner.tga</s><!-- path -->
+                <i>6</i><!-- x size -->
+                <i>6</i><!-- y size -->
+                <u>4294967295</u><!-- mask or rgba or something? -->
+              </image>
+            </images>
+            <i>0</i>
+            <i>0</i>
+            <states>
+              <state>
+                <u>191710700</u><!-- ID -->
+                <s>NewState</s><!-- title - NewState -->
+                <i>200</i><!-- x size -->
+                <i>24</i><!-- y size -->
+                <unicode>dy_faction</unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>4</i>
+                <i>4</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode>dy_selected_faction_NewState_Text_7b0041</unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Frontend 18, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>-1</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>192654884</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>6</u><!-- y offset -->
+                    <u>1</u><!-- x size -->
+                    <u>12</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 5428 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>4</i><!-- position -->
+                    <no />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 5449 -->
+                  </image_use>
+                  <image_use>
+                    <u>192654884</u><!-- ID -->
+                    <u>199</u><!-- x offset -->
+                    <u>6</u><!-- y offset -->
+                    <u>1</u><!-- x size -->
+                    <u>12</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 5473 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>6</i><!-- position -->
+                    <no />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 5494 -->
+                  </image_use>
+                  <image_use>
+                    <u>192654884</u><!-- ID -->
+                    <u>6</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>188</u><!-- x size -->
+                    <u>1</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 5518 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>2</i><!-- position -->
+                    <yes />
+                    <no />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 5539 -->
+                  </image_use>
+                  <image_use>
+                    <u>192654884</u><!-- ID -->
+                    <u>6</u><!-- x offset -->
+                    <u>23</u><!-- y offset -->
+                    <u>188</u><!-- x size -->
+                    <u>1</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 5563 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>8</i><!-- position -->
+                    <yes />
+                    <no />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 5584 -->
+                  </image_use>
+                  <image_use>
+                    <u>192794748</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>6</u><!-- x size -->
+                    <u>6</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 5608 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>1</i><!-- position -->
+                    <no />
+                    <no />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 5629 -->
+                  </image_use>
+                  <image_use>
+                    <u>192794748</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>18</u><!-- y offset -->
+                    <u>6</u><!-- x size -->
+                    <u>6</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 5653 -->
+                    <no />
+                    <no />
+                    <yes />
+                    <i>7</i><!-- position -->
+                    <no />
+                    <no />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 5674 -->
+                  </image_use>
+                  <image_use>
+                    <u>192794748</u><!-- ID -->
+                    <u>194</u><!-- x offset -->
+                    <u>18</u><!-- y offset -->
+                    <u>6</u><!-- x size -->
+                    <u>6</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 5698 -->
+                    <no />
+                    <yes />
+                    <yes />
+                    <i>9</i><!-- position -->
+                    <no />
+                    <no />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 5719 -->
+                  </image_use>
+                  <image_use>
+                    <u>192794748</u><!-- ID -->
+                    <u>194</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>6</u><!-- x size -->
+                    <u>6</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 5743 -->
+                    <no />
+                    <yes />
+                    <no />
+                    <i>3</i><!-- position -->
+                    <no />
+                    <no />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 5764 -->
+                  </image_use>
+                </image_uses>
+                <i>0</i>
+                <i>0</i>
+                <transitions>
+                </transitions>
+              </state>
+            </states>
+            <!-- 5776 -->
+            <i>0</i>
+            <events>
+            </events>
+            <i>0</i>
+            <children>
+            </children>
+            <s></s><!-- template -->
+          </uientry>
+          <uientry>
+            <u>193265876</u><!-- ID -->
+            <s>selected_frame</s><!-- title -->
+            <i>334</i><!-- x offset -->
+            <i>7</i><!-- y offset -->
+            <yes />
+            <yes />
+            <no />
+            <yes />
+            <no />
+            <no />
+            <no />
+            <s>selected_frame</s><!-- parent name -->
+            <i>-1</i>
+            <unicode></unicode><!-- tooltip -->
+            <unicode></unicode><!-- tooltip text -->
+            <i>0</i>
+            <no />
+            <s></s><!-- script -->
+            <images>
+              <image>
+                <u>192040852</u><!-- ID -->
+                <s>data\UI\FrontEnd UI\Skins\dropdown_corner.tga</s><!-- path -->
+                <i>3</i><!-- x size -->
+                <i>3</i><!-- y size -->
+                <u>4294967295</u><!-- mask or rgba or something? -->
+              </image>
+              <image>
+                <u>191725308</u><!-- ID -->
+                <s>data\UI\FrontEnd UI\Skins\dropdown_side.tga</s><!-- path -->
+                <i>3</i><!-- x size -->
+                <i>1</i><!-- y size -->
+                <u>4294967295</u><!-- mask or rgba or something? -->
+              </image>
+              <image>
+                <u>192303684</u><!-- ID -->
+                <s>data\UI\FrontEnd UI\Skins\dropdown_top.tga</s><!-- path -->
+                <i>1</i><!-- x size -->
+                <i>3</i><!-- y size -->
+                <u>4294967295</u><!-- mask or rgba or something? -->
+              </image>
+            </images>
+            <i>0</i>
+            <i>0</i>
+            <states>
+              <state>
+                <u>191945572</u><!-- ID -->
+                <s>normal</s><!-- title - NewState -->
+                <i>93</i><!-- x size -->
+                <i>51</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>2</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <no />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>192040852</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>3</u><!-- x size -->
+                    <u>3</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 6222 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>1</i><!-- position -->
+                    <no />
+                    <no />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 6243 -->
+                  </image_use>
+                  <image_use>
+                    <u>192040852</u><!-- ID -->
+                    <u>90</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>3</u><!-- x size -->
+                    <u>3</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 6267 -->
+                    <no />
+                    <yes />
+                    <no />
+                    <i>3</i><!-- position -->
+                    <no />
+                    <no />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 6288 -->
+                  </image_use>
+                  <image_use>
+                    <u>192040852</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>48</u><!-- y offset -->
+                    <u>3</u><!-- x size -->
+                    <u>3</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 6312 -->
+                    <no />
+                    <no />
+                    <yes />
+                    <i>7</i><!-- position -->
+                    <no />
+                    <no />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 6333 -->
+                  </image_use>
+                  <image_use>
+                    <u>192040852</u><!-- ID -->
+                    <u>90</u><!-- x offset -->
+                    <u>48</u><!-- y offset -->
+                    <u>3</u><!-- x size -->
+                    <u>3</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 6357 -->
+                    <no />
+                    <yes />
+                    <yes />
+                    <i>9</i><!-- position -->
+                    <no />
+                    <no />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 6378 -->
+                  </image_use>
+                  <image_use>
+                    <u>192303684</u><!-- ID -->
+                    <u>3</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>87</u><!-- x size -->
+                    <u>3</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 6402 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>2</i><!-- position -->
+                    <yes />
+                    <no />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 6423 -->
+                  </image_use>
+                  <image_use>
+                    <u>192303684</u><!-- ID -->
+                    <u>3</u><!-- x offset -->
+                    <u>48</u><!-- y offset -->
+                    <u>87</u><!-- x size -->
+                    <u>3</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 6447 -->
+                    <no />
+                    <no />
+                    <yes />
+                    <i>8</i><!-- position -->
+                    <yes />
+                    <no />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 6468 -->
+                  </image_use>
+                  <image_use>
+                    <u>191725308</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>3</u><!-- y offset -->
+                    <u>3</u><!-- x size -->
+                    <u>45</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 6492 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>4</i><!-- position -->
+                    <no />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 6513 -->
+                  </image_use>
+                  <image_use>
+                    <u>191725308</u><!-- ID -->
+                    <u>90</u><!-- x offset -->
+                    <u>3</u><!-- y offset -->
+                    <u>3</u><!-- x size -->
+                    <u>45</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 6537 -->
+                    <no />
+                    <yes />
+                    <no />
+                    <i>6</i><!-- position -->
+                    <no />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 6558 -->
+                  </image_use>
+                </image_uses>
+                <i>0</i>
+                <i>0</i>
+                <transitions>
+                </transitions>
+              </state>
+            </states>
+            <!-- 6570 -->
+            <i>0</i>
+            <events>
+            </events>
+            <i>10</i>
+            <children>
+            </children>
+            <s></s><!-- template -->
+          </uientry>
+          <uientry>
+            <u>191882084</u><!-- ID -->
+            <s>flag_1</s><!-- title -->
+            <i>5</i><!-- x offset -->
+            <i>14</i><!-- y offset -->
+            <yes />
+            <yes />
+            <no />
+            <yes />
+            <no />
+            <no />
+            <no />
+            <s>flag_l4</s><!-- parent name -->
+            <i>-1</i>
+            <unicode></unicode><!-- tooltip -->
+            <unicode></unicode><!-- tooltip text -->
+            <i>0</i>
+            <no />
+            <s>-- The faction global is set via the script
+
+function OnSelect()
+	UIComponent(UIComponent(Address):Parent()):LuaCall(&quot;NotifyFactionSelected&quot;, Faction)
+end
+</s><!-- script -->
+            <images>
+              <image>
+                <u>192048756</u><!-- ID -->
+                <s>data\UI\FrontEnd UI\Skins\flag_132.tga</s><!-- path -->
+                <i>132</i><!-- x size -->
+                <i>66</i><!-- y size -->
+                <u>4294967295</u><!-- mask or rgba or something? -->
+              </image>
+            </images>
+            <i>0</i>
+            <i>0</i>
+            <states>
+              <state>
+                <u>188689396</u><!-- ID -->
+                <s>normal</s><!-- title - NewState -->
+                <i>70</i><!-- x size -->
+                <i>35</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>0</i>
+                <i>2</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>192048756</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>70</u><!-- x size -->
+                    <u>35</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 7033 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 7054 -->
+                  </image_use>
+                </image_uses>
+                <i>53</i>
+                <i>149</i>
+                <transitions>
+                  <transition>
+                    <i>0</i><!-- type -->
+                    <u>191536044</u><!-- ID -->
+                  </transition>
+                  <transition>
+                    <i>2</i><!-- type -->
+                    <u>191312988</u><!-- ID -->
+                  </transition>
+                </transitions>
+              </state>
+              <state>
+                <u>191312988</u><!-- ID -->
+                <s>down</s><!-- title - NewState -->
+                <i>70</i><!-- x size -->
+                <i>35</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>0</i>
+                <i>2</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <no />
+                <no />
+                <s>brighten_t0</s><!-- T0 -->
+                <i>1045220557</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1065353216</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>192048756</u><!-- ID -->
+                    <u>4294967294</u><!-- x offset -->
+                    <u>4294967295</u><!-- y offset -->
+                    <u>74</u><!-- x size -->
+                    <u>37</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 7236 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 7257 -->
+                  </image_use>
+                </image_uses>
+                <i>360</i>
+                <i>147</i>
+                <transitions>
+                  <transition>
+                    <i>1</i><!-- type -->
+                    <u>189063644</u><!-- ID -->
+                  </transition>
+                  <transition>
+                    <i>3</i><!-- type -->
+                    <u>191536044</u><!-- ID -->
+                  </transition>
+                </transitions>
+              </state>
+              <state>
+                <u>191536044</u><!-- ID -->
+                <s>roll</s><!-- title - NewState -->
+                <i>70</i><!-- x size -->
+                <i>35</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>2</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <no />
+                <no />
+                <s>brighten_t0</s><!-- T0 -->
+                <i>1045220557</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1065353216</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>192048756</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>70</u><!-- x size -->
+                    <u>35</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 7439 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 7460 -->
+                  </image_use>
+                </image_uses>
+                <i>213</i>
+                <i>17</i>
+                <transitions>
+                  <transition>
+                    <i>1</i><!-- type -->
+                    <u>188689396</u><!-- ID -->
+                  </transition>
+                  <transition>
+                    <i>2</i><!-- type -->
+                    <u>191312988</u><!-- ID -->
+                  </transition>
+                </transitions>
+              </state>
+              <state>
+                <u>192363476</u><!-- ID -->
+                <s>inactive</s><!-- title - NewState -->
+                <i>70</i><!-- x size -->
+                <i>35</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>2</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <yes />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>192048756</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>70</u><!-- x size -->
+                    <u>35</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>128</byte><!-- A multiply -->
+                    <!-- 7644 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 7665 -->
+                  </image_use>
+                </image_uses>
+                <i>0</i>
+                <i>0</i>
+                <transitions>
+                </transitions>
+              </state>
+              <state>
+                <u>189063644</u><!-- ID -->
+                <s>mouse_off</s><!-- title - NewState -->
+                <i>70</i><!-- x size -->
+                <i>35</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>2</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>192048756</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>70</u><!-- x size -->
+                    <u>35</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 7834 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 7855 -->
+                  </image_use>
+                </image_uses>
+                <i>222</i>
+                <i>267</i>
+                <transitions>
+                  <transition>
+                    <i>0</i><!-- type -->
+                    <u>191312988</u><!-- ID -->
+                  </transition>
+                  <transition>
+                    <i>11</i><!-- type -->
+                    <u>188689396</u><!-- ID -->
+                  </transition>
+                </transitions>
+              </state>
+            </states>
+            <!-- 7883 -->
+            <i>0</i>
+            <events>
+              <event>OnMouseLClickUp</event>
+              <event>OnSelect</event>
+            </events>
+            <i>0</i>
+            <children>
+            </children>
+            <s>template.button_standard.lua</s><!-- template -->
+          </uientry>
+          <uientry>
+            <u>192732124</u><!-- ID -->
+            <s>flag_2</s><!-- title -->
+            <i>80</i><!-- x offset -->
+            <i>14</i><!-- y offset -->
+            <yes />
+            <yes />
+            <no />
+            <yes />
+            <no />
+            <no />
+            <no />
+            <s>flag_l3</s><!-- parent name -->
+            <i>-1</i>
+            <unicode></unicode><!-- tooltip -->
+            <unicode></unicode><!-- tooltip text -->
+            <i>0</i>
+            <no />
+            <s>-- The faction global is set via the script
+
+function OnSelect()
+	UIComponent(UIComponent(Address):Parent()):LuaCall(&quot;NotifyFactionSelected&quot;, Faction)
+end
+</s><!-- script -->
+            <images>
+              <image>
+                <u>192049684</u><!-- ID -->
+                <s>data\UI\FrontEnd UI\Skins\flag_132.tga</s><!-- path -->
+                <i>132</i><!-- x size -->
+                <i>66</i><!-- y size -->
+                <u>4294967295</u><!-- mask or rgba or something? -->
+              </image>
+            </images>
+            <i>0</i>
+            <i>0</i>
+            <states>
+              <state>
+                <u>192440340</u><!-- ID -->
+                <s>normal</s><!-- title - NewState -->
+                <i>70</i><!-- x size -->
+                <i>35</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>0</i>
+                <i>2</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>192049684</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>70</u><!-- x size -->
+                    <u>35</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 8401 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 8422 -->
+                  </image_use>
+                </image_uses>
+                <i>53</i>
+                <i>149</i>
+                <transitions>
+                  <transition>
+                    <i>0</i><!-- type -->
+                    <u>191752284</u><!-- ID -->
+                  </transition>
+                  <transition>
+                    <i>2</i><!-- type -->
+                    <u>191751724</u><!-- ID -->
+                  </transition>
+                </transitions>
+              </state>
+              <state>
+                <u>191751724</u><!-- ID -->
+                <s>down</s><!-- title - NewState -->
+                <i>70</i><!-- x size -->
+                <i>35</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>0</i>
+                <i>2</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <no />
+                <no />
+                <s>brighten_t0</s><!-- T0 -->
+                <i>1045220557</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1065353216</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>192049684</u><!-- ID -->
+                    <u>4294967294</u><!-- x offset -->
+                    <u>4294967295</u><!-- y offset -->
+                    <u>74</u><!-- x size -->
+                    <u>37</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 8604 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 8625 -->
+                  </image_use>
+                </image_uses>
+                <i>360</i>
+                <i>147</i>
+                <transitions>
+                  <transition>
+                    <i>1</i><!-- type -->
+                    <u>192310044</u><!-- ID -->
+                  </transition>
+                  <transition>
+                    <i>3</i><!-- type -->
+                    <u>191752284</u><!-- ID -->
+                  </transition>
+                </transitions>
+              </state>
+              <state>
+                <u>191752284</u><!-- ID -->
+                <s>roll</s><!-- title - NewState -->
+                <i>70</i><!-- x size -->
+                <i>35</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>2</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <no />
+                <no />
+                <s>brighten_t0</s><!-- T0 -->
+                <i>1045220557</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1065353216</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>192049684</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>70</u><!-- x size -->
+                    <u>35</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 8807 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 8828 -->
+                  </image_use>
+                </image_uses>
+                <i>213</i>
+                <i>17</i>
+                <transitions>
+                  <transition>
+                    <i>1</i><!-- type -->
+                    <u>192440340</u><!-- ID -->
+                  </transition>
+                  <transition>
+                    <i>2</i><!-- type -->
+                    <u>191751724</u><!-- ID -->
+                  </transition>
+                </transitions>
+              </state>
+              <state>
+                <u>192706252</u><!-- ID -->
+                <s>inactive</s><!-- title - NewState -->
+                <i>70</i><!-- x size -->
+                <i>35</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>2</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <yes />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>192049684</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>70</u><!-- x size -->
+                    <u>35</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>128</byte><!-- A multiply -->
+                    <!-- 9012 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 9033 -->
+                  </image_use>
+                </image_uses>
+                <i>0</i>
+                <i>0</i>
+                <transitions>
+                </transitions>
+              </state>
+              <state>
+                <u>192310044</u><!-- ID -->
+                <s>mouse_off</s><!-- title - NewState -->
+                <i>70</i><!-- x size -->
+                <i>35</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>2</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>192049684</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>70</u><!-- x size -->
+                    <u>35</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 9202 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 9223 -->
+                  </image_use>
+                </image_uses>
+                <i>222</i>
+                <i>267</i>
+                <transitions>
+                  <transition>
+                    <i>0</i><!-- type -->
+                    <u>191751724</u><!-- ID -->
+                  </transition>
+                  <transition>
+                    <i>11</i><!-- type -->
+                    <u>192440340</u><!-- ID -->
+                  </transition>
+                </transitions>
+              </state>
+            </states>
+            <!-- 9251 -->
+            <i>0</i>
+            <events>
+              <event>OnMouseLClickUp</event>
+              <event>OnSelect</event>
+            </events>
+            <i>0</i>
+            <children>
+            </children>
+            <s>template.button_standard.lua</s><!-- template -->
+          </uientry>
+          <uientry>
+            <u>190325340</u><!-- ID -->
+            <s>flag_3</s><!-- title -->
+            <i>155</i><!-- x offset -->
+            <i>14</i><!-- y offset -->
+            <yes />
+            <yes />
+            <no />
+            <yes />
+            <no />
+            <no />
+            <no />
+            <s>flag_l2</s><!-- parent name -->
+            <i>-1</i>
+            <unicode></unicode><!-- tooltip -->
+            <unicode></unicode><!-- tooltip text -->
+            <i>0</i>
+            <no />
+            <s>-- The faction global is set via the script
+
+function OnSelect()
+	UIComponent(UIComponent(Address):Parent()):LuaCall(&quot;NotifyFactionSelected&quot;, Faction)
+end
+</s><!-- script -->
+            <images>
+              <image>
+                <u>192775260</u><!-- ID -->
+                <s>data\UI\FrontEnd UI\Skins\flag_132.tga</s><!-- path -->
+                <i>132</i><!-- x size -->
+                <i>66</i><!-- y size -->
+                <u>4294967295</u><!-- mask or rgba or something? -->
+              </image>
+            </images>
+            <i>0</i>
+            <i>0</i>
+            <states>
+              <state>
+                <u>191432468</u><!-- ID -->
+                <s>normal</s><!-- title - NewState -->
+                <i>70</i><!-- x size -->
+                <i>35</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>0</i>
+                <i>2</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>192775260</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>70</u><!-- x size -->
+                    <u>35</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 9769 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 9790 -->
+                  </image_use>
+                </image_uses>
+                <i>53</i>
+                <i>149</i>
+                <transitions>
+                  <transition>
+                    <i>0</i><!-- type -->
+                    <u>191914436</u><!-- ID -->
+                  </transition>
+                  <transition>
+                    <i>2</i><!-- type -->
+                    <u>191540260</u><!-- ID -->
+                  </transition>
+                </transitions>
+              </state>
+              <state>
+                <u>191540260</u><!-- ID -->
+                <s>down</s><!-- title - NewState -->
+                <i>70</i><!-- x size -->
+                <i>35</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>0</i>
+                <i>2</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <no />
+                <no />
+                <s>brighten_t0</s><!-- T0 -->
+                <i>1045220557</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1065353216</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>192775260</u><!-- ID -->
+                    <u>4294967294</u><!-- x offset -->
+                    <u>4294967295</u><!-- y offset -->
+                    <u>74</u><!-- x size -->
+                    <u>37</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 9972 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 9993 -->
+                  </image_use>
+                </image_uses>
+                <i>360</i>
+                <i>147</i>
+                <transitions>
+                  <transition>
+                    <i>1</i><!-- type -->
+                    <u>1993012</u><!-- ID -->
+                  </transition>
+                  <transition>
+                    <i>3</i><!-- type -->
+                    <u>191914436</u><!-- ID -->
+                  </transition>
+                </transitions>
+              </state>
+              <state>
+                <u>191914436</u><!-- ID -->
+                <s>roll</s><!-- title - NewState -->
+                <i>70</i><!-- x size -->
+                <i>35</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>2</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <no />
+                <no />
+                <s>brighten_t0</s><!-- T0 -->
+                <i>1045220557</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1065353216</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>192775260</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>70</u><!-- x size -->
+                    <u>35</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 10175 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 10196 -->
+                  </image_use>
+                </image_uses>
+                <i>213</i>
+                <i>17</i>
+                <transitions>
+                  <transition>
+                    <i>1</i><!-- type -->
+                    <u>191432468</u><!-- ID -->
+                  </transition>
+                  <transition>
+                    <i>2</i><!-- type -->
+                    <u>191540260</u><!-- ID -->
+                  </transition>
+                </transitions>
+              </state>
+              <state>
+                <u>192150412</u><!-- ID -->
+                <s>inactive</s><!-- title - NewState -->
+                <i>70</i><!-- x size -->
+                <i>35</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>2</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <yes />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>192775260</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>70</u><!-- x size -->
+                    <u>35</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>128</byte><!-- A multiply -->
+                    <!-- 10380 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 10401 -->
+                  </image_use>
+                </image_uses>
+                <i>0</i>
+                <i>0</i>
+                <transitions>
+                </transitions>
+              </state>
+              <state>
+                <u>1993012</u><!-- ID -->
+                <s>mouse_off</s><!-- title - NewState -->
+                <i>70</i><!-- x size -->
+                <i>35</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>2</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>192775260</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>70</u><!-- x size -->
+                    <u>35</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 10570 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 10591 -->
+                  </image_use>
+                </image_uses>
+                <i>222</i>
+                <i>267</i>
+                <transitions>
+                  <transition>
+                    <i>0</i><!-- type -->
+                    <u>191540260</u><!-- ID -->
+                  </transition>
+                  <transition>
+                    <i>11</i><!-- type -->
+                    <u>191432468</u><!-- ID -->
+                  </transition>
+                </transitions>
+              </state>
+            </states>
+            <!-- 10619 -->
+            <i>0</i>
+            <events>
+              <event>OnMouseLClickDown</event>
+              <event>OnSelect</event>
+            </events>
+            <i>0</i>
+            <children>
+            </children>
+            <s>template.button_standard.lua</s><!-- template -->
+          </uientry>
+          <uientry>
+            <u>193221004</u><!-- ID -->
+            <s>flag_4</s><!-- title -->
+            <i>230</i><!-- x offset -->
+            <i>14</i><!-- y offset -->
+            <yes />
+            <yes />
+            <no />
+            <yes />
+            <no />
+            <no />
+            <no />
+            <s>flag_l1</s><!-- parent name -->
+            <i>-1</i>
+            <unicode></unicode><!-- tooltip -->
+            <unicode></unicode><!-- tooltip text -->
+            <i>0</i>
+            <no />
+            <s>-- The faction global is set via the script
+
+function OnSelect()
+	UIComponent(UIComponent(Address):Parent()):LuaCall(&quot;NotifyFactionSelected&quot;, Faction)
+end
+</s><!-- script -->
+            <images>
+              <image>
+                <u>192690068</u><!-- ID -->
+                <s>data\UI\FrontEnd UI\Skins\flag_132.tga</s><!-- path -->
+                <i>132</i><!-- x size -->
+                <i>66</i><!-- y size -->
+                <u>4294967295</u><!-- mask or rgba or something? -->
+              </image>
+            </images>
+            <i>0</i>
+            <i>0</i>
+            <states>
+              <state>
+                <u>1993844</u><!-- ID -->
+                <s>normal</s><!-- title - NewState -->
+                <i>70</i><!-- x size -->
+                <i>35</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>0</i>
+                <i>2</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>192690068</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>70</u><!-- x size -->
+                    <u>35</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 11139 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 11160 -->
+                  </image_use>
+                </image_uses>
+                <i>53</i>
+                <i>149</i>
+                <transitions>
+                  <transition>
+                    <i>0</i><!-- type -->
+                    <u>191971916</u><!-- ID -->
+                  </transition>
+                  <transition>
+                    <i>2</i><!-- type -->
+                    <u>191371708</u><!-- ID -->
+                  </transition>
+                </transitions>
+              </state>
+              <state>
+                <u>191371708</u><!-- ID -->
+                <s>down</s><!-- title - NewState -->
+                <i>70</i><!-- x size -->
+                <i>35</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>0</i>
+                <i>2</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <no />
+                <no />
+                <s>brighten_t0</s><!-- T0 -->
+                <i>1045220557</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1065353216</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>192690068</u><!-- ID -->
+                    <u>4294967294</u><!-- x offset -->
+                    <u>4294967295</u><!-- y offset -->
+                    <u>74</u><!-- x size -->
+                    <u>37</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 11342 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 11363 -->
+                  </image_use>
+                </image_uses>
+                <i>360</i>
+                <i>147</i>
+                <transitions>
+                  <transition>
+                    <i>1</i><!-- type -->
+                    <u>189909300</u><!-- ID -->
+                  </transition>
+                  <transition>
+                    <i>3</i><!-- type -->
+                    <u>191971916</u><!-- ID -->
+                  </transition>
+                </transitions>
+              </state>
+              <state>
+                <u>191971916</u><!-- ID -->
+                <s>roll</s><!-- title - NewState -->
+                <i>70</i><!-- x size -->
+                <i>35</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>2</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <no />
+                <no />
+                <s>brighten_t0</s><!-- T0 -->
+                <i>1045220557</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1065353216</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>192690068</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>70</u><!-- x size -->
+                    <u>35</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 11545 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 11566 -->
+                  </image_use>
+                </image_uses>
+                <i>213</i>
+                <i>17</i>
+                <transitions>
+                  <transition>
+                    <i>1</i><!-- type -->
+                    <u>1993844</u><!-- ID -->
+                  </transition>
+                  <transition>
+                    <i>2</i><!-- type -->
+                    <u>191371708</u><!-- ID -->
+                  </transition>
+                </transitions>
+              </state>
+              <state>
+                <u>192858260</u><!-- ID -->
+                <s>inactive</s><!-- title - NewState -->
+                <i>70</i><!-- x size -->
+                <i>35</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>2</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <yes />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>192690068</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>70</u><!-- x size -->
+                    <u>35</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>128</byte><!-- A multiply -->
+                    <!-- 11750 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 11771 -->
+                  </image_use>
+                </image_uses>
+                <i>0</i>
+                <i>0</i>
+                <transitions>
+                </transitions>
+              </state>
+              <state>
+                <u>189909300</u><!-- ID -->
+                <s>mouse_off</s><!-- title - NewState -->
+                <i>70</i><!-- x size -->
+                <i>35</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>2</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>192690068</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>70</u><!-- x size -->
+                    <u>35</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 11940 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 11961 -->
+                  </image_use>
+                </image_uses>
+                <i>222</i>
+                <i>267</i>
+                <transitions>
+                  <transition>
+                    <i>0</i><!-- type -->
+                    <u>191371708</u><!-- ID -->
+                  </transition>
+                  <transition>
+                    <i>11</i><!-- type -->
+                    <u>1993844</u><!-- ID -->
+                  </transition>
+                </transitions>
+              </state>
+            </states>
+            <!-- 11989 -->
+            <i>0</i>
+            <events>
+              <event>OnMouseLClickUp</event>
+              <event>OnSelect</event>
+            </events>
+            <i>0</i>
+            <children>
+            </children>
+            <s>template.button_standard.lua</s><!-- template -->
+          </uientry>
+          <uientry>
+            <u>192526788</u><!-- ID -->
+            <s>flag_5</s><!-- title -->
+            <i>337</i><!-- x offset -->
+            <i>10</i><!-- y offset -->
+            <yes />
+            <yes />
+            <no />
+            <yes />
+            <no />
+            <no />
+            <no />
+            <s>flag_selected</s><!-- parent name -->
+            <i>-1</i>
+            <unicode></unicode><!-- tooltip -->
+            <unicode></unicode><!-- tooltip text -->
+            <i>0</i>
+            <no />
+            <s>
+	</s><!-- script -->
+            <images>
+              <image>
+                <u>191378204</u><!-- ID -->
+                <s>data\UI\FrontEnd UI\Skins\flag_132.tga</s><!-- path -->
+                <i>132</i><!-- x size -->
+                <i>66</i><!-- y size -->
+                <u>4294967295</u><!-- mask or rgba or something? -->
+              </image>
+            </images>
+            <i>0</i>
+            <i>0</i>
+            <states>
+              <state>
+                <u>192392396</u><!-- ID -->
+                <s>normal</s><!-- title - NewState -->
+                <i>87</i><!-- x size -->
+                <i>45</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>2</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>191378204</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>87</u><!-- x size -->
+                    <u>45</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 12356 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 12377 -->
+                  </image_use>
+                </image_uses>
+                <i>0</i>
+                <i>0</i>
+                <transitions>
+                </transitions>
+              </state>
+            </states>
+            <!-- 12389 -->
+            <i>0</i>
+            <events>
+            </events>
+            <i>0</i>
+            <children>
+            </children>
+            <s></s><!-- template -->
+          </uientry>
+          <uientry>
+            <u>189343180</u><!-- ID -->
+            <s>flag_6</s><!-- title -->
+            <i>461</i><!-- x offset -->
+            <i>14</i><!-- y offset -->
+            <yes />
+            <yes />
+            <no />
+            <yes />
+            <no />
+            <no />
+            <no />
+            <s>flag_r1</s><!-- parent name -->
+            <i>-1</i>
+            <unicode></unicode><!-- tooltip -->
+            <unicode></unicode><!-- tooltip text -->
+            <i>0</i>
+            <no />
+            <s>-- The faction global is set via the script
+
+function OnSelect()
+	UIComponent(UIComponent(Address):Parent()):LuaCall(&quot;NotifyFactionSelected&quot;, Faction)
+end
+</s><!-- script -->
+            <images>
+              <image>
+                <u>192335572</u><!-- ID -->
+                <s>data\UI\FrontEnd UI\Skins\flag_132.tga</s><!-- path -->
+                <i>132</i><!-- x size -->
+                <i>66</i><!-- y size -->
+                <u>4294967295</u><!-- mask or rgba or something? -->
+              </image>
+            </images>
+            <i>0</i>
+            <i>0</i>
+            <states>
+              <state>
+                <u>191645652</u><!-- ID -->
+                <s>normal</s><!-- title - NewState -->
+                <i>70</i><!-- x size -->
+                <i>35</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>0</i>
+                <i>2</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>192335572</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>70</u><!-- x size -->
+                    <u>35</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 12852 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 12873 -->
+                  </image_use>
+                </image_uses>
+                <i>53</i>
+                <i>149</i>
+                <transitions>
+                  <transition>
+                    <i>0</i><!-- type -->
+                    <u>189835172</u><!-- ID -->
+                  </transition>
+                  <transition>
+                    <i>2</i><!-- type -->
+                    <u>192789284</u><!-- ID -->
+                  </transition>
+                </transitions>
+              </state>
+              <state>
+                <u>192789284</u><!-- ID -->
+                <s>down</s><!-- title - NewState -->
+                <i>70</i><!-- x size -->
+                <i>35</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>0</i>
+                <i>2</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <no />
+                <no />
+                <s>brighten_t0</s><!-- T0 -->
+                <i>1045220557</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1065353216</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>192335572</u><!-- ID -->
+                    <u>4294967294</u><!-- x offset -->
+                    <u>4294967295</u><!-- y offset -->
+                    <u>74</u><!-- x size -->
+                    <u>37</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 13055 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 13076 -->
+                  </image_use>
+                </image_uses>
+                <i>360</i>
+                <i>147</i>
+                <transitions>
+                  <transition>
+                    <i>1</i><!-- type -->
+                    <u>191852780</u><!-- ID -->
+                  </transition>
+                  <transition>
+                    <i>3</i><!-- type -->
+                    <u>189835172</u><!-- ID -->
+                  </transition>
+                </transitions>
+              </state>
+              <state>
+                <u>189835172</u><!-- ID -->
+                <s>roll</s><!-- title - NewState -->
+                <i>70</i><!-- x size -->
+                <i>35</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>2</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <no />
+                <no />
+                <s>brighten_t0</s><!-- T0 -->
+                <i>1045220557</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1065353216</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>192335572</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>70</u><!-- x size -->
+                    <u>35</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 13258 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 13279 -->
+                  </image_use>
+                </image_uses>
+                <i>213</i>
+                <i>17</i>
+                <transitions>
+                  <transition>
+                    <i>1</i><!-- type -->
+                    <u>191645652</u><!-- ID -->
+                  </transition>
+                  <transition>
+                    <i>2</i><!-- type -->
+                    <u>192789284</u><!-- ID -->
+                  </transition>
+                </transitions>
+              </state>
+              <state>
+                <u>192717484</u><!-- ID -->
+                <s>inactive</s><!-- title - NewState -->
+                <i>70</i><!-- x size -->
+                <i>35</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>2</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <yes />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>192335572</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>70</u><!-- x size -->
+                    <u>35</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>128</byte><!-- A multiply -->
+                    <!-- 13463 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 13484 -->
+                  </image_use>
+                </image_uses>
+                <i>0</i>
+                <i>0</i>
+                <transitions>
+                </transitions>
+              </state>
+              <state>
+                <u>191852780</u><!-- ID -->
+                <s>mouse_off</s><!-- title - NewState -->
+                <i>70</i><!-- x size -->
+                <i>35</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>2</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>192335572</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>70</u><!-- x size -->
+                    <u>35</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 13653 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 13674 -->
+                  </image_use>
+                </image_uses>
+                <i>222</i>
+                <i>267</i>
+                <transitions>
+                  <transition>
+                    <i>0</i><!-- type -->
+                    <u>192789284</u><!-- ID -->
+                  </transition>
+                  <transition>
+                    <i>11</i><!-- type -->
+                    <u>191645652</u><!-- ID -->
+                  </transition>
+                </transitions>
+              </state>
+            </states>
+            <!-- 13702 -->
+            <i>0</i>
+            <events>
+              <event>OnMouseLClickUp</event>
+              <event>OnSelect</event>
+            </events>
+            <i>0</i>
+            <children>
+            </children>
+            <s>template.button_standard.lua</s><!-- template -->
+          </uientry>
+          <uientry>
+            <u>192730740</u><!-- ID -->
+            <s>flag_7</s><!-- title -->
+            <i>536</i><!-- x offset -->
+            <i>14</i><!-- y offset -->
+            <yes />
+            <yes />
+            <no />
+            <yes />
+            <no />
+            <no />
+            <no />
+            <s>flag_r2</s><!-- parent name -->
+            <i>-1</i>
+            <unicode></unicode><!-- tooltip -->
+            <unicode></unicode><!-- tooltip text -->
+            <i>0</i>
+            <no />
+            <s>-- The faction global is set via the script
+
+function OnSelect()
+	UIComponent(UIComponent(Address):Parent()):LuaCall(&quot;NotifyFactionSelected&quot;, Faction)
+end
+</s><!-- script -->
+            <images>
+              <image>
+                <u>193091188</u><!-- ID -->
+                <s>data\UI\FrontEnd UI\Skins\flag_132.tga</s><!-- path -->
+                <i>132</i><!-- x size -->
+                <i>66</i><!-- y size -->
+                <u>4294967295</u><!-- mask or rgba or something? -->
+              </image>
+            </images>
+            <i>0</i>
+            <i>0</i>
+            <states>
+              <state>
+                <u>191733988</u><!-- ID -->
+                <s>normal</s><!-- title - NewState -->
+                <i>70</i><!-- x size -->
+                <i>35</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>0</i>
+                <i>2</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>193091188</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>70</u><!-- x size -->
+                    <u>35</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 14220 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 14241 -->
+                  </image_use>
+                </image_uses>
+                <i>53</i>
+                <i>149</i>
+                <transitions>
+                  <transition>
+                    <i>0</i><!-- type -->
+                    <u>191742860</u><!-- ID -->
+                  </transition>
+                  <transition>
+                    <i>2</i><!-- type -->
+                    <u>189484500</u><!-- ID -->
+                  </transition>
+                </transitions>
+              </state>
+              <state>
+                <u>189484500</u><!-- ID -->
+                <s>down</s><!-- title - NewState -->
+                <i>70</i><!-- x size -->
+                <i>35</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>0</i>
+                <i>2</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <no />
+                <no />
+                <s>brighten_t0</s><!-- T0 -->
+                <i>1045220557</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1065353216</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>193091188</u><!-- ID -->
+                    <u>4294967294</u><!-- x offset -->
+                    <u>4294967295</u><!-- y offset -->
+                    <u>74</u><!-- x size -->
+                    <u>37</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 14423 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 14444 -->
+                  </image_use>
+                </image_uses>
+                <i>360</i>
+                <i>147</i>
+                <transitions>
+                  <transition>
+                    <i>1</i><!-- type -->
+                    <u>192386604</u><!-- ID -->
+                  </transition>
+                  <transition>
+                    <i>3</i><!-- type -->
+                    <u>191742860</u><!-- ID -->
+                  </transition>
+                </transitions>
+              </state>
+              <state>
+                <u>191742860</u><!-- ID -->
+                <s>roll</s><!-- title - NewState -->
+                <i>70</i><!-- x size -->
+                <i>35</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>2</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <no />
+                <no />
+                <s>brighten_t0</s><!-- T0 -->
+                <i>1045220557</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1065353216</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>193091188</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>70</u><!-- x size -->
+                    <u>35</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 14626 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 14647 -->
+                  </image_use>
+                </image_uses>
+                <i>213</i>
+                <i>17</i>
+                <transitions>
+                  <transition>
+                    <i>1</i><!-- type -->
+                    <u>191733988</u><!-- ID -->
+                  </transition>
+                  <transition>
+                    <i>2</i><!-- type -->
+                    <u>189484500</u><!-- ID -->
+                  </transition>
+                </transitions>
+              </state>
+              <state>
+                <u>192394692</u><!-- ID -->
+                <s>inactive</s><!-- title - NewState -->
+                <i>70</i><!-- x size -->
+                <i>35</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>2</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <yes />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>193091188</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>70</u><!-- x size -->
+                    <u>35</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>128</byte><!-- A multiply -->
+                    <!-- 14831 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 14852 -->
+                  </image_use>
+                </image_uses>
+                <i>0</i>
+                <i>0</i>
+                <transitions>
+                </transitions>
+              </state>
+              <state>
+                <u>192386604</u><!-- ID -->
+                <s>mouse_off</s><!-- title - NewState -->
+                <i>70</i><!-- x size -->
+                <i>35</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>2</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>193091188</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>70</u><!-- x size -->
+                    <u>35</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 15021 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 15042 -->
+                  </image_use>
+                </image_uses>
+                <i>222</i>
+                <i>267</i>
+                <transitions>
+                  <transition>
+                    <i>0</i><!-- type -->
+                    <u>189484500</u><!-- ID -->
+                  </transition>
+                  <transition>
+                    <i>11</i><!-- type -->
+                    <u>191733988</u><!-- ID -->
+                  </transition>
+                </transitions>
+              </state>
+            </states>
+            <!-- 15070 -->
+            <i>0</i>
+            <events>
+              <event>OnMouseLClickUp</event>
+              <event>OnSelect</event>
+            </events>
+            <i>0</i>
+            <children>
+            </children>
+            <s>template.button_standard.lua</s><!-- template -->
+          </uientry>
+          <uientry>
+            <u>191494452</u><!-- ID -->
+            <s>flag_8</s><!-- title -->
+            <i>611</i><!-- x offset -->
+            <i>14</i><!-- y offset -->
+            <yes />
+            <yes />
+            <no />
+            <yes />
+            <no />
+            <no />
+            <no />
+            <s>flag_r3</s><!-- parent name -->
+            <i>-1</i>
+            <unicode></unicode><!-- tooltip -->
+            <unicode></unicode><!-- tooltip text -->
+            <i>0</i>
+            <no />
+            <s>-- The faction global is set via the script
+
+function OnSelect()
+	UIComponent(UIComponent(Address):Parent()):LuaCall(&quot;NotifyFactionSelected&quot;, Faction)
+end
+</s><!-- script -->
+            <images>
+              <image>
+                <u>191736356</u><!-- ID -->
+                <s>data\UI\FrontEnd UI\Skins\flag_132.tga</s><!-- path -->
+                <i>132</i><!-- x size -->
+                <i>66</i><!-- y size -->
+                <u>4294967295</u><!-- mask or rgba or something? -->
+              </image>
+            </images>
+            <i>0</i>
+            <i>0</i>
+            <states>
+              <state>
+                <u>192092620</u><!-- ID -->
+                <s>normal</s><!-- title - NewState -->
+                <i>70</i><!-- x size -->
+                <i>35</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>0</i>
+                <i>2</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>191736356</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>70</u><!-- x size -->
+                    <u>35</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 15588 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 15609 -->
+                  </image_use>
+                </image_uses>
+                <i>53</i>
+                <i>149</i>
+                <transitions>
+                  <transition>
+                    <i>0</i><!-- type -->
+                    <u>192794980</u><!-- ID -->
+                  </transition>
+                  <transition>
+                    <i>2</i><!-- type -->
+                    <u>192601316</u><!-- ID -->
+                  </transition>
+                </transitions>
+              </state>
+              <state>
+                <u>192601316</u><!-- ID -->
+                <s>down</s><!-- title - NewState -->
+                <i>70</i><!-- x size -->
+                <i>35</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>0</i>
+                <i>2</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <no />
+                <no />
+                <s>brighten_t0</s><!-- T0 -->
+                <i>1045220557</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1065353216</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>191736356</u><!-- ID -->
+                    <u>4294967294</u><!-- x offset -->
+                    <u>4294967295</u><!-- y offset -->
+                    <u>74</u><!-- x size -->
+                    <u>37</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 15791 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 15812 -->
+                  </image_use>
+                </image_uses>
+                <i>360</i>
+                <i>147</i>
+                <transitions>
+                  <transition>
+                    <i>1</i><!-- type -->
+                    <u>191615612</u><!-- ID -->
+                  </transition>
+                  <transition>
+                    <i>3</i><!-- type -->
+                    <u>192794980</u><!-- ID -->
+                  </transition>
+                </transitions>
+              </state>
+              <state>
+                <u>192794980</u><!-- ID -->
+                <s>roll</s><!-- title - NewState -->
+                <i>70</i><!-- x size -->
+                <i>35</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>2</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <no />
+                <no />
+                <s>brighten_t0</s><!-- T0 -->
+                <i>1045220557</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1065353216</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>191736356</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>70</u><!-- x size -->
+                    <u>35</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 15994 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 16015 -->
+                  </image_use>
+                </image_uses>
+                <i>213</i>
+                <i>17</i>
+                <transitions>
+                  <transition>
+                    <i>1</i><!-- type -->
+                    <u>192092620</u><!-- ID -->
+                  </transition>
+                  <transition>
+                    <i>2</i><!-- type -->
+                    <u>192601316</u><!-- ID -->
+                  </transition>
+                </transitions>
+              </state>
+              <state>
+                <u>191743220</u><!-- ID -->
+                <s>inactive</s><!-- title - NewState -->
+                <i>70</i><!-- x size -->
+                <i>35</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>2</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <yes />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>191736356</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>70</u><!-- x size -->
+                    <u>35</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>128</byte><!-- A multiply -->
+                    <!-- 16199 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 16220 -->
+                  </image_use>
+                </image_uses>
+                <i>0</i>
+                <i>0</i>
+                <transitions>
+                </transitions>
+              </state>
+              <state>
+                <u>191615612</u><!-- ID -->
+                <s>mouse_off</s><!-- title - NewState -->
+                <i>70</i><!-- x size -->
+                <i>35</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>2</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>191736356</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>70</u><!-- x size -->
+                    <u>35</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 16389 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 16410 -->
+                  </image_use>
+                </image_uses>
+                <i>222</i>
+                <i>267</i>
+                <transitions>
+                  <transition>
+                    <i>0</i><!-- type -->
+                    <u>192601316</u><!-- ID -->
+                  </transition>
+                  <transition>
+                    <i>11</i><!-- type -->
+                    <u>192092620</u><!-- ID -->
+                  </transition>
+                </transitions>
+              </state>
+            </states>
+            <!-- 16438 -->
+            <i>0</i>
+            <events>
+              <event>OnMouseLClickUp</event>
+              <event>OnSelect</event>
+            </events>
+            <i>0</i>
+            <children>
+            </children>
+            <s>template.button_standard.lua</s><!-- template -->
+          </uientry>
+          <uientry>
+            <u>191523588</u><!-- ID -->
+            <s>flag_9</s><!-- title -->
+            <i>686</i><!-- x offset -->
+            <i>14</i><!-- y offset -->
+            <yes />
+            <yes />
+            <no />
+            <yes />
+            <no />
+            <no />
+            <no />
+            <s>flag_r4</s><!-- parent name -->
+            <i>-1</i>
+            <unicode></unicode><!-- tooltip -->
+            <unicode></unicode><!-- tooltip text -->
+            <i>0</i>
+            <no />
+            <s>-- The faction global is set via the script
+
+function OnSelect()
+	UIComponent(UIComponent(Address):Parent()):LuaCall(&quot;NotifyFactionSelected&quot;, Faction)
+end
+</s><!-- script -->
+            <images>
+              <image>
+                <u>191310892</u><!-- ID -->
+                <s>data\UI\FrontEnd UI\Skins\flag_132.tga</s><!-- path -->
+                <i>132</i><!-- x size -->
+                <i>66</i><!-- y size -->
+                <u>4294967295</u><!-- mask or rgba or something? -->
+              </image>
+            </images>
+            <i>0</i>
+            <i>0</i>
+            <states>
+              <state>
+                <u>192381116</u><!-- ID -->
+                <s>normal</s><!-- title - NewState -->
+                <i>70</i><!-- x size -->
+                <i>35</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>0</i>
+                <i>2</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>191310892</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>70</u><!-- x size -->
+                    <u>35</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 16956 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 16977 -->
+                  </image_use>
+                </image_uses>
+                <i>53</i>
+                <i>149</i>
+                <transitions>
+                  <transition>
+                    <i>0</i><!-- type -->
+                    <u>191426332</u><!-- ID -->
+                  </transition>
+                  <transition>
+                    <i>2</i><!-- type -->
+                    <u>192710892</u><!-- ID -->
+                  </transition>
+                </transitions>
+              </state>
+              <state>
+                <u>192710892</u><!-- ID -->
+                <s>down</s><!-- title - NewState -->
+                <i>70</i><!-- x size -->
+                <i>35</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>0</i>
+                <i>2</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <no />
+                <no />
+                <s>brighten_t0</s><!-- T0 -->
+                <i>1045220557</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1065353216</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>191310892</u><!-- ID -->
+                    <u>4294967294</u><!-- x offset -->
+                    <u>4294967295</u><!-- y offset -->
+                    <u>74</u><!-- x size -->
+                    <u>37</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 17159 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 17180 -->
+                  </image_use>
+                </image_uses>
+                <i>360</i>
+                <i>147</i>
+                <transitions>
+                  <transition>
+                    <i>1</i><!-- type -->
+                    <u>193138508</u><!-- ID -->
+                  </transition>
+                  <transition>
+                    <i>3</i><!-- type -->
+                    <u>191426332</u><!-- ID -->
+                  </transition>
+                </transitions>
+              </state>
+              <state>
+                <u>191426332</u><!-- ID -->
+                <s>roll</s><!-- title - NewState -->
+                <i>70</i><!-- x size -->
+                <i>35</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>2</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <no />
+                <no />
+                <s>brighten_t0</s><!-- T0 -->
+                <i>1045220557</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1065353216</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>191310892</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>70</u><!-- x size -->
+                    <u>35</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 17362 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 17383 -->
+                  </image_use>
+                </image_uses>
+                <i>213</i>
+                <i>17</i>
+                <transitions>
+                  <transition>
+                    <i>1</i><!-- type -->
+                    <u>192381116</u><!-- ID -->
+                  </transition>
+                  <transition>
+                    <i>2</i><!-- type -->
+                    <u>192710892</u><!-- ID -->
+                  </transition>
+                </transitions>
+              </state>
+              <state>
+                <u>192615940</u><!-- ID -->
+                <s>inactive</s><!-- title - NewState -->
+                <i>70</i><!-- x size -->
+                <i>35</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>2</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <yes />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>191310892</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>70</u><!-- x size -->
+                    <u>35</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>128</byte><!-- A multiply -->
+                    <!-- 17567 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 17588 -->
+                  </image_use>
+                </image_uses>
+                <i>0</i>
+                <i>0</i>
+                <transitions>
+                </transitions>
+              </state>
+              <state>
+                <u>193138508</u><!-- ID -->
+                <s>mouse_off</s><!-- title - NewState -->
+                <i>70</i><!-- x size -->
+                <i>35</i><!-- y size -->
+                <unicode></unicode><!-- state text -->
+                <unicode></unicode><!-- tooltip -->
+                <i>2</i>
+                <i>0</i>
+                <i>0</i>
+                <i>1</i>
+                <i>1</i>
+                <no />
+                <unicode></unicode><!-- localization id -->
+                <unicode></unicode><!-- tooltip id -->
+                <s>Ingame 12, Normal</s><!-- font -->
+                <i>2</i>
+                <i>1</i>
+                <i>255</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <yes />
+                <no />
+                <no />
+                <s>normal_t0</s><!-- T0 -->
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <i>0</i>
+                <s></s><!-- state description -->
+                <s></s><!-- event text -->
+                <image_uses>
+                  <image_use>
+                    <u>191310892</u><!-- ID -->
+                    <u>0</u><!-- x offset -->
+                    <u>0</u><!-- y offset -->
+                    <u>70</u><!-- x size -->
+                    <u>35</u><!-- y size -->
+                    <byte>255</byte><!-- B multiply -->
+                    <byte>255</byte><!-- R multiply -->
+                    <byte>255</byte><!-- G multiply -->
+                    <byte>255</byte><!-- A multiply -->
+                    <!-- 17757 -->
+                    <no />
+                    <no />
+                    <no />
+                    <i>0</i><!-- position -->
+                    <yes />
+                    <yes />
+                    <i>0</i>
+                    <i>0</i>
+                    <i>0</i>
+                    <!-- 17778 -->
+                  </image_use>
+                </image_uses>
+                <i>222</i>
+                <i>267</i>
+                <transitions>
+                  <transition>
+                    <i>0</i><!-- type -->
+                    <u>192710892</u><!-- ID -->
+                  </transition>
+                  <transition>
+                    <i>11</i><!-- type -->
+                    <u>192381116</u><!-- ID -->
+                  </transition>
+                </transitions>
+              </state>
+            </states>
+            <!-- 17806 -->
+            <i>0</i>
+            <events>
+              <event>OnMouseLClickUp</event>
+              <event>OnSelect</event>
+            </events>
+            <i>0</i>
+            <children>
+            </children>
+            <s>template.button_standard.lua</s><!-- template -->
+          </uientry>
+        </children>
+        <s>..\common\faction_list.lua</s><!-- template -->
+      </uientry>
+    </children>
+    <s></s><!-- template -->
+  </uientry>
+</ui>

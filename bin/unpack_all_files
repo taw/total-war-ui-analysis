@@ -15,15 +15,15 @@ end
 
 todo = todo.select{|path|
   if path.to_s =~ /(\.fc|\.cml)\z/
-    false
+    true
   else
     version = path.read(10)[7,3].to_i
-    (31..31).include?(version)
+    (31..33).include?(version)
   end
 }
 
 # In 4 threads
-cores = 1
+cores = 4
 cores.times.map{|i|
   Thread.new{
     while true

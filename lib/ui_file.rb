@@ -10,6 +10,7 @@ end
 
 class UiFile
   def initialize(path, output)
+    @path = path
     @data = File.open(path, 'rb').read
     @size = @data.size
     @ofs = 0
@@ -240,6 +241,7 @@ class UiFile
           convert_byte! "R multiply"
           convert_byte! "G multiply"
           convert_byte! "A multiply"
+          out_ofs!
           convert_bool!
           convert_bool!
           convert_bool!
@@ -252,7 +254,8 @@ class UiFile
           if @version >= 51
             convert_bool!
           end
-          if @version <= 32
+          out_ofs!
+          if @version <= 31
             convert_i!
           end
         end
@@ -298,12 +301,14 @@ class UiFile
       convert_s! "script"
       convert_image_list!
       convert_i!
-      if @version >= 33
+      if @version >= 32
         convert_i!
       end
       convert_state_list!
       out_ofs!
-      convert_i!          # For version 30 1 or 4 bytes wat
+      if @version >= 31
+        convert_i!
+      end
       convert_event_list!
       convert_i!
 
@@ -461,6 +466,27 @@ class UiFile
     else
       raise "Not supported yet"
     end
+  rescue Exception => err
+    out! "<error>"
+    out! "  #{err}"
+    out! "  Data before fail:"
+    @data[@save_ofs-64...@save_ofs].chars.each_slice(16).map do |slice|
+      slice = slice.join
+      asc = slice.chars.map{|c| c =~ /[\x20-\x7f]/ ? c : "."}.join
+      asc += " " * (16 - asc.size)
+      hex = slice.bytes.map{|c| "%02x" % c}.join(" ")
+      out! "  #{asc} #{hex}\n"
+    end.join
+    out! "  Data from fail #{@save_ofs}:"
+    @data[@save_ofs,256].chars.each_slice(16).map do |slice|
+      slice = slice.join
+      asc = slice.chars.map{|c| c =~ /[\x20-\x7f]/ ? c : "."}.join
+      asc += " " * (16 - asc.size)
+      hex = slice.bytes.map{|c| "%02x" % c}.join(" ")
+      out! "  #{asc} #{hex}\n"
+    end.join
+    out! "</error>"
+    raise err
   end
 
   def out!(*args)
@@ -472,6 +498,7 @@ class UiFile
   end
 
   def out_ofs!
+    @save_ofs = @ofs
     out! "<!-- #{@ofs} -->"
   end
 end
