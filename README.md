@@ -3,6 +3,30 @@ The goal of this project is decoding various UI formats used by Total War games.
 Existing decoder for a few formats is at https://github.com/taw/etwng/tree/master/ui_converter but it doesn't support newer games,
 and even for games it supports (Empire, Napoleon, Shogun 2) it's not prfect.
 
+### How to use
+
+You'll need `jruby` and `nokogiri` installed. (or regular `ruby` and `nokogiri`).
+
+Then you can run the converter as:
+
+```
+jruby bin/ui2xml path/to/uifile path/to/file.xml
+```
+
+And:
+
+```
+jruby bin/xml2ui path/to/file.xml path/to/uifile
+```
+
+Every `VersionXXX` file from Empile, Napoleon, Shogun 2 should work.
+
+All `.cml` and `.fc` files from all games work (they're not really UI files, but they're in same folders and use `VersionXXX` system, so I included them too).
+
+Support for newer games coming soon, hopefully.
+
+There's no guarantee that XML format will remain stable. I might need to tweak it a bit.
+
 ### Data structures (incomplete list):
 
 * `Version` block - always starts the file:
