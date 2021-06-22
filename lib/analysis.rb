@@ -33,7 +33,7 @@ class DataBlock < Block
     "#{range} #{self.class}\n" +
     data.chars.each_slice(16).map do |slice|
       slice = slice.join
-      asc = slice.chars.map{|c| c =~ /[\x20-\x7f]/ ? c : "."}.join
+      asc = slice.chars.map{|c| c =~ /[\x20-\x7e]/ ? c : "."}.join
       asc += " " * (16 - asc.size)
       hex = slice.bytes.map{|c| "%02x" % c}.join(" ")
       "  #{asc} #{hex}\n"
@@ -239,7 +239,7 @@ class Analysis
       if str.size == sz and str =~ /\A[\r\n\t\x20-\x7f]+\z/
         if str =~ /(\.png|\.tga)\z/ and str =~ %r[/|\\]
           add_block ofs, ofs+2+sz, ImagePathBlock
-        elsif str =~ /\A(FiraSans-Regular|bardi_\d.*|Ingame \d+,|Frontend \d+,|la_gioconda|Norse\z|Norse-Bold|Iskra-Bold|georgia_italic)/
+        elsif str =~ /\A(FiraSans-Regular|bardi_\d.*|Ingame \d+,|Frontend \d+,|la_gioconda|Norse\z|Norse-Bold|Iskra-Bold|georgia_italic|candara_italic)/
           add_block ofs, ofs+2+sz, FontNameBlock
         elsif str =~ /\A(normal_t0|[a-z_]+_t0)\z/
           add_block ofs, ofs+2+sz, T0Block
@@ -406,11 +406,18 @@ class Analysis
     ofs = 20
     block_idx = 2
     # title 2
-    if free_space_after(block_idx) >= 2 and @version >= 43
-      sz = @data[ofs, 2].unpack1("v")
-      @blocks[block_idx,0] = StringBlock.new(self, ofs, ofs+2+sz)
-      block_idx += 1
-      ofs += 2+sz
+    if @version >= 43
+      # Empty string block
+      if free_space_after(block_idx) >= 2
+        sz = @data[ofs, 2].unpack1("v")
+        @blocks[block_idx,0] = StringBlock.new(self, ofs, ofs+2+sz)
+        block_idx += 1
+        ofs += 2+sz
+      # Already detected string block
+      elsif free_space_after(block_idx) == 0 and @blocks[block_idx+1].is_a?(StringBlock)
+        block_idx += 1
+        ofs = @blocks[block_idx].e
+      end
     end
     if free_space_after(block_idx) >= 8
       @blocks[block_idx,0] = [

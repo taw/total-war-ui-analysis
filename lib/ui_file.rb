@@ -208,11 +208,14 @@ class UiFile
           convert_unicode! "tooltip id"
           convert_s! "font"
           out_ofs! "font done"
-          convert_i!
-          convert_i!
-          convert_u!
+          convert_i! "font size?"
+          convert_i! "some font metric?"
+          convert_u! "some font metric?"
+          if @version >= 74
+            convert_u! "brga ?"
+          end
           if @version >= 43
-            convert_s! "twui"
+            convert_s! "font category / twui"
           end
           convert_i!
           convert_i!
