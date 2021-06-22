@@ -209,10 +209,10 @@ class UiFile
           convert_s! "font"
           out_ofs! "font done"
           convert_i! "font size?"
-          convert_i! "some font metric?"
-          convert_u! "some font metric?"
+          convert_i! "font leading?"
+          convert_i! "font tracking?"
           if @version >= 74
-            convert_u! "brga ?"
+            convert_u! "font color brga?"
           end
           if @version >= 43
             convert_s! "font category / twui"
@@ -226,13 +226,13 @@ class UiFile
           convert_bool!
 
           if @version >= 29
-            convert_s! "T0"
+            convert_s! "shader name / t0"
           end
 
-          convert_i!
-          convert_i!
-          convert_i!
-          convert_i!
+          convert_flt! "shader vars?"
+          convert_flt! "shader vars?"
+          convert_flt! "shader vars?"
+          convert_flt! "shader vars?"
 
           out_ofs! "state description start"
           convert_s! "state description"
