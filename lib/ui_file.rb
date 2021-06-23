@@ -208,7 +208,7 @@ class UiFile
           convert_unicode! "tooltip id"
           convert_s! "font"
           out_ofs! "font done"
-          convert_i! "font size?"
+          convert_i! "font size? line height?"
           convert_i! "font leading?"
           convert_i! "font tracking?"
           if @version >= 74
@@ -234,25 +234,28 @@ class UiFile
           convert_flt! "shader vars?"
           convert_flt! "shader vars?"
 
-          out_ofs! "state description start"
-          convert_s! "state description"
-          convert_s! "event text"
-          out_ofs! "image uses start"
-          convert_image_uses!
+          if @version < 74
+            # 74 OK up to here, nice
+            convert_s! "state description"
+            convert_s! "event text"
+            convert_image_uses!
 
-          if @version >= 26 # ???
-            convert_i!
-            convert_i!
+            if @version >= 26 # ???
+              convert_i!
+              convert_i!
+            end
+            convert_transitions!
+          else
+            # 74-79 works here, but 83+ no?
+            out_ofs! "rest of state, is this image uses list?"
+            # BIG TODO
           end
-          out_ofs! "transitions start"
-          convert_transitions!
         end
       end
     end
   end
 
   def convert_transitions!
-    out_ofs! "transitions"
     count = get_u
     tag! "transitions", count: count do
       count.times do
@@ -306,6 +309,28 @@ class UiFile
         end
       end
     end
+  end
+
+  def convert_uientry_v2!
+    convert_u! "ID"
+    convert_s! "title"
+    if @version >= 43
+      convert_s! "title2"
+    end
+    convert_i! "x offset"
+    convert_i! "y offset"
+
+    # 12 so far
+    # if ($v >= 70 && $v < 90){ $this->b1 = tohex(fread($h, 1)); }
+    12.times do |i|
+      convert_bool! "maybe bool #{i}"
+    end
+
+    states_start = @data.index("\x08\x00NewState") - 8
+    out! "<skip>#{states_start - @ofs} bytes</skip>"
+    out_ofs! "states start here"
+    @ofs = states_start
+    convert_state_list!
   end
 
   def convert_uientry!
@@ -379,7 +404,7 @@ class UiFile
   end
 
   def convert_additional_data!
-    out_ofs! "Version 44+ additional data section"
+    out_ofs! "additional data section"
     flag = get_bool
     if flag
       type = get_s
@@ -487,7 +512,11 @@ class UiFile
 
   def convert_ui!
     tag! "ui", version: version_string do
-      convert_uientry!
+      if @version <= 54
+        convert_uientry!
+      else
+        convert_uientry_v2!
+      end
       if bytes_left > 0
         out! "<todo>#{bytes_left} bytes</todo>"
         raise "TODO"
@@ -551,7 +580,7 @@ class UiFile
       else
         convert_fc!
       end
-    when 25..54
+    when 25..999
       convert_ui!
     else
       raise "Not supported yet"

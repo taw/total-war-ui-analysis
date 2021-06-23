@@ -11,6 +11,13 @@ else
   todo = ARGV.map{|path| Pathname(path).realpath}
 end
 
+todo = todo.select{|path|
+  version = path.read(10)[7,3].to_i
+  true # all supported
+  # [*74..79].include?(version) # filter
+  # 54 == version
+}
+
 # In 4 threads
 cores = 4
 cores.times.map{|i|
