@@ -180,7 +180,9 @@ class UiFile
           convert_s! "path"
           convert_i! "x size"
           convert_i! "y size"
-          convert_u! "mask or rgba or something?"
+          if @version < 74
+            convert_u! "mask or rgba or something?"
+          end
         end
       end
     end
@@ -212,7 +214,7 @@ class UiFile
           convert_i! "font leading?"
           convert_i! "font tracking?"
           if @version >= 74
-            convert_u! "font color brga?"
+            convert_u! "font color bgra?"
           end
           if @version >= 43
             convert_s! "font category / twui"

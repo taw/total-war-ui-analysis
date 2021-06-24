@@ -53,6 +53,25 @@ class Uint32Block < Block
   end
 end
 
+class Int32Block < Block
+  def to_s
+     "#{range} #{self.class} #{data.unpack1("i")}"
+  end
+end
+
+class BGRABlock < Block
+  def to_s
+    b,g,r,a = data.bytes
+    "#{range} #{self.class} bgra(#{b},#{g},#{r},#{a})"
+  end
+end
+
+class FloatBlock < Block
+  def to_s
+     "#{range} #{self.class} #{data.unpack1("f")} (#{data.unpack1("V")})"
+  end
+end
+
 class StringBlock < Block
   attr_reader :str
 
@@ -75,22 +94,28 @@ end
 class ImagePathBlock < StringBlock
 end
 
-class T0Block < StringBlock
+class ShaderNameBlock < StringBlock
 end
 
 class FontNameBlock < StringBlock
 end
 
+class FontCategoryBlock < StringBlock
+end
+
 class NewStateBlock < StringBlock
 end
 
-class XOffsetBlock < Uint32Block
+class XOffsetBlock < Int32Block
 end
 
-class YOffsetBlock < Uint32Block
+class YOffsetBlock < Int32Block
 end
 
 class StateIDBlock < Uint32Block
+end
+
+class ShaderVariableBlock < FloatBlock
 end
 
 class U32ListBlock < Block
@@ -114,6 +139,9 @@ class U32ListBlock < Block
 end
 
 class ImageBlock < Block
+end
+
+class ImageBlockGen1 < ImageBlock
   attr_reader :id
 
   def initialize(*)
@@ -130,10 +158,38 @@ class ImageBlock < Block
   end
 end
 
+class ImageBlockGen2 < ImageBlock
+  attr_reader :id
+
+  def initialize(*)
+    super
+    @id = data[0,4].unpack1("V")
+    @str = data[6...-12]
+    @xsize = data[-8,4].unpack1("V")
+    @ysize = data[-4,4].unpack1("V")
+  end
+
+  def to_s
+    "#{range} #{self.class} id=#{@id} xsize=#{@xsize} ysize=#{@ysize} path=#{@str.inspect}"
+  end
+end
+
 class ImagePathListBlock < U32ListBlock
 end
 
 class ImageListBlock < U32ListBlock
+end
+
+class LineHeightBlock < Int32Block
+end
+
+class FontLeadingBlock < Int32Block
+end
+
+class FontTrailingBlock < Int32Block
+end
+
+class FontBGRABlock < BGRABlock
 end
 
 class EventListBlock < Block
@@ -167,11 +223,11 @@ class ImageUseBlock < Block
     @yofs = data[8,4].unpack1("V")
     @xsize = data[12,4].unpack1("V")
     @ysize = data[16,4].unpack1("V")
-    @brga = data[20,4].unpack1("V")
+    @bgra = data[20,4].unpack("C*").join(",")
   end
 
   def to_s
-    "#{range} #{self.class} id=#{@id} xofs=#{@xofs} yofs=#{@yofs} xsize=#{@xsize} ysize=#{@ysize} brga=#{@brga}"
+    "#{range} #{self.class} id=#{@id} xofs=#{@xofs} yofs=#{@yofs} xsize=#{@xsize} ysize=#{@ysize} bgra=bgra(#{@bgra})"
   end
 end
 
@@ -242,7 +298,7 @@ class Analysis
         elsif str =~ /\A(FiraSans-Regular|bardi_\d.*|Ingame \d+,|Frontend \d+,|la_gioconda|Norse\z|Norse-Bold|Iskra-Bold|georgia_italic|candara_italic)/
           add_block ofs, ofs+2+sz, FontNameBlock
         elsif str =~ /\A(normal_t0|[a-z_]+_t0)\z/
-          add_block ofs, ofs+2+sz, T0Block
+          add_block ofs, ofs+2+sz, ShaderNameBlock
         elsif str == "events_end"
           add_block ofs, ofs+2+sz, EventListBlock
         elsif str == "NewState"
@@ -291,15 +347,28 @@ class Analysis
   end
 
   def analyze_images
-    @blocks.each_with_index do |b,i|
-      next unless b.is_a?(ImagePathBlock)
-      next unless free_space_before(i) >= 4
-      next unless free_space_after(i) >= 12
-      xsize = @data[@blocks[i].e, 4].unpack1("V")
-      ysize = @data[@blocks[i].e+4, 4].unpack1("V")
-      next if xsize >= 0x1_0000
-      next if ysize >= 0x1_0000
-      @blocks[i] = ImageBlock.new(self, b.s-4, b.e+12)
+    if @version < 74
+      @blocks.each_with_index do |b,i|
+        next unless b.is_a?(ImagePathBlock)
+        next unless free_space_before(i) >= 4
+        next unless free_space_after(i) >= 12
+        xsize = @data[@blocks[i].e, 4].unpack1("V")
+        ysize = @data[@blocks[i].e+4, 4].unpack1("V")
+        next if xsize >= 0x1_0000
+        next if ysize >= 0x1_0000
+        @blocks[i] = ImageBlockGen1.new(self, b.s-4, b.e+12)
+      end
+    else
+      @blocks.each_with_index do |b,i|
+        next unless b.is_a?(ImagePathBlock)
+        next unless free_space_before(i) >= 4
+        next unless free_space_after(i) >= 8
+        xsize = @data[@blocks[i].e, 4].unpack1("V")
+        ysize = @data[@blocks[i].e+4, 4].unpack1("V")
+        next if xsize >= 0x1_0000
+        next if ysize >= 0x1_0000
+        @blocks[i] = ImageBlockGen2.new(self, b.s-4, b.e+8)
+      end
     end
   end
 
@@ -430,6 +499,53 @@ class Analysis
     # then some booleans etc.
   end
 
+  def analyze_shader_variables
+    i = 0
+    while i < @blocks.size
+      b = @blocks[i]
+      if b.is_a?(ShaderNameBlock) and free_space_after(i) >= 16
+        e = b.e
+        @blocks[i,1] = [
+          @blocks[i],
+          ShaderVariableBlock.new(self, e, e+4),
+          ShaderVariableBlock.new(self, e+4, e+8),
+          ShaderVariableBlock.new(self, e+8, e+12),
+          ShaderVariableBlock.new(self, e+12, e+16),
+        ]
+        i += 4
+      end
+      i += 1
+    end
+  end
+
+  def analyze_font_context
+    i = 0
+    while i < @blocks.size
+      b = @blocks[i]
+      if b.is_a?(FontNameBlock) and free_space_after(i) >= 12
+        e = b.e
+        @blocks[i,1] = [
+          @blocks[i],
+          LineHeightBlock.new(self, e, e+4),
+          FontLeadingBlock.new(self, e+4, e+8),
+          FontTrailingBlock.new(self, e+8, e+12),
+        ]
+        i += 3
+        if @version >= 74 and free_space_after(i) == 4
+          @blocks[i+1,0] = [
+            FontBGRABlock.new(self, e+12, e+16)
+          ]
+          i += 1
+        end
+        if free_space_after(i) == 0 and @blocks[i+1].is_a?(StringBlock)
+          bb = @blocks[i+1]
+          @blocks[i+1] = FontCategoryBlock.new(self, bb.s, bb.e)
+        end
+      end
+      i += 1
+    end
+  end
+
   def analysis
     analyze_version
     if @version == 2
@@ -445,6 +561,8 @@ class Analysis
     analyze_new_state_context
     analyze_image_uses
     analyze_root_context
+    analyze_shader_variables
+    analyze_font_context
   end
 
   # some blocks aren't actually fully decoded and could use more processing

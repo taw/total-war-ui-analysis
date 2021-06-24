@@ -5,10 +5,10 @@
 000030-000035 StringBlock "root"
 000036-000050 DataBlock
   ...............  00 00 00 00 00 00 00 00 00 00 00 00 00 00 01
-000051-000074 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=0 ysize=0 brga=0
+000051-000074 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=0 ysize=0 bgra=bgra(0,0,0,0)
 000075-000082 DataBlock
   ........         00 00 00 00 94 8e bc 08
-000083-000106 ImageUseBlock id=1 xofs=1329091684 yofs=4177718747 xsize=1141360251 ysize=3163213476 brga=3216408368
+000083-000106 ImageUseBlock id=1 xofs=1329091684 yofs=4177718747 xsize=1141360251 ysize=3163213476 bgra=bgra(48,127,182,191)
 000107-000157 DataBlock
   ......8......... 00 00 80 07 00 00 38 04 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01
@@ -22,31 +22,37 @@
   ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
   .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 000209-000226 FontNameBlock "FiraSans-Regular"
-000227-000242 DataBlock
-  ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
-000243-000265 StringBlock "Default Font Category"
+000227-000230 LineHeightBlock 10
+000231-000234 FontLeadingBlock 2
+000235-000238 FontTrailingBlock 0
+000239-000242 FontBGRABlock bgra(221,218,250,255)
+000243-000265 FontCategoryBlock "Default Font Category"
 000266-000285 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             01 00 00 00
-000286-000296 T0Block "normal_t0"
-000297-000312 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-000313-000323 T0Block "normal_t0"
-000324-000339 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-000340-000363 ImageUseBlock id=1 xofs=1329091684 yofs=4177718747 xsize=1141360251 ysize=3163213476 brga=3216408368
+000286-000296 ShaderNameBlock "normal_t0"
+000297-000300 ShaderVariableBlock 0.0 (0)
+000301-000304 ShaderVariableBlock 0.0 (0)
+000305-000308 ShaderVariableBlock 0.0 (0)
+000309-000312 ShaderVariableBlock 0.0 (0)
+000313-000323 ShaderNameBlock "normal_t0"
+000324-000327 ShaderVariableBlock 0.0 (0)
+000328-000331 ShaderVariableBlock 0.0 (0)
+000332-000335 ShaderVariableBlock 0.0 (0)
+000336-000339 ShaderVariableBlock 0.0 (0)
+000340-000363 ImageUseBlock id=1 xofs=1329091684 yofs=4177718747 xsize=1141360251 ysize=3163213476 bgra=bgra(48,127,182,191)
 000364-000401 DataBlock
   ............8... 00 00 00 00 00 00 00 00 80 07 00 00 38 04 00 00
   ................ f0 f0 f0 ff 00 00 00 00 00 00 00 00 00 00 00 00
   ......           00 00 00 00 00 01
-000402-000425 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=2147483648
+000402-000425 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(0,0,0,128)
 000426-000503 DataBlock
   ?............... 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ........]@...%i6 00 00 d4 a9 83 a0 12 ce 5d 40 bc cd d2 25 69 36
   i.............   69 81 00 00 00 00 00 00 00 00 00 00 00 00
-000504-000527 ImageUseBlock id=1 xofs=948174848 yofs=83962382 xsize=1665842354 ysize=1216824400 brga=1929406954
+000504-000527 ImageUseBlock id=1 xofs=948174848 yofs=83962382 xsize=1665842354 ysize=1216824400 bgra=bgra(234,105,0,115)
 000528-000529 DataBlock
   $.               24 cc
 000530-000549 StringBlock "historical_battles"
@@ -59,7 +65,7 @@
 000596-000607 StringBlock "new_battle"
 000608-000616 DataBlock
   .........        00 00 00 00 00 00 00 00 01
-000617-000640 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=83886080 ysize=0 brga=0
+000617-000640 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=83886080 ysize=0 bgra=bgra(0,0,0,0)
 000641-000692 DataBlock
   ....4..N........ 00 00 00 00 34 f9 93 4e 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -73,18 +79,25 @@
   ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
   .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 000744-000761 FontNameBlock "FiraSans-Regular"
-000762-000777 DataBlock
-  ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
-000778-000800 StringBlock "Default Font Category"
+000762-000765 LineHeightBlock 10
+000766-000769 FontLeadingBlock 2
+000770-000773 FontTrailingBlock 0
+000774-000777 FontBGRABlock bgra(221,218,250,255)
+000778-000800 FontCategoryBlock "Default Font Category"
 000801-000820 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             00 00 00 00
-000821-000831 T0Block "normal_t0"
-000832-000847 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-000848-000858 T0Block "normal_t0"
-000859-000946 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+000821-000831 ShaderNameBlock "normal_t0"
+000832-000835 ShaderVariableBlock 0.0 (0)
+000836-000839 ShaderVariableBlock 0.0 (0)
+000840-000843 ShaderVariableBlock 0.0 (0)
+000844-000847 ShaderVariableBlock 0.0 (0)
+000848-000858 ShaderNameBlock "normal_t0"
+000859-000862 ShaderVariableBlock 0.0 (0)
+000863-000866 ShaderVariableBlock 0.0 (0)
+000867-000870 ShaderVariableBlock 0.0 (0)
+000871-000874 ShaderVariableBlock 0.0 (0)
+000875-000946 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ..U.8....N...... 00 00 55 b9 38 e4 ee e3 df 4e aa b3 80 f3 83 a2
   ................ f9 eb 00 00 00 00 00 00 00 00 00 00 00 00 02 00
@@ -106,7 +119,7 @@
 001089-001121 StringBlock "3k_main_historical_battle_xiapi"
 001122-001130 DataBlock
   .........        00 00 00 00 00 00 00 00 01
-001131-001154 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=0 ysize=0 brga=0
+001131-001154 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=0 ysize=0 bgra=bgra(0,0,0,0)
 001155-001206 DataBlock
   .......N........ 00 00 00 00 f4 da 9d 4e 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -120,18 +133,25 @@
   ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
   .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 001258-001275 FontNameBlock "FiraSans-Regular"
-001276-001291 DataBlock
-  ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
-001292-001314 StringBlock "Default Font Category"
+001276-001279 LineHeightBlock 10
+001280-001283 FontLeadingBlock 2
+001284-001287 FontTrailingBlock 0
+001288-001291 FontBGRABlock bgra(221,218,250,255)
+001292-001314 FontCategoryBlock "Default Font Category"
 001315-001334 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             00 00 00 00
-001335-001345 T0Block "normal_t0"
-001346-001361 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-001362-001372 T0Block "normal_t0"
-001373-001460 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+001335-001345 ShaderNameBlock "normal_t0"
+001346-001349 ShaderVariableBlock 0.0 (0)
+001350-001353 ShaderVariableBlock 0.0 (0)
+001354-001357 ShaderVariableBlock 0.0 (0)
+001358-001361 ShaderVariableBlock 0.0 (0)
+001362-001372 ShaderNameBlock "normal_t0"
+001373-001376 ShaderVariableBlock 0.0 (0)
+001377-001380 ShaderVariableBlock 0.0 (0)
+001381-001384 ShaderVariableBlock 0.0 (0)
+001385-001388 ShaderVariableBlock 0.0 (0)
+001389-001460 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ......C.UG.....- 00 00 c2 e7 93 e5 43 88 55 47 9b 14 d2 14 98 2d
   ................ aa df 00 00 00 00 00 00 00 00 00 00 00 00 05 00
@@ -145,7 +165,7 @@
 001540-001591 StringBlock "\"ui/historical_battles/\" + BattleRecordContext.Key"
 001592-001604 DataBlock
   .............    00 00 00 00 00 00 00 00 00 00 00 00 01
-001605-001628 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=83886080 ysize=0 brga=0
+001605-001628 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=83886080 ysize=0 bgra=bgra(0,0,0,0)
 001629-001680 DataBlock
   ................ 00 00 00 00 cc 14 ba 08 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -159,18 +179,25 @@
   ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
   .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 001732-001749 FontNameBlock "FiraSans-Regular"
-001750-001765 DataBlock
-  ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
-001766-001788 StringBlock "Default Font Category"
+001750-001753 LineHeightBlock 10
+001754-001757 FontLeadingBlock 2
+001758-001761 FontTrailingBlock 0
+001762-001765 FontBGRABlock bgra(221,218,250,255)
+001766-001788 FontCategoryBlock "Default Font Category"
 001789-001808 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             00 00 00 00
-001809-001819 T0Block "normal_t0"
-001820-001835 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-001836-001846 T0Block "normal_t0"
-001847-001956 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+001809-001819 ShaderNameBlock "normal_t0"
+001820-001823 ShaderVariableBlock 0.0 (0)
+001824-001827 ShaderVariableBlock 0.0 (0)
+001828-001831 ShaderVariableBlock 0.0 (0)
+001832-001835 ShaderVariableBlock 0.0 (0)
+001836-001846 ShaderNameBlock "normal_t0"
+001847-001850 ShaderVariableBlock 0.0 (0)
+001851-001854 ShaderVariableBlock 0.0 (0)
+001855-001858 ShaderVariableBlock 0.0 (0)
+001859-001862 ShaderVariableBlock 0.0 (0)
+001863-001956 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   .......I.E..}Tj. 00 00 05 a7 c0 fd 19 49 e7 45 88 85 7d 54 6a ac
   _q.............. 5f 71 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -187,7 +214,7 @@
 002005-002025 StringBlock "header_label_parent"
 002026-002033 DataBlock
   ...._...         ac 03 00 00 5f 00 00 00
-002034-002057 ImageUseBlock id=1 xofs=65536 yofs=16777216 xsize=0 ysize=2 brga=0
+002034-002057 ImageUseBlock id=1 xofs=65536 yofs=16777216 xsize=0 ysize=2 bgra=bgra(0,0,0,0)
 002058-002110 DataBlock
   _....4.4O....... 5f 00 00 00 00 34 80 34 4f 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -201,18 +228,25 @@
   ................ 00 00 00 00 04 00 00 00 04 00 00 00 00 00 00 00
   .............    01 00 00 00 00 00 00 00 00 00 00 00 00
 002162-002173 FontNameBlock "Iskra-Bold"
-002174-002189 DataBlock
-  ................ 1e 00 00 00 02 00 00 00 00 00 00 00 ff ff ff ff
-002190-002197 StringBlock "header"
+002174-002177 LineHeightBlock 30
+002178-002181 FontLeadingBlock 2
+002182-002185 FontTrailingBlock 0
+002186-002189 FontBGRABlock bgra(255,255,255,255)
+002190-002197 FontCategoryBlock "header"
 002198-002217 DataBlock
   ................ 0a 00 00 00 0a 00 00 00 00 00 00 00 00 00 00 00
   ....             00 00 00 00
-002218-002228 T0Block "normal_t0"
-002229-002244 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-002245-002255 T0Block "normal_t0"
-002256-002343 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+002218-002228 ShaderNameBlock "normal_t0"
+002229-002232 ShaderVariableBlock 0.0 (0)
+002233-002236 ShaderVariableBlock 0.0 (0)
+002237-002240 ShaderVariableBlock 0.0 (0)
+002241-002244 ShaderVariableBlock 0.0 (0)
+002245-002255 ShaderNameBlock "normal_t0"
+002256-002259 ShaderVariableBlock 0.0 (0)
+002260-002263 ShaderVariableBlock 0.0 (0)
+002264-002267 ShaderVariableBlock 0.0 (0)
+002268-002271 ShaderVariableBlock 0.0 (0)
+002272-002343 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   .....|<m.A..k... 00 00 c6 db c2 7c 3c 6d c9 41 a4 0e 6b 1a 99 fa
   ,............... 2c dc 00 00 00 00 e8 03 00 00 00 00 00 00 03 00
@@ -222,13 +256,13 @@
 002362-002381 DataBlock
   ................ 00 00 00 00 00 00 90 ff ff ff 00 00 00 00 00 00
   ....             00 00 00 00
-002382-002405 ImageUseBlock id=1 xofs=256 yofs=983040 xsize=4285071360 ysize=65535 brga=3690987520
+002382-002405 ImageUseBlock id=1 xofs=256 yofs=983040 xsize=4285071360 ysize=65535 bgra=bgra(0,0,0,220)
 002406-002408 DataBlock
   wIN              77 49 4e
-002409-002432 ImageUseBlock id=1 xofs=1250357764 yofs=1791716527 xsize=1175925833 ysize=1203565473 brga=399139557
+002409-002432 ImageUseBlock id=1 xofs=1250357764 yofs=1791716527 xsize=1175925833 ysize=1203565473 bgra=bgra(229,98,202,23)
 002433-002439 DataBlock
   .......          00 00 ca 01 00 00 1b
-002440-002463 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=0
+002440-002463 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(0,0,0,0)
 002464-002483 DataBlock
   .....wINzb.#...M 01 00 00 00 dc 77 49 4e 7a 62 06 23 cc eb d9 4d
   ....             bf a6 a2 d5
@@ -240,24 +274,30 @@
   ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
   .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 002535-002552 FontNameBlock "FiraSans-Regular"
-002553-002568 DataBlock
-  ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
-002569-002591 StringBlock "Default Font Category"
+002553-002556 LineHeightBlock 10
+002557-002560 FontLeadingBlock 2
+002561-002564 FontTrailingBlock 0
+002565-002568 FontBGRABlock bgra(221,218,250,255)
+002569-002591 FontCategoryBlock "Default Font Category"
 002592-002611 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             00 00 00 00
-002612-002622 T0Block "normal_t0"
-002623-002638 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-002639-002649 T0Block "normal_t0"
-002650-002665 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-002666-002689 ImageUseBlock id=1 xofs=1250357764 yofs=1791716527 xsize=1175925833 ysize=1203565473 brga=399139557
+002612-002622 ShaderNameBlock "normal_t0"
+002623-002626 ShaderVariableBlock 0.0 (0)
+002627-002630 ShaderVariableBlock 0.0 (0)
+002631-002634 ShaderVariableBlock 0.0 (0)
+002635-002638 ShaderVariableBlock 0.0 (0)
+002639-002649 ShaderNameBlock "normal_t0"
+002650-002653 ShaderVariableBlock 0.0 (0)
+002654-002657 ShaderVariableBlock 0.0 (0)
+002658-002661 ShaderVariableBlock 0.0 (0)
+002662-002665 ShaderVariableBlock 0.0 (0)
+002666-002689 ImageUseBlock id=1 xofs=1250357764 yofs=1791716527 xsize=1175925833 ysize=1203565473 bgra=bgra(229,98,202,23)
 002690-002727 DataBlock
   ................ 00 00 00 00 fe ff ff ff a4 01 00 00 8c 00 00 00
   ................ ff ff ff ff 00 00 00 00 00 00 00 00 00 00 00 00
   ......           00 00 00 00 00 01
-002728-002751 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=2147483648
+002728-002751 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(0,0,0,128)
 002752-002799 DataBlock
   ?............... 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -363,33 +403,33 @@
 004037-004046 StringBlock "OnCreate"
 004047-004048 DataBlock
   ..               00 00
-004049-004072 ImageUseBlock id=1 xofs=0 yofs=1133674496 xsize=1084227584 ysize=370 brga=30
+004049-004072 ImageUseBlock id=1 xofs=0 yofs=1133674496 xsize=1084227584 ysize=370 bgra=bgra(30,0,0,0)
 004073-004120 DataBlock
   ................ ff ff ff 00 00 00 00 bf 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 ff ff ff ff ff ff ff ff
   ...?...........? 00 00 80 3f 00 00 00 00 00 00 00 00 00 00 80 3f
 004121-004128 StringBlock "Linear"
-004129-004152 ImageUseBlock id=1 xofs=705485348 yofs=3092332307 xsize=1122488999 ysize=1372701864 brga=772683812
+004129-004152 ImageUseBlock id=1 xofs=705485348 yofs=3092332307 xsize=1122488999 ysize=1372701864 bgra=bgra(36,56,14,46)
 004153-004158 StringBlock "show"
 004159-004168 DataBlock
   ..........       00 00 00 00 00 00 00 00 00 00
 004169-004174 StringBlock "time"
 004175-004185 DataBlock
   ...........      00 00 00 00 00 00 00 00 00 00 00
-004186-004209 ImageUseBlock id=1 xofs=4161536 yofs=8388608 xsize=4128768 ysize=318176256 brga=2928208938
+004186-004209 ImageUseBlock id=1 xofs=4161536 yofs=8388608 xsize=4128768 ysize=318176256 bgra=bgra(42,236,136,174)
 004210-004222 DataBlock
   ....N...O.&..    c6 a1 84 c5 4e 81 ae 8e 4f 01 26 91 17
 004223-004239 StringBlock "header_ink_left"
 004240-004259 DataBlock
   ................ 00 00 00 00 00 00 0a ff ff ff ff ff ff ff 00 00
   ....             00 00 00 00
-004260-004283 ImageUseBlock id=1 xofs=256 yofs=851968 xsize=11403264 ysize=0 brga=1543503872
+004260-004283 ImageUseBlock id=1 xofs=256 yofs=851968 xsize=11403264 ysize=0 bgra=bgra(0,0,0,92)
 004284-004286 DataBlock
   A.)              41 c9 29
-004287-004310 ImageUseBlock id=1 xofs=1312539724 yofs=4045191523 xsize=1270782219 ysize=1683003528 brga=684866726
+004287-004310 ImageUseBlock id=1 xofs=1312539724 yofs=4045191523 xsize=1270782219 ysize=1683003528 bgra=bgra(166,60,210,40)
 004311-004317 DataBlock
   .......          00 00 ca 01 00 00 1b
-004318-004341 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=0
+004318-004341 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(0,0,0,0)
 004342-004361 DataBlock
   ....\A.)u+I..}nL 01 00 00 00 5c 41 c9 29 75 2b 49 83 09 7d 6e 4c
   ...$             b8 03 bf 24
@@ -401,24 +441,30 @@
   ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
   .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 004413-004430 FontNameBlock "FiraSans-Regular"
-004431-004446 DataBlock
-  ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
-004447-004469 StringBlock "Default Font Category"
+004431-004434 LineHeightBlock 10
+004435-004438 FontLeadingBlock 2
+004439-004442 FontTrailingBlock 0
+004443-004446 FontBGRABlock bgra(221,218,250,255)
+004447-004469 FontCategoryBlock "Default Font Category"
 004470-004489 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             00 00 00 00
-004490-004500 T0Block "normal_t0"
-004501-004516 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-004517-004527 T0Block "normal_t0"
-004528-004543 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-004544-004567 ImageUseBlock id=1 xofs=1312539724 yofs=4045191523 xsize=1270782219 ysize=1683003528 brga=684866726
+004490-004500 ShaderNameBlock "normal_t0"
+004501-004504 ShaderVariableBlock 0.0 (0)
+004505-004508 ShaderVariableBlock 0.0 (0)
+004509-004512 ShaderVariableBlock 0.0 (0)
+004513-004516 ShaderVariableBlock 0.0 (0)
+004517-004527 ShaderNameBlock "normal_t0"
+004528-004531 ShaderVariableBlock 0.0 (0)
+004532-004535 ShaderVariableBlock 0.0 (0)
+004536-004539 ShaderVariableBlock 0.0 (0)
+004540-004543 ShaderVariableBlock 0.0 (0)
+004544-004567 ImageUseBlock id=1 xofs=1312539724 yofs=4045191523 xsize=1270782219 ysize=1683003528 bgra=bgra(166,60,210,40)
 004568-004605 DataBlock
   ................ 00 00 00 00 fe ff ff ff a4 01 00 00 8f 00 00 00
   ................ ff ff ff ff 00 00 00 00 00 00 00 00 00 00 00 00
   ......           00 00 00 00 00 01
-004606-004629 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=2147483648
+004606-004629 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(0,0,0,128)
 004630-004677 DataBlock
   ?............... 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -524,20 +570,20 @@
 005911-005920 StringBlock "OnCreate"
 005921-005922 DataBlock
   ..               00 00
-005923-005946 ImageUseBlock id=1 xofs=0 yofs=1133674496 xsize=1084227584 ysize=370 brga=30
+005923-005946 ImageUseBlock id=1 xofs=0 yofs=1133674496 xsize=1084227584 ysize=370 bgra=bgra(30,0,0,0)
 005947-005994 DataBlock
   ................ ff ff ff 00 00 00 00 bf 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 ff ff ff ff ff ff ff ff
   ...?...........? 00 00 80 3f 00 00 00 00 00 00 00 00 00 00 80 3f
 005995-006002 StringBlock "Linear"
-006003-006026 ImageUseBlock id=1 xofs=705885948 yofs=3333327084 xsize=1321567393 ysize=1334750849 brga=395388417
+006003-006026 ImageUseBlock id=1 xofs=705885948 yofs=3333327084 xsize=1321567393 ysize=1334750849 bgra=bgra(1,38,145,23)
 006027-006032 StringBlock "show"
 006033-006042 DataBlock
   ..........       00 00 00 00 00 00 00 00 00 00
 006043-006048 StringBlock "time"
 006049-006059 DataBlock
   ...........      00 00 00 00 00 00 00 00 00 00 00
-006060-006083 ImageUseBlock id=1 xofs=4161536 yofs=4161536 xsize=4128768 ysize=3220399104 brga=919007752
+006060-006083 ImageUseBlock id=1 xofs=4161536 yofs=4161536 xsize=4128768 ysize=3220399104 bgra=bgra(8,242,198,54)
 006084-006096 DataBlock
   z..uK..Ju_...    7a ee d9 75 4b 8c 1a 4a 75 5f 03 de ed
 006097-006117 StringBlock "header_label_parent"
@@ -548,15 +594,15 @@
 006163-006197 StringBlock "ToUpper(BattleRecordContext.Name)"
 006198-006209 DataBlock
   ............     00 00 00 00 d8 ff ff ff 00 00 00 00
-006210-006233 ImageUseBlock id=1 xofs=65536 yofs=16777216 xsize=0 ysize=5 brga=0
+006210-006233 ImageUseBlock id=1 xofs=65536 yofs=16777216 xsize=0 ysize=5 bgra=bgra(0,0,0,0)
 006234-006262 DataBlock
   .....Lf8O....L'K 00 00 00 00 00 4c 66 38 4f 01 00 00 00 4c 27 4b
   NP..I^ypC..>.    4e 50 8f f1 49 5e 79 70 43 8b 18 3e 9f
-006263-006320 ImageBlock id=3533376041 xsize=278 ysize=278 path="ui\\skins\\default\\ink_background_tile.png" unknown=0
-006321-006357 DataBlock
+006263-006316 ImageBlockGen2 id=3533376041 xsize=278 ysize=278 path="ui\\skins\\default\\ink_background_tile"
+006317-006357 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-  .....Lf8O.$....U 00 01 00 00 00 4c 66 38 4f 98 24 e1 0a de a1 55
-  @..(.            40 98 bc 28 8d
+  .........Lf8O.$. 00 00 00 00 00 01 00 00 00 4c 66 38 4f 98 24 e1
+  ...U@..(.        0a de a1 55 40 98 bc 28 8d
 006358-006361 StateIDBlock 2275961441
 006362-006371 NewStateBlock "NewState"
 006372-006375 XSizeBlock 120
@@ -569,37 +615,43 @@
 006497-006502 DataBlock
   ......           00 00 00 00 00 00
 006503-006514 FontNameBlock "Iskra-Bold"
-006515-006530 DataBlock
-  ................ 1e 00 00 00 02 00 00 00 00 00 00 00 ff ff ff ff
-006531-006538 StringBlock "header"
+006515-006518 LineHeightBlock 30
+006519-006522 FontLeadingBlock 2
+006523-006526 FontTrailingBlock 0
+006527-006530 FontBGRABlock bgra(255,255,255,255)
+006531-006538 FontCategoryBlock "header"
 006539-006558 DataBlock
   ................ 00 00 00 00 00 00 00 00 1b 00 00 00 00 00 00 00
   ....             00 00 00 00
-006559-006569 T0Block "normal_t0"
-006570-006585 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-006586-006596 T0Block "normal_t0"
-006597-006612 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-006613-006636 ImageUseBlock id=1 xofs=1313548108 yofs=1240567632 xsize=1131444574 ysize=2671646859 brga=3533376041
+006559-006569 ShaderNameBlock "normal_t0"
+006570-006573 ShaderVariableBlock 0.0 (0)
+006574-006577 ShaderVariableBlock 0.0 (0)
+006578-006581 ShaderVariableBlock 0.0 (0)
+006582-006585 ShaderVariableBlock 0.0 (0)
+006586-006596 ShaderNameBlock "normal_t0"
+006597-006600 ShaderVariableBlock 0.0 (0)
+006601-006604 ShaderVariableBlock 0.0 (0)
+006605-006608 ShaderVariableBlock 0.0 (0)
+006609-006612 ShaderVariableBlock 0.0 (0)
+006613-006636 ImageUseBlock id=1 xofs=1313548108 yofs=1240567632 xsize=1131444574 ysize=2671646859 bgra=bgra(41,10,155,210)
 006637-006674 DataBlock
   ........x...v... 00 00 00 00 0b 00 00 00 78 00 00 00 76 00 00 00
   ................ ff ff ff ff 00 00 01 00 00 05 00 00 00 00 00 00
   ......           00 00 00 00 00 01
-006675-006698 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=2147483648
+006675-006698 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(0,0,0,128)
 006699-006776 DataBlock
   ?............... 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ......A...A...A. 00 00 00 00 00 f0 41 00 00 f0 41 00 00 f0 41 00
   ..A............. 00 f0 41 00 00 00 00 00 00 00 00 00 00 00 00 00
   ...$....U@..(.aj 00 00 98 24 e1 0a de a1 55 40 98 bc 28 8d 61 6a
   ..............   a8 87 00 00 00 00 e8 03 00 00 00 00 00 00
-006777-006800 ImageUseBlock id=1 xofs=1079246848 yofs=57954103 xsize=3537162395 ysize=2963884353 brga=1106439
+006777-006800 ImageUseBlock id=1 xofs=1079246848 yofs=57954103 xsize=3537162395 ysize=2963884353 bgra=bgra(7,226,16,0)
 006801-006802 DataBlock
   v.               76 a9
 006803-006821 StringBlock "year_label_holder"
 006822-006835 DataBlock
   ..........@...   00 00 00 00 00 00 f3 ff ff ff 40 00 00 00
-006836-006859 ImageUseBlock id=1 xofs=65536 yofs=16777216 xsize=0 ysize=5 brga=0
+006836-006859 ImageUseBlock id=1 xofs=65536 yofs=16777216 xsize=0 ysize=5 bgra=bgra(0,0,0,0)
 006860-006912 DataBlock
   .....l..F....... 0f 00 00 00 00 6c 14 9f 46 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -613,22 +665,29 @@
   ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
   .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 006964-006981 FontNameBlock "FiraSans-Regular"
-006982-006997 DataBlock
-  ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
-006998-007020 StringBlock "Default Font Category"
+006982-006985 LineHeightBlock 10
+006986-006989 FontLeadingBlock 2
+006990-006993 FontTrailingBlock 0
+006994-006997 FontBGRABlock bgra(221,218,250,255)
+006998-007020 FontCategoryBlock "Default Font Category"
 007021-007040 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             00 00 00 00
-007041-007051 T0Block "normal_t0"
-007052-007067 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-007068-007078 T0Block "normal_t0"
-007079-007140 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+007041-007051 ShaderNameBlock "normal_t0"
+007052-007055 ShaderVariableBlock 0.0 (0)
+007056-007059 ShaderVariableBlock 0.0 (0)
+007060-007063 ShaderVariableBlock 0.0 (0)
+007064-007067 ShaderVariableBlock 0.0 (0)
+007068-007078 ShaderNameBlock "normal_t0"
+007079-007082 ShaderVariableBlock 0.0 (0)
+007083-007086 ShaderVariableBlock 0.0 (0)
+007087-007090 ShaderVariableBlock 0.0 (0)
+007091-007094 ShaderVariableBlock 0.0 (0)
+007095-007140 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ...nJ....K.E.U.. 00 00 87 6e 4a d1 c6 de 03 4b bc 45 b0 55 8b 01
   ..............   86 f8 00 00 00 00 e8 03 00 00 00 00 00 00
-007141-007164 ImageUseBlock id=1 xofs=4104388608 yofs=2031109911 xsize=439690767 ysize=1369655448 brga=1153060674
+007141-007164 ImageUseBlock id=1 xofs=4104388608 yofs=2031109911 xsize=439690767 ysize=1369655448 bgra=bgra(66,79,186,68)
 007165-007166 DataBlock
   =.               3d f5
 007167-007180 StringBlock "label_season"
@@ -639,7 +698,7 @@
 007226-007319 StringBlock "YearSeasonFormat(BattleRecordContext.Year, ToUpper(SetupInfoContext.SeasonContext.Onscreen))"
 007320-007331 DataBlock
   ............     00 00 00 00 00 00 00 00 00 00 00 00
-007332-007355 ImageUseBlock id=1 xofs=65536 yofs=16777216 xsize=0 ysize=0 brga=0
+007332-007355 ImageUseBlock id=1 xofs=65536 yofs=16777216 xsize=0 ysize=0 bgra=bgra(0,0,0,0)
 007356-007408 DataBlock
   ......B.N....... 00 00 00 00 00 8c 42 8c 4e 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -657,18 +716,25 @@
 007540-007545 DataBlock
   ......           00 00 00 00 00 00
 007546-007557 FontNameBlock "Iskra-Bold"
-007558-007573 DataBlock
-  ................ 1e 00 00 00 02 00 00 00 00 00 00 00 ff ff ff ff
-007574-007581 StringBlock "header"
+007558-007561 LineHeightBlock 30
+007562-007565 FontLeadingBlock 2
+007566-007569 FontTrailingBlock 0
+007570-007573 FontBGRABlock bgra(255,255,255,255)
+007574-007581 FontCategoryBlock "header"
 007582-007601 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             00 00 00 00
-007602-007612 T0Block "normal_t0"
-007613-007628 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-007629-007639 T0Block "normal_t0"
-007640-007728 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+007602-007612 ShaderNameBlock "normal_t0"
+007613-007616 ShaderVariableBlock 0.0 (0)
+007617-007620 ShaderVariableBlock 0.0 (0)
+007621-007624 ShaderVariableBlock 0.0 (0)
+007625-007628 ShaderVariableBlock 0.0 (0)
+007629-007639 ShaderNameBlock "normal_t0"
+007640-007643 ShaderVariableBlock 0.0 (0)
+007644-007647 ShaderVariableBlock 0.0 (0)
+007648-007651 ShaderVariableBlock 0.0 (0)
+007652-007655 ShaderVariableBlock 0.0 (0)
+007656-007728 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....<.=r.J...h:| 00 00 a8 d7 3c fc 3d 72 b0 4a aa 0b 05 68 3a 7c
   bD.............. 62 44 00 00 00 00 e8 03 00 00 00 00 00 00 00 00
@@ -677,11 +743,11 @@
 007729-007744 StringBlock "HorizontalList"
 007745-007757 DataBlock
   .............    00 00 00 00 05 00 00 00 00 00 00 00 00
-007758-007781 ImageUseBlock id=1 xofs=1 yofs=0 xsize=0 ysize=0 brga=0
+007758-007781 ImageUseBlock id=1 xofs=1 yofs=0 xsize=0 ysize=0 bgra=bgra(0,0,0,0)
 007782-007799 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ..               00 00
-007800-007823 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=16256
+007800-007823 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(128,63,0,0)
 007824-007895 DataBlock
   .?...?.......... 00 3f 00 00 00 3f 00 00 00 00 00 00 00 00 00 00
   ...?...?...?.... 00 00 80 3f 00 00 00 3f 00 00 00 3f 00 00 00 00
@@ -691,15 +757,15 @@
 007896-007923 StringBlock "button_start_battle_holder"
 007924-007938 DataBlock
   ...............  00 00 00 00 00 00 ff 02 00 00 e6 00 00 00 01
-007939-007962 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=33554432 ysize=0 brga=3858759680
+007939-007962 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=33554432 ysize=0 bgra=bgra(0,0,0,230)
 007963-007990 DataBlock
   ....<o.H.......H 00 00 00 00 3c 6f df 48 01 00 00 00 ec c1 b5 48
   e.$n...M..T.     65 e8 24 6e c8 c7 ef 4d 80 83 54 9d
-007991-008056 ImageBlock id=1601848310 xsize=260 ysize=96 path="ui\\skins\\default\\ink_start_historical_battle.png" unknown=0
-008057-008093 DataBlock
+007991-008052 ImageBlockGen2 id=1601848310 xsize=260 ysize=96 path="ui\\skins\\default\\ink_start_historical_battle"
+008053-008093 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-  .....<o.HA.....u 00 01 00 00 00 3c 6f df 48 41 a6 8f bb bd cc 75
-  H.0P7            48 8d 30 50 37
+  .........<o.HA.. 00 00 00 00 00 01 00 00 00 3c 6f df 48 41 a6 8f
+  ...uH.0P7        bb bd cc 75 48 8d 30 50 37
 008094-008097 StateIDBlock 913325233
 008098-008107 NewStateBlock "NewState"
 008108-008111 XSizeBlock 385
@@ -708,19 +774,25 @@
   ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
   .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 008145-008162 FontNameBlock "FiraSans-Regular"
-008163-008178 DataBlock
-  ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
-008179-008201 StringBlock "Default Font Category"
+008163-008166 LineHeightBlock 10
+008167-008170 FontLeadingBlock 2
+008171-008174 FontTrailingBlock 0
+008175-008178 FontBGRABlock bgra(221,218,250,255)
+008179-008201 FontCategoryBlock "Default Font Category"
 008202-008221 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             00 00 00 00
-008222-008232 T0Block "normal_t0"
-008233-008248 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-008249-008259 T0Block "normal_t0"
-008260-008275 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-008276-008299 ImageUseBlock id=1 xofs=1219871212 yofs=1847912549 xsize=1307559880 ysize=2639561600 brga=1601848310
+008222-008232 ShaderNameBlock "normal_t0"
+008233-008236 ShaderVariableBlock 0.0 (0)
+008237-008240 ShaderVariableBlock 0.0 (0)
+008241-008244 ShaderVariableBlock 0.0 (0)
+008245-008248 ShaderVariableBlock 0.0 (0)
+008249-008259 ShaderNameBlock "normal_t0"
+008260-008263 ShaderVariableBlock 0.0 (0)
+008264-008267 ShaderVariableBlock 0.0 (0)
+008268-008271 ShaderVariableBlock 0.0 (0)
+008272-008275 ShaderVariableBlock 0.0 (0)
+008276-008299 ImageUseBlock id=1 xofs=1219871212 yofs=1847912549 xsize=1307559880 ysize=2639561600 bgra=bgra(246,67,122,95)
 008300-008439 DataBlock
   >...........`... 3e 00 00 00 e2 ff ff ff 04 01 00 00 60 00 00 00
   ................ ff ff ff ff 00 00 00 00 00 02 00 00 00 00 00 00
@@ -731,7 +803,7 @@
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   A.....uH.0P7.<p6 41 a6 8f bb bd cc 75 48 8d 30 50 37 b1 3c 70 36
   ............     00 00 00 00 00 00 00 00 00 00 00 00
-008440-008463 ImageUseBlock id=1 xofs=3096707072 yofs=534073141 xsize=1337086374 ysize=2828029047 brga=3012301310
+008440-008463 ImageUseBlock id=1 xofs=3096707072 yofs=534073141 xsize=1337086374 ysize=2828029047 bgra=bgra(254,17,140,179)
 008464-008465 DataBlock
   .$               13 24
 008466-008486 StringBlock "button_start_battle"
@@ -749,86 +821,102 @@
 008617-008638 DataBlock
   ................ 00 00 00 00 00 00 00 00 17 00 00 00 f4 ff ff ff
   ......           00 00 00 00 00 00
-008639-008662 ImageUseBlock id=1 xofs=256 yofs=131072 xsize=0 ysize=4294180864 brga=2885746687
+008639-008662 ImageUseBlock id=1 xofs=256 yofs=131072 xsize=0 ysize=4294180864 bgra=bgra(255,255,0,172)
 008663-008685 DataBlock
   .......L..*..... b1 a7 08 07 00 00 00 4c 8b 1b 2a 1a f6 aa ed e9
   ..K..*)          10 c8 4b ac a6 2a 29
-008686-008752 ImageBlock id=2519254980 xsize=254 ysize=60 path="ui\\skins\\default\\button_rectangular_backplate.png" unknown=846130176
-008753-008765 DataBlock
-  *..9.R.rI...H    2a dd 00 39 90 52 a7 72 49 9c 18 03 48
-008766-008827 ImageBlock id=3073705008 xsize=500 ysize=500 path="ui\\skins\\default\\button_rectangular_glow.png" unknown=846214144
-008828-008840 DataBlock
-  *5......D....    2a 35 2e b0 0e 0c 85 de 44 87 c7 08 87
-008841-008911 ImageBlock id=1417541583 xsize=100 ysize=292 path="ui\\skins\\default\\button_square_highlight_vertical.png" unknown=219888640
-008912-008924 DataBlock
-  N`....l.@.q.     4e 60 b5 82 b9 14 6c d1 40 a1 71 b0 20
-008925-009001 ImageBlock id=2856018273 xsize=100 ysize=292 path="ui\\skins\\default\\button_square_hover_highlight_vertical.png" unknown=219972608
-009002-009014 DataBlock
-  N.......C....    4e 13 ba f9 b5 ab 93 96 43 87 b5 03 df
-009015-009077 ImageBlock id=424670176 xsize=254 ysize=60 path="ui\\skins\\default\\button_rectangular_frame.png" unknown=2966215680
-009078-009090 DataBlock
-  H.b.....B...-    48 8e 62 e2 8a c1 7f f1 42 a4 9d 13 2d
-009091-009159 ImageBlock id=3340838594 xsize=254 ysize=60 path="ui\\skins\\default\\button_rectangular_backplate_d.png" unknown=2966309888
-009160-009172 DataBlock
-  Hv......M.*.|    48 76 fb 93 a0 d0 e8 fc 4d aa 2a d0 7c
-009173-009230 ImageBlock id=3279554117 xsize=160 ysize=40 path="ui\\skins\\default\\duel_btn_gold_frame.png" unknown=0
-009231-009271 DataBlock
+008686-008748 ImageBlockGen2 id=2519254980 xsize=254 ysize=60 path="ui\\skins\\default\\button_rectangular_backplate"
+008749-008765 DataBlock
+  ..n2*..9.R.rI... 00 ec 6e 32 2a dd 00 39 90 52 a7 72 49 9c 18 03
+  H                48
+008766-008823 ImageBlockGen2 id=3073705008 xsize=500 ysize=500 path="ui\\skins\\default\\button_rectangular_glow"
+008824-008840 DataBlock
+  .4p2*5......D... 00 34 70 32 2a 35 2e b0 0e 0c 85 de 44 87 c7 08
+  .                87
+008841-008907 ImageBlockGen2 id=1417541583 xsize=100 ysize=292 path="ui\\skins\\default\\button_square_highlight_vertical"
+008908-008924 DataBlock
+  .<..N`....l.@.q. 00 3c 1b 0d 4e 60 b5 82 b9 14 6c d1 40 a1 71 b0
+                   20
+008925-008997 ImageBlockGen2 id=2856018273 xsize=100 ysize=292 path="ui\\skins\\default\\button_square_hover_highlight_vertical"
+008998-009014 DataBlock
+  ....N.......C... 00 84 1c 0d 4e 13 ba f9 b5 ab 93 96 43 87 b5 03
+  .                df
+009015-009073 ImageBlockGen2 id=424670176 xsize=254 ysize=60 path="ui\\skins\\default\\button_rectangular_frame"
+009074-009090 DataBlock
+  ....H.b.....B... 00 dc cc b0 48 8e 62 e2 8a c1 7f f1 42 a4 9d 13
+  -                2d
+009091-009155 ImageBlockGen2 id=3340838594 xsize=254 ysize=60 path="ui\\skins\\default\\button_rectangular_backplate_d"
+009156-009172 DataBlock
+  .L..Hv......M.*. 00 4c ce b0 48 76 fb 93 a0 d0 e8 fc 4d aa 2a d0
+  |                7c
+009173-009226 ImageBlockGen2 id=3279554117 xsize=160 ysize=40 path="ui\\skins\\default\\duel_btn_gold_frame"
+009227-009271 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-  ..........]...}. 00 05 00 00 00 ac b1 a7 08 04 5d 82 17 13 7d b2
-  M..eX.Q[.        4d 87 c4 65 58 16 51 5b c1
+  ..............]. 00 00 00 00 00 05 00 00 00 ac b1 a7 08 04 5d 82
+  ..}.M..eX.Q[.    17 13 7d b2 4d 87 c4 65 58 16 51 5b c1
 009272-009279 StringBlock "active"
 009280-009316 DataBlock
   R...2........... 52 01 00 00 32 00 00 00 00 00 00 00 02 00 00 00
   ................ 00 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00
   .....            00 00 00 00 00
 009317-009328 FontNameBlock "Iskra-Bold"
-009329-009344 DataBlock
-  ................ 12 00 00 00 01 00 00 00 00 00 00 00 ff ff ff ff
-009345-009373 StringBlock "subheader--sidepanel_header"
+009329-009332 LineHeightBlock 18
+009333-009336 FontLeadingBlock 1
+009337-009340 FontTrailingBlock 0
+009341-009344 FontBGRABlock bgra(255,255,255,255)
+009345-009373 FontCategoryBlock "subheader--sidepanel_header"
 009374-009393 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             01 00 00 00
-009394-009404 T0Block "normal_t0"
-009405-009420 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-009421-009431 T0Block "normal_t0"
-009432-009467 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+009394-009404 ShaderNameBlock "normal_t0"
+009405-009408 ShaderVariableBlock 0.0 (0)
+009409-009412 ShaderVariableBlock 0.0 (0)
+009413-009416 ShaderVariableBlock 0.0 (0)
+009417-009420 ShaderVariableBlock 0.0 (0)
+009421-009431 ShaderNameBlock "normal_t0"
+009432-009435 ShaderVariableBlock 0.0 (0)
+009436-009439 ShaderVariableBlock 0.0 (0)
+009440-009443 ShaderVariableBlock 0.0 (0)
+009444-009447 ShaderVariableBlock 0.0 (0)
+009448-009467 DataBlock
   ....L..*.......K 03 00 00 00 4c 8b 1b 2a 1a f6 aa ed e9 10 c8 4b
   ..*)             ac a6 2a 29
-009468-009491 ImageUseBlock id=2519254980 xofs=0 yofs=0 xsize=338 ysize=50 brga=4294967295
+009468-009491 ImageUseBlock id=2519254980 xofs=0 yofs=0 xsize=338 ysize=50 bgra=bgra(255,255,255,255)
 009492-009509 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ..               00 01
-009510-009533 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=2147483648
+009510-009533 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(0,0,0,128)
 009534-009585 DataBlock
   ?............... 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ..... A.. A.. A. 00 00 00 00 00 20 41 00 00 20 41 00 00 20 41 00
   . A..n2*..9.R.rI 00 20 41 00 ec 6e 32 2a dd 00 39 90 52 a7 72 49
   ...H             9c 18 03 48
-009586-009609 ImageUseBlock id=3073705008 xofs=0 yofs=0 xsize=338 ysize=50 brga=4294967295
+009586-009609 ImageUseBlock id=3073705008 xofs=0 yofs=0 xsize=338 ysize=50 bgra=bgra(255,255,255,255)
 009610-009611 DataBlock
   ..               00 00
-009612-009635 ImageUseBlock id=1 xofs=0 yofs=0 xsize=16777216 ysize=1 brga=0
+009612-009635 ImageUseBlock id=1 xofs=0 yofs=0 xsize=16777216 ysize=1 bgra=bgra(0,0,0,0)
 009636-009652 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80
   ?                3f
-009653-009664 T0Block "overlay_t0"
-009665-009713 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+009653-009664 ShaderNameBlock "overlay_t0"
+009665-009668 ShaderVariableBlock 0.0 (0)
+009669-009672 ShaderVariableBlock 0.0 (0)
+009673-009676 ShaderVariableBlock 0.0 (0)
+009677-009680 ShaderVariableBlock 0.0 (0)
+009681-009713 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   .L..Hv......M.*. 00 4c ce b0 48 76 fb 93 a0 d0 e8 fc 4d aa 2a d0
   |                7c
-009714-009737 ImageUseBlock id=3279554117 xofs=0 yofs=0 xsize=338 ysize=50 brga=4294967295
+009714-009737 ImageUseBlock id=3279554117 xofs=0 yofs=0 xsize=338 ysize=50 bgra=bgra(255,255,255,255)
 009738-009739 DataBlock
   ..               00 00
-009740-009763 ImageUseBlock id=1 xofs=0 yofs=0 xsize=16777216 ysize=1 brga=0
+009740-009763 ImageUseBlock id=1 xofs=0 yofs=0 xsize=16777216 ysize=1 bgra=bgra(0,0,0,0)
 009764-009823 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80
   ?............... 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ..... A.. A.. A. 00 00 00 00 00 20 41 00 00 20 41 00 00 20 41 00
   . A.........     00 20 41 00 14 00 00 00 18 00 00 00
-009824-009847 ImageUseBlock id=1 xofs=0 yofs=1196617396 xsize=631005310 ysize=1239277802 brga=106585748
+009824-009847 ImageUseBlock id=1 xofs=0 yofs=1196617396 xsize=631005310 ysize=1239277802 bgra=bgra(148,94,90,6)
 009848-009885 DataBlock
   .s)q....@....... 89 73 29 71 c8 00 00 00 40 00 00 00 00 00 00 00
   .....F.b.....N.Y 00 00 d4 91 99 46 c2 62 f4 03 9c 82 be 4e 9c 59
@@ -845,28 +933,33 @@
 009963-009982 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             01 00 00 00
-009983-009993 T0Block "normal_t0"
-009994-010009 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-010010-010020 T0Block "normal_t0"
-010021-010056 DataBlock
-  ...>............ 9a 99 99 3e 00 00 00 00 00 00 00 00 00 00 00 00
+009983-009993 ShaderNameBlock "normal_t0"
+009994-009997 ShaderVariableBlock 0.0 (0)
+009998-010001 ShaderVariableBlock 0.0 (0)
+010002-010005 ShaderVariableBlock 0.0 (0)
+010006-010009 ShaderVariableBlock 0.0 (0)
+010010-010020 ShaderNameBlock "normal_t0"
+010021-010024 ShaderVariableBlock 0.30000001192092896 (1050253722)
+010025-010028 ShaderVariableBlock 0.0 (0)
+010029-010032 ShaderVariableBlock 0.0 (0)
+010033-010036 ShaderVariableBlock 0.0 (0)
+010037-010056 DataBlock
   ....L..*.......K 02 00 00 00 4c 8b 1b 2a 1a f6 aa ed e9 10 c8 4b
   ..*)             ac a6 2a 29
-010057-010080 ImageUseBlock id=2519254980 xofs=0 yofs=0 xsize=338 ysize=50 brga=4294967295
+010057-010080 ImageUseBlock id=2519254980 xofs=0 yofs=0 xsize=338 ysize=50 bgra=bgra(255,255,255,255)
 010081-010098 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ..               00 01
-010099-010122 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=2147483648
+010099-010122 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(0,0,0,128)
 010123-010174 DataBlock
   ?............... 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ..... A.. A.. A. 00 00 00 00 00 20 41 00 00 20 41 00 00 20 41 00
   . A.L..Hv......M 00 20 41 00 4c ce b0 48 76 fb 93 a0 d0 e8 fc 4d
   .*.|             aa 2a d0 7c
-010175-010198 ImageUseBlock id=3279554117 xofs=0 yofs=0 xsize=338 ysize=50 brga=4294967295
+010175-010198 ImageUseBlock id=3279554117 xofs=0 yofs=0 xsize=338 ysize=50 bgra=bgra(255,255,255,255)
 010199-010200 DataBlock
   ..               00 00
-010201-010224 ImageUseBlock id=1 xofs=0 yofs=0 xsize=16777216 ysize=1 brga=0
+010201-010224 ImageUseBlock id=1 xofs=0 yofs=0 xsize=16777216 ysize=1 bgra=bgra(0,0,0,0)
 010225-010324 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80
   ?............... 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -875,7 +968,7 @@
   ......RG~`.%...I 03 00 00 00 b4 ee 52 47 7e 60 9c 25 ea e0 dd 49
   .^Z..s)q........ 94 5e 5a 06 89 73 29 71 00 00 00 00 00 00 00 00
   ....             00 00 00 00
-010325-010348 ImageUseBlock id=1 xofs=706414628 yofs=2528546843 xsize=1260602602 ysize=4269772162 brga=2295258149
+010325-010348 ImageUseBlock id=1 xofs=706414628 yofs=2528546843 xsize=1260602602 ysize=4269772162 bgra=bgra(37,220,206,136)
 010349-010382 DataBlock
   ..............$. 00 00 00 00 00 00 00 00 00 00 00 00 00 00 24 08
   .*.....D#K....%. 1b 2a 1b 90 b6 96 ea 44 23 4b 82 8d 7f fe 25 dc
@@ -886,47 +979,57 @@
   ................ 00 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00
   .....            00 00 00 00 00
 010430-010441 FontNameBlock "Iskra-Bold"
-010442-010457 DataBlock
-  ................ 12 00 00 00 01 00 00 00 00 00 00 00 ff ff ff ff
-010458-010486 StringBlock "subheader--sidepanel_header"
+010442-010445 LineHeightBlock 18
+010446-010449 FontLeadingBlock 1
+010450-010453 FontTrailingBlock 0
+010454-010457 FontBGRABlock bgra(255,255,255,255)
+010458-010486 FontCategoryBlock "subheader--sidepanel_header"
 010487-010506 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             01 00 00 00
-010507-010517 T0Block "normal_t0"
-010518-010533 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-010534-010544 T0Block "normal_t0"
-010545-010580 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+010507-010517 ShaderNameBlock "normal_t0"
+010518-010521 ShaderVariableBlock 0.0 (0)
+010522-010525 ShaderVariableBlock 0.0 (0)
+010526-010529 ShaderVariableBlock 0.0 (0)
+010530-010533 ShaderVariableBlock 0.0 (0)
+010534-010544 ShaderNameBlock "normal_t0"
+010545-010548 ShaderVariableBlock 0.0 (0)
+010549-010552 ShaderVariableBlock 0.0 (0)
+010553-010556 ShaderVariableBlock 0.0 (0)
+010557-010560 ShaderVariableBlock 0.0 (0)
+010561-010580 DataBlock
   ....L..*.......K 03 00 00 00 4c 8b 1b 2a 1a f6 aa ed e9 10 c8 4b
   ..*)             ac a6 2a 29
-010581-010604 ImageUseBlock id=2519254980 xofs=0 yofs=0 xsize=338 ysize=50 brga=4294967295
+010581-010604 ImageUseBlock id=2519254980 xofs=0 yofs=0 xsize=338 ysize=50 bgra=bgra(255,255,255,255)
 010605-010622 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ..               00 01
-010623-010646 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=2147483648
+010623-010646 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(0,0,0,128)
 010647-010698 DataBlock
   ?............... 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ..... A.. A.. A. 00 00 00 00 00 20 41 00 00 20 41 00 00 20 41 00
   . A..n2*..9.R.rI 00 20 41 00 ec 6e 32 2a dd 00 39 90 52 a7 72 49
   ...H             9c 18 03 48
-010699-010722 ImageUseBlock id=3073705008 xofs=0 yofs=0 xsize=338 ysize=50 brga=4294967295
+010699-010722 ImageUseBlock id=3073705008 xofs=0 yofs=0 xsize=338 ysize=50 bgra=bgra(255,255,255,255)
 010723-010724 DataBlock
   ..               00 00
-010725-010748 ImageUseBlock id=1 xofs=0 yofs=0 xsize=16777216 ysize=1 brga=0
+010725-010748 ImageUseBlock id=1 xofs=0 yofs=0 xsize=16777216 ysize=1 bgra=bgra(0,0,0,0)
 010749-010765 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80
   ?                3f
-010766-010777 T0Block "overlay_t0"
-010778-010826 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+010766-010777 ShaderNameBlock "overlay_t0"
+010778-010781 ShaderVariableBlock 0.0 (0)
+010782-010785 ShaderVariableBlock 0.0 (0)
+010786-010789 ShaderVariableBlock 0.0 (0)
+010790-010793 ShaderVariableBlock 0.0 (0)
+010794-010826 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   .L..Hv......M.*. 00 4c ce b0 48 76 fb 93 a0 d0 e8 fc 4d aa 2a d0
   |                7c
-010827-010850 ImageUseBlock id=3279554117 xofs=0 yofs=0 xsize=338 ysize=50 brga=4294967295
+010827-010850 ImageUseBlock id=3279554117 xofs=0 yofs=0 xsize=338 ysize=50 bgra=bgra(255,255,255,255)
 010851-010852 DataBlock
   ..               00 00
-010853-010876 ImageUseBlock id=1 xofs=0 yofs=0 xsize=16777216 ysize=1 brga=0
+010853-010876 ImageUseBlock id=1 xofs=0 yofs=0 xsize=16777216 ysize=1 bgra=bgra(0,0,0,0)
 010877-011034 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80
   ?............... 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -944,89 +1047,105 @@
   ................ 00 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00
   .....            00 00 00 00 00
 011079-011090 FontNameBlock "Iskra-Bold"
-011091-011106 DataBlock
-  ................ 12 00 00 00 01 00 00 00 00 00 00 00 ff ff ff ff
-011107-011135 StringBlock "subheader--sidepanel_header"
+011091-011094 LineHeightBlock 18
+011095-011098 FontLeadingBlock 1
+011099-011102 FontTrailingBlock 0
+011103-011106 FontBGRABlock bgra(255,255,255,255)
+011107-011135 FontCategoryBlock "subheader--sidepanel_header"
 011136-011155 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             01 00 00 00
-011156-011166 T0Block "normal_t0"
-011167-011182 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-011183-011193 T0Block "normal_t0"
-011194-011229 DataBlock
-  ...>............ 9a 99 99 3e 00 00 00 00 00 00 00 00 00 00 00 00
+011156-011166 ShaderNameBlock "normal_t0"
+011167-011170 ShaderVariableBlock 0.0 (0)
+011171-011174 ShaderVariableBlock 0.0 (0)
+011175-011178 ShaderVariableBlock 0.0 (0)
+011179-011182 ShaderVariableBlock 0.0 (0)
+011183-011193 ShaderNameBlock "normal_t0"
+011194-011197 ShaderVariableBlock 0.30000001192092896 (1050253722)
+011198-011201 ShaderVariableBlock 0.0 (0)
+011202-011205 ShaderVariableBlock 0.0 (0)
+011206-011209 ShaderVariableBlock 0.0 (0)
+011210-011229 DataBlock
   ....L..*.......K 06 00 00 00 4c 8b 1b 2a 1a f6 aa ed e9 10 c8 4b
   ..*)             ac a6 2a 29
-011230-011253 ImageUseBlock id=2519254980 xofs=0 yofs=0 xsize=338 ysize=50 brga=4294967295
+011230-011253 ImageUseBlock id=2519254980 xofs=0 yofs=0 xsize=338 ysize=50 bgra=bgra(255,255,255,255)
 011254-011271 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ..               00 01
-011272-011295 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=2147483648
+011272-011295 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(0,0,0,128)
 011296-011347 DataBlock
   ?............... 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ..... A.. A.. A. 00 00 00 00 00 20 41 00 00 20 41 00 00 20 41 00
   . A.<..N`....l.@ 00 20 41 00 3c 1b 0d 4e 60 b5 82 b9 14 6c d1 40
   .q.              a1 71 b0 20
-011348-011371 ImageUseBlock id=2856018273 xofs=0 yofs=0 xsize=298 ysize=50 brga=1694498815
+011348-011371 ImageUseBlock id=2856018273 xofs=0 yofs=0 xsize=298 ysize=50 bgra=bgra(255,255,255,100)
 011372-011389 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ..               00 01
-011390-011413 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=2147483648
+011390-011413 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(0,0,0,128)
 011414-011414 DataBlock
   ?                3f
-011415-011425 T0Block "normal_t0"
-011426-011474 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+011415-011425 ShaderNameBlock "normal_t0"
+011426-011429 ShaderVariableBlock 0.0 (0)
+011430-011433 ShaderVariableBlock 0.0 (0)
+011434-011437 ShaderVariableBlock 0.0 (0)
+011438-011441 ShaderVariableBlock 0.0 (0)
+011442-011474 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ..n2*..9.R.rI... 00 ec 6e 32 2a dd 00 39 90 52 a7 72 49 9c 18 03
   H                48
-011475-011498 ImageUseBlock id=3073705008 xofs=0 yofs=0 xsize=338 ysize=50 brga=4294967295
+011475-011498 ImageUseBlock id=3073705008 xofs=0 yofs=0 xsize=338 ysize=50 bgra=bgra(255,255,255,255)
 011499-011500 DataBlock
   ..               00 00
-011501-011524 ImageUseBlock id=1 xofs=0 yofs=0 xsize=16777216 ysize=1 brga=0
+011501-011524 ImageUseBlock id=1 xofs=0 yofs=0 xsize=16777216 ysize=1 bgra=bgra(0,0,0,0)
 011525-011541 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80
   ?                3f
-011542-011553 T0Block "overlay_t0"
-011554-011602 DataBlock
-  ...@............ 00 00 00 40 00 00 00 00 00 00 00 00 00 00 00 00
+011542-011553 ShaderNameBlock "overlay_t0"
+011554-011557 ShaderVariableBlock 2.0 (1073741824)
+011558-011561 ShaderVariableBlock 0.0 (0)
+011562-011565 ShaderVariableBlock 0.0 (0)
+011566-011569 ShaderVariableBlock 0.0 (0)
+011570-011602 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   .4p2*5......D... 00 34 70 32 2a 35 2e b0 0e 0c 85 de 44 87 c7 08
   .                87
-011603-011626 ImageUseBlock id=1417541583 xofs=0 yofs=0 xsize=338 ysize=50 brga=4294967295
+011603-011626 ImageUseBlock id=1417541583 xofs=0 yofs=0 xsize=338 ysize=50 bgra=bgra(255,255,255,255)
 011627-011644 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ..               00 01
-011645-011668 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=2147483648
+011645-011668 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(0,0,0,128)
 011669-011720 DataBlock
   ?............... 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   .......N.......C 00 00 00 00 84 1c 0d 4e 13 ba f9 b5 ab 93 96 43
   ....             87 b5 03 df
-011721-011744 ImageUseBlock id=424670176 xofs=0 yofs=0 xsize=338 ysize=50 brga=4294967295
+011721-011744 ImageUseBlock id=424670176 xofs=0 yofs=0 xsize=338 ysize=50 bgra=bgra(255,255,255,255)
 011745-011746 DataBlock
   ..               00 00
-011747-011770 ImageUseBlock id=1 xofs=0 yofs=0 xsize=16777216 ysize=1 brga=0
+011747-011770 ImageUseBlock id=1 xofs=0 yofs=0 xsize=16777216 ysize=1 bgra=bgra(0,0,0,0)
 011771-011787 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80
   ?                3f
-011788-011800 T0Block "brighten_t0"
-011801-011849 DataBlock
-  ...>............ cd cc cc 3e 00 00 00 00 00 00 00 00 00 00 00 00
+011788-011800 ShaderNameBlock "brighten_t0"
+011801-011804 ShaderVariableBlock 0.4000000059604645 (1053609165)
+011805-011808 ShaderVariableBlock 0.0 (0)
+011809-011812 ShaderVariableBlock 0.0 (0)
+011813-011816 ShaderVariableBlock 0.0 (0)
+011817-011849 DataBlock
   .. A.. A.. A.. A 00 00 20 41 00 00 20 41 00 00 20 41 00 00 20 41
   .L..Hv......M.*. 00 4c ce b0 48 76 fb 93 a0 d0 e8 fc 4d aa 2a d0
   |                7c
-011850-011873 ImageUseBlock id=3279554117 xofs=0 yofs=0 xsize=338 ysize=50 brga=4294967295
+011850-011873 ImageUseBlock id=3279554117 xofs=0 yofs=0 xsize=338 ysize=50 bgra=bgra(255,255,255,255)
 011874-011875 DataBlock
   ..               00 00
-011876-011899 ImageUseBlock id=1 xofs=0 yofs=0 xsize=16777216 ysize=1 brga=0
+011876-011899 ImageUseBlock id=1 xofs=0 yofs=0 xsize=16777216 ysize=1 bgra=bgra(0,0,0,0)
 011900-011963 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80
   ?............... 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ..... A.. A.. A. 00 00 00 00 00 20 41 00 00 20 41 00 00 20 41 00
   . A.....~....... 00 20 41 00 89 00 00 00 7e 00 00 00 02 00 00 00
-011964-011987 ImageUseBlock id=1 xofs=145207724 yofs=394419460 xsize=1303543059 ysize=1483064455 brga=3243987222
+011964-011987 ImageUseBlock id=1 xofs=145207724 yofs=394419460 xsize=1303543059 ysize=1483064455 bgra=bgra(22,81,91,193)
 011988-012057 DataBlock
   ....@........... c8 00 00 00 40 00 00 00 00 00 00 00 02 00 00 00
   ...F.b.....N.YZ. d4 91 99 46 c2 62 f4 03 9c 82 be 4e 9c 59 5a 89
@@ -1039,40 +1158,50 @@
   ................ 00 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00
   .....            00 00 00 00 00
 012105-012116 FontNameBlock "Iskra-Bold"
-012117-012132 DataBlock
-  ................ 12 00 00 00 01 00 00 00 00 00 00 00 ff ff ff ff
-012133-012161 StringBlock "subheader--sidepanel_header"
+012117-012120 LineHeightBlock 18
+012121-012124 FontLeadingBlock 1
+012125-012128 FontTrailingBlock 0
+012129-012132 FontBGRABlock bgra(255,255,255,255)
+012133-012161 FontCategoryBlock "subheader--sidepanel_header"
 012162-012181 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             01 00 00 00
-012182-012192 T0Block "normal_t0"
-012193-012208 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-012209-012219 T0Block "normal_t0"
-012220-012255 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+012182-012192 ShaderNameBlock "normal_t0"
+012193-012196 ShaderVariableBlock 0.0 (0)
+012197-012200 ShaderVariableBlock 0.0 (0)
+012201-012204 ShaderVariableBlock 0.0 (0)
+012205-012208 ShaderVariableBlock 0.0 (0)
+012209-012219 ShaderNameBlock "normal_t0"
+012220-012223 ShaderVariableBlock 0.0 (0)
+012224-012227 ShaderVariableBlock 0.0 (0)
+012228-012231 ShaderVariableBlock 0.0 (0)
+012232-012235 ShaderVariableBlock 0.0 (0)
+012236-012255 DataBlock
   .......H.b.....B 02 00 00 00 dc cc b0 48 8e 62 e2 8a c1 7f f1 42
   ...-             a4 9d 13 2d
-012256-012279 ImageUseBlock id=3340838594 xofs=0 yofs=0 xsize=338 ysize=50 brga=4294967295
+012256-012279 ImageUseBlock id=3340838594 xofs=0 yofs=0 xsize=338 ysize=50 bgra=bgra(255,255,255,255)
 012280-012297 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ..               00 01
-012298-012321 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=2147483648
+012298-012321 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(0,0,0,128)
 012322-012373 DataBlock
   ?............... 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ..... A.. A.. A. 00 00 00 00 00 20 41 00 00 20 41 00 00 20 41 00
   . A..n2*..9.R.rI 00 20 41 00 ec 6e 32 2a dd 00 39 90 52 a7 72 49
   ...H             9c 18 03 48
-012374-012397 ImageUseBlock id=3073705008 xofs=0 yofs=0 xsize=338 ysize=50 brga=4294967295
+012374-012397 ImageUseBlock id=3073705008 xofs=0 yofs=0 xsize=338 ysize=50 bgra=bgra(255,255,255,255)
 012398-012399 DataBlock
   ..               00 00
-012400-012423 ImageUseBlock id=1 xofs=0 yofs=0 xsize=16777216 ysize=1 brga=0
+012400-012423 ImageUseBlock id=1 xofs=0 yofs=0 xsize=16777216 ysize=1 bgra=bgra(0,0,0,0)
 012424-012440 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80
   ?                3f
-012441-012452 T0Block "overlay_t0"
-012453-012519 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+012441-012452 ShaderNameBlock "overlay_t0"
+012453-012456 ShaderVariableBlock 0.0 (0)
+012457-012460 ShaderVariableBlock 0.0 (0)
+012461-012464 ShaderVariableBlock 0.0 (0)
+012465-012468 ShaderVariableBlock 0.0 (0)
+012469-012519 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 04
   ]...}.M..eX.Q[.. 5d 82 17 13 7d b2 4d 87 c4 65 58 16 51 5b c1 02
@@ -1087,7 +1216,7 @@
 012601-012612 StringBlock "button_txt"
 012613-012626 DataBlock
   ..............   00 00 00 00 00 00 00 00 00 00 00 00 00 00
-012627-012650 ImageUseBlock id=1 xofs=65536 yofs=16777216 xsize=0 ysize=5 brga=0
+012627-012650 ImageUseBlock id=1 xofs=65536 yofs=16777216 xsize=0 ysize=5 bgra=bgra(0,0,0,0)
 012651-012707 DataBlock
   ........J....... 00 00 00 00 00 d4 17 19 4a 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -1104,18 +1233,25 @@
 012847-012852 DataBlock
   ......           00 00 00 00 00 00
 012853-012864 FontNameBlock "Iskra-Bold"
-012865-012880 DataBlock
-  ................ 0f 00 00 00 02 00 00 00 00 00 00 00 ff ff ff ff
-012881-012893 StringBlock "item_header"
+012865-012868 LineHeightBlock 15
+012869-012872 FontLeadingBlock 2
+012873-012876 FontTrailingBlock 0
+012877-012880 FontBGRABlock bgra(255,255,255,255)
+012881-012893 FontCategoryBlock "item_header"
 012894-012913 DataBlock
   ................ 05 00 00 00 05 00 00 00 00 00 00 00 00 00 00 00
   ....             00 00 00 00
-012914-012924 T0Block "normal_t0"
-012925-012940 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-012941-012951 T0Block "normal_t0"
-012952-013005 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+012914-012924 ShaderNameBlock "normal_t0"
+012925-012928 ShaderVariableBlock 0.0 (0)
+012929-012932 ShaderVariableBlock 0.0 (0)
+012933-012936 ShaderVariableBlock 0.0 (0)
+012937-012940 ShaderVariableBlock 0.0 (0)
+012941-012951 ShaderNameBlock "normal_t0"
+012952-012955 ShaderVariableBlock 0.0 (0)
+012956-012959 ShaderVariableBlock 0.0 (0)
+012960-012963 ShaderVariableBlock 0.0 (0)
+012964-012967 ShaderVariableBlock 0.0 (0)
+012968-013005 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....5*6p..{;.L.. 00 00 8c 81 35 2a 36 70 f2 8a 7b 3b e7 4c 9e d5
   pfv)..           70 66 76 29 d1 e8
@@ -1130,18 +1266,25 @@
 013143-013148 DataBlock
   ......           00 00 00 00 00 00
 013149-013160 FontNameBlock "Iskra-Bold"
-013161-013176 DataBlock
-  ................ 0f 00 00 00 02 00 00 00 00 00 00 00 ff ff ff ff
-013177-013189 StringBlock "item_header"
+013161-013164 LineHeightBlock 15
+013165-013168 FontLeadingBlock 2
+013169-013172 FontTrailingBlock 0
+013173-013176 FontBGRABlock bgra(255,255,255,255)
+013177-013189 FontCategoryBlock "item_header"
 013190-013209 DataBlock
   ................ 05 00 00 00 05 00 00 00 00 00 00 00 00 00 00 00
   ....             00 00 00 00
-013210-013220 T0Block "normal_t0"
-013221-013236 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-013237-013254 T0Block "set_greyscale_t0"
-013255-013308 DataBlock
-  .......?........ 00 00 00 00 00 00 00 3f 00 00 00 00 00 00 00 00
+013210-013220 ShaderNameBlock "normal_t0"
+013221-013224 ShaderVariableBlock 0.0 (0)
+013225-013228 ShaderVariableBlock 0.0 (0)
+013229-013232 ShaderVariableBlock 0.0 (0)
+013233-013236 ShaderVariableBlock 0.0 (0)
+013237-013254 ShaderNameBlock "set_greyscale_t0"
+013255-013258 ShaderVariableBlock 0.0 (0)
+013259-013262 ShaderVariableBlock 0.5 (1056964608)
+013263-013266 ShaderVariableBlock 0.0 (0)
+013267-013270 ShaderVariableBlock 0.0 (0)
+013271-013308 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ......N!$)..4J.. 00 00 c4 0b bd 08 4e 21 24 29 1c a7 34 4a b9 89
   z...6<           7a d3 d2 bb 36 3c
@@ -1156,18 +1299,25 @@
 013450-013455 DataBlock
   ......           00 00 00 00 00 00
 013456-013467 FontNameBlock "Iskra-Bold"
-013468-013483 DataBlock
-  ............YY[. 0f 00 00 00 02 00 00 00 00 00 00 00 59 59 5b ff
-013484-013504 StringBlock "button_text_disable"
+013468-013471 LineHeightBlock 15
+013472-013475 FontLeadingBlock 2
+013476-013479 FontTrailingBlock 0
+013480-013483 FontBGRABlock bgra(89,89,91,255)
+013484-013504 FontCategoryBlock "button_text_disable"
 013505-013524 DataBlock
   ................ 05 00 00 00 05 00 00 00 00 00 00 00 00 00 00 00
   ....             00 00 00 00
-013525-013535 T0Block "normal_t0"
-013536-013551 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-013552-013562 T0Block "normal_t0"
-013563-013616 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+013525-013535 ShaderNameBlock "normal_t0"
+013536-013539 ShaderVariableBlock 0.0 (0)
+013540-013543 ShaderVariableBlock 0.0 (0)
+013544-013547 ShaderVariableBlock 0.0 (0)
+013548-013551 ShaderVariableBlock 0.0 (0)
+013552-013562 ShaderNameBlock "normal_t0"
+013563-013566 ShaderVariableBlock 0.0 (0)
+013567-013570 ShaderVariableBlock 0.0 (0)
+013571-013574 ShaderVariableBlock 0.0 (0)
+013575-013578 ShaderVariableBlock 0.0 (0)
+013579-013616 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ...uSO...L..7U.. 00 00 ab 75 53 4f b4 e2 a5 4c 87 02 37 55 cb bb
   C%....           43 25 05 00 00 00
@@ -1209,15 +1359,15 @@
 014026-014044 DataBlock
   ................ c7 ff ff ff 09 00 00 00 00 00 00 00 00 00 00 00
   ...              00 00 00
-014045-014068 ImageUseBlock id=1 xofs=3328 yofs=4294966784 xsize=255 ysize=99876864 brga=85665
+014045-014068 ImageUseBlock id=1 xofs=3328 yofs=4294966784 xsize=255 ysize=99876864 bgra=bgra(161,78,1,0)
 014069-014086 DataBlock
   ..$..J.7f.K..A.. 00 00 24 1a 19 4a b7 37 66 d2 4b fd a8 41 92 a8
   -4               2d 34
-014087-014134 ImageBlock id=935610017 xsize=19 ysize=27 path="ui\\skins\\default\\icon_turn.png" unknown=0
-014135-014171 DataBlock
+014087-014130 ImageBlockGen2 id=935610017 xsize=19 ysize=27 path="ui\\skins\\default\\icon_turn"
+014131-014171 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-  ........N...\W.. 00 01 00 00 00 f4 05 a1 4e ed 1b aa 5c 57 e6 90
-  N.X..            4e b7 58 d8 93
+  ............N... 00 00 00 00 00 01 00 00 00 f4 05 a1 4e ed 1b aa
+  \W..N.X..        5c 57 e6 90 4e b7 58 d8 93
 014172-014175 StateIDBlock 3993824080
 014176-014185 NewStateBlock "NewState"
 014186-014189 XSizeBlock 55
@@ -1235,18 +1385,22 @@
 014341-014360 DataBlock
   ................ 14 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             00 00 00 00
-014361-014371 T0Block "normal_t0"
-014372-014387 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-014388-014398 T0Block "normal_t0"
-014399-014414 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-014415-014438 ImageUseBlock id=1 xofs=1243159076 yofs=3529914295 xsize=1101593931 ysize=875407506 brga=935610017
+014361-014371 ShaderNameBlock "normal_t0"
+014372-014375 ShaderVariableBlock 0.0 (0)
+014376-014379 ShaderVariableBlock 0.0 (0)
+014380-014383 ShaderVariableBlock 0.0 (0)
+014384-014387 ShaderVariableBlock 0.0 (0)
+014388-014398 ShaderNameBlock "normal_t0"
+014399-014402 ShaderVariableBlock 0.0 (0)
+014403-014406 ShaderVariableBlock 0.0 (0)
+014407-014410 ShaderVariableBlock 0.0 (0)
+014411-014414 ShaderVariableBlock 0.0 (0)
+014415-014438 ImageUseBlock id=1 xofs=1243159076 yofs=3529914295 xsize=1101593931 ysize=875407506 bgra=bgra(161,70,196,55)
 014439-014476 DataBlock
   ................ 05 00 00 00 04 00 00 00 0f 00 00 00 18 00 00 00
   ................ ff ff ff ff 00 00 00 00 00 04 00 00 00 05 00 00
   ......           00 00 00 00 00 01
-014477-014500 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=2147483648
+014477-014500 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(0,0,0,128)
 014501-014570 DataBlock
   ?............... 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -1283,15 +1437,15 @@
 014952-014970 DataBlock
   `............... 60 01 00 00 09 00 00 00 00 00 00 00 00 00 00 00
   ...              00 00 00
-014971-014994 ImageUseBlock id=1 xofs=3840 yofs=3584 xsize=0 ysize=670302208 brga=83762
+014971-014994 ImageUseBlock id=1 xofs=3840 yofs=3584 xsize=0 ysize=670302208 bgra=bgra(50,71,1,0)
 014995-015012 DataBlock
   .....*...6 .p@.v 00 00 dc 89 1b 2a 0b 07 06 36 20 e2 70 40 b8 76
   ..               96 0c
-015013-015060 ImageBlock id=3140233605 xsize=19 ysize=27 path="ui\\skins\\default\\icon_turn.png" unknown=0
-015061-015097 DataBlock
+015013-015056 ImageBlockGen2 id=3140233605 xsize=19 ysize=27 path="ui\\skins\\default\\icon_turn"
+015057-015097 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-  ......'2G.i....P 00 01 00 00 00 f4 27 32 47 12 69 ca 09 17 a4 50
-  @....            40 a5 b3 c3 16
+  ..........'2G.i. 00 00 00 00 00 01 00 00 00 f4 27 32 47 12 69 ca
+  ...P@....        09 17 a4 50 40 a5 b3 c3 16
 015098-015101 StateIDBlock 3232087133
 015102-015111 NewStateBlock "NewState"
 015112-015115 XSizeBlock 55
@@ -1309,18 +1463,22 @@
 015267-015286 DataBlock
   ................ 14 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             00 00 00 00
-015287-015297 T0Block "normal_t0"
-015298-015313 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-015314-015324 T0Block "normal_t0"
-015325-015340 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-015341-015364 ImageUseBlock id=1 xofs=706447836 yofs=906364683 xsize=1081139744 ysize=211187384 brga=3140233605
+015287-015297 ShaderNameBlock "normal_t0"
+015298-015301 ShaderVariableBlock 0.0 (0)
+015302-015305 ShaderVariableBlock 0.0 (0)
+015306-015309 ShaderVariableBlock 0.0 (0)
+015310-015313 ShaderVariableBlock 0.0 (0)
+015314-015324 ShaderNameBlock "normal_t0"
+015325-015328 ShaderVariableBlock 0.0 (0)
+015329-015332 ShaderVariableBlock 0.0 (0)
+015333-015336 ShaderVariableBlock 0.0 (0)
+015337-015340 ShaderVariableBlock 0.0 (0)
+015341-015364 ImageUseBlock id=1 xofs=706447836 yofs=906364683 xsize=1081139744 ysize=211187384 bgra=bgra(133,41,44,187)
 015365-015402 DataBlock
   ................ 05 00 00 00 04 00 00 00 0f 00 00 00 18 00 00 00
   ................ ff ff ff ff 00 00 00 00 00 04 00 00 00 05 00 00
   ......           00 00 00 00 00 01
-015403-015426 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=2147483648
+015403-015426 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(0,0,0,128)
 015427-015496 DataBlock
   ?............... 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -1340,7 +1498,7 @@
 015607-015623 StringBlock "component_ready"
 015624-015637 DataBlock
   ......[...9...   00 00 00 00 00 00 5b 00 00 00 39 00 00 00
-015638-015661 ImageUseBlock id=1 xofs=0 yofs=16777216 xsize=0 ysize=17 brga=0
+015638-015661 ImageUseBlock id=1 xofs=0 yofs=16777216 xsize=0 ysize=17 bgra=bgra(0,0,0,0)
 015662-015714 DataBlock
   .....\.0*....... 07 00 00 00 00 5c cf 30 2a 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -1358,18 +1516,25 @@
 015888-015893 DataBlock
   ......           00 00 00 00 00 00
 015894-015911 FontNameBlock "FiraSans-Regular"
-015912-015927 DataBlock
-  ................ 0d 00 00 00 05 00 00 00 00 00 00 00 00 00 00 ff
-015928-015942 StringBlock "text_on_white"
+015912-015915 LineHeightBlock 13
+015916-015919 FontLeadingBlock 5
+015920-015923 FontTrailingBlock 0
+015924-015927 FontBGRABlock bgra(0,0,0,255)
+015928-015942 FontCategoryBlock "text_on_white"
 015943-015962 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             00 00 00 00
-015963-015973 T0Block "normal_t0"
-015974-015989 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-015990-016000 T0Block "normal_t0"
-016001-016089 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+015963-015973 ShaderNameBlock "normal_t0"
+015974-015977 ShaderVariableBlock 0.0 (0)
+015978-015981 ShaderVariableBlock 0.0 (0)
+015982-015985 ShaderVariableBlock 0.0 (0)
+015986-015989 ShaderVariableBlock 0.0 (0)
+015990-016000 ShaderNameBlock "normal_t0"
+016001-016004 ShaderVariableBlock 0.0 (0)
+016005-016008 ShaderVariableBlock 0.0 (0)
+016009-016012 ShaderVariableBlock 0.0 (0)
+016013-016016 ShaderVariableBlock 0.0 (0)
+016017-016089 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   .....l...J.!e..T 00 00 83 87 cd 6c b9 ad 86 4a b1 21 65 01 09 54
   .v.............. dd 76 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -1378,7 +1543,7 @@
 016090-016122 StringBlock "UI_BAT_HUD_Start_Battle_Confirm"
 016123-016127 DataBlock
   .....            00 00 00 00 00
-016128-016151 ImageUseBlock id=1 xofs=16256 yofs=16128 xsize=0 ysize=0 brga=0
+016128-016151 ImageUseBlock id=1 xofs=16256 yofs=16128 xsize=0 ysize=0 bgra=bgra(0,0,0,0)
 016152-016185 DataBlock
   ...?...?........ 00 00 80 3f 00 00 00 3f 00 00 00 00 00 00 c4 be
   .F...'.q.L.rD... aa 46 80 be a3 27 c9 71 9f 4c 86 72 44 09 bc bc
@@ -1386,7 +1551,7 @@
 016186-016197 StringBlock "characters"
 016198-016212 DataBlock
   ...............  00 00 00 00 00 00 00 00 00 00 1c 02 00 00 01
-016213-016236 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=134217728 ysize=0 brga=0
+016213-016236 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=134217728 ysize=0 bgra=bgra(0,0,0,0)
 016237-016288 DataBlock
   ....D.0*........ 00 00 00 00 44 ee 30 2a 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -1400,18 +1565,25 @@
   ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
   .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 016340-016357 FontNameBlock "FiraSans-Regular"
-016358-016373 DataBlock
-  ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
-016374-016396 StringBlock "Default Font Category"
+016358-016361 LineHeightBlock 10
+016362-016365 FontLeadingBlock 2
+016366-016369 FontTrailingBlock 0
+016370-016373 FontBGRABlock bgra(221,218,250,255)
+016374-016396 FontCategoryBlock "Default Font Category"
 016397-016416 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             00 00 00 00
-016417-016427 T0Block "normal_t0"
-016428-016443 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-016444-016454 T0Block "normal_t0"
-016455-016542 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+016417-016427 ShaderNameBlock "normal_t0"
+016428-016431 ShaderVariableBlock 0.0 (0)
+016432-016435 ShaderVariableBlock 0.0 (0)
+016436-016439 ShaderVariableBlock 0.0 (0)
+016440-016443 ShaderVariableBlock 0.0 (0)
+016444-016454 ShaderNameBlock "normal_t0"
+016455-016458 ShaderVariableBlock 0.0 (0)
+016459-016462 ShaderVariableBlock 0.0 (0)
+016463-016466 ShaderVariableBlock 0.0 (0)
+016467-016470 ShaderVariableBlock 0.0 (0)
+016471-016542 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ...URj..cK..v... 00 00 c4 55 52 6a 96 1c 63 4b 95 90 76 0f de aa
   Y............... 59 a8 00 00 00 00 00 00 00 00 00 00 00 00 02 00
@@ -1425,7 +1597,7 @@
 016613-016695 StringBlock "SetupInfoContext.AllianceContextFromIndex(1).ArmyContext(0).CommanderOfRetinue(0)"
 016696-016708 DataBlock
   ........\....    00 00 00 00 8a 05 00 00 5c ff ff ff 01
-016709-016732 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=150994944 ysize=0 brga=0
+016709-016732 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=150994944 ysize=0 bgra=bgra(0,0,0,0)
 016733-016784 DataBlock
   ................ 00 00 00 00 0c f7 c0 08 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -1439,18 +1611,25 @@
   ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
   .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 016836-016853 FontNameBlock "FiraSans-Regular"
-016854-016869 DataBlock
-  ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
-016870-016892 StringBlock "Default Font Category"
+016854-016857 LineHeightBlock 10
+016858-016861 FontLeadingBlock 2
+016862-016865 FontTrailingBlock 0
+016866-016869 FontBGRABlock bgra(221,218,250,255)
+016870-016892 FontCategoryBlock "Default Font Category"
 016893-016912 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             00 00 00 00
-016913-016923 T0Block "normal_t0"
-016924-016939 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-016940-016950 T0Block "normal_t0"
-016951-017038 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+016913-016923 ShaderNameBlock "normal_t0"
+016924-016927 ShaderVariableBlock 0.0 (0)
+016928-016931 ShaderVariableBlock 0.0 (0)
+016932-016935 ShaderVariableBlock 0.0 (0)
+016936-016939 ShaderVariableBlock 0.0 (0)
+016940-016950 ShaderNameBlock "normal_t0"
+016951-016954 ShaderVariableBlock 0.0 (0)
+016955-016958 ShaderVariableBlock 0.0 (0)
+016959-016962 ShaderVariableBlock 0.0 (0)
+016963-016966 ShaderVariableBlock 0.0 (0)
+016967-017038 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   .........G.z.... 00 00 c1 e5 08 ac b4 d6 a8 47 aa 7a c3 e2 8c ad
   4............... 34 d5 00 00 00 00 00 00 00 00 00 00 00 00 05 00
@@ -1459,10 +1638,10 @@
 017039-017049 StringBlock "ink_right"
 017050-017064 DataBlock
   ..........p....  00 00 00 00 00 00 00 00 00 00 70 ff ff ff 01
-017065-017088 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=150994944 ysize=167772160 brga=134217728
+017065-017088 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=150994944 ysize=167772160 bgra=bgra(0,0,0,8)
 017089-017096 DataBlock
   .....>HN         00 00 00 00 b4 3e 48 4e
-017097-017120 ImageUseBlock id=1 xofs=708150676 yofs=3853687236 xsize=1225349135 ysize=3217803955 brga=3686308623
+017097-017120 ImageUseBlock id=1 xofs=708150676 yofs=3853687236 xsize=1225349135 ysize=3217803955 bgra=bgra(15,155,184,219)
 017121-017171 DataBlock
   ..!............. 00 00 21 03 00 00 0a 03 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01
@@ -1476,24 +1655,30 @@
   ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
   .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 017223-017240 FontNameBlock "FiraSans-Regular"
-017241-017256 DataBlock
-  ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
-017257-017279 StringBlock "Default Font Category"
+017241-017244 LineHeightBlock 10
+017245-017248 FontLeadingBlock 2
+017249-017252 FontTrailingBlock 0
+017253-017256 FontBGRABlock bgra(221,218,250,255)
+017257-017279 FontCategoryBlock "Default Font Category"
 017280-017299 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             00 00 00 00
-017300-017310 T0Block "normal_t0"
-017311-017326 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-017327-017337 T0Block "normal_t0"
-017338-017353 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-017354-017377 ImageUseBlock id=1 xofs=708150676 yofs=3853687236 xsize=1225349135 ysize=3217803955 brga=3686308623
+017300-017310 ShaderNameBlock "normal_t0"
+017311-017314 ShaderVariableBlock 0.0 (0)
+017315-017318 ShaderVariableBlock 0.0 (0)
+017319-017322 ShaderVariableBlock 0.0 (0)
+017323-017326 ShaderVariableBlock 0.0 (0)
+017327-017337 ShaderNameBlock "normal_t0"
+017338-017341 ShaderVariableBlock 0.0 (0)
+017342-017345 ShaderVariableBlock 0.0 (0)
+017346-017349 ShaderVariableBlock 0.0 (0)
+017350-017353 ShaderVariableBlock 0.0 (0)
+017354-017377 ImageUseBlock id=1 xofs=708150676 yofs=3853687236 xsize=1225349135 ysize=3217803955 bgra=bgra(15,155,184,219)
 017378-017415 DataBlock
   ............X... 00 00 00 00 00 00 00 00 00 02 00 00 58 03 00 00
   ................ ff ff ff ff 00 00 00 00 00 09 00 00 00 00 00 00
   ......           00 00 00 00 00 01
-017416-017439 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=2147483648
+017416-017439 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(0,0,0,128)
 017440-017487 DataBlock
   ?............... 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -1609,7 +1794,7 @@
 018837-018897 StringBlock "SetupInfoContext.AllianceContextFromIndex(1).ArmyContext(0)"
 018898-018910 DataBlock
   ........d....    00 00 00 00 a1 00 00 00 64 ff ff ff 01
-018911-018934 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=16777216 ysize=2701131776 brga=1677721600
+018911-018934 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=16777216 ysize=2701131776 bgra=bgra(0,0,0,100)
 018935-018986 DataBlock
   .......N........ ff ff ff 00 dc df 8c 4e 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -1623,22 +1808,29 @@
   ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
   .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 019038-019055 FontNameBlock "FiraSans-Regular"
-019056-019071 DataBlock
-  ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
-019072-019094 StringBlock "Default Font Category"
+019056-019059 LineHeightBlock 10
+019060-019063 FontLeadingBlock 2
+019064-019067 FontTrailingBlock 0
+019068-019071 FontBGRABlock bgra(221,218,250,255)
+019072-019094 FontCategoryBlock "Default Font Category"
 019095-019114 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             01 00 00 00
-019115-019125 T0Block "normal_t0"
-019126-019141 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-019142-019152 T0Block "normal_t0"
-019153-019206 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+019115-019125 ShaderNameBlock "normal_t0"
+019126-019129 ShaderVariableBlock 0.0 (0)
+019130-019133 ShaderVariableBlock 0.0 (0)
+019134-019137 ShaderVariableBlock 0.0 (0)
+019138-019141 ShaderVariableBlock 0.0 (0)
+019142-019152 ShaderNameBlock "normal_t0"
+019153-019156 ShaderVariableBlock 0.0 (0)
+019157-019160 ShaderVariableBlock 0.0 (0)
+019161-019164 ShaderVariableBlock 0.0 (0)
+019165-019168 ShaderVariableBlock 0.0 (0)
+019169-019206 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   .....C/E.E..8h.G 00 00 1e db c8 43 2f 45 90 45 ac fb 38 68 ca 47
   t"....           74 22 00 00 00 00
-019207-019230 ImageUseBlock id=1 xofs=0 yofs=3 xsize=1835008 ysize=1842431763 brga=1390496742
+019207-019230 ImageUseBlock id=1 xofs=0 yofs=3 xsize=1835008 ysize=1842431763 bgra=bgra(230,75,225,82)
 019231-019240 DataBlock
   .L..c.5...       83 4c ae bb 63 86 35 11 f3 fc
 019241-019246 StringBlock "flag"
@@ -1653,10 +1845,10 @@
 019371-019388 StringBlock "s_xml_colour_map"
 019389-019397 DataBlock
   .........        ea ff ff ff a0 ff ff ff 01
-019398-019421 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=0 ysize=0 brga=0
+019398-019421 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=0 ysize=0 bgra=bgra(0,0,0,0)
 019422-019429 DataBlock
   .......*         00 00 00 00 c4 80 1d 2a
-019430-019453 ImageUseBlock id=1 xofs=1191759468 yofs=4147480560 xsize=1315309032 ysize=812610951 brga=3835290407
+019430-019453 ImageUseBlock id=1 xofs=1191759468 yofs=4147480560 xsize=1315309032 ysize=812610951 bgra=bgra(39,227,153,228)
 019454-019504 DataBlock
   ................ 00 00 00 02 00 00 00 02 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01
@@ -1670,24 +1862,30 @@
   ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
   .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 019556-019573 FontNameBlock "FiraSans-Regular"
-019574-019589 DataBlock
-  ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
-019590-019612 StringBlock "Default Font Category"
+019574-019577 LineHeightBlock 10
+019578-019581 FontLeadingBlock 2
+019582-019585 FontTrailingBlock 0
+019586-019589 FontBGRABlock bgra(221,218,250,255)
+019590-019612 FontCategoryBlock "Default Font Category"
 019613-019632 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             01 00 00 00
-019633-019643 T0Block "normal_t0"
-019644-019659 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-019660-019670 T0Block "normal_t0"
-019671-019686 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-019687-019710 ImageUseBlock id=1 xofs=1191759468 yofs=4147480560 xsize=1315309032 ysize=812610951 brga=3835290407
+019633-019643 ShaderNameBlock "normal_t0"
+019644-019647 ShaderVariableBlock 0.0 (0)
+019648-019651 ShaderVariableBlock 0.0 (0)
+019652-019655 ShaderVariableBlock 0.0 (0)
+019656-019659 ShaderVariableBlock 0.0 (0)
+019660-019670 ShaderNameBlock "normal_t0"
+019671-019674 ShaderVariableBlock 0.0 (0)
+019675-019678 ShaderVariableBlock 0.0 (0)
+019679-019682 ShaderVariableBlock 0.0 (0)
+019683-019686 ShaderVariableBlock 0.0 (0)
+019687-019710 ImageUseBlock id=1 xofs=1191759468 yofs=4147480560 xsize=1315309032 ysize=812610951 bgra=bgra(39,227,153,228)
 019711-019748 DataBlock
   ........F...F... 00 00 00 00 00 00 00 00 46 01 00 00 46 01 00 00
   ................ ff ff ff ff 00 00 00 00 00 00 00 00 00 00 00 00
   ......           00 00 00 00 00 01
-019749-019772 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=2147483648
+019749-019772 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(0,0,0,128)
 019773-019820 DataBlock
   ?............... 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -1738,7 +1936,7 @@
 020382-020401 DataBlock
   q-K....L..o%...O 71 2d 4b b3 dc e9 19 4c a0 c9 6f 25 09 bb 93 4f
   ....             00 00 00 00
-020402-020425 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=1
+020402-020425 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(1,0,0,0)
 020426-020457 DataBlock
   .?...........*.F 80 3f 00 00 00 00 00 00 00 00 00 00 e4 2a ba 46
   `[L.3..A.....8.. 60 5b 4c a1 33 d5 f4 41 86 0d d4 c6 88 38 84 0e
@@ -1754,10 +1952,10 @@
 020597-020614 StringBlock "s_xml_colour_map"
 020615-020623 DataBlock
   .........        ea ff ff ff a0 ff ff ff 01
-020624-020647 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=16777216 ysize=3925868544 brga=2701131775
+020624-020647 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=16777216 ysize=3925868544 bgra=bgra(255,255,255,160)
 020648-020655 DataBlock
   .....%.G         ff ff ff 00 ec 25 16 47
-020656-020679 ImageUseBlock id=1 xofs=1313325252 yofs=3072713323 xsize=1284131673 ysize=1531219595 brga=272053781
+020656-020679 ImageUseBlock id=1 xofs=1313325252 yofs=3072713323 xsize=1284131673 ysize=1531219595 bgra=bgra(21,54,55,16)
 020680-020730 DataBlock
   ................ 00 00 00 02 00 00 00 02 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01
@@ -1771,24 +1969,30 @@
   ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
   .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 020782-020799 FontNameBlock "FiraSans-Regular"
-020800-020815 DataBlock
-  ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
-020816-020838 StringBlock "Default Font Category"
+020800-020803 LineHeightBlock 10
+020804-020807 FontLeadingBlock 2
+020808-020811 FontTrailingBlock 0
+020812-020815 FontBGRABlock bgra(221,218,250,255)
+020816-020838 FontCategoryBlock "Default Font Category"
 020839-020858 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             01 00 00 00
-020859-020869 T0Block "normal_t0"
-020870-020885 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-020886-020896 T0Block "normal_t0"
-020897-020912 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-020913-020936 ImageUseBlock id=1 xofs=1313325252 yofs=3072713323 xsize=1284131673 ysize=1531219595 brga=272053781
+020859-020869 ShaderNameBlock "normal_t0"
+020870-020873 ShaderVariableBlock 0.0 (0)
+020874-020877 ShaderVariableBlock 0.0 (0)
+020878-020881 ShaderVariableBlock 0.0 (0)
+020882-020885 ShaderVariableBlock 0.0 (0)
+020886-020896 ShaderNameBlock "normal_t0"
+020897-020900 ShaderVariableBlock 0.0 (0)
+020901-020904 ShaderVariableBlock 0.0 (0)
+020905-020908 ShaderVariableBlock 0.0 (0)
+020909-020912 ShaderVariableBlock 0.0 (0)
+020913-020936 ImageUseBlock id=1 xofs=1313325252 yofs=3072713323 xsize=1284131673 ysize=1531219595 bgra=bgra(21,54,55,16)
 020937-020974 DataBlock
   ........F...F... 00 00 00 00 00 00 00 00 46 01 00 00 46 01 00 00
   ................ ff ff ff ff 00 00 00 00 00 00 00 00 00 00 00 00
   ......           00 00 00 00 00 01
-020975-020998 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=2147483648
+020975-020998 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(0,0,0,128)
 020999-021046 DataBlock
   ?............... 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -1836,7 +2040,7 @@
 021600-021619 DataBlock
   o......J.ZH.5v.W 6f fe da f0 b7 98 e1 4a 83 5a 48 bf 35 76 ab 57
   ....             00 00 00 00
-021620-021643 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=1
+021620-021643 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(1,0,0,0)
 021644-021675 DataBlock
   .?..........$|.. 80 3f 00 00 00 00 00 00 00 00 00 00 24 7c a8 08
   .V..=.1J.tw.1..4 b6 56 cc 17 3d fb 31 4a b8 74 77 07 31 a0 91 34
@@ -1844,15 +2048,15 @@
 021686-021705 DataBlock
   ..........~..... 00 00 00 00 00 00 e9 ff ff ff 7e ff ff ff 00 00
   ....             00 00 00 00
-021706-021729 ImageUseBlock id=1 xofs=256 yofs=262144 xsize=4293459968 ysize=8585215 brga=3154116608
+021706-021729 ImageUseBlock id=1 xofs=256 yofs=262144 xsize=4293459968 ysize=8585215 bgra=bgra(0,0,0,188)
 021730-021752 DataBlock
   z.N.......F=_c/. 7a 0b 4e 01 00 00 00 9c 89 aa 46 3d 5f 63 2f df
   ..D.n..          f1 b5 44 8c 6e a8 85
-021753-021801 ImageBlock id=2638977162 xsize=18 ysize=845 path="ui\\skins\\default\\flag_spear.png" unknown=0
-021802-021838 DataBlock
+021753-021797 ImageBlockGen2 id=2638977162 xsize=18 ysize=845 path="ui\\skins\\default\\flag_spear"
+021798-021838 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-  ......z.N..s3w.q 00 01 00 00 00 bc 7a 0b 4e eb b3 73 33 77 1d 71
-  H....            48 b0 04 d3 10
+  ..........z.N..s 00 00 00 00 00 01 00 00 00 bc 7a 0b 4e eb b3 73
+  3w.qH....        33 77 1d 71 48 b0 04 d3 10
 021839-021842 StateIDBlock 2779773364
 021843-021852 NewStateBlock "NewState"
 021853-021856 XSizeBlock 18
@@ -1861,35 +2065,41 @@
   ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
   .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 021890-021907 FontNameBlock "FiraSans-Regular"
-021908-021923 DataBlock
-  ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
-021924-021946 StringBlock "Default Font Category"
+021908-021911 LineHeightBlock 10
+021912-021915 FontLeadingBlock 2
+021916-021919 FontTrailingBlock 0
+021920-021923 FontBGRABlock bgra(221,218,250,255)
+021924-021946 FontCategoryBlock "Default Font Category"
 021947-021966 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             01 00 00 00
-021967-021977 T0Block "normal_t0"
-021978-021993 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-021994-022004 T0Block "normal_t0"
-022005-022020 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-022021-022044 ImageUseBlock id=1 xofs=1185581468 yofs=795041597 xsize=1152774623 ysize=2242408076 brga=2638977162
+021967-021977 ShaderNameBlock "normal_t0"
+021978-021981 ShaderVariableBlock 0.0 (0)
+021982-021985 ShaderVariableBlock 0.0 (0)
+021986-021989 ShaderVariableBlock 0.0 (0)
+021990-021993 ShaderVariableBlock 0.0 (0)
+021994-022004 ShaderNameBlock "normal_t0"
+022005-022008 ShaderVariableBlock 0.0 (0)
+022009-022012 ShaderVariableBlock 0.0 (0)
+022013-022016 ShaderVariableBlock 0.0 (0)
+022017-022020 ShaderVariableBlock 0.0 (0)
+022021-022044 ImageUseBlock id=1 xofs=1185581468 yofs=795041597 xsize=1152774623 ysize=2242408076 bgra=bgra(138,152,75,157)
 022045-022082 DataBlock
   ............M... 00 00 00 00 00 00 00 00 12 00 00 00 4d 03 00 00
   ................ 7f 7f 7f ff 00 00 00 00 00 00 00 00 00 00 00 00
   ......           00 00 00 00 00 01
-022083-022106 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=2147483648
+022083-022106 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(0,0,0,128)
 022107-022176 DataBlock
   ?............... 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....s3w.qH...... 00 00 eb b3 73 33 77 1d 71 48 b0 04 d3 10 b4 f9
   ......           af a5 00 00 00 00
-022177-022200 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=0
+022177-022200 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(0,0,0,0)
 022201-022218 DataBlock
   .?.......?...... 80 3f 00 00 00 00 00 00 00 3f 00 00 00 00 00 00
   ..               00 00
-022219-022242 ImageUseBlock id=1 xofs=16256 yofs=0 xsize=0 ysize=708074980 brga=2941781920
+022219-022242 ImageUseBlock id=1 xofs=16256 yofs=0 xsize=0 ysize=708074980 bgra=bgra(160,7,88,175)
 022243-022254 DataBlock
   .-/M....z#.!     fd 2d 2f 4d 95 02 b7 af 7a 23 eb 21
 022255-022274 StringBlock "fullbody_character"
@@ -1916,7 +2126,7 @@
 022534-022567 StringBlock "commontextures/default_white.dds"
 022568-022576 DataBlock
   i...R....        69 01 00 00 52 fb ff ff 00
-022577-022600 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=83886080 ysize=2013265920 brga=1778384896
+022577-022600 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=83886080 ysize=2013265920 bgra=bgra(0,0,0,106)
 022601-022652 DataBlock
   .....;.H........ ff ff ff 00 d4 3b ae 48 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -1930,18 +2140,25 @@
   ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
   .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 022704-022721 FontNameBlock "FiraSans-Regular"
-022722-022737 DataBlock
-  ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
-022738-022760 StringBlock "Default Font Category"
+022722-022725 LineHeightBlock 10
+022726-022729 FontLeadingBlock 2
+022730-022733 FontTrailingBlock 0
+022734-022737 FontBGRABlock bgra(221,218,250,255)
+022738-022760 FontCategoryBlock "Default Font Category"
 022761-022780 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             00 00 00 00
-022781-022791 T0Block "normal_t0"
-022792-022807 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-022808-022818 T0Block "normal_t0"
-022819-022928 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+022781-022791 ShaderNameBlock "normal_t0"
+022792-022795 ShaderVariableBlock 0.0 (0)
+022796-022799 ShaderVariableBlock 0.0 (0)
+022800-022803 ShaderVariableBlock 0.0 (0)
+022804-022807 ShaderVariableBlock 0.0 (0)
+022808-022818 ShaderNameBlock "normal_t0"
+022819-022822 ShaderVariableBlock 0.0 (0)
+022823-022826 ShaderVariableBlock 0.0 (0)
+022827-022830 ShaderVariableBlock 0.0 (0)
+022831-022834 ShaderVariableBlock 0.0 (0)
+022835-022928 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   .........B...... 00 00 bc dd d2 93 dd d7 15 42 a4 94 8a dd 18 18
   ................ dd 17 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -1951,15 +2168,15 @@
 022929-022952 StringBlock "character_overlayRight"
 022953-022967 DataBlock
   ...............  00 00 00 00 00 00 fd ff ff ff c6 00 00 00 01
-022968-022991 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=0 ysize=0 brga=0
+022968-022991 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=0 ysize=0 bgra=bgra(0,0,0,0)
 022992-023019 DataBlock
   .....(.........N 00 00 00 00 9c 28 bf 08 01 00 00 00 a4 92 8c 4e
   .v..L\.A.o&.     1b 76 cd 98 4c 5c d2 41 84 6f 26 f7
-023020-023097 ImageBlock id=3086838942 xsize=121 ysize=121 path="ui\\skins\\default\\3k_loading_historical_character_overlay.png" unknown=0
-023098-023134 DataBlock
+023020-023093 ImageBlockGen2 id=3086838942 xsize=121 ysize=121 path="ui\\skins\\default\\3k_loading_historical_character_overlay"
+023094-023134 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-  ......(..v..9... 00 01 00 00 00 9c 28 bf 08 76 88 af 39 e5 c6 83
-  A..`.            41 96 09 60 a1
+  ..........(..v.. 00 00 00 00 00 01 00 00 00 9c 28 bf 08 76 88 af
+  9...A..`.        39 e5 c6 83 41 96 09 60 a1
 023135-023138 StateIDBlock 123949805
 023139-023148 NewStateBlock "NewState"
 023149-023152 XSizeBlock 527
@@ -1968,29 +2185,35 @@
   ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
   .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 023186-023203 FontNameBlock "FiraSans-Regular"
-023204-023219 DataBlock
-  ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
-023220-023242 StringBlock "Default Font Category"
+023204-023207 LineHeightBlock 10
+023208-023211 FontLeadingBlock 2
+023212-023215 FontTrailingBlock 0
+023216-023219 FontBGRABlock bgra(221,218,250,255)
+023220-023242 FontCategoryBlock "Default Font Category"
 023243-023262 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             01 00 00 00
-023263-023273 T0Block "normal_t0"
-023274-023289 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-023290-023300 T0Block "normal_t0"
-023301-023316 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-023317-023340 ImageUseBlock id=1 xofs=1317835428 yofs=2563601947 xsize=1104305228 ysize=4146491268 brga=3086838942
+023263-023273 ShaderNameBlock "normal_t0"
+023274-023277 ShaderVariableBlock 0.0 (0)
+023278-023281 ShaderVariableBlock 0.0 (0)
+023282-023285 ShaderVariableBlock 0.0 (0)
+023286-023289 ShaderVariableBlock 0.0 (0)
+023290-023300 ShaderNameBlock "normal_t0"
+023301-023304 ShaderVariableBlock 0.0 (0)
+023305-023308 ShaderVariableBlock 0.0 (0)
+023309-023312 ShaderVariableBlock 0.0 (0)
+023313-023316 ShaderVariableBlock 0.0 (0)
+023317-023340 ImageUseBlock id=1 xofs=1317835428 yofs=2563601947 xsize=1104305228 ysize=4146491268 bgra=bgra(158,108,253,183)
 023341-023378 DataBlock
   ........i...>... 00 00 00 00 00 00 00 00 69 02 00 00 3e 02 00 00
   ................ ff ff ff a0 00 00 00 00 00 00 00 00 00 00 00 00
   ......           00 00 00 00 00 01
-023379-023402 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=2147483648
+023379-023402 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(0,0,0,128)
 023403-023437 DataBlock
   ?............... 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ...              00 00 00
-023438-023461 ImageUseBlock id=1 xofs=0 yofs=0 xsize=1979711488 ysize=3845762952 brga=2520875974
+023438-023461 ImageUseBlock id=1 xofs=0 yofs=0 xsize=1979711488 ysize=3845762952 bgra=bgra(198,131,65,150)
 023462-023528 DataBlock
   .`..Rc.......... 09 60 a1 ed 52 63 07 00 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -2005,7 +2228,7 @@
 023589-023603 StringBlock "ToUpper(Name)"
 023604-023616 DataBlock
   ........,....    00 00 00 00 b0 00 00 00 2c 02 00 00 00
-023617-023640 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=150994944 ysize=3019898880 brga=3372220415
+023617-023640 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=150994944 ysize=3019898880 bgra=bgra(255,255,255,200)
 023641-023692 DataBlock
   .......N........ ff ff ff 00 14 b2 9d 4e 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -2023,18 +2246,25 @@
 023842-023847 DataBlock
   ......           00 00 00 00 00 00
 023848-023859 FontNameBlock "Iskra-Bold"
-023860-023875 DataBlock
-  *............... 2a 00 00 00 00 00 00 00 00 00 00 00 ff ff ff ff
-023876-023889 StringBlock "header_large"
+023860-023863 LineHeightBlock 42
+023864-023867 FontLeadingBlock 0
+023868-023871 FontTrailingBlock 0
+023872-023875 FontBGRABlock bgra(255,255,255,255)
+023876-023889 FontCategoryBlock "header_large"
 023890-023909 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             00 00 00 00
-023910-023920 T0Block "normal_t0"
-023921-023936 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-023937-023947 T0Block "normal_t0"
-023948-024079 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+023910-023920 ShaderNameBlock "normal_t0"
+023921-023924 ShaderVariableBlock 0.0 (0)
+023925-023928 ShaderVariableBlock 0.0 (0)
+023929-023932 ShaderVariableBlock 0.0 (0)
+023933-023936 ShaderVariableBlock 0.0 (0)
+023937-023947 ShaderNameBlock "normal_t0"
+023948-023951 ShaderVariableBlock 0.0 (0)
+023952-023955 ShaderVariableBlock 0.0 (0)
+023956-023959 ShaderVariableBlock 0.0 (0)
+023960-023963 ShaderVariableBlock 0.0 (0)
+023964-024079 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ...N.h0.<I....:. 00 00 ea 4e 09 68 30 d0 3c 49 8b 11 d7 f4 3a b1
   .%.............. ff 25 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -2051,7 +2281,7 @@
 024149-024231 StringBlock "SetupInfoContext.AllianceContextFromIndex(0).ArmyContext(0).CommanderOfRetinue(0)"
 024232-024244 DataBlock
   ........\....    00 00 00 00 00 00 00 00 5c ff ff ff 01
-024245-024268 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=117440512 ysize=0 brga=0
+024245-024268 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=117440512 ysize=0 bgra=bgra(0,0,0,0)
 024269-024320 DataBlock
   .......G........ 00 00 00 00 84 f6 08 47 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -2065,18 +2295,25 @@
   ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
   .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 024372-024389 FontNameBlock "FiraSans-Regular"
-024390-024405 DataBlock
-  ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
-024406-024428 StringBlock "Default Font Category"
+024390-024393 LineHeightBlock 10
+024394-024397 FontLeadingBlock 2
+024398-024401 FontTrailingBlock 0
+024402-024405 FontBGRABlock bgra(221,218,250,255)
+024406-024428 FontCategoryBlock "Default Font Category"
 024429-024448 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             00 00 00 00
-024449-024459 T0Block "normal_t0"
-024460-024475 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-024476-024486 T0Block "normal_t0"
-024487-024574 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+024449-024459 ShaderNameBlock "normal_t0"
+024460-024463 ShaderVariableBlock 0.0 (0)
+024464-024467 ShaderVariableBlock 0.0 (0)
+024468-024471 ShaderVariableBlock 0.0 (0)
+024472-024475 ShaderVariableBlock 0.0 (0)
+024476-024486 ShaderNameBlock "normal_t0"
+024487-024490 ShaderVariableBlock 0.0 (0)
+024491-024494 ShaderVariableBlock 0.0 (0)
+024495-024498 ShaderVariableBlock 0.0 (0)
+024499-024502 ShaderVariableBlock 0.0 (0)
+024503-024574 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   .. ./...NF.J..&. 00 00 20 b0 2f 1d fc b3 4e 46 93 4a 15 84 26 e6
   c?.............. 63 3f 00 00 00 00 00 00 00 00 00 00 00 00 05 00
@@ -2085,10 +2322,10 @@
 024575-024584 StringBlock "ink_left"
 024585-024599 DataBlock
   ..........n....  00 00 00 00 00 00 fb ff ff ff 6e ff ff ff 01
-024600-024623 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=117440512 ysize=4211081216 brga=117440511
+024600-024623 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=117440512 ysize=4211081216 bgra=bgra(255,255,255,6)
 024624-024631 DataBlock
   ....D..G         00 00 00 00 44 fb 15 47
-024632-024655 ImageUseBlock id=1 xofs=1328232804 yofs=2332481338 xsize=1333937296 ysize=3080056740 brga=1734403761
+024632-024655 ImageUseBlock id=1 xofs=1328232804 yofs=2332481338 xsize=1333937296 ysize=3080056740 bgra=bgra(177,230,96,103)
 024656-024706 DataBlock
   ..!............. 00 00 21 03 00 00 0a 03 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01
@@ -2102,24 +2339,30 @@
   ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
   .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 024758-024775 FontNameBlock "FiraSans-Regular"
-024776-024791 DataBlock
-  ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
-024792-024814 StringBlock "Default Font Category"
+024776-024779 LineHeightBlock 10
+024780-024783 FontLeadingBlock 2
+024784-024787 FontTrailingBlock 0
+024788-024791 FontBGRABlock bgra(221,218,250,255)
+024792-024814 FontCategoryBlock "Default Font Category"
 024815-024834 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             00 00 00 00
-024835-024845 T0Block "normal_t0"
-024846-024861 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-024862-024872 T0Block "normal_t0"
-024873-024888 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-024889-024912 ImageUseBlock id=1 xofs=1328232804 yofs=2332481338 xsize=1333937296 ysize=3080056740 brga=1734403761
+024835-024845 ShaderNameBlock "normal_t0"
+024846-024849 ShaderVariableBlock 0.0 (0)
+024850-024853 ShaderVariableBlock 0.0 (0)
+024854-024857 ShaderVariableBlock 0.0 (0)
+024858-024861 ShaderVariableBlock 0.0 (0)
+024862-024872 ShaderNameBlock "normal_t0"
+024873-024876 ShaderVariableBlock 0.0 (0)
+024877-024880 ShaderVariableBlock 0.0 (0)
+024881-024884 ShaderVariableBlock 0.0 (0)
+024885-024888 ShaderVariableBlock 0.0 (0)
+024889-024912 ImageUseBlock id=1 xofs=1328232804 yofs=2332481338 xsize=1333937296 ysize=3080056740 bgra=bgra(177,230,96,103)
 024913-024950 DataBlock
   ............X... 00 00 00 00 00 00 00 00 00 02 00 00 58 03 00 00
   ................ ff ff ff ff 00 00 00 00 00 00 00 00 00 00 00 00
   ......           00 00 00 00 00 01
-024951-024974 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=2147483648
+024951-024974 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(0,0,0,128)
 024975-025022 DataBlock
   ?............... 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -2235,7 +2478,7 @@
 026368-026428 StringBlock "SetupInfoContext.AllianceContextFromIndex(0).ArmyContext(0)"
 026429-026441 DataBlock
   ....%...k....    00 00 00 00 25 00 00 00 6b ff ff ff 01
-026442-026465 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=16777216 ysize=620756992 brga=1795162112
+026442-026465 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=16777216 ysize=620756992 bgra=bgra(0,0,0,107)
 026466-026517 DataBlock
   ....|..N........ ff ff ff 00 7c ff 0a 4e 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -2249,22 +2492,29 @@
   ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
   .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 026569-026586 FontNameBlock "FiraSans-Regular"
-026587-026602 DataBlock
-  ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
-026603-026625 StringBlock "Default Font Category"
+026587-026590 LineHeightBlock 10
+026591-026594 FontLeadingBlock 2
+026595-026598 FontTrailingBlock 0
+026599-026602 FontBGRABlock bgra(221,218,250,255)
+026603-026625 FontCategoryBlock "Default Font Category"
 026626-026645 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             01 00 00 00
-026646-026656 T0Block "normal_t0"
-026657-026672 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-026673-026683 T0Block "normal_t0"
-026684-026737 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+026646-026656 ShaderNameBlock "normal_t0"
+026657-026660 ShaderVariableBlock 0.0 (0)
+026661-026664 ShaderVariableBlock 0.0 (0)
+026665-026668 ShaderVariableBlock 0.0 (0)
+026669-026672 ShaderVariableBlock 0.0 (0)
+026673-026683 ShaderNameBlock "normal_t0"
+026684-026687 ShaderVariableBlock 0.0 (0)
+026688-026691 ShaderVariableBlock 0.0 (0)
+026692-026695 ShaderVariableBlock 0.0 (0)
+026696-026699 ShaderVariableBlock 0.0 (0)
+026700-026737 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ...>....VC...$h. 00 00 e6 3e 06 83 89 16 56 43 a3 18 98 24 68 e0
   C.....           43 ad 00 00 00 00
-026738-026761 ImageUseBlock id=1 xofs=0 yofs=3 xsize=76808192 ysize=627396407 brga=1695060106
+026738-026761 ImageUseBlock id=1 xofs=0 yofs=3 xsize=76808192 ysize=627396407 bgra=bgra(138,144,8,101)
 026762-026771 DataBlock
   5O...)..o|       35 4f 91 a1 fc 29 fd cb 6f 7c
 026772-026777 StringBlock "flag"
@@ -2279,10 +2529,10 @@
 026902-026919 StringBlock "s_xml_colour_map"
 026920-026928 DataBlock
   .........        ea ff ff ff a0 ff ff ff 01
-026929-026952 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=16777216 ysize=3925868544 brga=2701131775
+026929-026952 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=16777216 ysize=3925868544 bgra=bgra(255,255,255,160)
 026953-026960 DataBlock
   ....\p..         ff ff ff 00 5c 70 b7 08
-026961-026984 ImageUseBlock id=1 xofs=1317630052 yofs=801795795 xsize=1303298060 ysize=2107125385 brga=3399485408
+026961-026984 ImageUseBlock id=1 xofs=1317630052 yofs=801795795 xsize=1303298060 ysize=2107125385 bgra=bgra(224,7,160,202)
 026985-027035 DataBlock
   ................ 00 00 00 02 00 00 00 02 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01
@@ -2296,24 +2546,30 @@
   ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
   .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 027087-027104 FontNameBlock "FiraSans-Regular"
-027105-027120 DataBlock
-  ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
-027121-027143 StringBlock "Default Font Category"
+027105-027108 LineHeightBlock 10
+027109-027112 FontLeadingBlock 2
+027113-027116 FontTrailingBlock 0
+027117-027120 FontBGRABlock bgra(221,218,250,255)
+027121-027143 FontCategoryBlock "Default Font Category"
 027144-027163 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             01 00 00 00
-027164-027174 T0Block "normal_t0"
-027175-027190 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-027191-027201 T0Block "normal_t0"
-027202-027217 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-027218-027241 ImageUseBlock id=1 xofs=1317630052 yofs=801795795 xsize=1303298060 ysize=2107125385 brga=3399485408
+027164-027174 ShaderNameBlock "normal_t0"
+027175-027178 ShaderVariableBlock 0.0 (0)
+027179-027182 ShaderVariableBlock 0.0 (0)
+027183-027186 ShaderVariableBlock 0.0 (0)
+027187-027190 ShaderVariableBlock 0.0 (0)
+027191-027201 ShaderNameBlock "normal_t0"
+027202-027205 ShaderVariableBlock 0.0 (0)
+027206-027209 ShaderVariableBlock 0.0 (0)
+027210-027213 ShaderVariableBlock 0.0 (0)
+027214-027217 ShaderVariableBlock 0.0 (0)
+027218-027241 ImageUseBlock id=1 xofs=1317630052 yofs=801795795 xsize=1303298060 ysize=2107125385 bgra=bgra(224,7,160,202)
 027242-027279 DataBlock
   ........F...F... 00 00 00 00 00 00 00 00 46 01 00 00 46 01 00 00
   ................ ff ff ff ff 00 00 00 00 00 00 00 00 00 00 00 00
   ......           00 00 00 00 00 01
-027280-027303 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=2147483648
+027280-027303 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(0,0,0,128)
 027304-027351 DataBlock
   ?............... 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -2364,7 +2620,7 @@
 027913-027932 DataBlock
   ..Z...WE.Zt...V& d3 90 5a c5 fe ac 57 45 92 5a 74 90 08 fa 56 26
   ....             00 00 00 00
-027933-027956 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=1
+027933-027956 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(1,0,0,0)
 027957-027988 DataBlock
   .?.............M 80 3f 00 00 00 00 00 00 00 00 00 00 ac e9 ff 4d
   T......H.C4..L.. 54 cb e4 a5 bb f9 b8 48 8a 43 34 9d 93 4c 18 0a
@@ -2380,10 +2636,10 @@
 028128-028145 StringBlock "s_xml_colour_map"
 028146-028154 DataBlock
   .........        ea ff ff ff a0 ff ff ff 01
-028155-028178 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=16777216 ysize=3925868544 brga=2701131775
+028155-028178 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=16777216 ysize=3925868544 bgra=bgra(255,255,255,160)
 028179-028186 DataBlock
   ....d..*         ff ff ff 00 64 fa 0d 2a
-028187-028210 ImageUseBlock id=1 xofs=1219732108 yofs=280720045 xsize=1325044248 ysize=2211393196 brga=3002346720
+028187-028210 ImageUseBlock id=1 xofs=1219732108 yofs=280720045 xsize=1325044248 ysize=2211393196 bgra=bgra(224,44,244,178)
 028211-028261 DataBlock
   ................ 00 00 00 02 00 00 00 02 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01
@@ -2397,24 +2653,30 @@
   ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
   .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 028313-028330 FontNameBlock "FiraSans-Regular"
-028331-028346 DataBlock
-  ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
-028347-028369 StringBlock "Default Font Category"
+028331-028334 LineHeightBlock 10
+028335-028338 FontLeadingBlock 2
+028339-028342 FontTrailingBlock 0
+028343-028346 FontBGRABlock bgra(221,218,250,255)
+028347-028369 FontCategoryBlock "Default Font Category"
 028370-028389 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             01 00 00 00
-028390-028400 T0Block "normal_t0"
-028401-028416 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-028417-028427 T0Block "normal_t0"
-028428-028443 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-028444-028467 ImageUseBlock id=1 xofs=1219732108 yofs=280720045 xsize=1325044248 ysize=2211393196 brga=3002346720
+028390-028400 ShaderNameBlock "normal_t0"
+028401-028404 ShaderVariableBlock 0.0 (0)
+028405-028408 ShaderVariableBlock 0.0 (0)
+028409-028412 ShaderVariableBlock 0.0 (0)
+028413-028416 ShaderVariableBlock 0.0 (0)
+028417-028427 ShaderNameBlock "normal_t0"
+028428-028431 ShaderVariableBlock 0.0 (0)
+028432-028435 ShaderVariableBlock 0.0 (0)
+028436-028439 ShaderVariableBlock 0.0 (0)
+028440-028443 ShaderVariableBlock 0.0 (0)
+028444-028467 ImageUseBlock id=1 xofs=1219732108 yofs=280720045 xsize=1325044248 ysize=2211393196 bgra=bgra(224,44,244,178)
 028468-028505 DataBlock
   ........F...F... 00 00 00 00 00 00 00 00 46 01 00 00 46 01 00 00
   ................ ff ff ff ff 00 00 00 00 00 00 00 00 00 00 00 00
   ......           00 00 00 00 00 01
-028506-028529 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=2147483648
+028506-028529 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(0,0,0,128)
 028530-028577 DataBlock
   ?............... 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -2462,7 +2724,7 @@
 029131-029150 DataBlock
   ....f..J...[uU.h 10 b8 1d d9 66 ca 03 4a 82 84 82 5b 75 55 d6 68
   ....             00 00 00 00
-029151-029174 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=1
+029151-029174 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(1,0,0,0)
 029175-029206 DataBlock
   .?..........$..J 80 3f 00 00 00 00 00 00 00 00 00 00 24 c3 19 4a
   .......N...z.... d5 15 ce b7 1d ba 9b 4e 82 01 e8 7a a4 90 91 a4
@@ -2470,15 +2732,15 @@
 029217-029236 DataBlock
   ..........~..... 00 00 00 00 00 00 e9 ff ff ff 7e ff ff ff 00 00
   ....             00 00 00 00
-029237-029260 ImageUseBlock id=1 xofs=256 yofs=262144 xsize=4293459968 ysize=8585215 brga=3154116608
+029237-029260 ImageUseBlock id=1 xofs=256 yofs=262144 xsize=4293459968 ysize=8585215 bgra=bgra(0,0,0,188)
 029261-029283 DataBlock
   3BO....L..Gg..AD 33 42 4f 01 00 00 00 4c cd 08 47 67 86 c9 41 44
   ..K.*H7          bf 04 4b 9d 2a 48 37
-029284-029332 ImageBlock id=1761730238 xsize=18 ysize=845 path="ui\\skins\\default\\flag_spear.png" unknown=0
-029333-029369 DataBlock
+029284-029328 ImageBlockGen2 id=1761730238 xsize=18 ysize=845 path="ui\\skins\\default\\flag_spear"
+029329-029369 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-  ......3BOhwU.k.y 00 01 00 00 00 bc 33 42 4f 68 77 55 13 6b a7 79
-  L..-.            4c ac 8f 2d 93
+  ..........3BOhwU 00 00 00 00 00 01 00 00 00 bc 33 42 4f 68 77 55
+  .k.yL..-.        13 6b a7 79 4c ac 8f 2d 93
 029370-029373 StateIDBlock 1479911957
 029374-029383 NewStateBlock "NewState"
 029384-029387 XSizeBlock 18
@@ -2487,35 +2749,41 @@
   ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
   .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 029421-029438 FontNameBlock "FiraSans-Regular"
-029439-029454 DataBlock
-  ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
-029455-029477 StringBlock "Default Font Category"
+029439-029442 LineHeightBlock 10
+029443-029446 FontLeadingBlock 2
+029447-029450 FontTrailingBlock 0
+029451-029454 FontBGRABlock bgra(221,218,250,255)
+029455-029477 FontCategoryBlock "Default Font Category"
 029478-029497 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             01 00 00 00
-029498-029508 T0Block "normal_t0"
-029509-029524 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-029525-029535 T0Block "normal_t0"
-029536-029551 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-029552-029575 ImageUseBlock id=1 xofs=1191759180 yofs=1103726183 xsize=1258602308 ysize=927476381 brga=1761730238
+029498-029508 ShaderNameBlock "normal_t0"
+029509-029512 ShaderVariableBlock 0.0 (0)
+029513-029516 ShaderVariableBlock 0.0 (0)
+029517-029520 ShaderVariableBlock 0.0 (0)
+029521-029524 ShaderVariableBlock 0.0 (0)
+029525-029535 ShaderNameBlock "normal_t0"
+029536-029539 ShaderVariableBlock 0.0 (0)
+029540-029543 ShaderVariableBlock 0.0 (0)
+029544-029547 ShaderVariableBlock 0.0 (0)
+029548-029551 ShaderVariableBlock 0.0 (0)
+029552-029575 ImageUseBlock id=1 xofs=1191759180 yofs=1103726183 xsize=1258602308 ysize=927476381 bgra=bgra(190,222,1,105)
 029576-029613 DataBlock
   ............M... 00 00 00 00 00 00 00 00 12 00 00 00 4d 03 00 00
   ................ 7f 7f 7f ff 00 00 00 00 00 00 00 00 00 00 00 00
   ......           00 00 00 00 00 01
-029614-029637 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=2147483648
+029614-029637 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(0,0,0,128)
 029638-029707 DataBlock
   ?............... 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ..hwU.k.yL..-... 00 00 68 77 55 13 6b a7 79 4c ac 8f 2d 93 15 aa
   5X....           35 58 00 00 00 00
-029708-029731 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=0
+029708-029731 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(0,0,0,0)
 029732-029749 DataBlock
   .?.......?...... 80 3f 00 00 00 00 00 00 00 3f 00 00 00 00 00 00
   ..               00 00
-029750-029773 ImageUseBlock id=1 xofs=16256 yofs=0 xsize=0 ysize=707880900 brga=109647108
+029750-029773 ImageUseBlock id=1 xofs=16256 yofs=0 xsize=0 ysize=707880900 bgra=bgra(4,21,137,6)
 029774-029785 DataBlock
   m..L.|}..3w.     6d d0 ae 4c 9f 7c 7d 1c af 33 77 99
 029786-029805 StringBlock "fullbody_character"
@@ -2542,7 +2810,7 @@
 030065-030098 StringBlock "commontextures/default_white.dds"
 030099-030107 DataBlock
   ....R....        f1 00 00 00 52 fb ff ff 00
-030108-030131 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=83886080 ysize=0 brga=1778384896
+030108-030131 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=83886080 ysize=0 bgra=bgra(0,0,0,106)
 030132-030183 DataBlock
   ......+O........ ff ff ff 00 e4 f9 2b 4f 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -2556,18 +2824,25 @@
   ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
   .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 030235-030252 FontNameBlock "FiraSans-Regular"
-030253-030268 DataBlock
-  ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
-030269-030291 StringBlock "Default Font Category"
+030253-030256 LineHeightBlock 10
+030257-030260 FontLeadingBlock 2
+030261-030264 FontTrailingBlock 0
+030265-030268 FontBGRABlock bgra(221,218,250,255)
+030269-030291 FontCategoryBlock "Default Font Category"
 030292-030311 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             00 00 00 00
-030312-030322 T0Block "normal_t0"
-030323-030338 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-030339-030349 T0Block "normal_t0"
-030350-030459 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+030312-030322 ShaderNameBlock "normal_t0"
+030323-030326 ShaderVariableBlock 0.0 (0)
+030327-030330 ShaderVariableBlock 0.0 (0)
+030331-030334 ShaderVariableBlock 0.0 (0)
+030335-030338 ShaderVariableBlock 0.0 (0)
+030339-030349 ShaderNameBlock "normal_t0"
+030350-030353 ShaderVariableBlock 0.0 (0)
+030354-030357 ShaderVariableBlock 0.0 (0)
+030358-030361 ShaderVariableBlock 0.0 (0)
+030362-030365 ShaderVariableBlock 0.0 (0)
+030366-030459 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ...^a.l].K../... 00 00 ad 5e 61 fb 6c 5d 0b 4b 8a a8 2f a7 cb b5
   ................ a3 de 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -2577,15 +2852,15 @@
 030460-030478 StringBlock "character_overlay"
 030479-030493 DataBlock
   ...............  00 00 00 00 00 00 00 00 00 00 c4 00 00 00 01
-030494-030517 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=0 ysize=0 brga=0
+030494-030517 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=0 ysize=0 bgra=bgra(0,0,0,0)
 030518-030545 DataBlock
   ....\..F....\..N 00 00 00 00 5c 1f aa 46 01 00 00 00 5c 93 8c 4e
   _x+..B.C..N.     5f 78 2b ce f2 42 c7 43 ba 06 4e ab
-030546-030623 ImageBlock id=3765793386 xsize=121 ysize=121 path="ui\\skins\\default\\3k_loading_historical_character_overlay.png" unknown=0
-030624-030660 DataBlock
+030546-030619 ImageBlockGen2 id=3765793386 xsize=121 ysize=121 path="ui\\skins\\default\\3k_loading_historical_character_overlay"
+030620-030660 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-  .....\..F.^..".. 00 01 00 00 00 5c 1f aa 46 1d 5e df e8 22 8c 18
-  O..k.            4f b7 99 6b 2e
+  .........\..F.^. 00 00 00 00 00 01 00 00 00 5c 1f aa 46 1d 5e df
+  ."..O..k.        e8 22 8c 18 4f b7 99 6b 2e
 030661-030664 StateIDBlock 2772337698
 030665-030674 NewStateBlock "NewState"
 030675-030678 XSizeBlock 527
@@ -2594,32 +2869,38 @@
   ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
   .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 030712-030729 FontNameBlock "FiraSans-Regular"
-030730-030745 DataBlock
-  ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
-030746-030768 StringBlock "Default Font Category"
+030730-030733 LineHeightBlock 10
+030734-030737 FontLeadingBlock 2
+030738-030741 FontTrailingBlock 0
+030742-030745 FontBGRABlock bgra(221,218,250,255)
+030746-030768 FontCategoryBlock "Default Font Category"
 030769-030788 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             01 00 00 00
-030789-030799 T0Block "normal_t0"
-030800-030815 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-030816-030826 T0Block "normal_t0"
-030827-030842 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-030843-030866 ImageUseBlock id=1 xofs=1317835612 yofs=3458955359 xsize=1137132274 ysize=2874017466 brga=3765793386
+030789-030799 ShaderNameBlock "normal_t0"
+030800-030803 ShaderVariableBlock 0.0 (0)
+030804-030807 ShaderVariableBlock 0.0 (0)
+030808-030811 ShaderVariableBlock 0.0 (0)
+030812-030815 ShaderVariableBlock 0.0 (0)
+030816-030826 ShaderNameBlock "normal_t0"
+030827-030830 ShaderVariableBlock 0.0 (0)
+030831-030834 ShaderVariableBlock 0.0 (0)
+030835-030838 ShaderVariableBlock 0.0 (0)
+030839-030842 ShaderVariableBlock 0.0 (0)
+030843-030866 ImageUseBlock id=1 xofs=1317835612 yofs=3458955359 xsize=1137132274 ysize=2874017466 bgra=bgra(106,114,117,224)
 030867-030889 DataBlock
   ........i...>... 00 00 00 00 00 00 00 00 69 02 00 00 3e 02 00 00
   .......          ff ff ff a0 00 00 00
-030890-030913 ImageUseBlock id=1 xofs=0 yofs=0 xsize=16842752 ysize=0 brga=0
+030890-030913 ImageUseBlock id=1 xofs=0 yofs=0 xsize=16842752 ysize=0 bgra=bgra(0,0,0,0)
 030914-030963 DataBlock
   ...............? 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 3f
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ..               00 00
-030964-030987 ImageUseBlock id=1 xofs=0 yofs=0 xsize=486539264 ysize=585686878 brga=3075414156
+030964-030987 ImageUseBlock id=1 xofs=0 yofs=0 xsize=486539264 ysize=585686878 bgra=bgra(140,24,79,183)
 030988-030998 DataBlock
   .k.".>.....      99 6b 2e 22 84 3e a5 00 00 00 00
-030999-031022 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=0
+030999-031022 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(0,0,0,0)
 031023-031054 DataBlock
   .?..........$jBO 80 3f 00 00 00 00 00 00 00 00 00 00 24 6a 42 4f
   ?.-X...A.iG.=Z.. 3f 09 2d 58 02 ce cf 41 81 69 47 b0 3d 5a 86 a9
@@ -2631,7 +2912,7 @@
 031115-031129 StringBlock "ToUpper(Name)"
 031130-031142 DataBlock
   ....L...,....    00 00 00 00 4c 00 00 00 2c 02 00 00 00
-031143-031166 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=117440512 ysize=1275068416 brga=3355443200
+031143-031166 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=117440512 ysize=1275068416 bgra=bgra(0,0,0,200)
 031167-031218 DataBlock
   .....I.*........ ff ff ff 00 e4 49 0f 2a 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -2649,18 +2930,25 @@
 031368-031373 DataBlock
   ......           00 00 00 00 00 00
 031374-031385 FontNameBlock "Iskra-Bold"
-031386-031401 DataBlock
-  *............... 2a 00 00 00 00 00 00 00 00 00 00 00 ff ff ff ff
-031402-031415 StringBlock "header_large"
+031386-031389 LineHeightBlock 42
+031390-031393 FontLeadingBlock 0
+031394-031397 FontTrailingBlock 0
+031398-031401 FontBGRABlock bgra(255,255,255,255)
+031402-031415 FontCategoryBlock "header_large"
 031416-031435 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             00 00 00 00
-031436-031446 T0Block "normal_t0"
-031447-031462 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-031463-031473 T0Block "normal_t0"
-031474-031627 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+031436-031446 ShaderNameBlock "normal_t0"
+031447-031450 ShaderVariableBlock 0.0 (0)
+031451-031454 ShaderVariableBlock 0.0 (0)
+031455-031458 ShaderVariableBlock 0.0 (0)
+031459-031462 ShaderVariableBlock 0.0 (0)
+031463-031473 ShaderNameBlock "normal_t0"
+031474-031477 ShaderVariableBlock 0.0 (0)
+031478-031481 ShaderVariableBlock 0.0 (0)
+031482-031485 ShaderVariableBlock 0.0 (0)
+031486-031489 ShaderVariableBlock 0.0 (0)
+031490-031627 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....j....E...... 00 00 c1 f2 6a b8 f5 1f af 45 91 c4 14 11 9a 7f
   ................ db 82 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -2673,24 +2961,27 @@
 031628-031647 StringBlock "description_holder"
 031648-031662 DataBlock
   ...............  00 00 00 00 00 00 ea 01 00 00 d9 03 00 00 00
-031663-031686 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=134217728 ysize=0 brga=3791650816
+031663-031686 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=134217728 ysize=0 bgra=bgra(0,0,0,226)
 031687-031714 DataBlock
   .....@1*....T..N ff ff ff 00 ac 40 31 2a 04 00 00 00 54 07 0d 4e
   ).Yjg..@....     29 e8 59 6a 67 80 a8 40 a2 11 bf ce
-031715-031774 ImageBlock id=3290474512 xsize=286 ysize=237 path="ui\\skins\\default\\paper_background_tile.png" unknown=218631168
-031775-031787 DataBlock
-  N].h.t$.@....    4e 5d c8 68 de 74 24 d4 40 92 b4 ed 8a
-031788-031847 ImageBlock id=1043167237 xsize=46 ysize=46 path="ui\\skins\\default\\frontend_header_frame.png" unknown=833412096
-031848-031860 DataBlock
-  *."....8G..G.    2a 0e 22 b1 16 7f df 38 47 b0 f8 47 a0
-031861-031921 ImageBlock id=1240772549 xsize=404 ysize=135 path="ui\\skins\\default\\event_panel_ink_bottom.png" unknown=147624960
-031922-031934 DataBlock
-  G...^`..L../.    47 c0 c0 05 5e 60 0c 04 4c 84 88 2f b9
-031935-031992 ImageBlock id=3905016134 xsize=123 ysize=150 path="ui\\skins\\default\\event_panel_ink_top.png" unknown=0
-031993-032029 DataBlock
+031715-031770 ImageBlockGen2 id=3290474512 xsize=286 ysize=237 path="ui\\skins\\default\\paper_background_tile"
+031771-031787 DataBlock
+  ....N].h.t$.@... 00 0c 08 0d 4e 5d c8 68 de 74 24 d4 40 92 b4 ed
+  .                8a
+031788-031843 ImageBlockGen2 id=1043167237 xsize=46 ysize=46 path="ui\\skins\\default\\frontend_header_frame"
+031844-031860 DataBlock
+  ...1*."....8G..G 00 dc ac 31 2a 0e 22 b1 16 7f df 38 47 b0 f8 47
+  .                a0
+031861-031917 ImageBlockGen2 id=1240772549 xsize=404 ysize=135 path="ui\\skins\\default\\event_panel_ink_bottom"
+031918-031934 DataBlock
+  ....G...^`..L../ 00 94 cc 08 47 c0 c0 05 5e 60 0c 04 4c 84 88 2f
+  .                b9
+031935-031988 ImageBlockGen2 id=3905016134 xsize=123 ysize=150 path="ui\\skins\\default\\event_panel_ink_top"
+031989-032029 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-  ......@1*}.....G 00 01 00 00 00 ac 40 31 2a 7d fc 8f c6 fb 1d 47
-  @....            40 90 d3 03 80
+  ..........@1*}.. 00 00 00 00 00 01 00 00 00 ac 40 31 2a 7d fc 8f
+  ...G@....        c6 fb 1d 47 40 90 d3 03 80
 032030-032033 StateIDBlock 734848975
 032034-032043 NewStateBlock "NewState"
 032044-032047 XSizeBlock 940
@@ -2699,21 +2990,28 @@
   ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
   .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 032081-032098 FontNameBlock "FiraSans-Regular"
-032099-032114 DataBlock
-  ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
-032115-032137 StringBlock "Default Font Category"
+032099-032102 LineHeightBlock 10
+032103-032106 FontLeadingBlock 2
+032107-032110 FontTrailingBlock 0
+032111-032114 FontBGRABlock bgra(221,218,250,255)
+032115-032137 FontCategoryBlock "Default Font Category"
 032138-032157 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             00 00 00 00
-032158-032168 T0Block "normal_t0"
-032169-032184 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-032185-032195 T0Block "normal_t0"
-032196-032231 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+032158-032168 ShaderNameBlock "normal_t0"
+032169-032172 ShaderVariableBlock 0.0 (0)
+032173-032176 ShaderVariableBlock 0.0 (0)
+032177-032180 ShaderVariableBlock 0.0 (0)
+032181-032184 ShaderVariableBlock 0.0 (0)
+032185-032195 ShaderNameBlock "normal_t0"
+032196-032199 ShaderVariableBlock 0.0 (0)
+032200-032203 ShaderVariableBlock 0.0 (0)
+032204-032207 ShaderVariableBlock 0.0 (0)
+032208-032211 ShaderVariableBlock 0.0 (0)
+032212-032231 DataBlock
   ......1*."....8G 04 00 00 00 dc ac 31 2a 0e 22 b1 16 7f df 38 47
   ..G.             b0 f8 47 a0
-032232-032255 ImageUseBlock id=1240772549 xofs=572 yofs=4294967277 xsize=404 ysize=135 brga=4294967295
+032232-032255 ImageUseBlock id=1240772549 xofs=572 yofs=4294967277 xsize=404 ysize=135 bgra=bgra(255,255,255,255)
 032256-032349 DataBlock
   .........$...3.. 00 00 00 00 00 09 00 00 00 24 00 00 00 33 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -2721,30 +3019,30 @@
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 94 cc
   .G...^`..L../.   08 47 c0 c0 05 5e 60 0c 04 4c 84 88 2f b9
-032350-032373 ImageUseBlock id=3905016134 xofs=4294967270 yofs=4294967284 xsize=100 ysize=122 brga=4294967295
+032350-032373 ImageUseBlock id=3905016134 xofs=4294967270 yofs=4294967284 xsize=100 ysize=122 bgra=bgra(255,255,255,255)
 032374-032378 DataBlock
   .....            00 00 00 00 00
-032379-032402 ImageUseBlock id=1 xofs=4294967270 yofs=4294967284 xsize=0 ysize=0 brga=0
+032379-032402 ImageUseBlock id=1 xofs=4294967270 yofs=4294967284 xsize=0 ysize=0 bgra=bgra(0,0,0,0)
 032403-032467 DataBlock
   .............?.. 00 00 00 00 00 00 00 00 00 00 00 00 80 3f 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   .T..N).Yjg..@... 00 54 07 0d 4e 29 e8 59 6a 67 80 a8 40 a2 11 bf
   .                ce
-032468-032491 ImageUseBlock id=3290474512 xofs=0 yofs=0 xsize=940 ysize=65 brga=4294967295
+032468-032491 ImageUseBlock id=3290474512 xofs=0 yofs=0 xsize=940 ysize=65 bgra=bgra(255,255,255,255)
 032492-032493 DataBlock
   ..               00 00
-032494-032517 ImageUseBlock id=1 xofs=0 yofs=0 xsize=16777216 ysize=1 brga=0
+032494-032517 ImageUseBlock id=1 xofs=0 yofs=0 xsize=16777216 ysize=1 bgra=bgra(0,0,0,0)
 032518-032585 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80
   ?............... 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   .......N].h.t$.@ 00 00 00 00 0c 08 0d 4e 5d c8 68 de 74 24 d4 40
   ....             92 b4 ed 8a
-032586-032609 ImageUseBlock id=1043167237 xofs=0 yofs=0 xsize=940 ysize=65 brga=4294967295
+032586-032609 ImageUseBlock id=1043167237 xofs=0 yofs=0 xsize=940 ysize=65 bgra=bgra(255,255,255,255)
 032610-032611 DataBlock
   ..               00 00
-032612-032635 ImageUseBlock id=1 xofs=0 yofs=0 xsize=16777216 ysize=1 brga=0
+032612-032635 ImageUseBlock id=1 xofs=0 yofs=0 xsize=16777216 ysize=1 bgra=bgra(0,0,0,0)
 032636-032729 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80
   ?............... 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -2752,7 +3050,7 @@
   ..@............. 00 a0 40 00 00 00 00 00 00 00 00 00 00 00 00 00
   ..}.....G@...... 00 00 7d fc 8f c6 fb 1d 47 40 90 d3 03 80 cf e7
   .+............   cc 2b 00 00 00 00 00 00 00 00 00 00 00 00
-032730-032753 ImageUseBlock id=1 xofs=3369336832 yofs=3091418943 xsize=426354970 ysize=261375058 brga=1333587118
+032730-032753 ImageUseBlock id=1 xofs=3369336832 yofs=3091418943 xsize=426354970 ysize=261375058 bgra=bgra(174,236,124,79)
 032754-032755 DataBlock
   .!               98 21
 032756-032773 StringBlock "description_text"
@@ -2763,7 +3061,7 @@
 032819-032851 StringBlock "BattleRecordContext.Description"
 032852-032864 DataBlock
   .............    00 00 00 00 00 00 00 00 00 00 00 00 00
-032865-032888 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=0 ysize=0 brga=0
+032865-032888 ImageUseBlock id=1 xofs=256 yofs=65536 xsize=0 ysize=0 bgra=bgra(0,0,0,0)
 032889-032940 DataBlock
   .....G.G........ 00 00 00 00 9c 47 0f 47 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -2781,51 +3079,65 @@
 033098-033103 DataBlock
   ......           00 00 00 00 00 00
 033104-033121 FontNameBlock "FiraSans-Regular"
-033122-033137 DataBlock
-  ................ 10 00 00 00 02 00 00 00 00 00 00 00 00 00 00 ff
-033138-033156 StringBlock "info_text_Fira_16"
+033122-033125 LineHeightBlock 16
+033126-033129 FontLeadingBlock 2
+033130-033133 FontTrailingBlock 0
+033134-033137 FontBGRABlock bgra(0,0,0,255)
+033138-033156 FontCategoryBlock "info_text_Fira_16"
 033157-033176 DataBlock
   ................ 19 00 00 00 19 00 00 00 14 00 00 00 14 00 00 00
   ....             00 00 00 00
-033177-033187 T0Block "normal_t0"
-033188-033203 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-033204-033214 T0Block "normal_t0"
-033215-033276 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+033177-033187 ShaderNameBlock "normal_t0"
+033188-033191 ShaderVariableBlock 0.0 (0)
+033192-033195 ShaderVariableBlock 0.0 (0)
+033196-033199 ShaderVariableBlock 0.0 (0)
+033200-033203 ShaderVariableBlock 0.0 (0)
+033204-033214 ShaderNameBlock "normal_t0"
+033215-033218 ShaderVariableBlock 0.0 (0)
+033219-033222 ShaderVariableBlock 0.0 (0)
+033223-033226 ShaderVariableBlock 0.0 (0)
+033227-033230 ShaderVariableBlock 0.0 (0)
+033231-033276 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ...@..\3.L...S.. 00 00 91 40 c5 16 5c 33 8f 4c 87 b8 b2 53 1c b7
   $&............   24 26 00 00 00 00 00 00 00 00 00 00 00 00
-033277-033300 ImageUseBlock id=1 xofs=3890479104 yofs=4143927093 xsize=1624784445 ysize=515592131 brga=148678672
+033277-033300 ImageUseBlock id=1 xofs=3890479104 yofs=4143927093 xsize=1624784445 ysize=515592131 bgra=bgra(16,168,220,8)
 033301-033302 DataBlock
   l.               6c da
 033303-033332 StringBlock "checkbox_romance_mode_parent"
 033333-033346 DataBlock
   ..............   00 00 00 00 00 00 0c 03 00 00 0e 00 00 00
-033347-033370 ImageUseBlock id=1 xofs=65536 yofs=16777216 xsize=0 ysize=3 brga=4294967286
+033347-033370 ImageUseBlock id=1 xofs=65536 yofs=16777216 xsize=0 ysize=3 bgra=bgra(246,255,255,255)
 033371-033403 DataBlock
   .......KN....... 0e 00 00 00 00 b4 ed 4b 4e 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   .                00
-033404-033427 ImageUseBlock id=1 xofs=1313598900 yofs=83550754 xsize=1321395997 ysize=893444769 brga=1302582725
+033404-033427 ImageUseBlock id=1 xofs=1313598900 yofs=83550754 xsize=1321395997 ysize=893444769 bgra=bgra(197,213,163,77)
 033428-033436 StringBlock "default"
 033437-033473 DataBlock
   ....!........... 96 00 00 00 21 00 00 00 00 00 00 00 02 00 00 00
   ................ 00 00 00 00 00 00 00 00 02 00 00 00 00 00 00 00
   .....            00 00 00 00 00
 033474-033491 FontNameBlock "FiraSans-Regular"
-033492-033507 DataBlock
-  ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
-033508-033530 StringBlock "Default Font Category"
+033492-033495 LineHeightBlock 10
+033496-033499 FontLeadingBlock 2
+033500-033503 FontTrailingBlock 0
+033504-033507 FontBGRABlock bgra(221,218,250,255)
+033508-033530 FontCategoryBlock "Default Font Category"
 033531-033550 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             00 00 00 00
-033551-033561 T0Block "normal_t0"
-033562-033577 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-033578-033588 T0Block "normal_t0"
-033589-033676 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+033551-033561 ShaderNameBlock "normal_t0"
+033562-033565 ShaderVariableBlock 0.0 (0)
+033566-033569 ShaderVariableBlock 0.0 (0)
+033570-033573 ShaderVariableBlock 0.0 (0)
+033574-033577 ShaderVariableBlock 0.0 (0)
+033578-033588 ShaderNameBlock "normal_t0"
+033589-033592 ShaderVariableBlock 0.0 (0)
+033593-033596 ShaderVariableBlock 0.0 (0)
+033597-033600 ShaderVariableBlock 0.0 (0)
+033601-033604 ShaderVariableBlock 0.0 (0)
+033605-033676 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   .."......N..@5.. 00 00 22 e2 fa 04 1d e7 c2 4e a1 e2 40 35 c5 d5
   .M.............. a3 4d 00 00 00 00 00 00 00 00 00 00 00 00 02 00
@@ -2861,18 +3173,25 @@
 034365-034370 DataBlock
   ......           00 00 00 00 00 00
 034371-034388 FontNameBlock "FiraSans-Regular"
-034389-034404 DataBlock
-  ................ 10 00 00 00 02 00 00 00 00 00 00 00 00 00 00 ff
-034405-034423 StringBlock "info_text_Fira_16"
+034389-034392 LineHeightBlock 16
+034393-034396 FontLeadingBlock 2
+034397-034400 FontTrailingBlock 0
+034401-034404 FontBGRABlock bgra(0,0,0,255)
+034405-034423 FontCategoryBlock "info_text_Fira_16"
 034424-034443 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             01 00 00 00
-034444-034454 T0Block "normal_t0"
-034455-034470 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-034471-034481 T0Block "normal_t0"
-034482-034569 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+034444-034454 ShaderNameBlock "normal_t0"
+034455-034458 ShaderVariableBlock 0.0 (0)
+034459-034462 ShaderVariableBlock 0.0 (0)
+034463-034466 ShaderVariableBlock 0.0 (0)
+034467-034470 ShaderVariableBlock 0.0 (0)
+034471-034481 ShaderNameBlock "normal_t0"
+034482-034485 ShaderVariableBlock 0.0 (0)
+034486-034489 ShaderVariableBlock 0.0 (0)
+034490-034493 ShaderVariableBlock 0.0 (0)
+034494-034497 ShaderVariableBlock 0.0 (0)
+034498-034569 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ......A......... 00 00 00 00 00 00 41 00 00 00 00 00 00 00 00 00
@@ -2978,21 +3297,21 @@
 035856-035871 StringBlock "HorizontalList"
 035872-035884 DataBlock
   .............    00 00 00 00 05 00 00 00 00 00 00 00 00
-035885-035908 ImageUseBlock id=1 xofs=1 yofs=0 xsize=0 ysize=0 brga=0
+035885-035908 ImageUseBlock id=1 xofs=1 yofs=0 xsize=0 ysize=0 bgra=bgra(0,0,0,0)
 035909-035926 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ..               00 00
-035927-035950 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=16256
+035927-035950 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(128,63,0,0)
 035951-035979 DataBlock
   .?.............. 80 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ...?.........    00 00 80 3f 00 00 00 00 00 00 00 00 01
 035980-035985 StringBlock "List"
-035986-036009 ImageUseBlock id=1 xofs=1143111680 yofs=0 xsize=0 ysize=256 brga=256
+035986-036009 ImageUseBlock id=1 xofs=1143111680 yofs=0 xsize=0 ysize=256 bgra=bgra(0,1,0,0)
 036010-036045 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             00 00 00 01
-036046-036069 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=2147483648 brga=63
+036046-036069 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=2147483648 bgra=bgra(63,0,0,0)
 036070-036118 DataBlock
   ?...?........... 3f 00 00 80 3f 00 00 00 00 00 00 00 00 00 00 00
   ..?............. 00 80 3f 00 00 00 00 00 00 00 00 00 00 f4 fe bb
@@ -3001,7 +3320,7 @@
 036119-036137 StringBlock "navigation_holder"
 036138-036151 DataBlock
   ..........C...   00 00 00 00 00 00 00 00 00 00 43 00 00 00
-036152-036175 ImageUseBlock id=1 xofs=65536 yofs=16777216 xsize=0 ysize=1 brga=0
+036152-036175 ImageUseBlock id=1 xofs=65536 yofs=16777216 xsize=0 ysize=1 bgra=bgra(0,0,0,0)
 036176-036228 DataBlock
   C.......J....... 43 00 00 00 00 fc 05 19 4a 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -3015,18 +3334,25 @@
   ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
   .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 036280-036297 FontNameBlock "FiraSans-Regular"
-036298-036313 DataBlock
-  ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
-036314-036336 StringBlock "Default Font Category"
+036298-036301 LineHeightBlock 10
+036302-036305 FontLeadingBlock 2
+036306-036309 FontTrailingBlock 0
+036310-036313 FontBGRABlock bgra(221,218,250,255)
+036314-036336 FontCategoryBlock "Default Font Category"
 036337-036356 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             01 00 00 00
-036357-036367 T0Block "normal_t0"
-036368-036383 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-036384-036394 T0Block "normal_t0"
-036395-036482 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+036357-036367 ShaderNameBlock "normal_t0"
+036368-036371 ShaderVariableBlock 0.0 (0)
+036372-036375 ShaderVariableBlock 0.0 (0)
+036376-036379 ShaderVariableBlock 0.0 (0)
+036380-036383 ShaderVariableBlock 0.0 (0)
+036384-036394 ShaderNameBlock "normal_t0"
+036395-036398 ShaderVariableBlock 0.0 (0)
+036399-036402 ShaderVariableBlock 0.0 (0)
+036403-036406 ShaderVariableBlock 0.0 (0)
+036407-036410 ShaderVariableBlock 0.0 (0)
+036411-036482 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ..%.Z.]..H.z.6.I 00 00 25 0f 5a b3 5d a6 12 48 bd 7a e1 36 11 49
   ................ 96 da 00 00 00 00 00 00 00 00 00 00 00 00 03 00
@@ -3036,7 +3362,7 @@
 036503-036522 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             00 00 00 00
-036523-036546 ImageUseBlock id=1 xofs=256 yofs=0 xsize=0 ysize=0 brga=3422552064
+036523-036546 ImageUseBlock id=1 xofs=256 yofs=0 xsize=0 ysize=0 bgra=bgra(0,0,0,204)
 036547-036593 DataBlock
   m;N............. 6d 3b 4e 00 00 00 00 00 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 cc
@@ -3049,18 +3375,25 @@
   ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
   .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 036645-036662 FontNameBlock "FiraSans-Regular"
-036663-036678 DataBlock
-  ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
-036679-036701 StringBlock "Default Font Category"
+036663-036666 LineHeightBlock 10
+036667-036670 FontLeadingBlock 2
+036671-036674 FontTrailingBlock 0
+036675-036678 FontBGRABlock bgra(221,218,250,255)
+036679-036701 FontCategoryBlock "Default Font Category"
 036702-036721 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             00 00 00 00
-036722-036732 T0Block "normal_t0"
-036733-036748 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-036749-036759 T0Block "normal_t0"
-036760-036825 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+036722-036732 ShaderNameBlock "normal_t0"
+036733-036736 ShaderVariableBlock 0.0 (0)
+036737-036740 ShaderVariableBlock 0.0 (0)
+036741-036744 ShaderVariableBlock 0.0 (0)
+036745-036748 ShaderVariableBlock 0.0 (0)
+036749-036759 ShaderNameBlock "normal_t0"
+036760-036763 ShaderVariableBlock 0.0 (0)
+036764-036767 ShaderVariableBlock 0.0 (0)
+036768-036771 ShaderVariableBlock 0.0 (0)
+036772-036775 ShaderVariableBlock 0.0 (0)
+036776-036825 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   .....:X..B...... 00 00 07 a6 97 3a 58 e1 1b 42 ab cc fa 00 02 ae
   ......-......... 8f 03 00 00 00 00 2d 00 00 00 00 00 00 00 01 00
@@ -3146,8 +3479,9 @@
 037821-037836 StringBlock "override_sound"
 037837-037838 DataBlock
   ..               00 00
-037839-037908 ImageBlock id=1 xsize=0 ysize=0 path="ui\\skins\\default\\3k_btn_frontend_menu_item_hover.png" unknown=1
-037909-037962 ImagePathBlock "ui\\skins\\default\\3k_btn_frontend_menu_item_hover.png"
+037839-037904 ImageBlockGen2 id=1 xsize=0 ysize=0 path="ui\\skins\\default\\3k_btn_frontend_menu_item_hover"
+037905-037962 ImagePathListBlock 1 elements:
+  037909-037962 ImagePathBlock "ui\\skins\\default\\3k_btn_frontend_menu_item_hover.png"
 037963-038004 DataBlock
   .U1..G#F..(9.}.. a0 55 31 a2 0c 47 23 46 8c db 28 39 87 7d 15 f3
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -3172,8 +3506,9 @@
 038243-038280 UnicodeBlock "HISTORICAL BATTLES"
 038281-038289 DataBlock
   .........        00 00 00 00 01 00 00 00 00
-038290-038349 ImageBlock id=1 xsize=0 ysize=0 path="ui\\skins\\default\\frontend_header_frame.png" unknown=1
-038350-038393 ImagePathBlock "ui\\skins\\default\\frontend_header_frame.png"
+038290-038345 ImageBlockGen2 id=1 xsize=0 ysize=0 path="ui\\skins\\default\\frontend_header_frame"
+038346-038393 ImagePathListBlock 1 elements:
+  038350-038393 ImagePathBlock "ui\\skins\\default\\frontend_header_frame.png"
 038394-038435 DataBlock
   ....R?.F..a.A..H db 90 17 e9 52 3f cc 46 80 b4 61 8a 41 8e 13 48
   .......uKNl.P*.. 00 00 00 00 00 00 8c 75 4b 4e 6c b0 50 2a e7 a6
@@ -3187,7 +3522,7 @@
 038481-038503 StringBlock "ResizeToFillRemaining"
 038504-038519 DataBlock
   ................ 00 00 00 00 00 00 00 00 18 02 00 00 00 00 00 00
-038520-038543 ImageUseBlock id=1 xofs=65536 yofs=16777216 xsize=0 ysize=0 brga=15
+038520-038543 ImageUseBlock id=1 xofs=65536 yofs=16777216 xsize=0 ysize=0 bgra=bgra(15,0,0,0)
 038544-038596 DataBlock
   ......X.N....... 00 00 00 00 00 ec 58 09 4e 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -3201,18 +3536,25 @@
   ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
   .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 038648-038665 FontNameBlock "FiraSans-Regular"
-038666-038681 DataBlock
-  ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
-038682-038704 StringBlock "Default Font Category"
+038666-038669 LineHeightBlock 10
+038670-038673 FontLeadingBlock 2
+038674-038677 FontTrailingBlock 0
+038678-038681 FontBGRABlock bgra(221,218,250,255)
+038682-038704 FontCategoryBlock "Default Font Category"
 038705-038724 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             00 00 00 00
-038725-038735 T0Block "normal_t0"
-038736-038751 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-038752-038762 T0Block "normal_t0"
-038763-038850 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+038725-038735 ShaderNameBlock "normal_t0"
+038736-038739 ShaderVariableBlock 0.0 (0)
+038740-038743 ShaderVariableBlock 0.0 (0)
+038744-038747 ShaderVariableBlock 0.0 (0)
+038748-038751 ShaderVariableBlock 0.0 (0)
+038752-038762 ShaderNameBlock "normal_t0"
+038763-038766 ShaderVariableBlock 0.0 (0)
+038767-038770 ShaderVariableBlock 0.0 (0)
+038771-038774 ShaderVariableBlock 0.0 (0)
+038775-038778 ShaderVariableBlock 0.0 (0)
+038779-038850 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ..,J..zY#D.F.;I! 00 00 2c 4a 17 af 7a 59 23 44 8c 46 d2 3b 49 21
   \............... 5c d2 00 00 00 00 00 00 00 00 00 00 00 00 02 00
@@ -3224,7 +3566,7 @@
 038866-038874 StringBlock "HSlider"
 038875-038890 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-038891-038914 ImageUseBlock id=1 xofs=65536 yofs=16777216 xsize=0 ysize=4 brga=0
+038891-038914 ImageUseBlock id=1 xofs=65536 yofs=16777216 xsize=0 ysize=4 bgra=bgra(0,0,0,0)
 038915-038967 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -3238,18 +3580,25 @@
   ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
   .............    01 00 00 00 00 00 00 00 00 00 00 00 00
 039019-039030 FontNameBlock "Iskra-Bold"
-039031-039046 DataBlock
-  ................ 0f 00 00 00 02 00 00 00 00 00 00 00 ff ff ff ff
-039047-039059 StringBlock "item_header"
+039031-039034 LineHeightBlock 15
+039035-039038 FontLeadingBlock 2
+039039-039042 FontTrailingBlock 0
+039043-039046 FontBGRABlock bgra(255,255,255,255)
+039047-039059 FontCategoryBlock "item_header"
 039060-039079 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             01 00 00 00
-039080-039090 T0Block "normal_t0"
-039091-039106 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-039107-039117 T0Block "normal_t0"
-039118-039171 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+039080-039090 ShaderNameBlock "normal_t0"
+039091-039094 ShaderVariableBlock 0.0 (0)
+039095-039098 ShaderVariableBlock 0.0 (0)
+039099-039102 ShaderVariableBlock 0.0 (0)
+039103-039106 ShaderVariableBlock 0.0 (0)
+039107-039117 ShaderNameBlock "normal_t0"
+039118-039121 ShaderVariableBlock 0.0 (0)
+039122-039125 ShaderVariableBlock 0.0 (0)
+039126-039129 ShaderVariableBlock 0.0 (0)
+039130-039133 ShaderVariableBlock 0.0 (0)
+039134-039171 DataBlock
   ................ 00 00 00 00 c0 cd cd cd c0 cd cd cd 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ......           00 00 05 00 00 00
@@ -3275,50 +3624,60 @@
 039304-039325 DataBlock
   ................ 00 00 00 00 00 00 00 00 de ff ff ff 05 00 00 00
   ......           00 00 00 00 00 00
-039326-039349 ImageUseBlock id=1 xofs=0 yofs=851968 xsize=4293984256 ysize=65535 brga=1946157056
+039326-039349 ImageUseBlock id=1 xofs=0 yofs=851968 xsize=4293984256 ysize=65535 bgra=bgra(0,0,0,116)
 039350-039372 DataBlock
   .KN.......N..e.. 9c 4b 4e 02 00 00 00 ec e3 13 4e b1 9a 65 05 dd
   4.A...y          34 09 41 b7 a7 95 79
-039373-039431 ImageBlock id=2259407814 xsize=19 ysize=24 path="ui\\skins\\default\\icon_navigation_left.png" unknown=2849168384
-039432-039444 DataBlock
-  F...*!..M....    46 12 95 83 2a 21 df f5 4d b2 03 87 be
-039445-039509 ImageBlock id=711783858 xsize=19 ysize=24 path="ui\\skins\\default\\icon_navigation_left_hover.png" unknown=0
-039510-039550 DataBlock
+039373-039427 ImageBlockGen2 id=2259407814 xsize=19 ysize=24 path="ui\\skins\\default\\icon_navigation_left"
+039428-039444 DataBlock
+  ....F...*!..M... 00 dc d2 a9 46 12 95 83 2a 21 df f5 4d b2 03 87
+  .                be
+039445-039505 ImageBlockGen2 id=711783858 xsize=19 ysize=24 path="ui\\skins\\default\\icon_navigation_left_hover"
+039506-039550 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-  .....t.KN.....<  00 05 00 00 00 74 9c 4b 4e 7f ff f9 d0 95 3c 20
-  L.6.O.J..        4c 9b 36 aa 4f dc 4a a1 d4
+  .........t.KN... 00 00 00 00 00 05 00 00 00 74 9c 4b 4e 7f ff f9
+  ..< L.6.O.J..    d0 95 3c 20 4c 9b 36 aa 4f dc 4a a1 d4
 039551-039558 StringBlock "active"
 039559-039595 DataBlock
   ................ 13 00 00 00 18 00 00 00 00 00 00 00 02 00 00 00
   ................ 00 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00
   .....            00 00 00 00 00
 039596-039607 FontNameBlock "Iskra-Bold"
-039608-039623 DataBlock
-  ................ 12 00 00 00 01 00 00 00 00 00 00 00 ff ff ff ff
-039624-039652 StringBlock "subheader--sidepanel_header"
+039608-039611 LineHeightBlock 18
+039612-039615 FontLeadingBlock 1
+039616-039619 FontTrailingBlock 0
+039620-039623 FontBGRABlock bgra(255,255,255,255)
+039624-039652 FontCategoryBlock "subheader--sidepanel_header"
 039653-039672 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             01 00 00 00
-039673-039683 T0Block "normal_t0"
-039684-039699 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-039700-039710 T0Block "normal_t0"
-039711-039726 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-039727-039750 ImageUseBlock id=1 xofs=1309926380 yofs=90544817 xsize=1091122397 ysize=2039850935 brga=2259407814
+039673-039683 ShaderNameBlock "normal_t0"
+039684-039687 ShaderVariableBlock 0.0 (0)
+039688-039691 ShaderVariableBlock 0.0 (0)
+039692-039695 ShaderVariableBlock 0.0 (0)
+039696-039699 ShaderVariableBlock 0.0 (0)
+039700-039710 ShaderNameBlock "normal_t0"
+039711-039714 ShaderVariableBlock 0.0 (0)
+039715-039718 ShaderVariableBlock 0.0 (0)
+039719-039722 ShaderVariableBlock 0.0 (0)
+039723-039726 ShaderVariableBlock 0.0 (0)
+039727-039750 ImageUseBlock id=1 xofs=1309926380 yofs=90544817 xsize=1091122397 ysize=2039850935 bgra=bgra(198,211,171,134)
 039751-039788 DataBlock
   ................ 00 00 00 00 00 00 00 00 13 00 00 00 18 00 00 00
   ................ ff ff ff ff 00 00 00 00 00 05 00 00 00 00 00 00
   ......           00 00 00 00 00 01
-039789-039812 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=2147483648
+039789-039812 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(0,0,0,128)
 039813-039813 DataBlock
   ?                3f
-039814-039826 T0Block "brighten_t0"
-039827-039867 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+039814-039826 ShaderNameBlock "brighten_t0"
+039827-039830 ShaderVariableBlock 0.0 (0)
+039831-039834 ShaderVariableBlock 0.0 (0)
+039835-039838 ShaderVariableBlock 0.0 (0)
+039839-039842 ShaderVariableBlock 0.0 (0)
+039843-039867 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   .........        00 14 00 00 00 18 00 00 00
-039868-039891 ImageUseBlock id=1 xofs=0 yofs=1317893412 xsize=937248671 ysize=1299003335 brga=1232418209
+039868-039891 ImageUseBlock id=1 xofs=0 yofs=1317893412 xsize=937248671 ysize=1299003335 bgra=bgra(161,53,117,73)
 039892-039929 DataBlock
   -..]....@....... 2d 05 c0 5d c8 00 00 00 40 00 00 00 00 00 00 00
   ..t.1OG......H.. 00 00 74 e0 31 4f 47 1a 83 d7 e7 dc 80 48 8b 96
@@ -3329,25 +3688,31 @@
   ................ 00 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00
   .....            00 00 00 00 00
 039973-039984 FontNameBlock "Iskra-Bold"
-039985-040000 DataBlock
-  ................ 12 00 00 00 01 00 00 00 00 00 00 00 ff ff ff ff
-040001-040029 StringBlock "subheader--sidepanel_header"
+039985-039988 LineHeightBlock 18
+039989-039992 FontLeadingBlock 1
+039993-039996 FontTrailingBlock 0
+039997-040000 FontBGRABlock bgra(255,255,255,255)
+040001-040029 FontCategoryBlock "subheader--sidepanel_header"
 040030-040049 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             01 00 00 00
-040050-040060 T0Block "normal_t0"
-040061-040076 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-040077-040087 T0Block "normal_t0"
-040088-040103 DataBlock
-  ...>............ 9a 99 99 3e 00 00 00 00 00 00 00 00 00 00 00 00
-040104-040127 ImageUseBlock id=1 xofs=1309926380 yofs=90544817 xsize=1091122397 ysize=2039850935 brga=2259407814
+040050-040060 ShaderNameBlock "normal_t0"
+040061-040064 ShaderVariableBlock 0.0 (0)
+040065-040068 ShaderVariableBlock 0.0 (0)
+040069-040072 ShaderVariableBlock 0.0 (0)
+040073-040076 ShaderVariableBlock 0.0 (0)
+040077-040087 ShaderNameBlock "normal_t0"
+040088-040091 ShaderVariableBlock 0.30000001192092896 (1050253722)
+040092-040095 ShaderVariableBlock 0.0 (0)
+040096-040099 ShaderVariableBlock 0.0 (0)
+040100-040103 ShaderVariableBlock 0.0 (0)
+040104-040127 ImageUseBlock id=1 xofs=1309926380 yofs=90544817 xsize=1091122397 ysize=2039850935 bgra=bgra(198,211,171,134)
 040128-040131 DataBlock
   ....             00 00 00 00
-040132-040155 ImageUseBlock id=1 xofs=19 yofs=24 xsize=4290822336 ysize=0 brga=1280
+040132-040155 ImageUseBlock id=1 xofs=19 yofs=24 xsize=4290822336 ysize=0 bgra=bgra(0,5,0,0)
 040156-040160 DataBlock
   .....            00 00 00 00 00
-040161-040184 ImageUseBlock id=1 xofs=257 yofs=0 xsize=0 ysize=0 brga=0
+040161-040184 ImageUseBlock id=1 xofs=257 yofs=0 xsize=0 ysize=0 bgra=bgra(0,0,0,0)
 040185-040273 DataBlock
   .....?.......... 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -3355,7 +3720,7 @@
   .........$u.N.G. 00 02 00 00 00 03 00 00 00 24 75 8d 4e 9f 47 dd
   7.7mM.5uI-..]... 37 c7 37 6d 4d a1 35 75 49 2d 05 c0 5d 00 00 00
   .........        00 00 00 00 00 00 00 00 00
-040274-040297 ImageUseBlock id=1 xofs=1313595540 yofs=4123820886 xsize=1297987309 ysize=931138730 brga=2157283577
+040274-040297 ImageUseBlock id=1 xofs=1313595540 yofs=4123820886 xsize=1297987309 ysize=931138730 bgra=bgra(249,136,149,128)
 040298-040331 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 94 e0
   KNV.....]M...7.. 4b 4e 56 83 cc f5 ed b6 5d 4d aa 0c 80 37 f9 88
@@ -3366,24 +3731,30 @@
   ................ 00 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00
   .....            00 00 00 00 00
 040379-040390 FontNameBlock "Iskra-Bold"
-040391-040406 DataBlock
-  ................ 12 00 00 00 01 00 00 00 00 00 00 00 ff ff ff ff
-040407-040435 StringBlock "subheader--sidepanel_header"
+040391-040394 LineHeightBlock 18
+040395-040398 FontLeadingBlock 1
+040399-040402 FontTrailingBlock 0
+040403-040406 FontBGRABlock bgra(255,255,255,255)
+040407-040435 FontCategoryBlock "subheader--sidepanel_header"
 040436-040455 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             01 00 00 00
-040456-040466 T0Block "normal_t0"
-040467-040482 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-040483-040493 T0Block "normal_t0"
-040494-040509 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-040510-040533 ImageUseBlock id=1 xofs=1309926380 yofs=90544817 xsize=1091122397 ysize=2039850935 brga=2259407814
+040456-040466 ShaderNameBlock "normal_t0"
+040467-040470 ShaderVariableBlock 0.0 (0)
+040471-040474 ShaderVariableBlock 0.0 (0)
+040475-040478 ShaderVariableBlock 0.0 (0)
+040479-040482 ShaderVariableBlock 0.0 (0)
+040483-040493 ShaderNameBlock "normal_t0"
+040494-040497 ShaderVariableBlock 0.0 (0)
+040498-040501 ShaderVariableBlock 0.0 (0)
+040502-040505 ShaderVariableBlock 0.0 (0)
+040506-040509 ShaderVariableBlock 0.0 (0)
+040510-040533 ImageUseBlock id=1 xofs=1309926380 yofs=90544817 xsize=1091122397 ysize=2039850935 bgra=bgra(198,211,171,134)
 040534-040571 DataBlock
   ................ 00 00 00 00 00 00 00 00 13 00 00 00 18 00 00 00
   ................ ff ff ff ff 00 00 00 00 00 05 00 00 00 00 00 00
   ......           00 00 00 00 00 01
-040572-040595 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=2147483648
+040572-040595 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(0,0,0,128)
 040596-040737 DataBlock
   ?............... 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -3400,43 +3771,53 @@
   ................ 00 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00
   .....            00 00 00 00 00
 040782-040793 FontNameBlock "Iskra-Bold"
-040794-040809 DataBlock
-  ................ 12 00 00 00 01 00 00 00 00 00 00 00 ff ff ff ff
-040810-040838 StringBlock "subheader--sidepanel_header"
+040794-040797 LineHeightBlock 18
+040798-040801 FontLeadingBlock 1
+040802-040805 FontTrailingBlock 0
+040806-040809 FontBGRABlock bgra(255,255,255,255)
+040810-040838 FontCategoryBlock "subheader--sidepanel_header"
 040839-040858 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             01 00 00 00
-040859-040869 T0Block "normal_t0"
-040870-040885 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-040886-040896 T0Block "normal_t0"
-040897-040932 DataBlock
-  ...>............ 9a 99 99 3e 00 00 00 00 00 00 00 00 00 00 00 00
+040859-040869 ShaderNameBlock "normal_t0"
+040870-040873 ShaderVariableBlock 0.0 (0)
+040874-040877 ShaderVariableBlock 0.0 (0)
+040878-040881 ShaderVariableBlock 0.0 (0)
+040882-040885 ShaderVariableBlock 0.0 (0)
+040886-040896 ShaderNameBlock "normal_t0"
+040897-040900 ShaderVariableBlock 0.30000001192092896 (1050253722)
+040901-040904 ShaderVariableBlock 0.0 (0)
+040905-040908 ShaderVariableBlock 0.0 (0)
+040909-040912 ShaderVariableBlock 0.0 (0)
+040913-040932 DataBlock
   .......N..e..4.A 02 00 00 00 ec e3 13 4e b1 9a 65 05 dd 34 09 41
   ...y             b7 a7 95 79
-040933-040956 ImageUseBlock id=2259407814 xofs=0 yofs=0 xsize=19 ysize=24 brga=4294967295
+040933-040956 ImageUseBlock id=2259407814 xofs=0 yofs=0 xsize=19 ysize=24 bgra=bgra(255,255,255,255)
 040957-040974 DataBlock
   ................ 00 00 01 00 00 05 00 00 00 00 00 00 00 00 00 00
   ..               00 01
-040975-040998 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=2147483648
+040975-040998 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(0,0,0,128)
 040999-040999 DataBlock
   ?                3f
-041000-041012 T0Block "brighten_t0"
-041013-041061 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+041000-041012 ShaderNameBlock "brighten_t0"
+041013-041016 ShaderVariableBlock 0.0 (0)
+041017-041020 ShaderVariableBlock 0.0 (0)
+041021-041024 ShaderVariableBlock 0.0 (0)
+041025-041028 ShaderVariableBlock 0.0 (0)
+041029-041061 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....F...*!..M... 00 dc d2 a9 46 12 95 83 2a 21 df f5 4d b2 03 87
   .                be
-041062-041085 ImageUseBlock id=711783858 xofs=0 yofs=0 xsize=19 ysize=24 brga=4294967295
+041062-041085 ImageUseBlock id=711783858 xofs=0 yofs=0 xsize=19 ysize=24 bgra=bgra(255,255,255,255)
 041086-041103 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ..               00 01
-041104-041127 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=2147483648
+041104-041127 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(0,0,0,128)
 041128-041175 DataBlock
   ?............... 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ........~....... 00 00 00 00 89 00 00 00 7e 00 00 00 02 00 00 00
-041176-041199 ImageUseBlock id=1 xofs=1313578100 yofs=3506044799 xsize=1277181077 ysize=1336555163 brga=3567340252
+041176-041199 ImageUseBlock id=1 xofs=1313578100 yofs=3506044799 xsize=1277181077 ysize=1336555163 bgra=bgra(220,74,161,212)
 041200-041269 DataBlock
   ....@........... c8 00 00 00 40 00 00 00 00 00 00 00 02 00 00 00
   t.1OG......H..=K 74 e0 31 4f 47 1a 83 d7 e7 dc 80 48 8b 96 3d 4b
@@ -3449,24 +3830,30 @@
   ................ 00 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00
   .....            00 00 00 00 00
 041317-041328 FontNameBlock "Iskra-Bold"
-041329-041344 DataBlock
-  ................ 12 00 00 00 01 00 00 00 00 00 00 00 ff ff ff ff
-041345-041373 StringBlock "subheader--sidepanel_header"
+041329-041332 LineHeightBlock 18
+041333-041336 FontLeadingBlock 1
+041337-041340 FontTrailingBlock 0
+041341-041344 FontBGRABlock bgra(255,255,255,255)
+041345-041373 FontCategoryBlock "subheader--sidepanel_header"
 041374-041393 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             01 01 00 00
-041394-041404 T0Block "normal_t0"
-041405-041420 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-041421-041431 T0Block "normal_t0"
-041432-041447 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-041448-041471 ImageUseBlock id=1 xofs=1309926380 yofs=90544817 xsize=1091122397 ysize=2039850935 brga=2259407814
+041394-041404 ShaderNameBlock "normal_t0"
+041405-041408 ShaderVariableBlock 0.0 (0)
+041409-041412 ShaderVariableBlock 0.0 (0)
+041413-041416 ShaderVariableBlock 0.0 (0)
+041417-041420 ShaderVariableBlock 0.0 (0)
+041421-041431 ShaderNameBlock "normal_t0"
+041432-041435 ShaderVariableBlock 0.0 (0)
+041436-041439 ShaderVariableBlock 0.0 (0)
+041440-041443 ShaderVariableBlock 0.0 (0)
+041444-041447 ShaderVariableBlock 0.0 (0)
+041448-041471 ImageUseBlock id=1 xofs=1309926380 yofs=90544817 xsize=1091122397 ysize=2039850935 bgra=bgra(198,211,171,134)
 041472-041509 DataBlock
   ................ 00 00 00 00 00 00 00 00 13 00 00 00 18 00 00 00
   ...F............ ff ff ff 46 00 00 00 00 00 05 00 00 00 00 00 00
   ......           00 00 00 00 00 01
-041510-041533 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=2147483648
+041510-041533 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(0,0,0,128)
 041534-041603 DataBlock
   ?............... 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -3493,50 +3880,60 @@
 041788-041809 DataBlock
   ................ 00 00 00 00 00 00 00 00 e3 00 00 00 05 00 00 00
   ......           00 00 00 00 00 00
-041810-041833 ImageUseBlock id=1 xofs=256 yofs=983040 xsize=983040 ysize=0 brga=3556769792
+041810-041833 ImageUseBlock id=1 xofs=256 yofs=983040 xsize=983040 ysize=0 bgra=bgra(0,0,0,212)
 041834-041856 DataBlock
   %.N.....^.*..m<. 25 9a 4e 02 00 00 00 b4 5e 0e 2a f8 bd 6d 3c 04
   .uH.}.-          82 75 48 bd 7d d5 2d
-041857-041916 ImageBlock id=944278788 xsize=19 ysize=24 path="ui\\skins\\default\\icon_navigation_right.png" unknown=876303360
-041917-041929 DataBlock
-  O-...2C.A. ..    4f 2d df b8 12 32 43 e5 41 b7 20 f8 17
-041930-041995 ImageBlock id=4045735937 xsize=19 ysize=24 path="ui\\skins\\default\\icon_navigation_right_hover.png" unknown=0
-041996-042036 DataBlock
+041857-041912 ImageBlockGen2 id=944278788 xsize=19 ysize=24 path="ui\\skins\\default\\icon_navigation_right"
+041913-041929 DataBlock
+  .T;4O-...2C.A. . 00 54 3b 34 4f 2d df b8 12 32 43 e5 41 b7 20 f8
+  .                17
+041930-041991 ImageBlockGen2 id=4045735937 xsize=19 ysize=24 path="ui\\skins\\default\\icon_navigation_right_hover"
+041992-042036 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-  ......%.N..QZ... 00 05 00 00 00 d4 25 9a 4e a3 87 51 5a 81 bf e4
-  K.}U.j...        4b 96 7d 55 8a 6a f6 89 b8
+  ..........%.N..Q 00 00 00 00 00 05 00 00 00 d4 25 9a 4e a3 87 51
+  Z...K.}U.j...    5a 81 bf e4 4b 96 7d 55 8a 6a f6 89 b8
 042037-042044 StringBlock "active"
 042045-042081 DataBlock
   ................ 13 00 00 00 18 00 00 00 00 00 00 00 02 00 00 00
   ................ 00 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00
   .....            00 00 00 00 00
 042082-042093 FontNameBlock "Iskra-Bold"
-042094-042109 DataBlock
-  ................ 12 00 00 00 01 00 00 00 00 00 00 00 ff ff ff ff
-042110-042138 StringBlock "subheader--sidepanel_header"
+042094-042097 LineHeightBlock 18
+042098-042101 FontLeadingBlock 1
+042102-042105 FontTrailingBlock 0
+042106-042109 FontBGRABlock bgra(255,255,255,255)
+042110-042138 FontCategoryBlock "subheader--sidepanel_header"
 042139-042158 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             01 00 00 00
-042159-042169 T0Block "normal_t0"
-042170-042185 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-042186-042196 T0Block "normal_t0"
-042197-042212 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-042213-042236 ImageUseBlock id=1 xofs=705584820 yofs=1013825016 xsize=1215660548 ysize=768966077 brga=944278788
+042159-042169 ShaderNameBlock "normal_t0"
+042170-042173 ShaderVariableBlock 0.0 (0)
+042174-042177 ShaderVariableBlock 0.0 (0)
+042178-042181 ShaderVariableBlock 0.0 (0)
+042182-042185 ShaderVariableBlock 0.0 (0)
+042186-042196 ShaderNameBlock "normal_t0"
+042197-042200 ShaderVariableBlock 0.0 (0)
+042201-042204 ShaderVariableBlock 0.0 (0)
+042205-042208 ShaderVariableBlock 0.0 (0)
+042209-042212 ShaderVariableBlock 0.0 (0)
+042213-042236 ImageUseBlock id=1 xofs=705584820 yofs=1013825016 xsize=1215660548 ysize=768966077 bgra=bgra(4,141,72,56)
 042237-042274 DataBlock
   ................ 00 00 00 00 00 00 00 00 13 00 00 00 18 00 00 00
   ................ ff ff ff ff 00 00 00 00 00 05 00 00 00 00 00 00
   ......           00 00 00 00 00 01
-042275-042298 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=2147483648
+042275-042298 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(0,0,0,128)
 042299-042299 DataBlock
   ?                3f
-042300-042312 T0Block "brighten_t0"
-042313-042353 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+042300-042312 ShaderNameBlock "brighten_t0"
+042313-042316 ShaderVariableBlock 0.0 (0)
+042317-042320 ShaderVariableBlock 0.0 (0)
+042321-042324 ShaderVariableBlock 0.0 (0)
+042325-042328 ShaderVariableBlock 0.0 (0)
+042329-042353 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   .........        00 14 00 00 00 18 00 00 00
-042354-042377 ImageUseBlock id=1 xofs=0 yofs=1219519676 xsize=213696703 ysize=1217291757 brga=580820398
+042354-042377 ImageUseBlock id=1 xofs=0 yofs=1219519676 xsize=213696703 ysize=1217291757 bgra=bgra(174,157,158,34)
 042378-042415 DataBlock
   ...:....@....... e2 b4 bf 3a c8 00 00 00 40 00 00 00 00 00 00 00
   ....KN`Q.....N.. 00 00 d4 8a 4b 4e 60 51 f8 b4 cc 81 04 4e 99 02
@@ -3547,25 +3944,31 @@
   ................ 00 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00
   .....            00 00 00 00 00
 042459-042470 FontNameBlock "Iskra-Bold"
-042471-042486 DataBlock
-  ................ 12 00 00 00 01 00 00 00 00 00 00 00 ff ff ff ff
-042487-042515 StringBlock "subheader--sidepanel_header"
+042471-042474 LineHeightBlock 18
+042475-042478 FontLeadingBlock 1
+042479-042482 FontTrailingBlock 0
+042483-042486 FontBGRABlock bgra(255,255,255,255)
+042487-042515 FontCategoryBlock "subheader--sidepanel_header"
 042516-042535 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             01 00 00 00
-042536-042546 T0Block "normal_t0"
-042547-042562 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-042563-042573 T0Block "normal_t0"
-042574-042589 DataBlock
-  ...>............ 9a 99 99 3e 00 00 00 00 00 00 00 00 00 00 00 00
-042590-042613 ImageUseBlock id=1 xofs=705584820 yofs=1013825016 xsize=1215660548 ysize=768966077 brga=944278788
+042536-042546 ShaderNameBlock "normal_t0"
+042547-042550 ShaderVariableBlock 0.0 (0)
+042551-042554 ShaderVariableBlock 0.0 (0)
+042555-042558 ShaderVariableBlock 0.0 (0)
+042559-042562 ShaderVariableBlock 0.0 (0)
+042563-042573 ShaderNameBlock "normal_t0"
+042574-042577 ShaderVariableBlock 0.30000001192092896 (1050253722)
+042578-042581 ShaderVariableBlock 0.0 (0)
+042582-042585 ShaderVariableBlock 0.0 (0)
+042586-042589 ShaderVariableBlock 0.0 (0)
+042590-042613 ImageUseBlock id=1 xofs=705584820 yofs=1013825016 xsize=1215660548 ysize=768966077 bgra=bgra(4,141,72,56)
 042614-042617 DataBlock
   ....             00 00 00 00
-042618-042641 ImageUseBlock id=1 xofs=19 yofs=24 xsize=4290822336 ysize=0 brga=1280
+042618-042641 ImageUseBlock id=1 xofs=19 yofs=24 xsize=4290822336 ysize=0 bgra=bgra(0,5,0,0)
 042642-042646 DataBlock
   .....            00 00 00 00 00
-042647-042670 ImageUseBlock id=1 xofs=257 yofs=0 xsize=0 ysize=0 brga=0
+042647-042670 ImageUseBlock id=1 xofs=257 yofs=0 xsize=0 ysize=0 bgra=bgra(0,0,0,0)
 042671-042759 DataBlock
   .....?.......... 00 00 00 00 80 3f 00 00 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -3573,7 +3976,7 @@
   ..........d.H... 00 02 00 00 00 03 00 00 00 bc 64 b0 48 bf c0 bc
   ..e.H..."...:... 0c ed 65 8e 48 ae 9d 9e 22 e2 b4 bf 3a 00 00 00
   .........        00 00 00 00 00 00 00 00 00
-042760-042783 ImageUseBlock id=1 xofs=1243207516 yofs=3045837732 xsize=1161962612 ysize=352931998 brga=2473097584
+042760-042783 ImageUseBlock id=1 xofs=1243207516 yofs=3045837732 xsize=1161962612 ysize=352931998 bgra=bgra(112,121,104,147)
 042784-042817 DataBlock
   ..............\. 00 00 00 00 00 00 00 00 00 00 00 00 00 00 5c d7
   .J....t$BE.P..py 19 4a a4 cb 8b b5 74 24 42 45 9e 50 09 15 70 79
@@ -3584,24 +3987,30 @@
   ................ 00 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00
   .....            00 00 00 00 00
 042865-042876 FontNameBlock "Iskra-Bold"
-042877-042892 DataBlock
-  ................ 12 00 00 00 01 00 00 00 00 00 00 00 ff ff ff ff
-042893-042921 StringBlock "subheader--sidepanel_header"
+042877-042880 LineHeightBlock 18
+042881-042884 FontLeadingBlock 1
+042885-042888 FontTrailingBlock 0
+042889-042892 FontBGRABlock bgra(255,255,255,255)
+042893-042921 FontCategoryBlock "subheader--sidepanel_header"
 042922-042941 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             01 00 00 00
-042942-042952 T0Block "normal_t0"
-042953-042968 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-042969-042979 T0Block "normal_t0"
-042980-042995 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-042996-043019 ImageUseBlock id=1 xofs=705584820 yofs=1013825016 xsize=1215660548 ysize=768966077 brga=944278788
+042942-042952 ShaderNameBlock "normal_t0"
+042953-042956 ShaderVariableBlock 0.0 (0)
+042957-042960 ShaderVariableBlock 0.0 (0)
+042961-042964 ShaderVariableBlock 0.0 (0)
+042965-042968 ShaderVariableBlock 0.0 (0)
+042969-042979 ShaderNameBlock "normal_t0"
+042980-042983 ShaderVariableBlock 0.0 (0)
+042984-042987 ShaderVariableBlock 0.0 (0)
+042988-042991 ShaderVariableBlock 0.0 (0)
+042992-042995 ShaderVariableBlock 0.0 (0)
+042996-043019 ImageUseBlock id=1 xofs=705584820 yofs=1013825016 xsize=1215660548 ysize=768966077 bgra=bgra(4,141,72,56)
 043020-043057 DataBlock
   ................ 00 00 00 00 00 00 00 00 13 00 00 00 18 00 00 00
   ................ ff ff ff ff 00 00 00 00 00 05 00 00 00 00 00 00
   ......           00 00 00 00 00 01
-043058-043081 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=2147483648
+043058-043081 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(0,0,0,128)
 043082-043223 DataBlock
   ?............... 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -3618,43 +4027,53 @@
   ................ 00 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00
   .....            00 00 00 00 00
 043268-043279 FontNameBlock "Iskra-Bold"
-043280-043295 DataBlock
-  ................ 12 00 00 00 01 00 00 00 00 00 00 00 ff ff ff ff
-043296-043324 StringBlock "subheader--sidepanel_header"
+043280-043283 LineHeightBlock 18
+043284-043287 FontLeadingBlock 1
+043288-043291 FontTrailingBlock 0
+043292-043295 FontBGRABlock bgra(255,255,255,255)
+043296-043324 FontCategoryBlock "subheader--sidepanel_header"
 043325-043344 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             01 00 00 00
-043345-043355 T0Block "normal_t0"
-043356-043371 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-043372-043382 T0Block "normal_t0"
-043383-043418 DataBlock
-  ...>............ 9a 99 99 3e 00 00 00 00 00 00 00 00 00 00 00 00
+043345-043355 ShaderNameBlock "normal_t0"
+043356-043359 ShaderVariableBlock 0.0 (0)
+043360-043363 ShaderVariableBlock 0.0 (0)
+043364-043367 ShaderVariableBlock 0.0 (0)
+043368-043371 ShaderVariableBlock 0.0 (0)
+043372-043382 ShaderNameBlock "normal_t0"
+043383-043386 ShaderVariableBlock 0.30000001192092896 (1050253722)
+043387-043390 ShaderVariableBlock 0.0 (0)
+043391-043394 ShaderVariableBlock 0.0 (0)
+043395-043398 ShaderVariableBlock 0.0 (0)
+043399-043418 DataBlock
   .....^.*..m<..uH 02 00 00 00 b4 5e 0e 2a f8 bd 6d 3c 04 82 75 48
   .}.-             bd 7d d5 2d
-043419-043442 ImageUseBlock id=944278788 xofs=0 yofs=0 xsize=19 ysize=24 brga=4294967295
+043419-043442 ImageUseBlock id=944278788 xofs=0 yofs=0 xsize=19 ysize=24 bgra=bgra(255,255,255,255)
 043443-043460 DataBlock
   ................ 00 00 01 00 00 05 00 00 00 00 00 00 00 00 00 00
   ..               00 01
-043461-043484 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=2147483648
+043461-043484 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(0,0,0,128)
 043485-043485 DataBlock
   ?                3f
-043486-043498 T0Block "brighten_t0"
-043499-043547 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+043486-043498 ShaderNameBlock "brighten_t0"
+043499-043502 ShaderVariableBlock 0.0 (0)
+043503-043506 ShaderVariableBlock 0.0 (0)
+043507-043510 ShaderVariableBlock 0.0 (0)
+043511-043514 ShaderVariableBlock 0.0 (0)
+043515-043547 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   .T;4O-...2C.A. . 00 54 3b 34 4f 2d df b8 12 32 43 e5 41 b7 20 f8
   .                17
-043548-043571 ImageUseBlock id=4045735937 xofs=0 yofs=0 xsize=19 ysize=24 brga=4294967295
+043548-043571 ImageUseBlock id=4045735937 xofs=0 yofs=0 xsize=19 ysize=24 bgra=bgra(255,255,255,255)
 043572-043589 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ..               00 01
-043590-043613 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=2147483648
+043590-043613 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(0,0,0,128)
 043614-043661 DataBlock
   ?............... 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ........~....... 00 00 00 00 89 00 00 00 7e 00 00 00 02 00 00 00
-043662-043685 ImageUseBlock id=1 xofs=1318725076 yofs=1515292579 xsize=1273282433 ysize=2320858518 brga=3096049258
+043662-043685 ImageUseBlock id=1 xofs=1318725076 yofs=1515292579 xsize=1273282433 ysize=2320858518 bgra=bgra(106,246,137,184)
 043686-043755 DataBlock
   ....@........... c8 00 00 00 40 00 00 00 00 00 00 00 02 00 00 00
   ..KN`Q.....N.... d4 8a 4b 4e 60 51 f8 b4 cc 81 04 4e 99 02 94 b6
@@ -3667,24 +4086,30 @@
   ................ 00 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00
   .....            00 00 00 00 00
 043803-043814 FontNameBlock "Iskra-Bold"
-043815-043830 DataBlock
-  ................ 12 00 00 00 01 00 00 00 00 00 00 00 ff ff ff ff
-043831-043859 StringBlock "subheader--sidepanel_header"
+043815-043818 LineHeightBlock 18
+043819-043822 FontLeadingBlock 1
+043823-043826 FontTrailingBlock 0
+043827-043830 FontBGRABlock bgra(255,255,255,255)
+043831-043859 FontCategoryBlock "subheader--sidepanel_header"
 043860-043879 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             01 01 00 00
-043880-043890 T0Block "normal_t0"
-043891-043906 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-043907-043917 T0Block "normal_t0"
-043918-043933 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-043934-043957 ImageUseBlock id=1 xofs=705584820 yofs=1013825016 xsize=1215660548 ysize=768966077 brga=944278788
+043880-043890 ShaderNameBlock "normal_t0"
+043891-043894 ShaderVariableBlock 0.0 (0)
+043895-043898 ShaderVariableBlock 0.0 (0)
+043899-043902 ShaderVariableBlock 0.0 (0)
+043903-043906 ShaderVariableBlock 0.0 (0)
+043907-043917 ShaderNameBlock "normal_t0"
+043918-043921 ShaderVariableBlock 0.0 (0)
+043922-043925 ShaderVariableBlock 0.0 (0)
+043926-043929 ShaderVariableBlock 0.0 (0)
+043930-043933 ShaderVariableBlock 0.0 (0)
+043934-043957 ImageUseBlock id=1 xofs=705584820 yofs=1013825016 xsize=1215660548 ysize=768966077 bgra=bgra(4,141,72,56)
 043958-043995 DataBlock
   ................ 00 00 00 00 00 00 00 00 13 00 00 00 18 00 00 00
   ...F............ ff ff ff 46 00 00 00 00 00 05 00 00 00 00 00 00
   ......           00 00 00 00 00 01
-043996-044019 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=2147483648
+043996-044019 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(0,0,0,128)
 044020-044089 DataBlock
   ?............... 3f 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -3711,7 +4136,7 @@
 044266-044283 DataBlock
   ................ 00 00 00 00 00 00 00 00 0a 00 00 00 0a 00 00 00
   ..               00 00
-044284-044307 ImageUseBlock id=1 xofs=1 yofs=256 xsize=0 ysize=0 brga=0
+044284-044307 ImageUseBlock id=1 xofs=1 yofs=256 xsize=0 ysize=0 bgra=bgra(0,0,0,0)
 044308-044362 DataBlock
   ....N.J......... 00 00 00 8c 4e 19 4a 00 00 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 02
@@ -3723,18 +4148,25 @@
   ................ 00 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00
   .....            00 00 00 00 00
 044408-044425 FontNameBlock "FiraSans-Regular"
-044426-044441 DataBlock
-  ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
-044442-044464 StringBlock "Default Font Category"
+044426-044429 LineHeightBlock 10
+044430-044433 FontLeadingBlock 2
+044434-044437 FontTrailingBlock 0
+044438-044441 FontBGRABlock bgra(221,218,250,255)
+044442-044464 FontCategoryBlock "Default Font Category"
 044465-044484 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             00 00 01 00
-044485-044495 T0Block "normal_t0"
-044496-044511 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-044512-044522 T0Block "normal_t0"
-044523-044576 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+044485-044495 ShaderNameBlock "normal_t0"
+044496-044499 ShaderVariableBlock 0.0 (0)
+044500-044503 ShaderVariableBlock 0.0 (0)
+044504-044507 ShaderVariableBlock 0.0 (0)
+044508-044511 ShaderVariableBlock 0.0 (0)
+044512-044522 ShaderNameBlock "normal_t0"
+044523-044526 ShaderVariableBlock 0.0 (0)
+044527-044530 ShaderVariableBlock 0.0 (0)
+044531-044534 ShaderVariableBlock 0.0 (0)
+044535-044538 ShaderVariableBlock 0.0 (0)
+044539-044576 DataBlock
   ................ 00 00 00 00 c0 cd cd cd c0 cd cd cd 00 00 00 00
   ..."5O...w[ .J.. 00 00 e4 22 35 4f 18 a4 a8 77 5b 20 ab 4a 8d f9
   .B....           07 42 9d 15 d8 c5
@@ -3744,18 +4176,25 @@
   ................ 00 00 00 00 00 00 00 00 01 00 00 00 00 00 00 00
   .....            00 00 00 00 00
 044624-044641 FontNameBlock "FiraSans-Regular"
-044642-044657 DataBlock
-  ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
-044658-044680 StringBlock "Default Font Category"
+044642-044645 LineHeightBlock 10
+044646-044649 FontLeadingBlock 2
+044650-044653 FontTrailingBlock 0
+044654-044657 FontBGRABlock bgra(221,218,250,255)
+044658-044680 FontCategoryBlock "Default Font Category"
 044681-044700 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             00 00 01 00
-044701-044715 T0Block "glow_pulse_t0"
-044716-044731 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-044732-044742 T0Block "normal_t0"
-044743-044796 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+044701-044715 ShaderNameBlock "glow_pulse_t0"
+044716-044719 ShaderVariableBlock 0.0 (0)
+044720-044723 ShaderVariableBlock 0.0 (0)
+044724-044727 ShaderVariableBlock 0.0 (0)
+044728-044731 ShaderVariableBlock 0.0 (0)
+044732-044742 ShaderNameBlock "normal_t0"
+044743-044746 ShaderVariableBlock 0.0 (0)
+044747-044750 ShaderVariableBlock 0.0 (0)
+044751-044754 ShaderVariableBlock 0.0 (0)
+044755-044758 ShaderVariableBlock 0.0 (0)
+044759-044796 DataBlock
   ................ 00 00 00 00 c0 cd cd cd c0 cd cd cd 00 00 00 00
   .......9mN....sw 00 00 e9 e9 be b9 eb 39 6d 4e a5 8e 8d da 73 77
   J.....           4a 9a 01 00 00 00
@@ -3771,7 +4210,7 @@
 044917-044927 StringBlock "list_clip"
 044928-044941 DataBlock
   ..............   00 00 00 00 00 00 00 00 00 00 00 00 00 00
-044942-044965 ImageUseBlock id=1 xofs=16842752 yofs=16777216 xsize=0 ysize=4 brga=0
+044942-044965 ImageUseBlock id=1 xofs=16842752 yofs=16777216 xsize=0 ysize=4 bgra=bgra(0,0,0,0)
 044966-045018 DataBlock
   .....<..G....... 00 00 00 00 00 3c 14 09 47 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -3785,22 +4224,29 @@
   ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
   .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 045070-045087 FontNameBlock "FiraSans-Regular"
-045088-045103 DataBlock
-  ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
-045104-045126 StringBlock "Default Font Category"
+045088-045091 LineHeightBlock 10
+045092-045095 FontLeadingBlock 2
+045096-045099 FontTrailingBlock 0
+045100-045103 FontBGRABlock bgra(221,218,250,255)
+045104-045126 FontCategoryBlock "Default Font Category"
 045127-045146 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             00 00 00 00
-045147-045157 T0Block "normal_t0"
-045158-045173 DataBlock
-  ...A.......A.... 00 00 a0 41 00 00 00 00 00 00 a0 41 00 00 00 00
-045174-045184 T0Block "normal_t0"
-045185-045246 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+045147-045157 ShaderNameBlock "normal_t0"
+045158-045161 ShaderVariableBlock 20.0 (1101004800)
+045162-045165 ShaderVariableBlock 0.0 (0)
+045166-045169 ShaderVariableBlock 20.0 (1101004800)
+045170-045173 ShaderVariableBlock 0.0 (0)
+045174-045184 ShaderNameBlock "normal_t0"
+045185-045188 ShaderVariableBlock 0.0 (0)
+045189-045192 ShaderVariableBlock 0.0 (0)
+045193-045196 ShaderVariableBlock 0.0 (0)
+045197-045200 ShaderVariableBlock 0.0 (0)
+045201-045246 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ..#l9.;{.H.n.... 00 00 23 6c 39 fe 3b 7b ff 48 ad 6e a3 a5 87 f2
   A.............   41 2e 00 00 00 00 00 00 00 00 00 00 00 00
-045247-045270 ImageUseBlock id=1 xofs=2670460928 yofs=2463039797 xsize=1874894533 ysize=2811643943 brga=303046080
+045247-045270 ImageUseBlock id=1 xofs=2670460928 yofs=2463039797 xsize=1874894533 ysize=2811643943 bgra=bgra(192,29,16,18)
 045271-045272 DataBlock
   *.               2a da
 045273-045282 StringBlock "list_box"
@@ -3824,7 +4270,7 @@
 045492-045502 StringBlock "init_self"
 045503-045512 DataBlock
   ..........       00 00 00 00 00 00 00 00 00 00
-045513-045536 ImageUseBlock id=1 xofs=65536 yofs=16777216 xsize=0 ysize=4 brga=0
+045513-045536 ImageUseBlock id=1 xofs=65536 yofs=16777216 xsize=0 ysize=4 bgra=bgra(0,0,0,0)
 045537-045589 DataBlock
   .....l..J....... 00 00 00 00 00 6c c0 19 4a 00 00 00 00 00 00 00
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
@@ -3838,18 +4284,25 @@
   ................ 00 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00
   .............    02 00 00 00 00 00 00 00 00 00 00 00 00
 045641-045658 FontNameBlock "FiraSans-Regular"
-045659-045674 DataBlock
-  ................ 0a 00 00 00 02 00 00 00 00 00 00 00 dd da fa ff
-045675-045697 StringBlock "Default Font Category"
+045659-045662 LineHeightBlock 10
+045663-045666 FontLeadingBlock 2
+045667-045670 FontTrailingBlock 0
+045671-045674 FontBGRABlock bgra(221,218,250,255)
+045675-045697 FontCategoryBlock "Default Font Category"
 045698-045717 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ....             00 00 00 00
-045718-045728 T0Block "normal_t0"
-045729-045744 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-045745-045755 T0Block "normal_t0"
-045756-045809 DataBlock
-  ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+045718-045728 ShaderNameBlock "normal_t0"
+045729-045732 ShaderVariableBlock 0.0 (0)
+045733-045736 ShaderVariableBlock 0.0 (0)
+045737-045740 ShaderVariableBlock 0.0 (0)
+045741-045744 ShaderVariableBlock 0.0 (0)
+045745-045755 ShaderNameBlock "normal_t0"
+045756-045759 ShaderVariableBlock 0.0 (0)
+045760-045763 ShaderVariableBlock 0.0 (0)
+045764-045767 ShaderVariableBlock 0.0 (0)
+045768-045771 ShaderVariableBlock 0.0 (0)
+045772-045809 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ..w.^....N...K.. 00 00 77 0f 5e bb 91 de b9 4e 9e e8 dc 4b b5 92
   {)....           7b 29 02 00 00 00
@@ -3945,19 +4398,20 @@
 047162-047177 StringBlock "override_sound"
 047178-047179 DataBlock
   ..               00 00
-047180-047249 ImageBlock id=1 xsize=0 ysize=0 path="ui\\skins\\default\\3k_btn_frontend_menu_item_hover.png" unknown=1
-047250-047303 ImagePathBlock "ui\\skins\\default\\3k_btn_frontend_menu_item_hover.png"
+047180-047245 ImageBlockGen2 id=1 xsize=0 ysize=0 path="ui\\skins\\default\\3k_btn_frontend_menu_item_hover"
+047246-047303 ImagePathListBlock 1 elements:
+  047250-047303 ImagePathBlock "ui\\skins\\default\\3k_btn_frontend_menu_item_hover.png"
 047304-047324 DataBlock
   7.....fF..@..k.. 37 dc 05 a2 0f 13 66 46 9e 1f 40 83 d4 6b 0d 0b
   .....            00 00 00 00 01
 047325-047340 StringBlock "HorizontalList"
 047341-047353 DataBlock
   .............    00 00 00 00 14 00 00 00 00 00 00 00 00
-047354-047377 ImageUseBlock id=1 xofs=1 yofs=0 xsize=0 ysize=0 brga=0
+047354-047377 ImageUseBlock id=1 xofs=1 yofs=0 xsize=0 ysize=0 bgra=bgra(0,0,0,0)
 047378-047395 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ..               00 00
-047396-047419 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=16256
+047396-047419 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(128,63,0,0)
 047420-047470 DataBlock
   .....?.......... 00 00 00 00 00 3f 00 00 00 00 00 00 00 00 00 00
   ...?.......?.... 00 00 80 3f 00 00 00 00 00 00 00 3f 00 00 00 00
@@ -3966,11 +4420,11 @@
 047471-047486 StringBlock "HorizontalList"
 047487-047499 DataBlock
   ....(........    00 00 00 00 28 00 00 00 00 00 00 00 00
-047500-047523 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=0
+047500-047523 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(0,0,0,0)
 047524-047541 DataBlock
   ................ 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
   ..               00 00
-047542-047565 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 brga=16256
+047542-047565 ImageUseBlock id=1 xofs=0 yofs=0 xsize=0 ysize=0 bgra=bgra(128,63,0,0)
 047566-047572 DataBlock
   .......          00 00 00 00 00 00 00
 047573-047602 StringBlock "UI_FE_HUD_Historical_Battles"
