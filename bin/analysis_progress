@@ -1,0 +1,35 @@
+#!/usr/bin/env ruby
+
+require "pathname"
+
+data_dir = Pathname("#{__dir__}") + "../data"
+output_dir = Pathname("#{__dir__}") + "../output"
+
+todo = data_dir.find.reject(&:directory?)
+
+totals = {}
+
+while true
+  path = todo.shift or break
+  magic = path.read(10)
+  next unless magic =~ /\AVersion(\d\d\d)\z/
+  version = $1
+  game_name = path.dirname.basename.to_s
+  file_name = path.basename.to_s
+  output_path = output_dir + version + "#{game_name}-#{file_name}.txt"
+
+  totals[version] ||= [0, 0]
+  totals[version][1] += path.size
+  output_path.each_line do |line|
+    next unless line =~ /\A(\d+)-(\d+) DataBlock/
+    s = $1.to_i
+    e = $2.to_i
+    totals[version][0] += e-s
+  end
+end
+
+puts "Unknown data"
+totals.sort.each do |k,(d,z)|
+  pc = (100.0 * d.to_f / z).round(1)
+  puts "#{k} - #{pc}%"
+end
