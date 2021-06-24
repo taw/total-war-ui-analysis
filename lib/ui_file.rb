@@ -107,6 +107,13 @@ class UiFile
     end
   end
 
+  def convert_i_zero!
+    # Well, at least it looks like it
+    v = get_i
+    raise "Must be zero, got #{v} / #{@data[@ofs-4,4].unpack1("f")}" unless v == 0
+    out! "<i>#{v}</i><!-- always zero -->"
+  end
+
   def convert_ix!(comment=nil)
     v = get_i
     hex = @data[@ofs-4,4].bytes.map{|x| "%02x" % x }.join(":")
@@ -171,6 +178,17 @@ class UiFile
     end
   end
 
+  def convert_angle!(comment=nil)
+    i = @data[@ofs,4].unpack1("V")
+    v = get_flt
+    vdeg = (v * 180.0 / Math::PI).round(2)
+    if comment
+      out! "<flt>#{v}</flt><!-- (#{i}) / (#{vdeg} degrees) --><!-- #{comment} -->"
+    else
+      out! "<flt>#{v}</flt><!-- (#{i}) / (#{vdeg} degrees) -->"
+    end
+  end
+
   def convert_bgra!
     convert_byte! "B"
     convert_byte! "G"
@@ -200,7 +218,7 @@ class UiFile
     out! "<data>"
     v.each_slice(16) do |slice|
       slice = slice.join
-      asc = slice.chars.map{|c| c =~ /[\x20-\x7f]/ ? c : "."}.join
+      asc = slice.chars.map{|c| c =~ /[\x20-\x7e]/ ? c : "."}.join
       asc += " " * (16 - asc.size)
       hex = slice.bytes.map{|c| "%02x" % c}.join(" ")
       out! "  #{asc} #{hex}\n"
@@ -252,20 +270,32 @@ class UiFile
           convert_bool!
 
           if @version >= 29
-            convert_s! "shader name / t0"
+            convert_s! "shader name"
+            convert_flt! "shader vars"
+            convert_flt! "shader vars"
+            convert_flt! "shader vars"
+            convert_flt! "shader vars"
+          end
 
-            convert_flt! "shader vars?"
-            convert_flt! "shader vars?"
-            convert_flt! "shader vars?"
-            convert_flt! "shader vars?"
+          if @version >= 77
+            convert_s! "text shader name"
+            convert_flt! "text shader vars"
+            convert_flt! "text shader vars"
+            convert_flt! "text shader vars"
+            convert_flt! "text shader vars"
           end
 
           if @version < 74
-            # 74 OK up to here, nice
             convert_s! "state description"
             convert_s! "event text"
-            convert_image_uses!
+          end
 
+          # 74 and 77 OK up to this point
+          out_ofs! "what comes next???"
+
+          convert_image_uses!
+
+          if @version < 74
             if @version >= 26 # ???
               convert_i!
               convert_i!
@@ -316,16 +346,17 @@ class UiFile
           convert_byte! "R multiply"
           convert_byte! "G multiply"
           convert_byte! "A multiply"
-          out_ofs!
-          convert_bool!
-          convert_bool!
-          convert_bool!
-          convert_i! "position"
-          convert_bool!
-          convert_bool!
-          convert_i!
-          convert_i!
-          convert_i!
+          # Up to this point, this works for 74+ too
+          out_ofs! "less decoded part of image_use follows"
+          convert_bool! "tiled?"
+          convert_bool! "flipped x?"
+          convert_bool! "flipped y?"
+          convert_i! "position (0-9)?"
+          convert_bool! "stretch x?"
+          convert_bool! "stretch y?"
+          convert_angle! "rotation angle"
+          convert_flt! "rotation pivot x?"
+          convert_flt! "rotation pivot y?"
           if @version >= 51
             convert_bool!
           end
@@ -337,7 +368,7 @@ class UiFile
     end
   end
 
-  def convert_uientry_v2!
+  def convert_uientry_gen2!
     convert_u! "ID"
     convert_s! "title"
     if @version >= 43
@@ -547,7 +578,7 @@ class UiFile
       if @version <= 54
         convert_uientry!
       else
-        convert_uientry_v2!
+        convert_uientry_gen2!
       end
       if bytes_left > 0
         out! "<todo>#{bytes_left} bytes</todo>"
@@ -650,7 +681,7 @@ class UiFile
     s = 0 if s < 0
     @data[s...e].chars.each_slice(16).each do |slice|
       slice = slice.join
-      asc = slice.chars.map{|c| c =~ /[\x20-\x7f]/ ? c : "."}.join
+      asc = slice.chars.map{|c| c =~ /[\x20-\x7e]/ ? c : "."}.join
       asc += " " * (16 - asc.size)
       hex = slice.bytes.map{|c| "%02x" % c}.join(" ")
       out! "  #{asc} #{hex}\n"

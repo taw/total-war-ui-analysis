@@ -20,9 +20,13 @@ converter_path = "#{__dir__}/ui2xml"
 
 if ARGV.empty?
   todo = data_dir.find.reject(&:directory?)
-elsif ARGV[0] =~ /\d+/
+elsif ARGV[0] =~ /\A[\d+,]+\z/
   todo = data_dir.find.reject(&:directory?)
-  todo = filter_versions(todo, ARGV[0].split(",").map(&:to_i))
+  filter = ARGV[0].split(",").map(&:to_i)
+  if filter == [0]
+    filter = [*29..54]
+  end
+  todo = filter_versions(todo, filter)
 else
   todo = ARGV.map{|path| Pathname(path).realpath}
 end
@@ -45,11 +49,8 @@ cores.times.map{|i|
       err = system %Q[#{converter_path} "#{path}" "#{output_path}"]
 
       if err
-        # OK
         fail_path.unlink if fail_path.exist?
       else
-        # output_path.unlink
-        # fail_path.write("")
         output_path.rename fail_path
       end
     end
