@@ -103,7 +103,7 @@ end
 class FontCategoryBlock < StringBlock
 end
 
-class NewStateBlock < StringBlock
+class StateNameBlock < StringBlock
 end
 
 class XOffsetBlock < Int32Block
@@ -302,7 +302,7 @@ class Analysis
         elsif str == "events_end"
           add_block ofs, ofs+2+sz, EventListBlock
         elsif str == "NewState"
-          add_block ofs, ofs+2+sz, NewStateBlock
+          add_block ofs, ofs+2+sz, StateNameBlock
         else
           add_block ofs, ofs+2+sz, StringBlock
         end
@@ -433,7 +433,7 @@ class Analysis
     i = 0
     while i < @blocks.size
       b = @blocks[i]
-      if b.is_a?(NewStateBlock) and free_space_after(i) >= 8 and free_space_before(i) >= 4
+      if b.is_a?(StateNameBlock) and free_space_after(i) >= 8 and free_space_before(i) >= 4
         s = b.s
         e = b.e
         xsz = @data[e,4].unpack1("V")

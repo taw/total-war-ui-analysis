@@ -2,21 +2,28 @@
 
 require "pathname"
 
+def filter_versions(todo, filter)
+  todo = todo.select{|path|
+    if path.to_s =~ /(\.fc|\.cml)\z/
+      false
+    else
+      version = path.read(10)[7,3].to_i
+      filter.include?(version)
+    end
+  }
+end
+
 data_dir = Pathname("#{__dir__}") + "../data"
 output_dir = Pathname("#{__dir__}") + "../output"
 
 if ARGV.empty?
   todo = data_dir.find.reject(&:directory?)
+elsif ARGV[0] =~ /\d+/
+  todo = data_dir.find.reject(&:directory?)
+  todo = filter_versions(todo, ARGV[0].split(",").map(&:to_i))
 else
   todo = ARGV.map{|path| Pathname(path).realpath}
 end
-
-todo = todo.select{|path|
-  version = path.read(10)[7,3].to_i
-  true # all supported
-  # [*74..79].include?(version) # filter
-  # 54 == version
-}
 
 # In 4 threads
 cores = 4

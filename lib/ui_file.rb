@@ -171,6 +171,13 @@ class UiFile
     end
   end
 
+  def convert_bgra!
+    convert_byte! "B"
+    convert_byte! "G"
+    convert_byte! "R"
+    convert_byte! "A"
+  end
+
   def convert_image_list!
     count = get_u
     tag! "images", count: count do
@@ -181,11 +188,24 @@ class UiFile
           convert_i! "x size"
           convert_i! "y size"
           if @version < 74
-            convert_u! "mask or rgba or something?"
+            convert_bgra!
           end
         end
       end
     end
+  end
+
+  def convert_data!(size)
+    v = get(size).chars
+    out! "<data>"
+    v.each_slice(16) do |slice|
+      slice = slice.join
+      asc = slice.chars.map{|c| c =~ /[\x20-\x7f]/ ? c : "."}.join
+      asc += " " * (16 - asc.size)
+      hex = slice.bytes.map{|c| "%02x" % c}.join(" ")
+      out! "  #{asc} #{hex}\n"
+    end
+    out! "</data>"
   end
 
   def convert_state_list!
@@ -208,13 +228,17 @@ class UiFile
 
           convert_unicode! "localization id"
           convert_unicode! "tooltip id"
-          convert_s! "font"
-          out_ofs! "font done"
-          convert_i! "font size? line height?"
-          convert_i! "font leading?"
-          convert_i! "font tracking?"
+
+          if @version >= 29
+            convert_s! "font"
+            out_ofs! "font done"
+            convert_i! "font size? line height?"
+            convert_i! "font leading?"
+            convert_i! "font tracking?"
+          end
+
           if @version >= 74
-            convert_u! "font color bgra?"
+            convert_bgra!
           end
           if @version >= 43
             convert_s! "font category / twui"
@@ -229,12 +253,12 @@ class UiFile
 
           if @version >= 29
             convert_s! "shader name / t0"
-          end
 
-          convert_flt! "shader vars?"
-          convert_flt! "shader vars?"
-          convert_flt! "shader vars?"
-          convert_flt! "shader vars?"
+            convert_flt! "shader vars?"
+            convert_flt! "shader vars?"
+            convert_flt! "shader vars?"
+            convert_flt! "shader vars?"
+          end
 
           if @version < 74
             # 74 OK up to here, nice
@@ -329,7 +353,8 @@ class UiFile
     end
 
     states_start = @data.index("\x08\x00NewState") - 8
-    out! "<skip>#{states_start - @ofs} bytes</skip>"
+    convert_data! states_start - @ofs
+    # out! "<skip>#{states_start - @ofs} bytes</skip>"
     out_ofs! "states start here"
     @ofs = states_start
     convert_state_list!
@@ -380,9 +405,14 @@ class UiFile
       end
       convert_state_list!
       out_ofs! "state list just finished"
-      if @version >= 30
+      if @version >= 29
         convert_i!
       end
+
+      # in versions 29 and 30 there's sometimes a lone byte but at root level only here for some reason???
+      # is the parser searching for "events_end" and that's why it can ignore some small amount of crap?
+      # doesn't sound very likely, but I can't see any other logic to it
+
       out_ofs! "do event list now"
       convert_event_list!
       convert_i!
