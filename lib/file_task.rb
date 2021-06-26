@@ -33,6 +33,10 @@ class FileTask
     ui? and [32, 33, 39, 43, 44, 46, 47, 49, 50, 51, 52, 54].include?(version)
   end
 
+  def supported_by_ui2xml?
+    fc? or cml? or [29, *31..54].include?(version)
+  end
+
   def full_version
     if cml?
       "cml"

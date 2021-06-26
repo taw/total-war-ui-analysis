@@ -1,57 +1,27 @@
 #!/usr/bin/env ruby
 
-require "pathname"
+require_relative "../lib/task_set"
 
-def filter_versions(todo, filter)
-  todo = todo.select{|path|
-    if path.to_s =~ /(\.fc|\.cml)\z/
-      false
-    else
-      version = path.read(10)[7,3].to_i
-      filter.include?(version)
-    end
-  }
-end
+task_set = TaskSet.new(*ARGV)
+task_set.todo.select!(&:supported_by_ui2xml?)
 
-data_dir = Pathname("#{__dir__}") + "../data"
-output_dir = Pathname("#{__dir__}") + "../unpacked"
-
-converter_path = "#{__dir__}/ui2xml"
-
-if ARGV.empty?
-  todo = data_dir.find.reject(&:directory?)
-elsif ARGV[0] =~ /\A[\d+,]+\z/
-  todo = data_dir.find.reject(&:directory?)
-  filter = ARGV[0].split(",").map(&:to_i)
-  if filter == [0]
-    filter = [*29..54]
-  end
-  todo = filter_versions(todo, filter)
-else
-  todo = ARGV.map{|path| Pathname(path).realpath}
-end
+converter_path = Pathname(__dir__) + "ui2xml"
 
 # In 4 threads
 cores = 4
 cores.times.map{|i|
   Thread.new{
     while true
-      path = todo.shift or break
-      version = path.read(10)[7,3]
-      game_name = path.dirname.basename.to_s
-      file_name = path.basename.to_s
+      todo = task_set.todo.shift or break
 
-      output_path = output_dir + version + "#{game_name}-#{file_name}.xml"
-      fail_path = output_dir + version + "#{game_name}-#{file_name}.fail"
-
-      output_path.parent.mkpath
-      puts "#{i} #{path}"
-      err = system %Q[#{converter_path} "#{path}" "#{output_path}"]
+      todo.unpacked_path.parent.mkpath
+      puts "#{i} #{todo.data_path}"
+      err = system %Q[#{converter_path} "#{todo.data_path}" "#{todo.unpacked_path}"]
 
       if err
-        fail_path.unlink if fail_path.exist?
+        todo.unpacked_fail_path.unlink if todo.unpacked_fail_path.exist?
       else
-        output_path.rename fail_path
+        todo.unpacked_path.rename todo.unpacked_fail_path
       end
     end
   }
