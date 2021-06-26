@@ -1,6 +1,8 @@
 require "pathname"
 
 class FileTask
+  attr_reader :data_path
+
   def initialize(data_path)
     @data_path = Pathname(data_path)
   end
@@ -27,14 +29,18 @@ class FileTask
     (not fc?) and (not cml?)
   end
 
+  def supported_by_converter?
+    ui? and [32, 33, 39, 43, 44, 46, 47, 49, 50, 51, 52, 54].include?(version)
+  end
+
   def full_version
     if cml?
-      "cml#{version}"
+      "cml"
     elsif fc?
-      "fc#{version}"
+      "fc"
     else
-      "#{version}"
-    end
+      ""
+    end + ("%03d" % version)
   end
 
   def game
@@ -61,5 +67,29 @@ class FileTask
 
   def unpacked_root
     Pathname(__dir__).parent + "unpacked"
+  end
+
+  def output_path
+    @output_path ||= output_root + full_version + "#{game}-#{basename}.txt"
+  end
+
+  def converted_path
+    @converted_path ||= converted_root + full_version + "#{game}-#{basename}.xml"
+  end
+
+  def converted_fail_path
+    @converted_fail_path ||= converted_root + full_version + "#{game}-#{basename}.fail"
+  end
+
+  def unpacked_path
+    @unpacked_path ||= unpacked_root + full_version + "#{game}-#{basename}.xml"
+  end
+
+  def unpacked_fail_path
+    @unpacked_fail_path ||= unpacked_root + full_version + "#{game}-#{basename}.fail"
+  end
+
+  def data_size
+    data_path.size
   end
 end

@@ -1,30 +1,22 @@
 #!/usr/bin/env ruby
 
-require "pathname"
+require_relative "../lib/task_set"
 
-data_dir = Pathname("#{__dir__}") + "../data"
-output_dir = Pathname("#{__dir__}") + "../output"
+task_set = TaskSet.new(*ARGV)
 
-todo = data_dir.find.reject(&:directory?)
-
-totals = {}
+totals = Hash.new{|ht,k| ht[k] = [0,0] }
 
 while true
-  path = todo.shift or break
-  magic = path.read(10)
-  next unless magic =~ /\AVersion(\d\d\d)\z/
-  version = $1
-  game_name = path.dirname.basename.to_s
-  file_name = path.basename.to_s
-  output_path = output_dir + version + "#{game_name}-#{file_name}.txt"
-
-  totals[version] ||= [0, 0]
-  totals[version][1] += path.size
-  output_path.each_line do |line|
+  todo = task_set.todo.shift or break
+  next unless todo.output_path.exist?
+  totals[todo.full_version][1] += todo.data_size
+  totals["*"][1] += todo.data_size
+  todo.output_path.each_line do |line|
     next unless line =~ /\A(\d+)-(\d+) DataBlock/
     s = $1.to_i
     e = $2.to_i
-    totals[version][0] += e-s
+    totals[todo.full_version][0] += e-s
+    totals["*"][0] += e-s
   end
 end
 

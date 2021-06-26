@@ -1,45 +1,28 @@
 #!/usr/bin/env ruby
 
-require "pathname"
+require_relative "../lib/task_set"
 
-data_dir = Pathname("#{__dir__}") + "../data"
-output_dir = Pathname("#{__dir__}") + "../converted"
+task_set = TaskSet.new(*ARGV)
+task_set.todo.select!(&:supported_by_converter?)
 
 converter_path = "#{__dir__}/convert_ui.py"
-
-if ARGV.empty?
-  todo = data_dir.find.reject(&:directory?)
-else
-  todo = ARGV.map{|path| Pathname(path).realpath}
-end
-
-todo = todo.select{|path|
-  version = path.read(10)[7,3].to_i
-  [32, 33, 39, 43, 44, 46, 47, 49, 50, 51, 52, 54].include?(version) and path.to_s !~ /(\.fc|\.cml)\z/
-}
 
 # In 4 threads
 cores = 4
 cores.times.map{|i|
   Thread.new{
     while true
-      path = todo.shift or break
-      version = path.read(10)[7,3]
-      game_name = path.dirname.basename.to_s
-      file_name = path.basename.to_s
+      todo = task_set.todo.shift or break
 
-      output_path = output_dir + version + "#{game_name}-#{file_name}.xml"
-      fail_path = output_dir + version + "#{game_name}-#{file_name}.fail"
+      todo.converted_path.parent.mkpath
+      puts "#{i} #{todo.data_path}"
+      ok = system %Q[#{converter_path} -u "#{todo.data_path}" "#{todo.converted_path}"]
 
-      output_path.parent.mkpath
-      puts "#{i} #{path}"
-      err = system %Q[#{converter_path} -u "#{path}" "#{output_path}"]
-
-      if err
-        # OK
+      if ok
+        todo.converted_fail_path.unlink if todo.converted_fail_path.exist?
       else
-        output_path.unlink
-        fail_path.write("")
+        todo.converted_path.unlink
+        todo.converted_fail_path.write("")
       end
     end
   }
