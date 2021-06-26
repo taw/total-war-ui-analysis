@@ -1,22 +1,17 @@
 #!/usr/bin/env ruby
 
-require "pathname"
+require_relative "../lib/task_set"
 
-data_dir = Pathname("#{__dir__}") + "../data"
+task_set = TaskSet.new(*ARGV)
 
 counts = {}
 
-data_dir.find do |path|
-  next if path.directory?
-  magic = path.read(10)
-  next unless magic =~ /\AVersion(\d\d\d)\z/
-  version = $1.to_i
-  game = path.dirname.basename.to_s
-  counts[game] ||= Hash.new(0)
-  counts[game][version] += 1
+task_set.todo.each do |todo|
+  counts[todo.game] ||= Hash.new(0)
+  counts[todo.game][todo.full_version] += 1
 end
 
 counts.each do |game, versions|
-  summary = versions.sort.map{|k,v| "#{k}:#{v}"}.join(", ")
+  summary = versions.sort_by{|k,v| [k.to_i,k]}.map{|k,v| "#{k}:#{v}"}.join(", ")
   puts "#{game}: #{summary}"
 end
