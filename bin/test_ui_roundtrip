@@ -1,50 +1,28 @@
 #!/usr/bin/env ruby
 
-require "pathname"
+require_relative "../lib/task_set"
 
-data_dir = Pathname("#{__dir__}") + "../data"
-output_dir = Pathname("#{__dir__}") + "../unpacked"
+task_set = TaskSet.new(*ARGV)
+task_set.todo.select!{|todo| todo.unpacked_path.exist?}
 
-converter_path = "#{__dir__}/xml2ui"
-
-if ARGV.empty?
-  todo = data_dir.find.reject(&:directory?)
-else
-  todo = ARGV.map{|path| Pathname(path).realpath}
-end
-
-todo = todo.select{|path|
-  if path.to_s =~ /(\.fc|\.cml)\z/
-    true # all supported
-  else
-    version = path.read(10)[7,3].to_i
-    [*31..54].include?(version) # all supported
-  end
-}
+converter_path = Pathname(__dir__) + "xml2ui"
 
 # In 4 threads
 cores = 4
 cores.times.map{|i|
   Thread.new{
     while true
-      path = todo.shift or break
-      version = path.read(10)[7,3]
-      game_name = path.dirname.basename.to_s
-      file_name = path.basename.to_s
+      todo = task_set.todo.shift or break
 
-      output_path = output_dir + version + "#{game_name}-#{file_name}.xml"
-      recreated_path = Pathname("tmp/recreated") + version + "#{game_name}-#{file_name}"
+      todo.recreated_path.parent.mkpath
 
-      next unless output_path.exist?
-
-      recreated_path.parent.mkpath
-      ok = system %Q[#{converter_path} "#{output_path}" "#{recreated_path}"]
+      ok = system %Q[#{converter_path} "#{todo.unpacked_path}" "#{todo.recreated_path}"]
       if !ok
-        puts "ERR:  #{path}"
-      elsif path.read == recreated_path.read
-        puts "OK:   #{path}"
+        puts "ERR:  #{todo.data_path}"
+      elsif todo.data_path.read == todo.recreated_path.read
+        puts "OK:   #{todo.data_path}"
       else
-        puts "DIFF: #{path} #{output_path} #{recreated_path}"
+        puts "DIFF: #{todo.data_path} #{todo.unpacked_path} #{todo.recreated_path}"
       end
     end
   }

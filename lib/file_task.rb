@@ -93,6 +93,10 @@ class FileTask
     @unpacked_fail_path ||= unpacked_root + full_version + "#{game}-#{basename}.fail"
   end
 
+  def recreated_path
+    @recreated_path ||= recreated_root + full_version + "#{game}-#{basename}"
+  end
+
   def data_size
     data_path.size
   end
