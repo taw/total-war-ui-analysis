@@ -1,46 +1,19 @@
 #!/usr/bin/env ruby
 
-require "pathname"
+require_relative "../lib/task_set"
 
-def filter_versions(todo, filter)
-  todo = todo.select{|path|
-    if path.to_s =~ /(\.fc|\.cml)\z/
-      false
-    else
-      version = path.read(10)[7,3].to_i
-      filter.include?(version)
-    end
-  }
-end
-
-data_dir = Pathname("#{__dir__}") + "../data"
-output_dir = Pathname("#{__dir__}") + "../output"
-
-if ARGV.empty?
-  todo = data_dir.find.reject(&:directory?)
-elsif ARGV[0] =~ /\d+/
-  todo = data_dir.find.reject(&:directory?)
-  todo = filter_versions(todo, ARGV[0].split(",").map(&:to_i))
-else
-  todo = ARGV.map{|path| Pathname(path).realpath}
-end
+task_set = TaskSet.new(*ARGV)
 
 # In 4 threads
 cores = 4
 cores.times.map{|i|
   Thread.new{
     while true
-      path = todo.shift or break
-      magic = path.read(10)
-      next unless magic =~ /\AVersion(\d\d\d)\z/
-      version = $1
-      game_name = path.dirname.basename.to_s
-      file_name = path.basename.to_s
-      output_path = output_dir + version + "#{game_name}-#{file_name}.txt"
+      todo = task_set.todo.shift or break
 
-      output_path.parent.mkpath
-      puts "#{i} #{path}"
-      system %Q[#{__dir__}/analysis "#{path}" >"#{output_path}"]
+      todo.output_path.parent.mkpath
+      puts "#{i} #{todo.data_path}"
+      system %Q[#{__dir__}/analysis "#{todo.data_path}" >"#{todo.output_path}"]
     end
   }
 }.map(&:join)
