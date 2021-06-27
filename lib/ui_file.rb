@@ -196,10 +196,12 @@ class UiFile
   end
 
   def convert_bgra!
-    convert_byte! "B"
-    convert_byte! "G"
-    convert_byte! "R"
-    convert_byte! "A"
+    tag! "color" do
+      convert_byte! "B"
+      convert_byte! "G"
+      convert_byte! "R"
+      convert_byte! "A"
+    end
   end
 
   def convert_image_list!
@@ -214,6 +216,9 @@ class UiFile
           if @version < 74
             convert_bgra!
           end
+          if @version >= 78
+            convert_bool!
+          end
         end
       end
     end
@@ -221,7 +226,7 @@ class UiFile
 
   def convert_data!(size)
     v = get(size).chars
-    out! "<data>"
+    out! %Q[<data size="#{size}">]
     v.each_slice(16) do |slice|
       slice = slice.join
       asc = slice.chars.map{|c| c =~ /[\x20-\x7e]/ ? c : "."}.join
@@ -267,13 +272,28 @@ class UiFile
           if @version >= 43
             convert_s! "font category / twui"
           end
-          convert_i!
-          convert_i!
-          convert_i!
+          if @version >= 86
+            convert_i! "left ?"
+            convert_i! "right ?"
+            convert_i! "top ?"
+            convert_i! "bottom ?"
+          else
+            convert_i! "x ?"
+            convert_i! "y ?"
+          end
 
-          convert_bool!
-          convert_bool!
-          convert_bool!
+          if @version >= 83
+            convert_i!
+            convert_bool!
+            convert_bool!
+            convert_bool!
+            convert_bool!
+          else
+            convert_i!
+            convert_bool!
+            convert_bool!
+            convert_bool!
+          end
 
           if @version >= 29
             convert_s! "shader name"
@@ -291,13 +311,15 @@ class UiFile
             convert_flt! "text shader vars"
           end
 
+          out_ofs! "shaders done"
+
           if @version < 74
             convert_s! "state description"
             convert_s! "event text"
           end
 
           # 74 and 77 OK up to this point
-          out_ofs! "what comes next???"
+          out_ofs! "image use list"
 
           convert_image_uses!
 
@@ -309,7 +331,7 @@ class UiFile
             convert_transitions!
           else
             # 74-79 works here, but 83+ no?
-            out_ofs! "rest of state, is this image uses list?"
+            out_ofs! "rest of state, after image uses list?"
             # BIG TODO
           end
         end
@@ -405,13 +427,20 @@ class UiFile
     convert_bool!
     convert_i! "default state id"
 
+    convert_image_list!
 
+    convert_ix! "mask image?"
 
-    states_start = @data.index("\x08\x00NewState") - 8
-    convert_data! states_start - @ofs
+    if @version < 110
+      convert_i!
+    end
+
+    # states_start = @data.index("\x08\x00NewState") - 8
+    # convert_data! states_start - @ofs
     # out! "<skip>#{states_start - @ofs} bytes</skip>"
+    # @ofs = states_start
+
     out_ofs! "states start here"
-    @ofs = states_start
     convert_state_list!
   end
 
