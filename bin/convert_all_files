@@ -3,27 +3,17 @@
 require_relative "../lib/task_set"
 
 task_set = TaskSet.new(*ARGV)
-task_set.todo.select!(&:supported_by_converter?)
+task_set.todo.select!(&:supported_by_converter?) if ARGV.empty?
 
-converter_path = "#{__dir__}/convert_ui.py"
+task_set.in_parallel do |task, i|
+  task.converted_path.parent.mkpath
+  puts "#{i} #{task.data_path}"
+  ok = system %Q[#{__dir__}/convert_ui.py -u "#{task.data_path}" "#{task.converted_path}"]
 
-# In 4 threads
-cores = 4
-cores.times.map{|i|
-  Thread.new{
-    while true
-      todo = task_set.todo.shift or break
-
-      todo.converted_path.parent.mkpath
-      puts "#{i} #{todo.data_path}"
-      ok = system %Q[#{converter_path} -u "#{todo.data_path}" "#{todo.converted_path}"]
-
-      if ok
-        todo.converted_fail_path.unlink if todo.converted_fail_path.exist?
-      else
-        todo.converted_path.unlink
-        todo.converted_fail_path.write("")
-      end
-    end
-  }
-}.map(&:join)
+  if ok
+    task.converted_fail_path.unlink if task.converted_fail_path.exist?
+  else
+    task.converted_path.unlink
+    task.converted_fail_path.write("")
+  end
+end
