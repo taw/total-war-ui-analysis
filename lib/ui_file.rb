@@ -332,7 +332,7 @@ class UiFile
 
           convert_image_uses!
 
-          if @version >= 26 # ???
+          if @version >= 26 # something mouse related???
             convert_i!
             convert_i!
           end
@@ -340,7 +340,7 @@ class UiFile
           if @version < 74
             convert_transitions!
           else
-            convert_i_zero! "number of mouse states"
+            convert_i_zero! "number of mouse states?"
             # 74-79 works here, but 83+ no?
             out_ofs! "mouse states?"
           end
@@ -455,13 +455,17 @@ class UiFile
       convert_i!
     end
 
-    # states_start = @data.index("\x08\x00NewState") - 8
-    # convert_data! states_start - @ofs
-    # out! "<skip>#{states_start - @ofs} bytes</skip>"
-    # @ofs = states_start
-
-    out_ofs! "states start here"
     convert_state_list!
+
+    convert_i_zero! "number of dynamic?"
+    convert_i! "priority?"
+    convert_i_zero! "number of funcs?"
+
+    convert_i_zero! "this should non even be here lol wat?"
+
+    out_ofs! "children start here?"
+
+    convert_children!
   end
 
   def convert_uientry!
