@@ -113,7 +113,7 @@ class UiFile
     end
   end
 
-  def convert_i_zero!(comment)
+  def convert_i_zero!(comment=nil)
     # Well, at least it looks like it
     v = get_i
     raise "Must be zero, got #{v} / #{@data[@ofs-4,4].unpack1("f")}" unless v == 0
@@ -199,7 +199,10 @@ class UiFile
     end
   end
 
-  def convert_bgra!
+  def convert_bgra!(comment=nil)
+    if comment
+      out! "<-- #{comment} -->"
+    end
     tag! "color" do
       convert_byte! "B"
       convert_byte! "G"
@@ -377,26 +380,36 @@ class UiFile
           convert_u! "y offset"
           convert_u! "x size"
           convert_u! "y size"
-          convert_byte! "B multiply"
-          convert_byte! "R multiply"
-          convert_byte! "G multiply"
-          convert_byte! "A multiply"
+          convert_bgra! "multiply"
           # Up to this point, this works for 74+ too
           out_ofs! "less decoded part of image_use follows"
           convert_bool! "tiled?"
           convert_bool! "flipped x?"
           convert_bool! "flipped y?"
-          convert_i! "position (0-9)?"
+          convert_i! "dock position (0-9)?"
+          if @version >= 77 # or sth
+            convert_i! "dock offset x?"
+            convert_i! "dock offset y?"
+          end
           convert_bool! "stretch x?"
           convert_bool! "stretch y?"
           convert_angle! "rotation angle"
           convert_flt! "rotation pivot x?"
           convert_flt! "rotation pivot y?"
-          if @version >= 51
-            convert_bool!
-          end
-          if @version == 31 # WTF ?
+          if @version >= 74
+            convert_s! "shader name"
+            convert_flt! "rotation axis x?"
+            convert_flt! "rotation axis y?"
+            convert_flt! "rotation axis z?"
+            convert_i_zero!
             convert_i!
+          else
+            if @version >= 51
+              convert_bool!
+            end
+            if @version == 31 # WTF ?
+              convert_i!
+            end
           end
         end
       end
