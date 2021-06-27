@@ -113,11 +113,15 @@ class UiFile
     end
   end
 
-  def convert_i_zero!
+  def convert_i_zero!(comment)
     # Well, at least it looks like it
     v = get_i
     raise "Must be zero, got #{v} / #{@data[@ofs-4,4].unpack1("f")}" unless v == 0
-    out! "<i>#{v}</i><!-- always zero -->"
+    if comment
+      out! "<i>#{v}</i><!-- always zero --><!-- #{comment} -->"
+    else
+      out! "<i>#{v}</i><!-- always zero -->"
+    end
   end
 
   def convert_ix!(comment=nil)
@@ -250,9 +254,11 @@ class UiFile
 
           convert_unicode! "state text"
           convert_unicode! "tooltip"
-          5.times do
-            convert_i!
-          end
+          convert_i! "text xsize?"
+          convert_i! "text ysize?"
+          convert_i! "text xalign?"
+          convert_i! "text yalign?"
+          convert_i!
           convert_bool!
 
           convert_unicode! "localization id"
@@ -323,16 +329,17 @@ class UiFile
 
           convert_image_uses!
 
+          if @version >= 26 # ???
+            convert_i!
+            convert_i!
+          end
+
           if @version < 74
-            if @version >= 26 # ???
-              convert_i!
-              convert_i!
-            end
             convert_transitions!
           else
+            convert_i_zero! "number of mouse states"
             # 74-79 works here, but 83+ no?
-            out_ofs! "rest of state, after image uses list?"
-            # BIG TODO
+            out_ofs! "mouse states?"
           end
         end
       end
