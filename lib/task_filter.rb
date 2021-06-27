@@ -3,7 +3,7 @@ require "set"
 class TaskFilter
   def initialize(expr)
     if expr.include?("/")
-      @path = expr
+      @path = Pathname(__dir__).parent + Pathname(expr)
     elsif expr =~ /\A[,\d+\-]+\z/
       @versions = expr.split(",").flat_map{|e|
         if e =~ /\A(\d+)\z/

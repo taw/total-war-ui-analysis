@@ -97,6 +97,19 @@ class FileTask
     @recreated_path ||= recreated_root + full_version + "#{game}-#{basename}"
   end
 
+  # We want absolute paths here
+  def paths
+    @paths ||= [
+      data_path,
+      output_path,
+      converted_path,
+      converted_fail_path,
+      unpacked_path,
+      unpacked_fail_path,
+      recreated_path,
+    ]
+  end
+
   def data_size
     data_path.size
   end
