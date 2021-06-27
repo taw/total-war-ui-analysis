@@ -3,9 +3,9 @@
 require_relative "../lib/task_set"
 
 task_set = TaskSet.new(*ARGV)
-task_set.todo.select!(&:supported_by_ui2xml?)
+task_set.todo.select!(&:supported_by_ui2xml?) if ARGV.empty?
 
-converter_path = Pathname(__dir__) + "ui2xml"
+puts task_set.todo
 
 # In 4 threads
 cores = 4
@@ -16,7 +16,7 @@ cores.times.map{|i|
 
       todo.unpacked_path.parent.mkpath
       puts "#{i} #{todo.data_path}"
-      err = system %Q[#{converter_path} "#{todo.data_path}" "#{todo.unpacked_path}"]
+      err = system %Q[#{__dir__}/ui2xml "#{todo.data_path}" "#{todo.unpacked_path}"]
 
       if err
         todo.unpacked_fail_path.unlink if todo.unpacked_fail_path.exist?
