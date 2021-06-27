@@ -99,6 +99,12 @@ class UiFile
     end
   end
 
+  def convert_id!
+    v4 = @data[@ofs,4].unpack("C*").map{|x| "%02x" % x}.join(" ")
+    v = get_u
+    out! "<u>#{v}</u><!-- ID (#{v4}) -->"
+  end
+
   def convert_i!(comment=nil)
     if comment
       out! "<i>#{get_i}</i><!-- #{comment} -->"
@@ -201,7 +207,7 @@ class UiFile
     tag! "images", count: count do
       count.times do
         tag! "image" do
-          convert_u! "ID"
+          convert_id!
           convert_s! "path"
           convert_i! "x size"
           convert_i! "y size"
@@ -232,7 +238,7 @@ class UiFile
     tag! "states", count: count do
       count.times do
         tag! "state" do
-          convert_u! "ID"
+          convert_id!
           convert_s! "title - NewState"
           convert_i! "x size"
           convert_i! "y size"
@@ -317,7 +323,7 @@ class UiFile
       count.times do
         tag! "transition" do
           convert_i! "type"
-          convert_u! "ID"
+          convert_id!
           if @version >= 39
             convert_s!
             convert_i!
@@ -337,7 +343,7 @@ class UiFile
     tag! "image_uses", count: count do
       count.times do
         tag! "image_use" do
-          convert_u! "ID"
+          convert_id!
           convert_u! "x offset"
           convert_u! "y offset"
           convert_u! "x size"
@@ -369,19 +375,37 @@ class UiFile
   end
 
   def convert_uientry_gen2!
-    convert_u! "ID"
+    convert_id!
     convert_s! "title"
     if @version >= 43
       convert_s! "title2"
     end
+
+    # version 100+ has some event stuff here
+
     convert_i! "x offset"
     convert_i! "y offset"
 
     # 12 so far
     # if ($v >= 70 && $v < 90){ $this->b1 = tohex(fread($h, 1)); }
     12.times do |i|
-      convert_bool! "maybe bool #{i}"
+      convert_bool!
     end
+    convert_bool! if @version < 90
+
+    convert_unicode! "tooltip text"
+    convert_unicode! "tooltip id"
+
+    convert_ix! "docking?"
+    if @version >= 77
+      convert_ix! "docking x?"
+      convert_ix! "docking y?"
+    end
+
+    convert_bool!
+    convert_i! "default state id"
+
+
 
     states_start = @data.index("\x08\x00NewState") - 8
     convert_data! states_start - @ofs
@@ -393,7 +417,7 @@ class UiFile
 
   def convert_uientry!
     tag! "uientry" do
-      convert_u! "ID"
+      convert_id!
       convert_s! "title"
       if @version >= 43
         convert_s! "title2"
@@ -416,15 +440,15 @@ class UiFile
       end
       convert_s! "parent name"
       convert_i!
-      convert_unicode! "tooltip"
       convert_unicode! "tooltip text"
+      convert_unicode! "tooltip id"
       convert_i!
 
       if @version >= 33
         convert_bool!
       end
       if @version >= 39
-        convert_i!
+        convert_i! "default state id"
       end
       convert_s! "script"
       convert_image_list!
