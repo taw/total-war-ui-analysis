@@ -59,6 +59,19 @@ class Int32Block < Block
   end
 end
 
+class BooleanBlock < Block
+  def initialize(*)
+    super
+    value = data.unpack1("C")
+    raise unless value <= 1
+    @value == (value == 1)
+  end
+
+  def to_s
+     "#{range} #{self.class} #{@value ? 'yes' : 'no'}"
+  end
+end
+
 class BGRABlock < Block
   def to_s
     b,g,r,a = data.bytes
@@ -488,15 +501,27 @@ class Analysis
         ofs = @blocks[block_idx].e
       end
     end
-    if free_space_after(block_idx) >= 8
-      @blocks[block_idx,0] = [
-        XOffsetBlock.new(self, ofs, ofs+4),
-        YOffsetBlock.new(self, ofs+4, ofs+8),
-      ]
-      block_idx += 1
-      ofs += 8
-    end
-    # then some booleans etc.
+    return unless free_space_after(block_idx) >= 8
+    @blocks[block_idx+1, 0] = [
+      XOffsetBlock.new(self, ofs, ofs+4),
+      YOffsetBlock.new(self, ofs+4, ofs+8),
+    ]
+    block_idx += 2
+    ofs += 8
+
+    # Depends on version, don't overshoot, as there's other 0s after
+    booleans = 7
+    booleans = 8 if @version >= 47
+    booleans = 11 if @version >= 50
+    booleans = 12 if @version >= 51
+
+    return unless free_space_after(block_idx) >= booleans
+    return unless @data[ofs, booleans] =~ /\A[\x00\x01]+\z/
+    @blocks[block_idx, 0] = booleans.times.map{|i|
+      BooleanBlock.new(self, ofs+i, ofs+i+1)
+    }
+    block_idx += booleans
+    ofs += booleans
   end
 
   def analyze_shader_variables
