@@ -467,6 +467,11 @@ class UiFile
             end
             convert_i! "extra bg use stuff?"
             convert_i! "extra bg use stuff?"
+            if @version >= 92
+              convert_i! "extra bg use stuff?"
+              convert_i! "extra bg use stuff?"
+            end
+            # v95 stuff
           else
             if @version >= 51
               convert_bool!

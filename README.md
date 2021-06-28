@@ -92,3 +92,9 @@ Games currently in repository:
 Games currently missing:
 
 * Warhammer 3
+
+### Credits
+
+Software written by taw (Tomasz Wegrzanowski).
+
+Special thanks to alpaca for the original research for Napoleon and the original UI converter, and to Cpecific for research on Rome 2+ games.
