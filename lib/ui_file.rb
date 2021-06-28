@@ -696,7 +696,7 @@ class UiFile
     if flag
       type = get_s
       tag! "additional_data", type: type do
-        if type == "List"
+        if type == "List" or type == "HorizontalList"
           count = get_u
           out!("<i>#{count}</i><!-- count data points -->") # generallly 0-5
           count.times do
