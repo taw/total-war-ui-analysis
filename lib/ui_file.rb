@@ -628,14 +628,18 @@ class UiFile
       # This version mix...
       if @version <= 84 and @version != 77 and @version != 78
         # if it's not all zeroes, we could have VariantMeshDefinition stuff following :-/
-        convert_bool! "end of uientry 3?"
-        convert_bool! "end of uientry 4?"
-        convert_bool! "end of uientry 5?"
+        convert_bool! "end of uientry flag 3?"
+        convert_bool! "end of uientry flag 4?"
+        convert_bool! "end of uientry flag 5?"
       else
-        convert_bool! "end of uientry 3?"
-        convert_bool! "end of uientry 4?"
-        convert_bool! "end of uientry 5?"
-        convert_bool! "end of uientry 6?"
+        convert_bool! "end of uientry flag 3?"
+        convert_bool! "end of uientry flag 4?"
+        convert_bool! "end of uientry flag 5?"
+        convert_bool! "end of uientry flag 6?"
+      end
+
+      if @version >= 94
+        convert_bool!
       end
     end
   end
