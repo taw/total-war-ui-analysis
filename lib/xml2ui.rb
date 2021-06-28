@@ -132,6 +132,10 @@ module XmlTagHandlers
     phases
     table
     row
+    dynamics
+    funcs
+    anims
+    anim_attrs
   ].each do |m|
     # TODO: it would be better if count was actually automatically determined and didn't require hand checking
     OnStart[m] = :on_start_array_node
@@ -149,6 +153,10 @@ module XmlTagHandlers
     phase
     col
     color
+    dynamic
+    func
+    anim
+    anim_attr
   ].each do |m|
     OnStart[m] = :on_start_passthrough_node
     OnEnd[m]   = :on_end_passthrough_node

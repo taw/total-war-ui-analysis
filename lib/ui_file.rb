@@ -116,10 +116,11 @@ class UiFile
   def convert_i_zero!(comment=nil)
     # Well, at least it looks like it
     v = get_i
-    raise "Must be zero, got #{v} / #{@data[@ofs-4,4].unpack1("f")}" unless v == 0
     if comment
+      raise "Must be zero, got #{v} / #{@data[@ofs-4,4].unpack1("f")} (#{comment})" unless v == 0
       out! "<i>#{v}</i><!-- always zero --><!-- #{comment} -->"
     else
+      raise "Must be zero, got #{v} / #{@data[@ofs-4,4].unpack1("f")}" unless v == 0
       out! "<i>#{v}</i><!-- always zero -->"
     end
   end
@@ -416,6 +417,81 @@ class UiFile
     end
   end
 
+  def convert_anim_attrs!
+    count = get_u
+    tag! "anim_attrs", count: count do
+      count.times do
+        tag! "anim_attr" do
+          out_ofs! "anim attr start"
+          convert_id!
+          convert_s! "animation?"
+          convert_s! "state?"
+          convert_s! "property?"
+          out_ofs! "anim attr done"
+        end
+      end
+    end
+  end
+
+  def convert_anims!
+    count = get_u
+    tag! "anims", count: count do
+      count.times do
+        tag! "anim" do
+          out_ofs! "start of anim"
+          # v110+ stuff
+          convert_flt! "x offset?"
+          convert_flt! "y offset?"
+          convert_i! "x size?"
+          convert_i! "y size?"
+          convert_bgra!
+          convert_flt! "shader vars?"
+          convert_flt! "shader vars?"
+          convert_flt! "shader vars?"
+          convert_flt! "shader vars?"
+          convert_flt! "rotation angle?"
+          convert_i! "image index 1?"
+          convert_i! "image index 2?"
+          # v110+ stuff
+          convert_i! "interpolation time?"
+          convert_i! "interpolation property mask?"
+          convert_flt! "easing weight?"
+          convert_s! "easing curve?"
+          convert_anim_attrs!
+          # v90+ shuff
+          out_ofs! "end of anim"
+        end
+      end
+    end
+  end
+
+  def convert_funcs!
+    count = get_u
+    tag! "funcs", count: count do
+      count.times do
+        tag! "func" do
+          convert_s! "name"
+          convert_s!
+          convert_anims!
+          out_ofs! "end of func"
+          # v91+ has extra stuff
+        end
+      end
+    end
+  end
+
+  def convert_dynamics!
+    count = get_u
+    tag! "dynamics", count: count do
+      count.times do
+        tag! "dynamic" do
+          convert_s! "key"
+          convert_s! "value"
+        end
+      end
+    end
+  end
+
   def convert_uientry_gen2!
     convert_id!
     convert_s! "title"
@@ -457,15 +533,22 @@ class UiFile
 
     convert_state_list!
 
-    convert_i_zero! "number of dynamic?"
+    convert_dynamics!
     convert_i! "priority?"
-    convert_i_zero! "number of funcs?"
+    out_ofs! "before number of funcs?"
+    convert_funcs!
 
     convert_i_zero! "this should non even be here lol wat?"
+    if @version <= 77
+      convert_bool! "this should not even be here lol wat?"
+    end
 
     out_ofs! "children start here?"
 
     convert_children!
+
+    out_ofs! "children end here?"
+    raise "TODO REST OF UIENTRY"
   end
 
   def convert_uientry!
@@ -592,7 +675,11 @@ class UiFile
     count = get_u
     tag! "children", count: count do
       count.times do
-        convert_uientry!
+        if @version <= 54
+          convert_uientry!
+        else
+          convert_uientry_gen2!
+        end
       end
     end
   end
@@ -726,14 +813,13 @@ class UiFile
       raise "Not supported yet"
     end
   rescue Exception => err
-    out! "<error>"
-    out! "  #{err}"
-    out! "  Data before fail:"
-    ofs = @save_ofs || @ofs
-    hex_dump!(ofs-64, ofs)
-    out! "  Data from fail #{ofs}:"
-    hex_dump!(ofs, ofs+1024)
-    out! "</error>"
+    tag! "error", msg: err do
+      out! "Data before fail:"
+      ofs = @save_ofs || @ofs
+      hex_dump!(ofs-64, ofs)
+      out! "Data from fail #{ofs}:"
+      hex_dump!(ofs, ofs+1024)
+    end
     raise err
   end
 
@@ -761,7 +847,7 @@ class UiFile
       asc = slice.chars.map{|c| c =~ /[\x20-\x7e]/ ? c : "."}.join
       asc += " " * (16 - asc.size)
       hex = slice.bytes.map{|c| "%02x" % c}.join(" ")
-      out! "  #{asc} #{hex}\n"
+      out! "#{asc} #{hex}\n"
     end
   end
 end
