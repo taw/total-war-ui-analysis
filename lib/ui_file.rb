@@ -289,6 +289,10 @@ class UiFile
           convert_unicode! "localization id"
           convert_unicode! "tooltip id"
 
+          if @version >= 90
+            convert_s! "?"
+          end
+
           if @version >= 29
             convert_s! "font"
             out_ofs! "font done"
@@ -300,9 +304,11 @@ class UiFile
           if @version >= 74
             convert_bgra!
           end
+
           if @version >= 43
             convert_s! "font category / twui"
           end
+
           if @version >= 86
             convert_i! "left ?"
             convert_i! "right ?"
@@ -313,7 +319,9 @@ class UiFile
             convert_i! "y ?"
           end
 
-          if @version >= 83
+          if @version >= 90
+            convert_i!
+          elsif @version >= 83
             convert_i!
             convert_bool!
             convert_bool!
@@ -513,7 +521,10 @@ class UiFile
           convert_flt! "easing weight?"
           convert_s! "easing curve?"
           convert_anim_attrs!
-          # v90+ shuff
+          if @version >= 90
+            convert_bool! "is movement absolute?"
+          end
+          # v100+ shuff
           out_ofs! "end of anim"
         end
       end
@@ -530,7 +541,10 @@ class UiFile
           convert_bool! "makenoninteractive?"
           convert_anims!
           out_ofs! "end of func"
-          # v91+ has extra stuff
+          if @version >= 91
+            convert_s!
+          end
+          # v100+ changes
         end
       end
     end
