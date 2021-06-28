@@ -255,6 +255,17 @@ class UiFile
     out! "</data>"
   end
 
+  def convert_data_zero!(size)
+    v = get(size).bytes
+    out! %Q[<data size="#{size}">]
+    v.each_slice(16) do |slice|
+      hex = slice.map{|c| "%02x" % c}.join(" ")
+      out! "  #{hex}\n"
+      raise "Data should be all zeroes, got: #{v}" unless slice.all?(&:zero?)
+    end
+    out! "</data>"
+  end
+
   def convert_state_list!
     out_ofs!
     count = get_u
@@ -358,17 +369,30 @@ class UiFile
     end
   end
 
+  def convert_mouse_state_data!
+    count = get_u
+    tag! "mouse_state_data", count: count do
+      count.times do
+        tag! "mouse_state_datapoint" do
+          convert_id!
+          convert_s!
+          convert_data_zero! 4
+        end
+      end
+    end
+  end
+
   def convert_mouse_states!
     count = get_u
     tag! "mouse_states", count: count do
       count.times do
         tag! "mouse_state" do
-          out_ofs! "mouse state starts"
           convert_i! "type"
           convert_id!
-          convert_i! "?"
-          convert_flt! "?"
-          convert_i_zero! "some nested mouse stuff?"
+          convert_i!
+          convert_i!
+          out_ofs! "mouse nested stuff starts"
+          convert_mouse_state_data!
         end
       end
     end
