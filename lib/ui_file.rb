@@ -738,6 +738,10 @@ class UiFile
           if @version >= 54
             convert_bool! "mystery5"
           end
+          if @version == 96
+            convert_i!
+            convert_bool!
+          end
         elsif type == "Table"
           row_count = get_u
           tag! "table", count: row_count do
