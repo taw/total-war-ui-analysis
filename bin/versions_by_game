@@ -4,10 +4,9 @@ require_relative "../lib/task_set"
 
 task_set = TaskSet.new(*ARGV)
 
-counts = {}
+counts = Hash.new{|ht,k| ht[k] = Hash.new(0)}
 
 task_set.todo.each do |todo|
-  counts[todo.game] ||= Hash.new(0)
   counts[todo.game][todo.full_version] += 1
 end
 

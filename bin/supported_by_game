@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+
+require_relative "../lib/task_set"
+
+task_set = TaskSet.new(*ARGV)
+
+totals = Hash.new(0)
+supported = Hash.new(0)
+
+task_set.todo.each do |todo|
+  totals[todo.game] += 1
+  supported[todo.game] += 1 if todo.unpacked_path.exist?
+end
+
+totals.keys.map{|game|
+  s = supported[game]
+  t = totals[game]
+  pct = (s*100.0/t).round
+  [pct, game, "#{game}: #{s}/#{t} (#{pct}%)"]
+}.sort_by{|pct, game, msg| [-pct, game, msg]}.each{|pct, game, msg|
+  puts msg
+}
