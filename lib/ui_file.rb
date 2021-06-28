@@ -609,7 +609,8 @@ class UiFile
         convert_data! 5 # if it's not all zeroes, we could have VariantMeshDefinition stuff following :-/
       else
         convert_s! "end of uientry 1?"
-        convert_data! 6
+        convert_s! "end of uientry 2?"
+        convert_data! 4
       end
     end
   end
