@@ -603,14 +603,20 @@ class UiFile
 
       out_ofs! "additional data ends here?"
 
+      convert_s! "end of uientry 1?"
+      convert_s! "end of uientry 2?"
+
       # This version mix...
       if @version <= 84 and @version != 77 and @version != 78
-        convert_s! "end of uientry 1?"
-        convert_data! 5 # if it's not all zeroes, we could have VariantMeshDefinition stuff following :-/
+        # if it's not all zeroes, we could have VariantMeshDefinition stuff following :-/
+        convert_bool! "end of uientry 3?"
+        convert_bool! "end of uientry 4?"
+        convert_bool! "end of uientry 5?"
       else
-        convert_s! "end of uientry 1?"
-        convert_s! "end of uientry 2?"
-        convert_data! 4
+        convert_bool! "end of uientry 3?"
+        convert_bool! "end of uientry 4?"
+        convert_bool! "end of uientry 5?"
+        convert_bool! "end of uientry 6?"
       end
     end
   end
