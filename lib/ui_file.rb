@@ -515,62 +515,69 @@ class UiFile
   end
 
   def convert_uientry_gen2!
-    convert_id!
-    convert_s! "title"
-    if @version >= 43
-      convert_s! "title2"
-    end
+    tag! "uientry" do
+      convert_id!
+      convert_s! "title"
+      if @version >= 43
+        convert_s! "title2"
+      end
 
-    # version 100+ has some event stuff here
+      # version 100+ has some event stuff here
 
-    convert_i! "x offset"
-    convert_i! "y offset"
+      convert_i! "x offset"
+      convert_i! "y offset"
 
-    # 12 so far
-    # if ($v >= 70 && $v < 90){ $this->b1 = tohex(fread($h, 1)); }
-    12.times do |i|
+      12.times do |i|
+        convert_bool!
+      end
+      convert_bool! if @version < 90
+
+      convert_unicode! "tooltip text"
+      convert_unicode! "tooltip id"
+
+      convert_ix! "docking?"
+      if @version >= 77
+        convert_ix! "docking x?"
+        convert_ix! "docking y?"
+      end
+
       convert_bool!
+      convert_i! "default state id"
+
+      convert_image_list!
+
+      convert_ix! "mask image?"
+
+      if @version < 110
+        convert_i!
+      end
+
+      convert_state_list!
+
+      convert_dynamics!
+      convert_i! "priority?"
+      out_ofs! "before number of funcs?"
+      convert_funcs!
+
+      out_ofs! "children start here?"
+
+      convert_children!
+
+      out_ofs! "children end here?"
+
+      convert_additional_data!
+
+      out_ofs! "additional data ends here?"
+
+      # Total mystery here
+      if @version <= 74
+        convert_s! "end of uientry 1?"
+        convert_data! 5 # if it's not all zeroes, we could have VariantMeshDefinition stuff following :-/
+      else
+        convert_s! "end of uientry 1?"
+        convert_data! 6
+      end
     end
-    convert_bool! if @version < 90
-
-    convert_unicode! "tooltip text"
-    convert_unicode! "tooltip id"
-
-    convert_ix! "docking?"
-    if @version >= 77
-      convert_ix! "docking x?"
-      convert_ix! "docking y?"
-    end
-
-    convert_bool!
-    convert_i! "default state id"
-
-    convert_image_list!
-
-    convert_ix! "mask image?"
-
-    if @version < 110
-      convert_i!
-    end
-
-    convert_state_list!
-
-    convert_dynamics!
-    convert_i! "priority?"
-    out_ofs! "before number of funcs?"
-    convert_funcs!
-
-    out_ofs! "children start here?"
-
-    convert_children!
-
-    out_ofs! "children end here?"
-
-    convert_additional_data!
-
-    out_ofs! "additional data ends here?"
-
-    raise "TODO REST OF UIENTRY"
   end
 
   def convert_uientry!
@@ -685,7 +692,7 @@ class UiFile
           end
           out_ofs! "end of table data"
         else
-          raise "Unknown additional data section"
+          raise "Unknown additional data section #{type}"
         end
       end
     else
