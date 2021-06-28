@@ -136,6 +136,7 @@ module XmlTagHandlers
     funcs
     anims
     anim_attrs
+    mouse_states
   ].each do |m|
     # TODO: it would be better if count was actually automatically determined and didn't require hand checking
     OnStart[m] = :on_start_array_node
@@ -157,6 +158,7 @@ module XmlTagHandlers
     func
     anim
     anim_attr
+    mouse_state
   ].each do |m|
     OnStart[m] = :on_start_passthrough_node
     OnEnd[m]   = :on_end_passthrough_node

@@ -341,10 +341,24 @@ class UiFile
           if @version < 74
             convert_transitions!
           else
-            convert_i_zero! "number of mouse states?"
-            # 74-79 works here, but 83+ no?
-            out_ofs! "mouse states?"
+            convert_mouse_states!
           end
+        end
+      end
+    end
+  end
+
+  def convert_mouse_states!
+    count = get_u
+    tag! "mouse_states", count: count do
+      count.times do
+        tag! "mouse_state" do
+          out_ofs! "mouse state starts"
+          convert_i! "type"
+          convert_id!
+          convert_i! "?"
+          convert_flt! "?"
+          convert_i_zero! "some nested mouse stuff?"
         end
       end
     end
@@ -403,7 +417,14 @@ class UiFile
             convert_flt! "rotation axis y?"
             convert_flt! "rotation axis z?"
             convert_i_zero!
-            convert_i!
+
+            # There is extra shit here :-(
+            out_ofs! "extra stuff?"
+            if @version <= 77
+              convert_bool! "extra image use stuff?"
+            end
+            convert_i! "extra bg use stuff?"
+            convert_i! "extra bg use stuff?"
           else
             if @version >= 51
               convert_bool!
@@ -471,7 +492,8 @@ class UiFile
       count.times do
         tag! "func" do
           convert_s! "name"
-          convert_s!
+          convert_bool! "propagate?"
+          convert_bool! "makenoninteractive?"
           convert_anims!
           out_ofs! "end of func"
           # v91+ has extra stuff
@@ -538,16 +560,16 @@ class UiFile
     out_ofs! "before number of funcs?"
     convert_funcs!
 
-    convert_i_zero! "this should non even be here lol wat?"
-    if @version <= 77
-      convert_bool! "this should not even be here lol wat?"
-    end
-
     out_ofs! "children start here?"
 
     convert_children!
 
     out_ofs! "children end here?"
+
+    convert_additional_data!
+
+    out_ofs! "additional data ends here?"
+
     raise "TODO REST OF UIENTRY"
   end
 
