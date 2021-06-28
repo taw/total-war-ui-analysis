@@ -202,7 +202,7 @@ class UiFile
 
   def convert_bgra!(comment=nil)
     if comment
-      out! "<-- #{comment} -->"
+      out! "<!-- #{comment} -->"
     end
     tag! "color" do
       convert_byte! "B"
@@ -232,15 +232,25 @@ class UiFile
     end
   end
 
-  def convert_data!(size)
+  def convert_debug!(size)
     v = get(size).chars
-    out! %Q[<data size="#{size}">]
+    out! %Q[<debug size="#{size}">]
     v.each_slice(16) do |slice|
       slice = slice.join
       asc = slice.chars.map{|c| c =~ /[\x20-\x7e]/ ? c : "."}.join
       asc += " " * (16 - asc.size)
       hex = slice.bytes.map{|c| "%02x" % c}.join(" ")
       out! "  #{asc} #{hex}\n"
+    end
+    out! "</debug>"
+  end
+
+  def convert_data!(size)
+    v = get(size).bytes
+    out! %Q[<data size="#{size}">]
+    v.each_slice(16) do |slice|
+      hex = slice.map{|c| "%02x" % c}.join(" ")
+      out! "  #{hex}\n"
     end
     out! "</data>"
   end

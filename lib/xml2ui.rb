@@ -39,6 +39,12 @@ module XmlTagHandlers
     @ui.put_unicode buf
   end
 
+  def on_text_node_data(attributes, buf, ctx)
+    buf.strip.split.each do |x|
+      @ui.put_byte x.to_i
+    end
+  end
+
   ## Top level file type nodes
   def on_start_node_cml(attributes)
     @ui.put_version attributes[:version].to_i(10)
