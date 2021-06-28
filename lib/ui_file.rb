@@ -376,7 +376,7 @@ class UiFile
         tag! "mouse_state_datapoint" do
           convert_id!
           convert_s!
-          convert_data_zero! 4
+          convert_i_zero! # is it two string actually?
         end
       end
     end
@@ -603,8 +603,8 @@ class UiFile
 
       out_ofs! "additional data ends here?"
 
-      # Total mystery here
-      if @version <= 74
+      # This version mix...
+      if @version <= 84 and @version != 77 and @version != 78
         convert_s! "end of uientry 1?"
         convert_data! 5 # if it's not all zeroes, we could have VariantMeshDefinition stuff following :-/
       else
