@@ -168,6 +168,18 @@ class UiFile
     end
   end
 
+  def convert_bool_false!(comment=nil)
+    v = get_bool
+    vs = v ? "<yes />" : "<no />"
+    if comment
+      raise "Expected false (#{comment})" if v
+      out! "#{vs}<!-- #{comment} -->"
+    else
+      raise "Expected false" if v
+      out! vs
+    end
+  end
+
   def convert_u2!(comment=nil)
     v = get_u2
     if v != 0
@@ -245,8 +257,11 @@ class UiFile
     out! "</debug>"
   end
 
-  def convert_data!(size)
+  def convert_data!(size, comment=nil)
     v = get(size).bytes
+    if comment
+      out! "<!-- #{comment} -->"
+    end
     out! %Q[<data size="#{size}">]
     v.each_slice(16) do |slice|
       hex = slice.map{|c| "%02x" % c}.join(" ")
@@ -567,6 +582,52 @@ class UiFile
     end
   end
 
+  # This is a total mess, maybe it will work eventually
+  def convert_model!
+    tag! "model" do
+      out! "this is very poorly decoded part"
+      out_ofs! "model"
+      if @version == 74
+        header_size = 38
+      elsif @version == 84
+        header_size = 51
+      elsif @version == 85 or @version == 86
+        header_size = 50
+      else
+        header_size = 74
+      end
+      exp_header_size = @data[@ofs,1000].index("Variant")-6
+      out! "<!-- model expected header size #{header_size}/#{exp_header_size} -->"
+      convert_data! header_size, "model header data"
+
+      model_count = get_i
+      out! "<i>#{model_count}</i><!-- model count -->"
+      model_count.times do
+        tag! "model" do
+          convert_s! "mesh path?"
+          convert_s! "mesh name?"
+          if @version <= 77
+            convert_data! 21, "some model data or anim header or sth"
+          elsif @version == 85
+            convert_data! 29, "some model data or anim header or sth"
+          else
+            convert_data! 1, "some model data or anim header or sth"
+          end
+          convert_i! "anim count?" # assume 1, crashes otherwise
+          convert_s! "anim name?"
+          convert_s! "anim path?"
+          out_ofs! "end of guessed model data"
+          if @version == 74
+            convert_data! 3, "rest of anim stuff or sth"
+          else
+            convert_data! 4, "rest of anim stuff or sth"
+          end
+        end
+      end
+      convert_data! 2, "rest of anim stuff or sth"
+    end
+  end
+
   def convert_uientry_gen2!
     tag! "uientry" do
       convert_id!
@@ -624,18 +685,25 @@ class UiFile
 
       convert_s! "end of uientry 1?"
       convert_s! "end of uientry 2?"
+      convert_bool_false! "end of uientry flag 3?"
+      has_model = get_bool
+      if has_model
+        out! "<yes /><!-- has model (controls presence of model below) -->"
+      else
+        out! "<no /><!-- has model (controls presence of model below) -->"
+      end
 
       # This version mix...
       if @version <= 84 and @version != 77 and @version != 78
         # if it's not all zeroes, we could have VariantMeshDefinition stuff following :-/
-        convert_bool! "end of uientry flag 3?"
-        convert_bool! "end of uientry flag 4?"
-        convert_bool! "end of uientry flag 5?"
+        convert_bool! "end of uientry flag 5A?"
       else
-        convert_bool! "end of uientry flag 3?"
-        convert_bool! "end of uientry flag 4?"
-        convert_bool! "end of uientry flag 5?"
-        convert_bool! "end of uientry flag 6?"
+        convert_bool! "end of uientry flag 5B?"
+        convert_bool! "end of uientry flag 6B?"
+      end
+
+      if has_model
+        convert_model!
       end
 
       if @version >= 94
@@ -910,7 +978,7 @@ class UiFile
       raise "Not supported yet"
     end
   rescue Exception => err
-    tag! "error", msg: err do
+    tag! "error", version: @version, msg: err do
       out! "Data before fail:"
       ofs = @save_ofs || @ofs
       hex_dump!(ofs-64, ofs)
