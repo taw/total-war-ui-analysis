@@ -475,18 +475,21 @@ class UiFile
             convert_flt! "rotation axis z?"
             convert_i_zero!
 
-            # There is extra shit here :-(
+            # There is extra stuff here :-(
             out_ofs! "extra stuff?"
             if @version <= 77
               convert_bool! "extra image use stuff?"
             end
-            convert_i! "extra bg use stuff?"
-            convert_i! "extra bg use stuff?"
             if @version >= 92
-              convert_i! "extra bg use stuff?"
-              convert_i! "extra bg use stuff?"
+              convert_i! "margin top?"
+              convert_i! "margin right?"
+              convert_i! "margin bottom?"
+              convert_i! "margin left?"
+            else
+              convert_i! "margin top-bottom?"
+              convert_i! "margin left-right?"
             end
-            # v95 stuff
+            # v103+ stuff
           else
             if @version >= 51
               convert_bool!
@@ -544,6 +547,10 @@ class UiFile
           if @version >= 90
             convert_bool! "is movement absolute?"
           end
+          if @version >= 100
+            convert_bool!
+            convert_bool!
+          end
           # v100+ shuff
           out_ofs! "end of anim"
         end
@@ -558,7 +565,7 @@ class UiFile
         tag! "func" do
           convert_s! "name"
           convert_bool! "propagate?"
-          convert_bool! "makenoninteractive?"
+          convert_bool! "make noninteractive?"
           convert_anims!
           out_ofs! "end of func"
           if @version >= 91
@@ -636,7 +643,10 @@ class UiFile
         convert_s! "title2"
       end
 
-      # version 100+ has some event stuff here
+      if @version >= 100
+        convert_s! "v100+ extra string?"
+      end
+      # v110+ stuff
 
       convert_i! "x offset"
       convert_i! "y offset"
@@ -859,7 +869,14 @@ class UiFile
         if @version <= 54
           convert_uientry!
         else
-          convert_uientry_gen2!
+          if @data[@ofs, 2] == "\x00\x00".b
+            @ofs += 2
+            out! "<child-type>normal</child-type>"
+            convert_uientry_gen2!
+          else
+            out! "<child-type>template</child-type>"
+            convert_template!
+          end
         end
       end
     end
