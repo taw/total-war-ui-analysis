@@ -686,28 +686,44 @@ class UiFile
       convert_s! "end of uientry 1?"
       convert_s! "end of uientry 2?"
       convert_bool_false! "end of uientry flag 3?"
-      has_model = get_bool
-      if has_model
-        out! "<yes /><!-- has model (controls presence of model below) -->"
+
+      if @version == 97
+        has_two_extra_ints = get_bool
+        if has_two_extra_ints
+          out! "<yes /><!-- has some extra ints -->"
+          convert_i! "extra int 1?"
+          convert_i! "extra int 2?"
+          convert_i! "extra int 3?"
+        else
+          out! "<no /><!-- has some extra ints -->"
+        end
+
+        convert_data! 8
+        out_ofs! "end of v97 data?"
       else
-        out! "<no /><!-- has model (controls presence of model below) -->"
-      end
+        has_model = get_bool
+        if has_model
+          out! "<yes /><!-- has model (controls presence of model below) -->"
+        else
+          out! "<no /><!-- has model (controls presence of model below) -->"
+        end
 
-      # This version mix...
-      if @version <= 84 and @version != 77 and @version != 78
-        # if it's not all zeroes, we could have VariantMeshDefinition stuff following :-/
-        convert_bool! "end of uientry flag 5A?"
-      else
-        convert_bool! "end of uientry flag 5B?"
-        convert_bool! "end of uientry flag 6B?"
-      end
+        # This version mix...
+        if @version <= 84 and @version != 77 and @version != 78
+          # if it's not all zeroes, we could have VariantMeshDefinition stuff following :-/
+          convert_bool! "end of uientry flag 5A?"
+        else
+          convert_bool! "end of uientry flag 5B?"
+          convert_bool! "end of uientry flag 6B?"
+        end
 
-      if has_model
-        convert_model!
-      end
+        if has_model
+          convert_model!
+        end
 
-      if @version >= 94
-        convert_bool!
+        if @version >= 94
+          convert_bool!
+        end
       end
     end
   end
@@ -806,7 +822,7 @@ class UiFile
           if @version >= 54
             convert_bool! "mystery5"
           end
-          if @version == 96
+          if @version == 96 or @version == 97
             convert_i!
             convert_bool!
           end
