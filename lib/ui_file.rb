@@ -829,17 +829,21 @@ class UiFile
             convert_i!
             convert_bool!
           end
-          if @version >= 104
+          if @version == 104
             convert_i!
             convert_data_zero! 5
+          elsif @version == 105
+            convert_i!
+            convert_data_zero! 10
+          elsif @version >= 106
+            convert_i!
+            convert_i!
+            convert_i!
+            convert_i!
+            convert_bool!
+            convert_bool_false!
+            convert_i!
           end
-          if @version >= 105
-            convert_data_zero! 5
-          end
-          if @version >= 106
-            convert_data_zero! 8
-          end
-          # v110+ etc. stuff here
         elsif type == "Table"
           row_count = get_u
           tag! "table", count: row_count do
