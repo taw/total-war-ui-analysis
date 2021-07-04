@@ -119,10 +119,11 @@ class UiFile
     # Well, at least it looks like it
     v = get_i
     unless v == 0
+      hex = @data[@ofs-4,4].bytes.map{|x| "%02x" % x }.join(":")
       if comment
-        raise "Must be zero, got #{v} / #{@data[@ofs-4,4].unpack1("f")} (#{comment})"
+        raise "Must be zero, got #{v} / #{@data[@ofs-4,4].unpack1("f")} / #{hex} (#{comment})"
       else
-        raise "Must be zero, got #{v} / #{@data[@ofs-4,4].unpack1("f")}"
+        raise "Must be zero, got #{v} / #{@data[@ofs-4,4].unpack1("f")} / #{hex}"
       end
     end
     out_with_comment! "<i>#{v}</i><!-- always zero -->", comment
@@ -181,7 +182,8 @@ class UiFile
 
   def convert_flt!(comment=nil)
     i = @data[@ofs,4].unpack1("V")
-    out_with_comment! "<flt>#{get_flt}</flt><!-- (#{i}) -->", comment
+    hex = @data[@ofs,4].bytes.map{|x| "%02x" % x }.join(":")
+    out_with_comment! "<flt>#{get_flt}</flt><!-- (#{i} - #{hex}) -->", comment
   end
 
   def convert_angle!(comment=nil)
@@ -884,7 +886,9 @@ class UiFile
             convert_i!
           elsif @version >= 113
             convert_i!
-            convert_data_zero! 22
+            convert_i!
+            convert_i!
+            convert_data_zero! 14
             out_ofs! "are we done?"
             # v114+ ???
           end
