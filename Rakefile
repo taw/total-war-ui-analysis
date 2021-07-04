@@ -5,3 +5,8 @@ task :regenerate do
   sh "./bin/convert_all_files"
   sh "./bin/unpack_all_files"
 end
+
+desc "List all errors"
+task :errors do
+  sh "git ls unpacked/*/*.fail | xargs cat | grep '<error'| perl -ple 's/^ +//' | sort | uniq -c"
+end
