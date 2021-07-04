@@ -63,7 +63,7 @@ Rome 2: 282/306 (92%)
 Attila: 178/190 (94%)
 Thrones of Britannia: 186/205 (91%)
 Warhammer 1: 187/271 (69%)
-Warhammer 2: 92/349 (26%)
+Warhammer 2: 93/349 (27%)
 Troy: 54/395 (14%)
 Three Kingdoms: 11/433 (3%)
 

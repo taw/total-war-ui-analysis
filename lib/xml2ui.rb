@@ -61,6 +61,7 @@ module XmlTagHandlers
   end
 
   def on_start_node_ui(attributes)
+    @version = attributes[:version].to_i(10)
     @ui.put_version attributes[:version].to_i(10)
   end
 
@@ -76,16 +77,17 @@ module XmlTagHandlers
     @ui.put_str buf
   end
 
-  def on_text_node_event(attributes, buf, ctx)
-    @ui.put_str buf
-  end
-
   def on_start_node_events(attributes)
+    if @version > 54
+      @ui.put_u attributes[:count].to_i
+    end
     [true, nil, {}]
   end
 
   def on_end_node_events(attributes, buf, ctx)
-    @ui.put_str "events_end"
+    if @version <= 54
+      @ui.put_str "events_end"
+    end
   end
 
   def on_start_node_uientry(attributes)
@@ -182,6 +184,7 @@ module XmlTagHandlers
     models
     template
     subtemplate
+    event
   ].each do |m|
     OnStart[m] = :on_start_passthrough_node
     OnEnd[m]   = :on_end_passthrough_node

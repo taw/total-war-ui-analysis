@@ -633,16 +633,22 @@ class UiFile
 
       if @version >= 100 and @version < 113
         convert_s! "v100+ extra string?"
-      end
-
-      if @version == 113
+      elsif @version == 113
         tag! "event" do
           convert_s!
           convert_s!
           convert_s!
         end
+      elsif @version >= 115
+        convert_array! "events" do
+          tag! "event" do
+            convert_s!
+            convert_s!
+            convert_s!
+            # v121+ stuff
+          end
+        end
       end
-      # v114+ stuff
 
       convert_i! "x offset"
       convert_i! "y offset"
@@ -988,15 +994,13 @@ class UiFile
   end
 
   def convert_event_list!
-    events = []
-    while true
-      s = get_s
-      break if s == "events_end"
-      events << s
-    end
     tag! "events" do
-      events.each do |ev|
-        out! "<event>#{ev.xml_escape}</event>"
+      while true
+        s = get_s
+        break if s == "events_end"
+        tag! "event" do
+          out! "<s>#{s.xml_escape}</s>"
+        end
       end
     end
   end
