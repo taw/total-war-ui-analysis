@@ -567,6 +567,10 @@ class UiFile
           if @version >= 104
             convert_bool!
           end
+          if @version >= 106
+            convert_bool!
+            convert_bool!
+          end
           # v106+/v110v+ stuff
           out_ofs! "end of anim"
         end
