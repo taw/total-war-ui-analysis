@@ -469,16 +469,29 @@ class UiFile
           convert_flt! "rotation pivot x?"
           convert_flt! "rotation pivot y?"
           if @version >= 74
-            convert_s! "shader name"
-            convert_flt! "rotation axis x?"
-            convert_flt! "rotation axis y?"
-            convert_flt! "rotation axis z?"
-            convert_i_zero!
+            if @version >= 103
+              convert_flt! "rotation axis x?"
+              convert_flt! "rotation axis y?"
+              convert_flt! "rotation axis z?"
+              convert_s! "shader name"
+            else
+              convert_s! "shader name"
+              convert_flt! "rotation axis x?"
+              convert_flt! "rotation axis y?"
+              convert_flt! "rotation axis z?"
+              convert_i_zero!
+            end
 
             # There is extra stuff here :-(
             out_ofs! "extra stuff?"
             if @version <= 77
               convert_bool! "extra image use stuff?"
+            end
+            if @version >= 103
+              convert_flt! "shader var?"
+              convert_flt! "shader var?"
+              convert_flt! "shader var?"
+              convert_flt! "shader var?"
             end
             if @version >= 92
               convert_i! "margin top?"
@@ -568,10 +581,10 @@ class UiFile
           convert_bool! "make noninteractive?"
           convert_anims!
           out_ofs! "end of func"
-          if @version >= 91
+          if @version >= 91 and @version < 100
             convert_s!
           end
-          # v100+ changes
+          # v110+ changes
         end
       end
     end

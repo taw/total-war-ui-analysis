@@ -62,10 +62,10 @@ Games currently missing:
 * Rome 2: 282/306 (92%)
 * Attila: 178/190 (94%)
 * Thrones: 186/205 (91%)
-* Warhammer 1: 48/271 (18%)
-* Warhammer 2: 32/349 (9%)
-* Troy: 25/395 (6%)
-* 3 Kingdoms: 2/433 (0%)
+* Warhammer 1: 58/271 (21%)
+* Warhammer 2: 36/349 (10%)
+* Troy: 26/395 (7%)
+* 3 Kingdoms: 4/433 (1%)
 
 ### Credits
 
