@@ -11,8 +11,18 @@ end
 class String
   # Escape characters for output as XML attribute values (< > & ' ")
   def xml_escape
-    replacements = {"<" => "&lt;", ">" => "&gt;", "&" => "&amp;", "\"" => "&quot;", "'" => "&apos;", "\r" => "&#xD;"}
-    b.gsub(/([<>&\'\"\r])/) { replacements[$1] }
+    replacements = {
+      "<" => "&lt;",
+      ">" => "&gt;",
+      "&" => "&amp;",
+      "\"" => "&quot;",
+      "'" => "&apos;",
+      "\r" => "&#xD;",
+      # XML parsers are shit, so we can't even do this
+      # "\x1f" => "&#x1F;",
+      "\x1f" => "&#xE01F;",
+    }
+    b.gsub(/([<>&\'\"\r\x1f])/) { replacements[$1] }
   end
 end
 
@@ -271,8 +281,10 @@ class UiFile
         convert_i! "text ysize?"
         convert_i! "text xalign?"
         convert_i! "text yalign?"
-        convert_i!
-        convert_bool!
+
+        # This block gets weird v115+
+        convert_i! "state stuff?"
+        convert_bool! "state stuff?"
 
         convert_unicode! "localization id"
 
@@ -281,7 +293,7 @@ class UiFile
         end
 
         if @version >= 90 and @version <= 115
-          convert_s!
+          convert_s! "state stuff before font?"
         end
 
         if @version >= 29
@@ -911,6 +923,7 @@ class UiFile
   def convert_template!
     tag! "template" do
       convert_s! "name?"
+
       convert_array! "subtemplates" do
         tag! "subtemplate" do
           convert_s!
@@ -956,10 +969,13 @@ class UiFile
           out_ofs! "end of subtemplate?"
         end
       end
-    end
 
-    convert_i_zero! "count of uientries?"
-    out_ofs! "end of template?"
+      convert_array! "children" do
+        convert_uientry_gen2!
+      end
+
+      out_ofs! "end of template?"
+    end
   end
 
   def convert_effects!

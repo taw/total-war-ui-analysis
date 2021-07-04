@@ -32,7 +32,7 @@ class UiBuilder
   end
 
   def put_str(v)
-    @data << [v.size].pack("v") << v
+    @data << [v.size].pack("v") << v.b
   end
 
   def put_unicode(v)

@@ -236,12 +236,13 @@ class Xml2Ui < Nokogiri::XML::SAX::Document
   end
 
   def error(str)
-    raise "#{@path}: XML parse error: #{str} in "
+    raise "#{@path}: XML parse error: #{str}"
   end
 
   def characters(chars)
     if buf = @stack[-1][2]
-      buf << chars
+      # Stupid XML parsers not supporting full UTF8 (as XML 1.1 promised)
+      buf << chars.tr("\uE01F", "\x1F")
     elsif chars =~ /\S/
       raise "#{@path}: Illegal place for non-whitespace characters: #{@stack.inspect} #{chars.inspect}"
     end
