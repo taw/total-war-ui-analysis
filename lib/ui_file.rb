@@ -727,6 +727,8 @@ class UiFile
         if @version >= 94
           convert_bool!
         end
+
+        out_ofs! "end of uientry"
       end
     end
   end
@@ -890,8 +892,36 @@ class UiFile
     end
   end
 
+  # Is it even a template?
   def convert_template!
-    raise "TODO - convert_template not implemented yet"
+    tag! "template" do
+      convert_s! "name?"
+      # count = get_i
+      convert_i! "count?"
+
+      1.times do
+        tag! "subtemplate" do
+          convert_s!
+          convert_s!
+          convert_data_zero! 2
+          convert_s!
+          out_ofs! "after first s?"
+          # second s if first is hre, wat?
+          convert_flt!
+          convert_flt!
+          convert_flt!
+          convert_flt!
+          convert_i!
+          convert_i!
+          convert_bool!
+          convert_i!
+          convert_data_zero!
+          convert_s! "NewState?"
+        end
+      end
+      out_ofs! "end of template?"
+      raise "TODO - convert_template not implemented yet"
+    end
   end
 
   def convert_effects!
