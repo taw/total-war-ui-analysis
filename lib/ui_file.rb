@@ -193,21 +193,27 @@ class UiFile
     end
   end
 
-  def convert_image_list!
+  def convert_array!(type)
     count = get_u
-    tag! "images", count: count do
+    tag! type, count: count do
       count.times do
-        tag! "image" do
-          convert_id!
-          convert_s! "path"
-          convert_i! "x size"
-          convert_i! "y size"
-          if @version < 74
-            convert_bgra!
-          end
-          if @version >= 78
-            convert_bool!
-          end
+        yield
+      end
+    end
+  end
+
+  def convert_image_list!
+    convert_array! "images" do
+      tag! "image" do
+        convert_id!
+        convert_s! "path"
+        convert_i! "x size"
+        convert_i! "y size"
+        if @version < 74
+          convert_bgra!
+        end
+        if @version >= 78
+          convert_bool!
         end
       end
     end
@@ -252,233 +258,218 @@ class UiFile
 
   def convert_state_list!
     out_ofs!
-    count = get_u
-    tag! "states", count: count do
-      count.times do
-        tag! "state" do
-          convert_id!
-          convert_s! "title - NewState"
-          convert_i! "x size"
-          convert_i! "y size"
+    convert_array! "states" do
+      tag! "state" do
+        convert_id!
+        convert_s! "title - NewState"
+        convert_i! "x size"
+        convert_i! "y size"
 
-          convert_unicode! "state text"
-          convert_unicode! "tooltip"
-          convert_i! "text xsize?"
-          convert_i! "text ysize?"
-          convert_i! "text xalign?"
-          convert_i! "text yalign?"
+        convert_unicode! "state text"
+        convert_unicode! "tooltip"
+        convert_i! "text xsize?"
+        convert_i! "text ysize?"
+        convert_i! "text xalign?"
+        convert_i! "text yalign?"
+        convert_i!
+        convert_bool!
+
+        convert_unicode! "localization id"
+        convert_unicode! "tooltip id"
+
+        if @version >= 90
+          convert_s! "?"
+        end
+
+        if @version >= 29
+          convert_s! "font"
+          out_ofs! "font done"
+          convert_i! "font size? line height?"
+          convert_i! "font leading?"
+          convert_i! "font tracking?"
+        end
+
+        if @version >= 74
+          convert_bgra!
+        end
+
+        if @version >= 43
+          convert_s! "font category / twui"
+        end
+
+        if @version >= 86
+          convert_i! "left ?"
+          convert_i! "right ?"
+          convert_i! "top ?"
+          convert_i! "bottom ?"
+        else
+          convert_i! "x ?"
+          convert_i! "y ?"
+        end
+
+        if @version >= 90
+          convert_i!
+        elsif @version >= 83
           convert_i!
           convert_bool!
+          convert_bool!
+          convert_bool!
+          convert_bool!
+        else
+          convert_i!
+          convert_bool!
+          convert_bool!
+          convert_bool!
+        end
 
-          convert_unicode! "localization id"
-          convert_unicode! "tooltip id"
+        if @version >= 29
+          convert_s! "shader name"
+          convert_flt! "shader vars"
+          convert_flt! "shader vars"
+          convert_flt! "shader vars"
+          convert_flt! "shader vars"
+        end
 
-          if @version >= 90
-            convert_s! "?"
-          end
+        if @version >= 77
+          convert_s! "text shader name"
+          convert_flt! "text shader vars"
+          convert_flt! "text shader vars"
+          convert_flt! "text shader vars"
+          convert_flt! "text shader vars"
+        end
 
-          if @version >= 29
-            convert_s! "font"
-            out_ofs! "font done"
-            convert_i! "font size? line height?"
-            convert_i! "font leading?"
-            convert_i! "font tracking?"
-          end
+        out_ofs! "shaders done"
 
-          if @version >= 74
-            convert_bgra!
-          end
+        if @version < 74
+          convert_s! "state description"
+          convert_s! "event text"
+        end
 
-          if @version >= 43
-            convert_s! "font category / twui"
-          end
+        # 74 and 77 OK up to this point
+        out_ofs! "image use list"
 
-          if @version >= 86
-            convert_i! "left ?"
-            convert_i! "right ?"
-            convert_i! "top ?"
-            convert_i! "bottom ?"
-          else
-            convert_i! "x ?"
-            convert_i! "y ?"
-          end
+        convert_image_uses!
 
-          if @version >= 90
-            convert_i!
-          elsif @version >= 83
-            convert_i!
-            convert_bool!
-            convert_bool!
-            convert_bool!
-            convert_bool!
-          else
-            convert_i!
-            convert_bool!
-            convert_bool!
-            convert_bool!
-          end
+        if @version >= 26 # something mouse related???
+          convert_i!
+          convert_i!
+        end
 
-          if @version >= 29
-            convert_s! "shader name"
-            convert_flt! "shader vars"
-            convert_flt! "shader vars"
-            convert_flt! "shader vars"
-            convert_flt! "shader vars"
-          end
-
-          if @version >= 77
-            convert_s! "text shader name"
-            convert_flt! "text shader vars"
-            convert_flt! "text shader vars"
-            convert_flt! "text shader vars"
-            convert_flt! "text shader vars"
-          end
-
-          out_ofs! "shaders done"
-
-          if @version < 74
-            convert_s! "state description"
-            convert_s! "event text"
-          end
-
-          # 74 and 77 OK up to this point
-          out_ofs! "image use list"
-
-          convert_image_uses!
-
-          if @version >= 26 # something mouse related???
-            convert_i!
-            convert_i!
-          end
-
-          if @version < 74
-            convert_transitions!
-          else
-            convert_mouse_states!
-          end
+        if @version < 74
+          convert_transitions!
+        else
+          convert_mouse_states!
         end
       end
     end
   end
 
   def convert_mouse_state_data!
-    count = get_u
-    tag! "mouse_state_data", count: count do
-      count.times do
-        tag! "mouse_state_datapoint" do
-          convert_id!
-          convert_s!
-          convert_i_zero! # is it two string actually?
-        end
+    convert_array! "mouse_state_data" do
+      tag! "mouse_state_datapoint" do
+        convert_id!
+        convert_s!
+        convert_i_zero! # is it two string actually?
       end
     end
   end
 
   def convert_mouse_states!
-    count = get_u
-    tag! "mouse_states", count: count do
-      count.times do
-        tag! "mouse_state" do
-          convert_i! "type"
-          convert_id!
-          convert_i!
-          convert_i!
-          out_ofs! "mouse nested stuff starts"
-          convert_mouse_state_data!
-        end
+    convert_array! "mouse_states" do
+      tag! "mouse_state" do
+        convert_i! "type"
+        convert_id!
+        convert_i!
+        convert_i!
+        out_ofs! "mouse nested stuff starts"
+        convert_mouse_state_data!
       end
     end
   end
 
   def convert_transitions!
-    count = get_u
-    tag! "transitions", count: count do
-      count.times do
-        tag! "transition" do
-          convert_i! "type"
-          convert_id!
-          if @version >= 39
-            convert_s!
-            convert_i!
-            convert_i!
-          end
-          if @version >= 43
-            convert_s!
-            convert_i!
-          end
+    convert_array! "transitions" do
+      tag! "transition" do
+        convert_i! "type"
+        convert_id!
+        if @version >= 39
+          convert_s!
+          convert_i!
+          convert_i!
+        end
+        if @version >= 43
+          convert_s!
+          convert_i!
         end
       end
     end
   end
 
   def convert_image_uses!
-    count = get_u
-    tag! "image_uses", count: count do
-      count.times do
-        tag! "image_use" do
-          convert_id!
-          convert_u! "x offset"
-          convert_u! "y offset"
-          convert_u! "x size"
-          convert_u! "y size"
-          convert_bgra! "multiply"
-          # Up to this point, this works for 74+ too
-          out_ofs! "less decoded part of image_use follows"
-          convert_bool! "tiled?"
-          convert_bool! "flipped x?"
-          convert_bool! "flipped y?"
-          convert_i! "dock position (0-9)?"
-          if @version >= 77 # or sth
-            convert_i! "dock offset x?"
-            convert_i! "dock offset y?"
-          end
-          convert_bool! "stretch x?"
-          convert_bool! "stretch y?"
-          convert_angle! "rotation angle"
-          convert_flt! "rotation pivot x?"
-          convert_flt! "rotation pivot y?"
-          if @version >= 74
-            if @version >= 103
-              convert_flt! "rotation axis x?"
-              convert_flt! "rotation axis y?"
-              convert_flt! "rotation axis z?"
-              convert_s! "shader name"
-            else
-              convert_s! "shader name"
-              convert_flt! "rotation axis x?"
-              convert_flt! "rotation axis y?"
-              convert_flt! "rotation axis z?"
-              convert_i_zero!
-            end
-
-            # There is extra stuff here :-(
-            out_ofs! "extra stuff?"
-            if @version <= 77
-              convert_bool! "extra image use stuff?"
-            end
-            if @version >= 103
-              convert_flt! "shader var?"
-              convert_flt! "shader var?"
-              convert_flt! "shader var?"
-              convert_flt! "shader var?"
-            end
-            if @version >= 92
-              convert_i! "margin top?"
-              convert_i! "margin right?"
-              convert_i! "margin bottom?"
-              convert_i! "margin left?"
-            else
-              convert_i! "margin top-bottom?"
-              convert_i! "margin left-right?"
-            end
-            # v103+ stuff
+    convert_array! "image_uses" do
+      tag! "image_use" do
+        convert_id!
+        convert_u! "x offset"
+        convert_u! "y offset"
+        convert_u! "x size"
+        convert_u! "y size"
+        convert_bgra! "multiply"
+        # Up to this point, this works for 74+ too
+        out_ofs! "less decoded part of image_use follows"
+        convert_bool! "tiled?"
+        convert_bool! "flipped x?"
+        convert_bool! "flipped y?"
+        convert_i! "dock position (0-9)?"
+        if @version >= 77 # or sth
+          convert_i! "dock offset x?"
+          convert_i! "dock offset y?"
+        end
+        convert_bool! "stretch x?"
+        convert_bool! "stretch y?"
+        convert_angle! "rotation angle"
+        convert_flt! "rotation pivot x?"
+        convert_flt! "rotation pivot y?"
+        if @version >= 74
+          if @version >= 103
+            convert_flt! "rotation axis x?"
+            convert_flt! "rotation axis y?"
+            convert_flt! "rotation axis z?"
+            convert_s! "shader name"
           else
-            if @version >= 51
-              convert_bool!
-            end
-            if @version == 31 # WTF ?
-              convert_i!
-            end
+            convert_s! "shader name"
+            convert_flt! "rotation axis x?"
+            convert_flt! "rotation axis y?"
+            convert_flt! "rotation axis z?"
+            convert_i_zero!
+          end
+
+          # There is extra stuff here :-(
+          out_ofs! "extra stuff?"
+          if @version <= 77
+            convert_bool! "extra image use stuff?"
+          end
+          if @version >= 103
+            convert_flt! "shader var?"
+            convert_flt! "shader var?"
+            convert_flt! "shader var?"
+            convert_flt! "shader var?"
+          end
+          if @version >= 92
+            convert_i! "margin top?"
+            convert_i! "margin right?"
+            convert_i! "margin bottom?"
+            convert_i! "margin left?"
+          else
+            convert_i! "margin top-bottom?"
+            convert_i! "margin left-right?"
+          end
+          # v103+ stuff
+        else
+          if @version >= 51
+            convert_bool!
+          end
+          if @version == 31 # WTF ?
+            convert_i!
           end
         end
       end
@@ -486,94 +477,82 @@ class UiFile
   end
 
   def convert_anim_attrs!
-    count = get_u
-    tag! "anim_attrs", count: count do
-      count.times do
-        tag! "anim_attr" do
-          out_ofs! "anim attr start"
-          convert_id!
-          convert_s! "animation?"
-          convert_s! "state?"
-          convert_s! "property?"
-          out_ofs! "anim attr done"
-        end
+    convert_array! "anim_attrs" do
+      tag! "anim_attr" do
+        out_ofs! "anim attr start"
+        convert_id!
+        convert_s! "animation?"
+        convert_s! "state?"
+        convert_s! "property?"
+        out_ofs! "anim attr done"
       end
     end
   end
 
   def convert_anims!
-    count = get_u
-    tag! "anims", count: count do
-      count.times do
-        tag! "anim" do
-          out_ofs! "start of anim"
-          # v110+ stuff
-          convert_flt! "x offset?"
-          convert_flt! "y offset?"
-          convert_i! "x size?"
-          convert_i! "y size?"
-          convert_bgra!
-          convert_flt! "shader vars?"
-          convert_flt! "shader vars?"
-          convert_flt! "shader vars?"
-          convert_flt! "shader vars?"
-          convert_flt! "rotation angle?"
-          convert_i! "image index 1?"
-          convert_i! "image index 2?"
-          # v110+ stuff
-          convert_i! "interpolation time?"
-          convert_i! "interpolation property mask?"
-          convert_flt! "easing weight?"
-          convert_s! "easing curve?"
-          convert_anim_attrs!
-          if @version >= 90
-            convert_bool! "is movement absolute?"
-          end
-          if @version >= 100
-            convert_bool!
-            convert_bool!
-          end
-          if @version >= 104
-            convert_bool!
-          end
-          if @version >= 106
-            convert_bool!
-            convert_bool!
-          end
-          # v106+/v110v+ stuff
-          out_ofs! "end of anim"
+    convert_array! "anims" do
+      tag! "anim" do
+        out_ofs! "start of anim"
+        # v110+ stuff
+        convert_flt! "x offset?"
+        convert_flt! "y offset?"
+        convert_i! "x size?"
+        convert_i! "y size?"
+        convert_bgra!
+        convert_flt! "shader vars?"
+        convert_flt! "shader vars?"
+        convert_flt! "shader vars?"
+        convert_flt! "shader vars?"
+        convert_flt! "rotation angle?"
+        convert_i! "image index 1?"
+        convert_i! "image index 2?"
+        # v110+ stuff
+        convert_i! "interpolation time?"
+        convert_i! "interpolation property mask?"
+        convert_flt! "easing weight?"
+        convert_s! "easing curve?"
+        convert_anim_attrs!
+        if @version >= 90
+          convert_bool! "is movement absolute?"
         end
+        if @version >= 100
+          convert_bool!
+          convert_bool!
+        end
+        if @version >= 104
+          convert_bool!
+        end
+        if @version >= 106
+          convert_bool!
+          convert_bool!
+        end
+        # v106+/v110v+ stuff
+        out_ofs! "end of anim"
       end
     end
   end
 
   def convert_funcs!
-    count = get_u
-    tag! "funcs", count: count do
-      count.times do
-        tag! "func" do
-          convert_s! "name"
-          convert_bool! "propagate?"
-          convert_bool! "make noninteractive?"
-          convert_anims!
-          out_ofs! "end of func"
-          if @version >= 91 and @version < 100
-            convert_s!
-          end
-          # v110+ changes
+    convert_array! "funcs" do
+      tag! "func" do
+        convert_s! "name"
+        convert_bool! "propagate?"
+        convert_bool! "make noninteractive?"
+        convert_anims!
+        out_ofs! "end of func"
+        if @version >= 91 and @version < 100
+          convert_s!
         end
+        # v110+ changes
       end
     end
   end
 
   def convert_dynamics!
-    count = get_u
-    tag! "dynamics", count: count do
-      count.times do
-        tag! "dynamic" do
-          convert_s! "key"
-          convert_s! "value"
-        end
+    convert_array! "dynamics" do
+      tag! "dynamic" do
+        convert_s! "key"
+        convert_s! "value"
       end
     end
   end
@@ -847,17 +826,11 @@ class UiFile
             convert_i!
           end
         elsif type == "Table"
-          row_count = get_u
-          tag! "table", count: row_count do
-            row_count.times do
-              col_count = get_u
-              tag! "row", count: col_count do
-                col_count.times do
-                  tag! "col" do
-                    5.times do
-                      convert_flt! "data point"
-                    end
-                  end
+          convert_array! "table" do
+            convert_array! "row" do
+              tag! "col" do
+                5.times do
+                  convert_flt! "data point"
                 end
               end
             end
@@ -872,21 +845,18 @@ class UiFile
   end
 
   def convert_children!
-    count = get_u
-    tag! "children", count: count do
-      count.times do
-        if @version <= 54
-          convert_uientry!
-        elsif @version <= 99
-          convert_uientry_gen2!
+    convert_array! "children" do
+      if @version <= 54
+        convert_uientry!
+      elsif @version <= 99
+        convert_uientry_gen2!
+      else
+        # Not sure wtf
+        if @data[@ofs, 2] == "\x00\x00".b
+          @ofs += 2
+          convert_uientry_gen2! type: 'normal'
         else
-          # Not sure wtf
-          if @data[@ofs, 2] == "\x00\x00".b
-            @ofs += 2
-            convert_uientry_gen2! type: 'normal'
-          else
-            convert_template!
-          end
+          convert_template!
         end
       end
     end
@@ -896,94 +866,82 @@ class UiFile
   def convert_template!
     tag! "template" do
       convert_s! "name?"
-      count = get_i
-      tag! "subtemplates", count: count do
-        count.times do
-          tag! "subtemplate" do
-            convert_s!
-            convert_s!
-            convert_data_zero! 2 # s?
-            convert_s!
-            convert_s!
-            out_ofs! "after all s?"
+      convert_array! "subtemplates" do
+        tag! "subtemplate" do
+          convert_s!
+          convert_s!
+          convert_data_zero! 2 # s?
+          convert_s!
+          convert_s!
+          out_ofs! "after all s?"
 
-            convert_flt!
-            convert_flt!
-            convert_flt!
-            convert_flt!
-            convert_i!
-            convert_i!
-            convert_bool!
-            convert_i!
-            convert_data_zero! 6
-            convert_unicode! "tooltip id?"
-            convert_unicode! "tooltip text?"
+          convert_flt!
+          convert_flt!
+          convert_flt!
+          convert_flt!
+          convert_i!
+          convert_i!
+          convert_bool!
+          convert_i!
+          convert_data_zero! 6
+          convert_unicode! "tooltip id?"
+          convert_unicode! "tooltip text?"
 
-            while true
-              name = get_s
-              if name.empty?
-                out! "<s></s><!-- empty to signify end of state list -->"
-                break
-              end
-              tag! "state" do
-                out! "<s>#{name.xml_escape}</s><!-- name -->"
-                convert_unicode!
-                convert_unicode!
-                convert_unicode!
-                convert_unicode!
-              end
+          # WTF? seriously? or are we missing some state count somewhere?
+          while true
+            lookahead = @data[@ofs+2, 2].bytes
+            break if lookahead[0] == 0 or lookahead[1] == 0
+            tag! "state" do
+              convert_s! "name"
+              convert_unicode!
+              convert_unicode!
+              convert_unicode!
+              convert_unicode!
             end
-
-            convert_unicode!
-            # dynamic ?
-            # images?
-            image_count = get_i
-            tag! "images", count: image_count do
-              image_count.times do
-                convert_s!
-              end
-            end
-            out_ofs! "end of subtemplate?"
           end
+
+          convert_dynamics!
+
+          convert_array! "images" do
+            tag! "image" do
+              convert_s!
+            end
+          end
+
+          out_ofs! "end of subtemplate?"
         end
       end
-
-      convert_i_zero! "count of uientries?"
-      out_ofs! "end of template?"
     end
+
+    convert_i_zero! "count of uientries?"
+    out_ofs! "end of template?"
   end
 
   def convert_effects!
-    count = get_u
-    tag! "effects", count: count do
-      count.times do
-        tag! "effect" do
-          convert_s! "name"
-          convert_bool!
-          convert_bool!
-          phases_count = get_u
-          tag! "phases", count: phases_count do
-            phases_count.times do
-              out_ofs! "phase data"
-              tag! "phase" do
-                11.times do
-                  convert_ix!
-                end
-                if @version >= 50
-                  out! "<!-- extra 3 -->"
-                  convert_ix!
-                  convert_ix!
-                  convert_ix!
-                end
-                v = get_i
-                out! "<i>#{v}</i><!-- include optional extra phase details? -->"
-                v.times do
-                  out_ofs! "optional phase details"
-                  convert_ix!
-                  convert_s!
-                  convert_s!
-                end
-              end
+    convert_array! "effects" do
+      tag! "effect" do
+        convert_s! "name"
+        convert_bool!
+        convert_bool!
+        convert_array! "phases" do
+          out_ofs! "phase data"
+          tag! "phase" do
+            11.times do
+              convert_ix!
+            end
+            if @version >= 50
+              out! "<!-- extra 3 -->"
+              convert_ix!
+              convert_ix!
+              convert_ix!
+            end
+            v = get_i
+            out! "<i>#{v}</i><!-- include optional extra phase details? -->"
+            v.times do
+              out_ofs! "optional phase details"
+              convert_ix!
+              convert_s!
+              convert_s!
             end
           end
         end
