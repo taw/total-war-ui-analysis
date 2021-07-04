@@ -896,31 +896,50 @@ class UiFile
   def convert_template!
     tag! "template" do
       convert_s! "name?"
-      # count = get_i
-      convert_i! "count?"
+      count = get_i
+      tag! "subtemplate", count: count do
+        count.times do
+          tag! "subtemplate" do
+            convert_s!
+            convert_s!
+            convert_data_zero! 2 # s?
+            convert_s!
+            convert_s!
+            out_ofs! "after all s?"
 
-      1.times do
-        tag! "subtemplate" do
-          convert_s!
-          convert_s!
-          convert_data_zero! 2
-          convert_s!
-          out_ofs! "after first s?"
-          # second s if first is hre, wat?
-          convert_flt!
-          convert_flt!
-          convert_flt!
-          convert_flt!
-          convert_i!
-          convert_i!
-          convert_bool!
-          convert_i!
-          convert_data_zero!
-          convert_s! "NewState?"
+            convert_flt!
+            convert_flt!
+            convert_flt!
+            convert_flt!
+            convert_i!
+            convert_i!
+            convert_bool!
+            convert_i!
+            convert_data_zero! 6
+            convert_unicode! "tooltip id?"
+            convert_unicode! "tooltip text?"
+            convert_s! "NewState?"
+
+            convert_unicode!
+            convert_unicode!
+            convert_unicode!
+            convert_unicode!
+            convert_s!
+            convert_unicode!
+            # dynamic ?
+            # images?
+            image_count = get_i
+            tag! "images", count: image_count do
+              image_count.times do
+                convert_s! "image"
+              end
+            end
+            out_ofs! "end of subtemplate?"
+          end
         end
       end
       out_ofs! "end of template?"
-      raise "TODO - convert_template not implemented yet"
+      # raise "TODO - convert_template not implemented yet"
     end
   end
 
