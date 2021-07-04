@@ -12,11 +12,27 @@ task_set.todo.each do |todo|
   supported[todo.game] += 1 if todo.unpacked_path.exist?
 end
 
+games = [
+  ["empire", "Empire"],
+  ["napoleon", "Napoleon"],
+  ["shogun2", "Shogun 2"],
+  ["rome2", "Rome 2"],
+  ["attila", "Attila"],
+  ["thrones", "Thrones of Britannia"],
+  ["warhammer1", "Warhammer 1"],
+  ["warhammer2", "Warhammer 2"],
+  ["troy", "Troy"],
+  ["3kingdoms", "Three Kingdoms"],
+]
+order = games.map(&:first)
+
 totals.keys.map{|game|
   s = supported[game]
   t = totals[game]
   pct = (s*100.0/t).round
-  [pct, game, "#{game}: #{s}/#{t} (#{pct}%)"]
-}.sort_by{|pct, game, msg| [-pct, game, msg]}.each{|pct, game, msg|
+  [game, "#{games.to_h[game]}: #{s}/#{t} (#{pct}%)"]
+}.sort_by{|pct, game, msg|
+  [order.index(game) || 100000, game, msg]
+}.each{|pct, msg|
   puts msg
 }
