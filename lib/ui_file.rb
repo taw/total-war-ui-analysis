@@ -283,8 +283,10 @@ class UiFile
         convert_i! "text yalign?"
 
         # This block gets weird v115+
-        convert_i! "state stuff?"
-        convert_bool! "state stuff?"
+        convert_bool! "state stuff 1?"
+        convert_unicode! "state stuff 2?"
+        convert_bool_false! "state stuff 3?"
+        convert_bool! "state stuff 4?"
 
         convert_unicode! "localization id"
 
@@ -427,7 +429,11 @@ class UiFile
         convert_u! "y offset"
         convert_u! "x size"
         convert_u! "y size"
-        convert_bgra! "multiply"
+        convert_bgra! "color"
+        if @version >= 119
+          convert_s! "color?"
+        end
+
         # Up to this point, this works for 74+ too
         out_ofs! "less decoded part of image_use follows"
         convert_bool! "tiled?"
