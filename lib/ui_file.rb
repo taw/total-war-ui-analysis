@@ -825,9 +825,13 @@ class UiFile
           if @version >= 54
             convert_bool! "mystery5"
           end
-          if @version == 96 or @version == 97
+          if @version >= 96
             convert_i!
             convert_bool!
+          end
+          if @version >= 104
+            convert_i!
+            convert_data_zero! 5
           end
         elsif type == "Table"
           row_count = get_u
@@ -845,7 +849,6 @@ class UiFile
               end
             end
           end
-          out_ofs! "end of table data"
         else
           raise "Unknown additional data section #{type}"
         end
@@ -874,6 +877,10 @@ class UiFile
         end
       end
     end
+  end
+
+  def convert_template!
+    raise "TODO - convert_template not implemented yet"
   end
 
   def convert_effects!
