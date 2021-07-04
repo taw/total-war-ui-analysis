@@ -8,5 +8,5 @@ end
 
 desc "List all errors"
 task :errors do
-  sh "git ls unpacked/*/*.fail | xargs cat | grep '<error'| perl -ple 's/^ +//' | sort | uniq -c"
+  sh "git ls unpacked/*/*.fail | xargs cat | grep -a '<error'| perl -ple 's/^ +//' | sort | uniq -c"
 end
