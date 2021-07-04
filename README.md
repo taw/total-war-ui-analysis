@@ -62,9 +62,9 @@ Shogun 2: 284/285 (100%)
 Rome 2: 282/306 (92%)
 Attila: 178/190 (94%)
 Thrones of Britannia: 186/205 (91%)
-Warhammer 1: 138/271 (51%)
-Warhammer 2: 72/349 (21%)
-Troy: 47/395 (12%)
+Warhammer 1: 169/271 (62%)
+Warhammer 2: 87/349 (25%)
+Troy: 53/395 (13%)
 Three Kingdoms: 10/433 (2%)
 
 ### Credits

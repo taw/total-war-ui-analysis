@@ -836,6 +836,10 @@ class UiFile
           if @version >= 105
             convert_data_zero! 5
           end
+          if @version >= 106
+            convert_data_zero! 8
+          end
+          # v110+ etc. stuff here
         elsif type == "Table"
           row_count = get_u
           tag! "table", count: row_count do
