@@ -155,6 +155,7 @@ module XmlTagHandlers
     anim_attrs
     mouse_states
     mouse_state_data
+    subtemplates
   ].each do |m|
     # TODO: it would be better if count was actually automatically determined and didn't require hand checking
     OnStart[m] = :on_start_array_node
@@ -179,6 +180,8 @@ module XmlTagHandlers
     mouse_state_datapoint
     model
     models
+    template
+    subtemplate
   ].each do |m|
     OnStart[m] = :on_start_passthrough_node
     OnEnd[m]   = :on_end_passthrough_node

@@ -897,7 +897,7 @@ class UiFile
     tag! "template" do
       convert_s! "name?"
       count = get_i
-      tag! "subtemplate", count: count do
+      tag! "subtemplates", count: count do
         count.times do
           tag! "subtemplate" do
             convert_s!
@@ -918,28 +918,38 @@ class UiFile
             convert_data_zero! 6
             convert_unicode! "tooltip id?"
             convert_unicode! "tooltip text?"
-            convert_s! "NewState?"
 
-            convert_unicode!
-            convert_unicode!
-            convert_unicode!
-            convert_unicode!
-            convert_s!
+            while true
+              name = get_s
+              if name.empty?
+                out! "<s></s><!-- empty to signify end of state list -->"
+                break
+              end
+              tag! "state" do
+                out! "<s>#{name.xml_escape}</s><!-- name -->"
+                convert_unicode!
+                convert_unicode!
+                convert_unicode!
+                convert_unicode!
+              end
+            end
+
             convert_unicode!
             # dynamic ?
             # images?
             image_count = get_i
             tag! "images", count: image_count do
               image_count.times do
-                convert_s! "image"
+                convert_s!
               end
             end
             out_ofs! "end of subtemplate?"
           end
         end
       end
+
+      convert_i_zero! "count of uientries?"
       out_ofs! "end of template?"
-      # raise "TODO - convert_template not implemented yet"
     end
   end
 
