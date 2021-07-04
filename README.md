@@ -27,45 +27,6 @@ Support for newer games coming soon, hopefully.
 
 There's no guarantee that XML format will remain stable. I might need to tweak it a bit.
 
-### Data structures (incomplete list):
-
-* `Version` block - always starts the file:
-
-* * ASCII `Version`
-* * 3 ASCII numbers
-
-* `String` block:
-
-* * uint16 size (can be zero for empty string)
-* * that many ASCII bytes
-
-* `Unicode` block:
-
-* * uint16 size (can be zero for empty string)
-* * that many UTF-16-LE codepoints
-
-* `EventList` block
-
-* * zero or more `String` blocks
-* * one `String` block with value `events_end`
-
-* `Image` block:
-
-* * uint32 ID
-* * `String` block path
-* * uint32 xsize
-* * uint32 ysize
-* * uint32 unknown
-
-* `ImageList` block:
-
-* * uint32 count
-* * that many `Image` blocks
-
-* `ImagePathList` block:
-* * uint32 count
-* * that many `String` blocks with image paths
-
 ### Files
 
 * `data` - sample files from various games
@@ -85,13 +46,26 @@ Games currently in repository:
 * Attila
 * Warhammer 1
 * Warhammer 2
-* 3 Kingdoms
 * Thrones
 * Troy
+* 3 Kingdoms
 
 Games currently missing:
 
 * Warhammer 3
+
+### Supported level by game
+
+* Empire: 199/205 (97%)
+* Napoleon: 199/201 (99%)
+* Shogun 2: 284/285 (100%)
+* Rome 2: 282/306 (92%)
+* Attila: 178/190 (94%)
+* Thrones: 186/205 (91%)
+* Warhammer 1: 48/271 (18%)
+* Warhammer 2: 32/349 (9%)
+* Troy: 25/395 (6%)
+* 3 Kingdoms: 2/433 (0%)
 
 ### Credits
 

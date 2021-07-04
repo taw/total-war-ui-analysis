@@ -1,3 +1,42 @@
+### Data structures (incomplete list, and only for some versions):
+
+* `Version` block - always starts the file:
+
+* * ASCII `Version`
+* * 3 ASCII numbers
+
+* `String` block:
+
+* * uint16 size (can be zero for empty string)
+* * that many ASCII bytes
+
+* `Unicode` block:
+
+* * uint16 size (can be zero for empty string)
+* * that many UTF-16-LE codepoints
+
+* `EventList` block
+
+* * zero or more `String` blocks
+* * one `String` block with value `events_end`
+
+* `Image` block:
+
+* * uint32 ID
+* * `String` block path
+* * uint32 xsize
+* * uint32 ysize
+* * uint32 unknown
+
+* `ImageList` block:
+
+* * uint32 count
+* * that many `Image` blocks
+
+* `ImagePathList` block:
+* * uint32 count
+* * that many `String` blocks with image paths
+
 ### Format - CML Version002
 
 This format is not part of the main series.
