@@ -731,6 +731,14 @@ class UiFile
           convert_bool!
         end
 
+        if @version >= 113
+          convert_flt!
+          convert_flt!
+          convert_flt!
+        end
+
+        # v130+ stuff?
+
         out_ofs! "end of uientry"
       end
     end
@@ -840,7 +848,7 @@ class UiFile
           elsif @version == 105
             convert_i!
             convert_data_zero! 10
-          elsif @version >= 106
+          elsif @version >= 106 and @version < 113
             convert_i!
             convert_i!
             convert_i!
@@ -848,6 +856,11 @@ class UiFile
             convert_bool!
             convert_bool_false!
             convert_i!
+          elsif @version >= 113
+            convert_i!
+            convert_data_zero! 22
+            out_ofs! "are we done?"
+            # v114+ ???
           end
         elsif type == "Table"
           convert_array! "table" do

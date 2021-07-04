@@ -65,7 +65,7 @@ Thrones of Britannia: 186/205 (91%)
 Warhammer 1: 187/271 (69%)
 Warhammer 2: 92/349 (26%)
 Troy: 54/395 (14%)
-Three Kingdoms: 10/433 (2%)
+Three Kingdoms: 11/433 (3%)
 
 ### Credits
 
