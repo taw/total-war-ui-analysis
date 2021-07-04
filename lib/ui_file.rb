@@ -623,8 +623,12 @@ class UiFile
       else
         header_size = 74
       end
-      exp_header_size = @data[@ofs,1000].index("Variant")-6
-      out! "<!-- model expected header size #{header_size}/#{exp_header_size} -->"
+      exp_header_size = @data[@ofs,1000].index("Variant")
+      if exp_header_size
+        out! "<!-- model expected header size #{header_size}/#{exp_header_size-6} -->"
+      else
+        out! "<!-- model expected header size #{header_size}/unknown -->"
+      end
       convert_data! header_size, "model header data"
 
       model_count = get_i
