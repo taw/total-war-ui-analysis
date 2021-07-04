@@ -534,26 +534,26 @@ class UiFile
         convert_s! "easing curve?"
         convert_anim_attrs!
 
-        if @version >= 113
-          convert_bool!
-          convert_bool!
-          # v120+ stuff
-        else
-          if @version >= 90
-            convert_bool! "is movement absolute?"
-          end
+        out_ofs! "end of anim stuff"
+        if @version >= 90
+          convert_bool! "is movement absolute?"
+        end
+
+        if @version >= 104
+          convert_bool! "end of anim 1?"
+        end
+
+        if @version <= 112
           if @version >= 100
-            convert_bool!
-            convert_bool!
-          end
-          if @version >= 104
-            convert_bool!
+            convert_s! "end of anim 2?"
           end
           if @version >= 106
-            convert_bool!
-            convert_bool!
+            convert_bool_false! "end of anim 3?"
+            convert_bool_false! "end of anim 4?"
           end
         end
+
+        # v120+ stuff
         out_ofs! "end of anim"
       end
     end
