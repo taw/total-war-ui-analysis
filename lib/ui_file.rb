@@ -275,15 +275,17 @@ class UiFile
         convert_bool!
 
         convert_unicode! "localization id"
-        convert_unicode! "tooltip id"
 
-        if @version >= 90
-          convert_s! "?"
+        if @version <= 115
+          convert_unicode! "tooltip id"
+        end
+
+        if @version >= 90 and @version <= 115
+          convert_s!
         end
 
         if @version >= 29
           convert_s! "font"
-          out_ofs! "font done"
           convert_i! "font size? line height?"
           convert_i! "font leading?"
           convert_i! "font tracking?"
