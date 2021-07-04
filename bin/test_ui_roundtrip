@@ -20,6 +20,7 @@ task_set.in_parallel do |task, i|
     status[:ok] += 1
   else
     puts "DIFF: #{task.data_path} #{task.unpacked_path} #{task.recreated_path}"
+    puts "  vbindiff #{task.data_path} #{task.recreated_path}"
     status[:diff] += 1
   end
 end

@@ -41,7 +41,7 @@ module XmlTagHandlers
 
   def on_text_node_data(attributes, buf, ctx)
     buf.strip.split.each do |x|
-      @ui.put_byte x.to_i
+      @ui.put_byte x.to_i(16)
     end
   end
 
@@ -86,6 +86,17 @@ module XmlTagHandlers
 
   def on_end_node_events(attributes, buf, ctx)
     @ui.put_str "events_end"
+  end
+
+  def on_start_node_uientry(attributes)
+    # v100+ non-root
+    if attributes[:type] == 'normal'
+      @ui.put_u2 0
+    end
+    [true, nil, {}]
+  end
+
+  def on_end_node_uientry(attributes, buf, ctx)
   end
 
   ## Common node types
@@ -152,7 +163,6 @@ module XmlTagHandlers
 
   %W[
     fcentry
-    uientry
     image
     state
     image_use
@@ -167,6 +177,8 @@ module XmlTagHandlers
     anim_attr
     mouse_state
     mouse_state_datapoint
+    model
+    models
   ].each do |m|
     OnStart[m] = :on_start_passthrough_node
     OnEnd[m]   = :on_end_passthrough_node
@@ -218,18 +230,19 @@ class Xml2Ui < Nokogiri::XML::SAX::Document
   end
 
   def error(str)
-    raise "XML parse error: #{str}"
+    raise "#{@path}: XML parse error: #{str} in "
   end
 
   def characters(chars)
     if buf = @stack[-1][2]
       buf << chars
     elsif chars =~ /\S/
-      raise "Illegal place for non-whitespace characters: #{@stack.inspect} #{chars.inspect}"
+      raise "#{@path}: Illegal place for non-whitespace characters: #{@stack.inspect} #{chars.inspect}"
     end
   end
 
   def parse_file(path)
+    @path = path # for error reporting
     parser = Nokogiri::XML::SAX::Parser.new(self, 'UTF-8')
     raise "No such file or directory: #{path}" unless File.exist?(path)
     parser.parse_file(path)

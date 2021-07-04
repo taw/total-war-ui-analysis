@@ -591,8 +591,8 @@ class UiFile
 
   # This is a total mess, maybe it will work eventually
   def convert_model!
-    tag! "model" do
-      out! "this is very poorly decoded part"
+    tag! "models" do
+      out! "<!-- this is very poorly decoded part -->"
       out_ofs! "model"
       if @version == 74
         header_size = 38
@@ -635,8 +635,8 @@ class UiFile
     end
   end
 
-  def convert_uientry_gen2!
-    tag! "uientry" do
+  def convert_uientry_gen2!(*args)
+    tag!("uientry", *args) do
       convert_id!
       convert_s! "title"
       if @version >= 43
@@ -868,13 +868,14 @@ class UiFile
       count.times do
         if @version <= 54
           convert_uientry!
+        elsif @version <= 99
+          convert_uientry_gen2!
         else
+          # Not sure wtf
           if @data[@ofs, 2] == "\x00\x00".b
             @ofs += 2
-            out! "<child-type>normal</child-type>"
-            convert_uientry_gen2!
+            convert_uientry_gen2! type: 'normal'
           else
-            out! "<child-type>template</child-type>"
             convert_template!
           end
         end
@@ -944,7 +945,7 @@ class UiFile
       end
       if bytes_left > 0
         out! "<todo>#{bytes_left} bytes</todo>"
-        raise "TODO"
+        raise "TODO - incomplete decoding"
       end
     end
   end
