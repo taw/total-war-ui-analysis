@@ -56,16 +56,16 @@ Games currently missing:
 
 ### Supported level by game
 
-Empire: 199/205 (97%)
-Napoleon: 199/201 (99%)
-Shogun 2: 284/285 (100%)
-Rome 2: 282/306 (92%)
-Attila: 178/190 (94%)
-Thrones of Britannia: 186/205 (91%)
-Warhammer 1: 248/271 (92%)
-Warhammer 2: 140/349 (40%)
-Troy: 83/395 (21%)
-Three Kingdoms: 11/433 (3%)
+* Empire: 199/205 (97%)
+* Napoleon: 199/201 (99%)
+* Shogun 2: 284/285 (100%)
+* Rome 2: 282/306 (92%)
+* Attila: 178/190 (94%)
+* Thrones of Britannia: 186/205 (91%)
+* Warhammer 1: 248/271 (92%)
+* Warhammer 2: 140/349 (40%)
+* Troy: 83/395 (21%)
+* Three Kingdoms: 11/433 (3%)
 
 ### Credits
 
