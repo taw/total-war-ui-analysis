@@ -32,12 +32,12 @@ class UiFile
     rv
   end
 
-  def get_u1
+  def get_byte
     get(1).unpack1("C")
   end
 
   def get_bool
-    v = get_u1
+    v = get_byte
     raise "Invalid boolean value: #{v}" if v > 1
     v == 1
   end
@@ -92,11 +92,7 @@ class UiFile
   end
 
   def convert_u!(comment=nil)
-    if comment
-      out! "<u>#{get_u}</u><!-- #{comment} -->"
-    else
-      out! "<u>#{get_u}</u>"
-    end
+    out_with_comment! "<u>#{get_u}</u>", comment
   end
 
   def convert_id!
@@ -106,110 +102,83 @@ class UiFile
   end
 
   def convert_i!(comment=nil)
-    if comment
-      out! "<i>#{get_i}</i><!-- #{comment} -->"
-    else
-      out! "<i>#{get_i}</i>"
-    end
+    out_with_comment! "<i>#{get_i}</i>", comment
   end
 
   def convert_i_zero!(comment=nil)
     # Well, at least it looks like it
     v = get_i
-    if comment
-      raise "Must be zero, got #{v} / #{@data[@ofs-4,4].unpack1("f")} (#{comment})" unless v == 0
-      out! "<i>#{v}</i><!-- always zero --><!-- #{comment} -->"
-    else
-      raise "Must be zero, got #{v} / #{@data[@ofs-4,4].unpack1("f")}" unless v == 0
-      out! "<i>#{v}</i><!-- always zero -->"
+    unless v == 0
+      if comment
+        raise "Must be zero, got #{v} / #{@data[@ofs-4,4].unpack1("f")} (#{comment})"
+      else
+        raise "Must be zero, got #{v} / #{@data[@ofs-4,4].unpack1("f")}"
+      end
     end
+    out_with_comment! "<i>#{v}</i><!-- always zero -->", comment
   end
 
   def convert_ix!(comment=nil)
     v = get_i
     hex = @data[@ofs-4,4].bytes.map{|x| "%02x" % x }.join(":")
-    if comment
-      out! "<i>#{v}</i><!-- #{hex} --><!-- #{comment} -->"
-    else
-      out! "<i>#{v}</i><!-- #{hex} -->"
-    end
+    out_with_comment! "<i>#{v}</i><!-- #{hex} -->", comment
   end
 
   def convert_byte!(comment=nil)
-    if comment
-      out! "<byte>#{get_u1}</byte><!-- #{comment} -->"
-    else
-      out! "<byte>#{get_u1}</byte>"
-    end
+    out_with_comment! "<byte>#{get_byte}</byte>", comment
   end
 
   def convert_s!(comment=nil)
-    if comment
-      out! "<s>#{get_s.xml_escape}</s><!-- #{comment} -->"
-    else
-      out! "<s>#{get_s.xml_escape}</s>"
-    end
+    out_with_comment! "<s>#{get_s.xml_escape}</s>", comment
   end
 
   def convert_unicode!(comment=nil)
-    if comment
-      out! "<unicode>#{get_unicode.xml_escape}</unicode><!-- #{comment} -->"
-    else
-      out! "<unicode>#{get_unicode.xml_escape}</unicode>"
-    end
+    out_with_comment! "<unicode>#{get_unicode.xml_escape}</unicode>", comment
   end
 
   def convert_bool!(comment=nil)
-    v = get_bool ? "<yes />" : "<no />"
-    if comment
-      out! "#{v}<!-- #{comment} -->"
+    v = get_byte
+    if v <= 1
+      out_with_comment!(v == 1 ? "<yes />" : "<no />", comment)
     else
-      out! v
+      if comment
+        raise "Invalid boolean value: got #{v} (#{comment})"
+      else
+        raise "Invalid boolean value: got #{v}"
+      end
     end
   end
 
   def convert_bool_false!(comment=nil)
-    v = get_bool
-    vs = v ? "<yes />" : "<no />"
-    if comment
-      raise "Expected false (#{comment})" if v
-      out! "#{vs}<!-- #{comment} -->"
+    v = get_byte
+    if v == 0
+      out_with_comment! "<no />", comment
     else
-      raise "Expected false" if v
-      out! vs
+      if comment
+        raise "Invalid boolean value: false is expected, got #{v} (#{comment})"
+      else
+        raise "Invalid boolean value: false is expected, got #{v}"
+      end
     end
   end
 
+  # These are either strings or booleans pretty much always
   def convert_u2!(comment=nil)
     v = get_u2
-    if v != 0
-      raise "Non zero U2?"
-    end
-    if comment
-      out! "<u2>#{v}</u2><!-- #{comment} -->"
-    else
-      out! "<u2>#{v}</u2>"
-    end
+    raise "Non zero U2?" if v != 0
+    out_with_comment! "<u2>#{v}</u2>", comment
   end
 
   def convert_flt!(comment=nil)
     i = @data[@ofs,4].unpack1("V")
-    if comment
-      out! "<flt>#{get_flt}</flt><!-- (#{i}) --><!-- #{comment} -->"
-    else
-      out! "<flt>#{get_flt}</flt><!-- (#{i}) -->"
-    end
+    out_with_comment! "<flt>#{get_flt}</flt><!-- (#{i}) -->", comment
   end
 
   def convert_angle!(comment=nil)
     i = @data[@ofs,4].unpack1("V")
     v = get_flt
     vdeg = (v * 180.0 / Math::PI).round(2)
-    if comment
-      out! "<flt>#{v}</flt><!-- (#{i}) / (#{vdeg} degrees) --><!-- #{comment} -->"
-    else
-      out! "<flt>#{v}</flt><!-- (#{i}) / (#{vdeg} degrees) -->"
-    end
+    out_with_comment! "<flt>#{v}</flt><!-- (#{i}) / (#{vdeg} degrees) -->", comment
   end
 
   def convert_bgra!(comment=nil)
@@ -1048,6 +1017,14 @@ class UiFile
 
   def out!(*args)
     @output.out!(*args)
+  end
+
+  def out_with_comment!(xml, comment)
+    if comment
+      out! "#{xml}<!-- #{comment} -->"
+    else
+      out! xml
+    end
   end
 
   def tag!(*args, &blk)
