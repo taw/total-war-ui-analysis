@@ -1,7 +1,6 @@
 The goal of this project is decoding various UI formats used by Total War games.
 
-Existing decoder for a few formats is at https://github.com/taw/etwng/tree/master/ui_converter but it doesn't support newer games,
-and even for games it supports (Empire, Napoleon, Shogun 2) it's not prfect.
+Existing decoder for a few formats is at https://github.com/taw/etwng/tree/master/ui_converter but it doesn't support newer games, and even for games it supports (Empire, Napoleon, Shogun 2) it's not perfect.
 
 ### How to use
 
@@ -19,42 +18,15 @@ And:
 jruby bin/xml2ui path/to/file.xml path/to/uifile
 ```
 
-Every `VersionXXX` file from Empile, Napoleon, Shogun 2 should work.
+Most `VersionXXX` files work now, details by game below.
 
-All `.cml` and `.fc` files from all games work (they're not really UI files, but they're in same folders and use `VersionXXX` system, so I included them too).
-
-Support for newer games coming soon, hopefully.
+The converter also supports all `.cml` and `.fc` files. They're a separate format, but they also have `VersionXXX` header and they live just next to UI files, so I added that too.
 
 There's no guarantee that XML format will remain stable. I might need to tweak it a bit.
 
-### Files
-
-* `data` - sample files from various games
-* `converted` - `.xml` files created by old converter based on files in `data`, or `.fail` files in converter crashed (nothing if unsupported)
-* `output` - current output of analysis of files in `data`
-* `lib` - code
-* `bin` - scripts
-
-### Games
-
-Games currently in repository:
-
-* Empire
-* Napoleon
-* Shogun 2
-* Rome 2
-* Attila
-* Warhammer 1
-* Warhammer 2
-* Thrones
-* Troy
-* 3 Kingdoms
-
-Games currently missing:
-
-* Warhammer 3
-
 ### Supported level by game
+
+Checked on every `Version033` from every game I could find. Percentage converting to xml and back perfectly by game:
 
 * Empire: 199/205 (97%)
 * Napoleon: 199/201 (99%)
@@ -66,6 +38,15 @@ Games currently missing:
 * Warhammer 2: 140/349 (40%)
 * Troy: 83/395 (21%)
 * Three Kingdoms: 11/433 (3%)
+
+### Files
+
+* `data` - sample files from various games
+* `unpacked` - `.xml` files created by the new converter (or `.fail` files if conversion failed)
+* `converted` - `.xml` files created by the old converter (or `.fail` files if conversion failed)
+* `output` - automated analysis results for all files from `data`
+* `lib` - code
+* `bin` - scripts
 
 ### Credits
 
