@@ -455,15 +455,15 @@ class UiFile
             convert_flt! "shader var?"
           end
           if @version >= 92
-            convert_i! "margin top?"
-            convert_i! "margin right?"
-            convert_i! "margin bottom?"
-            convert_i! "margin left?"
+            convert_flt! "margin top?"
+            convert_flt! "margin right?"
+            convert_flt! "margin bottom?"
+            convert_flt! "margin left?"
           else
-            convert_i! "margin top-bottom?"
-            convert_i! "margin left-right?"
+            convert_flt! "margin top-bottom?"
+            convert_flt! "margin left-right?"
           end
-          # v103+ stuff
+          # v125+ stuff
         else
           if @version >= 51
             convert_bool!
@@ -493,7 +493,12 @@ class UiFile
     convert_array! "anims" do
       tag! "anim" do
         out_ofs! "start of anim"
-        # v110+ stuff
+
+        if @version >= 113
+          convert_i_zero!
+          # TODO - sound stuff
+        end
+
         convert_flt! "x offset?"
         convert_flt! "y offset?"
         convert_i! "x size?"
@@ -506,27 +511,35 @@ class UiFile
         convert_flt! "rotation angle?"
         convert_i! "image index 1?"
         convert_i! "image index 2?"
-        # v110+ stuff
+        if @version >= 113
+          convert_flt! "font scale?"
+        end
         convert_i! "interpolation time?"
         convert_i! "interpolation property mask?"
         convert_flt! "easing weight?"
         convert_s! "easing curve?"
         convert_anim_attrs!
-        if @version >= 90
-          convert_bool! "is movement absolute?"
+
+        if @version >= 113
+          convert_bool!
+          convert_bool!
+          # v120+ stuff
+        else
+          if @version >= 90
+            convert_bool! "is movement absolute?"
+          end
+          if @version >= 100
+            convert_bool!
+            convert_bool!
+          end
+          if @version >= 104
+            convert_bool!
+          end
+          if @version >= 106
+            convert_bool!
+            convert_bool!
+          end
         end
-        if @version >= 100
-          convert_bool!
-          convert_bool!
-        end
-        if @version >= 104
-          convert_bool!
-        end
-        if @version >= 106
-          convert_bool!
-          convert_bool!
-        end
-        # v106+/v110v+ stuff
         out_ofs! "end of anim"
       end
     end
@@ -543,7 +556,10 @@ class UiFile
         if @version >= 91 and @version < 100
           convert_s!
         end
-        # v110+ changes
+        if @version >= 113
+          convert_s!
+          convert_s!
+        end
       end
     end
   end
@@ -615,10 +631,18 @@ class UiFile
         convert_s! "title2"
       end
 
-      if @version >= 100
+      if @version >= 100 and @version < 113
         convert_s! "v100+ extra string?"
       end
-      # v110+ stuff
+
+      if @version == 113
+        tag! "event" do
+          convert_s!
+          convert_s!
+          convert_s!
+        end
+      end
+      # v114+ stuff
 
       convert_i! "x offset"
       convert_i! "y offset"
