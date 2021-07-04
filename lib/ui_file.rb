@@ -929,14 +929,30 @@ class UiFile
   def convert_template!
     tag! "template" do
       convert_s! "name?"
+      if @version >= 119
+        convert_id!
+      end
 
       convert_array! "subtemplates" do
         tag! "subtemplate" do
-          convert_s!
-          convert_s!
+          convert_s! "source uientry?"
+          convert_s! "dest uientry?"
           convert_data_zero! 2 # s?
-          convert_s!
-          convert_s!
+
+          if @version >= 119
+            convert_array! "events" do
+              tag! "event" do
+                convert_s!
+                convert_s!
+                convert_s!
+                # v121+ stuff
+              end
+            end
+          else
+            convert_s! "type?"
+          end
+
+          convert_s! "func name?"
           out_ofs! "after all s?"
 
           convert_flt!
