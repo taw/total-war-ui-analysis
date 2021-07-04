@@ -31,7 +31,7 @@ totals.keys.map{|game|
   t = totals[game]
   pct = (s*100.0/t).round
   [game, "#{games.to_h[game]}: #{s}/#{t} (#{pct}%)"]
-}.sort_by{|pct, game, msg|
+}.sort_by{|game, msg|
   [order.index(game) || 100000, game, msg]
 }.each{|pct, msg|
   puts msg
