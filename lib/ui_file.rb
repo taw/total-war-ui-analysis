@@ -295,20 +295,21 @@ class UiFile
         convert_i! "text xalign?"
         convert_i! "text yalign?"
 
-        # This block gets weird v115+
-        convert_bool! "state stuff 1?"
-        convert_unicode! "state stuff 2?"
-        convert_bool_false! "state stuff 3?"
-        convert_bool! "state stuff 4?"
+        convert_bool! "text behavior?"
+        convert_unicode! "text label?"
 
-        convert_unicode! "localization id"
-
-        if @version <= 115
+        if @version >= 116
+          convert_unicode! "localization id"
+          convert_bool_false! "state stuff 1?"
+          convert_bool_false! "state stuff 2?"
+        else
+          convert_bool_false! "state stuff 3?"
+          convert_bool! "state stuff 4?"
+          convert_unicode! "localization id"
           convert_unicode! "tooltip id"
-        end
-
-        if @version >= 90 and @version <= 115
-          convert_s! "state stuff before font?"
+          if @version >= 90
+            convert_s! "state stuff before font?"
+          end
         end
 
         if @version >= 29
@@ -905,7 +906,8 @@ class UiFile
             convert_i!
             convert_i!
             convert_i!
-            convert_data_zero! 19
+            convert_i!
+            convert_data_zero! 15
             out_ofs! "are we done?"
           end
         elsif type == "Table"
