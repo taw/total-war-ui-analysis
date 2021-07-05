@@ -730,7 +730,8 @@ class UiFile
 
       convert_s! "end of uientry 1?"
       convert_s! "end of uientry 2?"
-      convert_bool! "end of uientry flag 3?"
+
+      convert_bool_false! "end of uientry flag 3?"
 
       if @version == 97
         has_two_extra_ints = get_bool
