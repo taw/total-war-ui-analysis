@@ -908,29 +908,23 @@ class UiFile
           elsif @version == 105
             convert_i!
             convert_data_zero! 10
-          elsif @version >= 106 and @version < 113
-            convert_i!
-            convert_i!
-            convert_i!
-            convert_i!
-            convert_bool!
-            convert_bool_false!
-            convert_i!
-          elsif @version >= 113 and @version <= 118
-            convert_i!
-            convert_i!
-            convert_i!
-            convert_i!
-            convert_data_zero! 10, "additional data undecoded"
-          elsif @version >= 119
+          elsif @version >= 106
             convert_i!
             convert_i!
             convert_i!
             convert_i!
             convert_bool!
             convert_bool!
-            convert_data_zero! 13, "additional data undecoded"
-            out_ofs! "are we done?"
+            convert_i!
+            if @version >= 113
+              convert_i_zero!
+            end
+            if @version >= 119
+              convert_data_zero! 5, "additional data undecoded"
+            end
+            if @version >= 121
+              out_ofs! "are we done? probably not"
+            end
           end
         elsif type == "Table"
           convert_array! "table" do
