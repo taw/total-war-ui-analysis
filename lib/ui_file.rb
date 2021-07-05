@@ -609,9 +609,9 @@ class UiFile
     end
   end
 
-  def convert_dynamics!
-    convert_array! "dynamics" do
-      tag! "dynamic" do
+  def convert_properties!
+    convert_array! "properties" do
+      tag! "property" do
         convert_s! "key"
         convert_s! "value"
       end
@@ -692,12 +692,7 @@ class UiFile
             convert_s!
 
             if @version >= 121
-              convert_array! "dynamics" do
-                tag! "dynamic" do
-                  convert_s! "key?"
-                  convert_s! "value?"
-                end
-              end
+              convert_properties!
             end
           end
         end
@@ -733,7 +728,7 @@ class UiFile
 
       convert_state_list!
 
-      convert_dynamics!
+      convert_properties!
       convert_i! "priority?"
       out_ofs! "before number of funcs?"
       convert_funcs!
@@ -984,7 +979,14 @@ class UiFile
                 convert_s!
                 convert_s!
                 convert_s!
-                # v121+ stuff
+                if @version >= 121
+                  convert_array! "properties" do
+                    tag! "property" do
+                      convert_s!
+                      convert_s!
+                    end
+                  end
+                end
               end
             end
           else
@@ -1020,7 +1022,7 @@ class UiFile
             end
           end
 
-          convert_dynamics!
+          convert_properties!
 
           convert_array! "images" do
             tag! "image" do
