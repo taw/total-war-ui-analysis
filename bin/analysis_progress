@@ -4,19 +4,30 @@ require_relative "../lib/task_set"
 
 task_set = TaskSet.new(*ARGV)
 
-totals = Hash.new{|ht,k| ht[k] = [0,0] }
+list = []
 
 task_set.in_parallel do |task, i|
   next unless task.output_path.exist?
-  totals[task.full_version][1] += task.data_size
-  totals["*"][1] += task.data_size
+  total = task.data_size
+  decoded = 0
   task.output_path.each_line do |line|
+    # WTF ruby threads? this can't possibly be not a bug?
+    # threads are resetting each other's $1 / $2?
     next unless line =~ /\A(\d+)-(\d+) DataBlock/
-    s = $1.to_i
-    e = $2.to_i
-    totals[task.full_version][0] += e-s
-    totals["*"][0] += e-s
+    s, e = line.split(" ").first.split("-").map(&:to_i)
+    # s = $1.to_i
+    # e = $2.to_i
+    decoded += e-s
   end
+  list << [task.full_version, decoded, total]
+end
+
+totals = Hash.new{|ht,k| ht[k] = [0,0] }
+list.each do |v,d,t|
+  totals[v][0] += d
+  totals["*"][0] += d
+  totals[v][1] += t
+  totals["*"][1] += t
 end
 
 puts "Unknown data:"
