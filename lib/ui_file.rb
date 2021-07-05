@@ -42,6 +42,16 @@ class UiFile
     rv
   end
 
+  def lookahead(sz)
+    raise "Requested reading past end of file (#{@path}:#{@ofs}) - #{sz}" if @ofs + sz > @data.size
+    @data[@ofs, sz]
+  end
+
+  def lookbehind(sz)
+    raise if @ofs-sz < 0
+    @data[@ofs-sz, sz]
+  end
+
   def get_byte
     get(1).unpack1("C")
   end
@@ -106,7 +116,7 @@ class UiFile
   end
 
   def convert_id!
-    v4 = @data[@ofs,4].unpack("C*").map{|x| "%02x" % x}.join(" ")
+    v4 = lookahead(4).bytes.map{|x| "%02x" % x}.join(" ")
     v = get_u
     out! "<u>#{v}</u><!-- ID (#{v4}) -->"
   end
@@ -119,11 +129,12 @@ class UiFile
     # Well, at least it looks like it
     v = get_i
     unless v == 0
-      hex = @data[@ofs-4,4].bytes.map{|x| "%02x" % x }.join(":")
+      flt = lookbehind(4).unpack("f")
+      hex = lookbehind(4).bytes.map{|x| "%02x" % x }.join(":")
       if comment
-        raise "Must be zero, got #{v} / #{@data[@ofs-4,4].unpack1("f")} / #{hex} (#{comment})"
+        raise "Must be zero, got #{v} / #{flt} / #{hex} (#{comment})"
       else
-        raise "Must be zero, got #{v} / #{@data[@ofs-4,4].unpack1("f")} / #{hex}"
+        raise "Must be zero, got #{v} / #{flt} / #{hex}"
       end
     end
     out_with_comment! "<i>#{v}</i><!-- always zero -->", comment
@@ -131,7 +142,7 @@ class UiFile
 
   def convert_ix!(comment=nil)
     v = get_i
-    hex = @data[@ofs-4,4].bytes.map{|x| "%02x" % x }.join(":")
+    hex = lookbehind(4).bytes.map{|x| "%02x" % x }.join(":")
     out_with_comment! "<i>#{v}</i><!-- #{hex} -->", comment
   end
 
@@ -181,13 +192,13 @@ class UiFile
   end
 
   def convert_flt!(comment=nil)
-    i = @data[@ofs,4].unpack1("V")
-    hex = @data[@ofs,4].bytes.map{|x| "%02x" % x }.join(":")
+    i = lookahead(4).unpack1("V")
+    hex = lookahead(4).bytes.map{|x| "%02x" % x }.join(":")
     out_with_comment! "<flt>#{get_flt}</flt><!-- (#{i} - #{hex}) -->", comment
   end
 
   def convert_angle!(comment=nil)
-    i = @data[@ofs,4].unpack1("V")
+    i = lookahead(4).unpack1("V")
     v = get_flt
     vdeg = (v * 180.0 / Math::PI).round(2)
     out_with_comment! "<flt>#{v}</flt><!-- (#{i}) / (#{vdeg} degrees) -->", comment
@@ -719,7 +730,7 @@ class UiFile
 
       convert_s! "end of uientry 1?"
       convert_s! "end of uientry 2?"
-      convert_bool_false! "end of uientry flag 3?"
+      convert_bool! "end of uientry flag 3?"
 
       if @version == 97
         has_two_extra_ints = get_bool
@@ -919,9 +930,9 @@ class UiFile
         convert_uientry_gen2!
       else
         # Not sure wtf
-        if @data[@ofs, 2] == "\x00\x00".b
+        if lookahead(2) == "\x00\x00".b
           @ofs += 2
-          convert_uientry_gen2! type: 'normal'
+          convert_uientry_gen2! type: "normal"
         else
           convert_template!
         end
@@ -973,8 +984,8 @@ class UiFile
 
           # WTF? seriously? or are we missing some state count somewhere?
           while true
-            lookahead = @data[@ofs+2, 2].bytes
-            break if lookahead[0] == 0 or lookahead[1] == 0
+            v = @data[@ofs+2, 2].bytes
+            break if v[0] == 0 or v[1] == 0
             tag! "state" do
               convert_s! "name"
               convert_unicode!
