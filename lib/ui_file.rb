@@ -920,7 +920,8 @@ class UiFile
               convert_i_zero!
             end
             if @version >= 119
-              convert_data_zero! 5, "additional data undecoded"
+              convert_i_zero!
+              convert_bool!
             end
             if @version >= 121
               out_ofs! "are we done? probably not"
@@ -975,7 +976,7 @@ class UiFile
         tag! "subtemplate" do
           convert_s! "source uientry?"
           convert_s! "dest uientry?"
-          convert_data_zero! 2 # s?
+          convert_s!
 
           if @version >= 119
             convert_array! "events" do
