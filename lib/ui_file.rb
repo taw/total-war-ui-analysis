@@ -268,13 +268,19 @@ class UiFile
     out! "</data>"
   end
 
-  def convert_data_zero!(size)
+  def convert_data_zero!(size, comment=nil)
     v = get(size).bytes
     out! %Q[<data size="#{size}">]
     v.each_slice(16) do |slice|
       hex = slice.map{|c| "%02x" % c}.join(" ")
       out! "  #{hex}\n"
-      raise "Data should be all zeroes, got: #{v}" unless slice.all?(&:zero?)
+      unless slice.all?(&:zero?)
+        if comment
+          raise "Data should be all zeroes, got: #{v} (#{comment})"
+        else
+          raise "Data should be all zeroes, got: #{v}"
+        end
+      end
     end
     out! "</data>"
   end
@@ -534,7 +540,7 @@ class UiFile
         out_ofs! "start of anim"
 
         if @version >= 113
-          convert_i_zero!
+          convert_i_zero! "anim sound stuff"
           # TODO - sound stuff
         end
 
@@ -700,8 +706,8 @@ class UiFile
       convert_i! "x offset"
       convert_i! "y offset"
 
-      12.times do |i|
-        convert_bool!
+      (1..12).each do |i|
+        convert_bool! "uientry flag #{i}"
       end
       convert_bool! if @version < 90
 
@@ -914,13 +920,16 @@ class UiFile
             convert_i!
             convert_i!
             convert_i!
-            convert_data_zero! 14
+            convert_i!
+            convert_data_zero! 10, "additional data undecoded"
           elsif @version >= 119
             convert_i!
             convert_i!
             convert_i!
             convert_i!
-            convert_data_zero! 15
+            convert_bool!
+            convert_bool!
+            convert_data_zero! 13, "additional data undecoded"
             out_ofs! "are we done?"
           end
         elsif type == "Table"
@@ -996,9 +1005,10 @@ class UiFile
           convert_flt!
           convert_i!
           convert_i!
-          convert_bool!
+          convert_bool! "subtemplate flag?"
           convert_i!
-          convert_data_zero! 6
+          convert_i!
+          convert_data_zero! 2
           convert_unicode! "tooltip id?"
           convert_unicode! "tooltip text?"
 
