@@ -129,7 +129,7 @@ class UiFile
     # Well, at least it looks like it
     v = get_i
     unless v == 0
-      flt = lookbehind(4).unpack("f")
+      flt = lookbehind(4).unpack1("f")
       hex = lookbehind(4).bytes.map{|x| "%02x" % x }.join(":")
       if comment
         raise "Must be zero, got #{v} / #{flt} / #{hex} (#{comment})"
@@ -896,13 +896,17 @@ class UiFile
             convert_bool!
             convert_bool_false!
             convert_i!
-          elsif @version >= 113
+          elsif @version >= 113 and @version <= 118
             convert_i!
             convert_i!
             convert_i!
             convert_data_zero! 14
+          elsif @version >= 119
+            convert_i!
+            convert_i!
+            convert_i!
+            convert_data_zero! 19
             out_ofs! "are we done?"
-            # v114+ ???
           end
         elsif type == "Table"
           convert_array! "table" do
