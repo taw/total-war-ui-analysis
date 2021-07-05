@@ -898,7 +898,10 @@ class UiFile
             convert_i!
             convert_bool!
           end
-          if @version == 104
+          if @version == 101
+            convert_i!
+            convert_bool_false!
+          elsif @version >= 102 and @version <= 104
             convert_i!
             convert_data_zero! 5
           elsif @version == 105
