@@ -302,11 +302,16 @@ class UiFile
           convert_unicode! "localization id"
           convert_bool_false! "state stuff 1?"
           convert_bool_false! "state stuff 2?"
+
+          if @version >= 121
+            convert_s!
+          end
         else
           convert_bool_false! "state stuff 3?"
           convert_bool! "state stuff 4?"
           convert_unicode! "localization id"
           convert_unicode! "tooltip id"
+
           if @version >= 90
             convert_s! "state stuff before font?"
           end
@@ -679,7 +684,15 @@ class UiFile
             convert_s!
             convert_s!
             convert_s!
-            # v121+ stuff
+
+            if @version >= 121
+              convert_array! "dynamics" do
+                tag! "dynamic" do
+                  convert_s! "key?"
+                  convert_s! "value?"
+                end
+              end
+            end
           end
         end
       end
