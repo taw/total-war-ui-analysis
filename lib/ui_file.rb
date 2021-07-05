@@ -218,6 +218,7 @@ class UiFile
 
   def convert_array!(type)
     count = get_u
+    raise "#{type} array element count of #{count} impossibly high" if count > 0xffff
     tag! type, count: count do
       count.times do
         yield
@@ -918,8 +919,9 @@ class UiFile
               convert_i_zero!
               convert_bool!
             end
-            if @version >= 121
-              out_ofs! "are we done? probably not"
+            if @version >= 122
+              convert_i!
+              convert_i!
             end
           end
         elsif type == "Table"
