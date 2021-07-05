@@ -36,3 +36,10 @@ totals.keys.map{|game|
 }.each{|pct, msg|
   puts msg
 }
+
+supported_all = supported.values.sum
+total_all = totals.values.sum
+
+pct = (supported_all*100.0/total_all).round
+puts ""
+puts "* Total: #{supported_all}/#{total_all} (#{pct}%)"
