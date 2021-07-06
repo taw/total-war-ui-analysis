@@ -47,6 +47,14 @@ class UiFile
     @data[@ofs, sz]
   end
 
+  def lookahead_i
+    lookahead(4).unpack1("i")
+  end
+
+  def lookahead_u
+    lookahead(4).unpack1("V")
+  end
+
   def lookbehind(sz)
     raise if @ofs-sz < 0
     @data[@ofs-sz, sz]
@@ -208,13 +216,13 @@ class UiFile
   end
 
   def convert_flt!(comment=nil)
-    i = lookahead(4).unpack1("V")
+    i = lookahead_u
     hex = lookahead(4).bytes.map{|x| "%02x" % x }.join(":")
     out_with_comment! "<flt>#{get_flt}</flt><!-- (#{i} - #{hex}) -->", comment
   end
 
   def convert_angle!(comment=nil)
-    i = lookahead(4).unpack1("V")
+    i = lookahead_u
     v = get_flt
     vdeg = (v * 180.0 / Math::PI).round(2)
     out_with_comment! "<flt>#{v}</flt><!-- (#{i}) / (#{vdeg} degrees) -->", comment
@@ -579,7 +587,7 @@ class UiFile
 
   def convert_sound!
     tag! "sound" do
-      v = lookahead(4).unpack1("V")
+      v = lookahead_i
       if v == 0 or v == -1
         convert_i! "no sound"
       else
