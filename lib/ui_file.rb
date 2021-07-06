@@ -208,10 +208,9 @@ class UiFile
     end
   end
 
-  # These are either strings or booleans pretty much always
+  # These are either strings or booleans pretty much always (except in twui.images)
   def convert_u2!(comment=nil)
     v = get_u2
-    raise "Non zero U2?" if v != 0
     out_with_comment! "<u2>#{v}</u2>", comment
   end
 
@@ -767,7 +766,12 @@ class UiFile
       convert_i! "y offset"
 
       (1..12).each do |i|
-        convert_bool! "uientry flag #{i}"
+        case i
+        when 3
+          convert_byte! "uientry flag #{i}"
+        else
+          convert_bool! "uientry flag #{i}"
+        end
       end
       convert_bool! if @version < 90
 
@@ -1276,6 +1280,28 @@ class UiFile
     end
   end
 
+  def convert_twui_images!
+    tag! "twui_images", version: version_string do
+      convert_array! "images" do
+        tag! "image" do
+          convert_s!
+          convert_data_zero! 19
+          convert_i!
+          convert_data_zero! 6
+          x = get_u2
+          out! "<i2>#{x}</i2><!-- x -->"
+          y = get_u2
+          out! "<i2>#{y}</i2><!-- y -->"
+          convert_u2!
+          out! "<!-- #{x}*#{y} datapoints -->"
+          (x*y).times do
+            convert_bgra!
+          end
+        end
+      end
+    end
+  end
+
   def convert!
     @version = get_version
 
@@ -1287,6 +1313,12 @@ class UiFile
         convert_ui!
       else
         convert_fc!
+      end
+    when 119, 129
+      if starts_with_root_ui_entry?
+        convert_ui!
+      else
+        convert_twui_images!
       end
     when 25..999
       convert_ui!

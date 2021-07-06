@@ -15,6 +15,10 @@ module XmlTagHandlers
     @ui.put_u2 buf.to_i
   end
 
+  def on_text_node_i2(attributes, buf, ctx)
+    @ui.put_i2 buf.to_i
+  end
+
   def on_text_node_byte(attributes, buf, ctx)
     @ui.put_byte buf.to_i
   end
@@ -66,6 +70,13 @@ module XmlTagHandlers
   end
 
   def on_end_node_fc(attributes, buf, ctx)
+  end
+
+  def on_start_node_twui_images(attributes)
+    @ui.put_version attributes[:version].to_i(10)
+  end
+
+  def on_end_node_twui_images(attributes, buf, ctx)
   end
 
   def on_start_node_ui(attributes)

@@ -25,8 +25,12 @@ class FileTask
     @data_path.extname == ".cml"
   end
 
+  def twui_images?
+    @data_path.to_s.end_with?(".twui.images")
+  end
+
   def ui?
-    (not fc?) and (not cml?)
+    (not fc?) and (not cml?) and (not twui_images?)
   end
 
   def supported_by_converter?
@@ -34,7 +38,7 @@ class FileTask
   end
 
   def supported_by_ui2xml?
-    fc? or cml? or [29, *31..129].include?(version)
+    fc? or cml? or twui_images? or [29, *31..129].include?(version)
   end
 
   def full_version
@@ -42,6 +46,8 @@ class FileTask
       "cml"
     elsif fc?
       "fc"
+    elsif twui_images?
+      "twui_images"
     else
       ""
     end + ("%03d" % version)
