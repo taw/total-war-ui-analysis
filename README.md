@@ -28,14 +28,15 @@ There's no guarantee that XML format will remain stable. I might need to tweak i
 
 Checked on every `Version033` from every game I could find. Percentage converting to xml and back perfectly by game:
 
+* Empire: 199/205 (97%)
 * Napoleon: 199/201 (99%)
 * Shogun 2: 284/285 (100%)
 * Rome 2: 282/306 (92%)
 * Attila: 178/190 (94%)
-* Thrones of Britannia: 186/205 (91%)
-* Warhammer 1: 258/271 (95%)
-* Warhammer 2: 328/349 (94%)
-* Troy: 373/395 (94%)
+* Thrones of Britannia: 187/205 (91%)
+* Warhammer 1: 261/271 (96%)
+* Warhammer 2: 334/349 (96%)
+* Troy: 381/395 (96%)
 * Three Kingdoms: 388/433 (90%)
 
 ### Files

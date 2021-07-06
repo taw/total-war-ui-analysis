@@ -459,7 +459,8 @@ class UiFile
       tag! "mouse_state_datapoint" do
         convert_id!
         convert_s!
-        convert_i_zero! # is it two string actually?
+        convert_s!
+        convert_s!
       end
     end
   end
