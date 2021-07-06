@@ -1012,6 +1012,14 @@ class UiFile
               end
             end
           end
+        elsif type == "RadialList"
+          convert_angle!
+          convert_angle!
+          convert_angle!
+          convert_flt!
+
+          convert_bool!
+          out_ofs! "rest of RadialList?"
         else
           raise "Unknown additional data section #{type}"
         end
