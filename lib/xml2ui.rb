@@ -198,6 +198,7 @@ module XmlTagHandlers
     property
     material
     materialdatapoint
+    sound
   ].each do |m|
     OnStart[m] = :on_start_passthrough_node
     OnEnd[m]   = :on_end_passthrough_node

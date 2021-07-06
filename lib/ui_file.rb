@@ -577,14 +577,26 @@ class UiFile
     end
   end
 
+  def convert_sound!
+    tag! "sound" do
+      v = lookahead(4).unpack1("V")
+      if v == 0 or v == -1
+        convert_i! "no sound"
+      else
+        convert_s!
+        convert_s!
+        out_ofs! "more sound stuff?"
+      end
+    end
+  end
+
   def convert_anims!
     convert_array! "anims" do
       tag! "anim" do
         out_ofs! "start of anim"
 
         if @version >= 113
-          convert_i_zero! "anim sound stuff"
-          # TODO - sound stuff
+          convert_sound!
         end
 
         convert_flt! "x offset?"

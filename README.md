@@ -35,9 +35,9 @@ Checked on every `Version033` from every game I could find. Percentage convertin
 * Attila: 178/190 (94%)
 * Thrones of Britannia: 186/205 (91%)
 * Warhammer 1: 258/271 (95%)
-* Warhammer 2: 298/349 (85%)
-* Troy: 357/395 (90%)
-* Three Kingdoms: 309/433 (71%)
+* Warhammer 2: 320/349 (92%)
+* Troy: 368/395 (93%)
+* Three Kingdoms: 358/433 (83%)
 
 ### Files
 
