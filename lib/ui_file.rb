@@ -116,9 +116,14 @@ class UiFile
   end
 
   def convert_id!
-    v4 = lookahead(4).bytes.map{|x| "%02x" % x}.join(" ")
-    v = get_u
-    out! "<u>#{v}</u><!-- ID (#{v4}) -->"
+    if @version >= 126
+      out! "<!-- ID -->"
+      convert_data! 20
+    else
+      v4 = lookahead(4).bytes.map{|x| "%02x" % x}.join(" ")
+      v = get_u
+      out! "<u>#{v}</u><!-- ID (#{v4}) -->"
+    end
   end
 
   def convert_i!(comment=nil)
@@ -310,7 +315,7 @@ class UiFile
           convert_bool_false! "state stuff 1?"
           convert_bool_false! "state stuff 2?"
 
-          if @version >= 121
+          if @version == 121 or @version == 122
             convert_s!
           end
         else
@@ -401,6 +406,10 @@ class UiFile
           convert_transitions!
         else
           convert_mouse_states!
+        end
+
+        if @version >= 124
+          convert_data_zero! 2
         end
       end
     end
@@ -509,7 +518,9 @@ class UiFile
             convert_flt! "margin top-bottom?"
             convert_flt! "margin left-right?"
           end
-          # v125+ stuff
+          if @version >= 125
+            convert_bool_false!
+          end
         else
           if @version >= 51
             convert_bool!
@@ -584,8 +595,9 @@ class UiFile
             convert_bool_false! "end of anim 4?"
           end
         end
-
-        # v120+ stuff
+        if @version >= 124
+          convert_data_zero! 2
+        end
         out_ofs! "end of anim"
       end
     end
@@ -725,6 +737,10 @@ class UiFile
 
       if @version < 110
         convert_i!
+      end
+
+      if @version >= 126
+        convert_data_zero! 16, "extra v126+ zeroes?"
       end
 
       convert_state_list!
