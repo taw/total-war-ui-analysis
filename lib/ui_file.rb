@@ -834,18 +834,19 @@ class UiFile
       convert_bool_false! "end of uientry flag 3?"
 
       if @version == 97
-        has_two_extra_ints = get_bool
-        if has_two_extra_ints
-          out! "<yes /><!-- has some extra ints -->"
+        has_extra_data = get_bool
+        if has_extra_data
+          out! "<yes /><!-- has some extra data (just below) -->"
           convert_i! "extra int 1?"
-          convert_i! "extra int 2?"
-          convert_i! "extra int 3?"
+          convert_array! "array" do
+            convert_ix!
+          end
         else
-          out! "<no /><!-- has some extra ints -->"
+          out! "<no /><!-- has some extra data (section skipped) -->"
         end
 
-        convert_data! 8
-        out_ofs! "end of v97 data?"
+        convert_ix! "uientry id reference"
+        convert_ix! "uientry id reference"
       else
         has_model = get_bool
         if has_model
@@ -917,7 +918,7 @@ class UiFile
         convert_bool!
       end
       if @version >= 39
-        convert_i! "default state id"
+        convert_ix! "default state id"
       end
       convert_s! "script"
       convert_image_list!

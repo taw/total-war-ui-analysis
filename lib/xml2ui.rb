@@ -179,6 +179,7 @@ module XmlTagHandlers
     subtemplates
     properties
     materialdata
+    array
   ].each do |m|
     # TODO: it would be better if count was actually automatically determined and didn't require hand checking
     OnStart[m] = :on_start_array_node
