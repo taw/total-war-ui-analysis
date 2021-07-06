@@ -124,10 +124,17 @@ class UiFile
     end
   end
 
-  # need to verify that it actually is some kind of uuid
-  def convert_uuid!
-    out! "<!-- uuid? -->"
-    convert_data! 16
+  # it doesn't have version number, but it's tagged as uuid
+  def convert_uuid!(comment=nil)
+    v = get(16).bytes.map{|x| "%02x" % x}
+    vv = [
+      v[0,4].join,
+      v[4,2].join,
+      v[6,2].join,
+      v[8,2].join,
+      v[10,6].join,
+    ].join("-")
+    out_with_comment! "<uuid>#{vv}</uuid>", comment
   end
 
   def convert_i!(comment=nil)

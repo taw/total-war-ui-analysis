@@ -45,6 +45,14 @@ module XmlTagHandlers
     end
   end
 
+  def on_text_node_uuid(attributes, buf, ctx)
+    data = buf.strip.tr("-", "")
+    raise "Bad uuid: #{data}" unless data.size == 32 and data =~ /\A[0-9a-f]{32}\z/i
+    data.scan(/../).each do |x|
+      @ui.put_byte x.to_i(16)
+    end
+  end
+
   ## Top level file type nodes
   def on_start_node_cml(attributes)
     @ui.put_version attributes[:version].to_i(10)
