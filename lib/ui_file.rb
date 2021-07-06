@@ -587,13 +587,21 @@ class UiFile
 
   def convert_sound!
     tag! "sound" do
+      # This is a big wat
+      out! "<!-- lookahead #{lookahead(4).bytes} -->"
       v = lookahead_i
-      if v == 0 or v == -1
+      if v == -1
+        convert_i! "no sound"
+      elsif @version >= 124
+        convert_u2!
+        convert_s!
+        out_ofs! "end of sound stuff?"
+      elsif v == 0
         convert_i! "no sound"
       else
         convert_s!
         convert_s!
-        out_ofs! "more sound stuff?"
+        out_ofs! "end of sound stuff?"
       end
     end
   end
