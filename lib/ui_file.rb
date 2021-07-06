@@ -116,17 +116,18 @@ class UiFile
   end
 
   def convert_id!
+    v4 = lookahead(4).bytes.map{|x| "%02x" % x}.join(" ")
+    v = get_u
+    out! "<u>#{v}</u><!-- ID (#{v4}) -->"
     if @version >= 126
-      v4 = lookahead(4).bytes.map{|x| "%02x" % x}.join(" ")
-      v = get_u
-      out! "<u>#{v}</u><!-- ID1 (#{v4}) -->"
-      out! "<!-- ID2 -->"
-      convert_data! 16
-    else
-      v4 = lookahead(4).bytes.map{|x| "%02x" % x}.join(" ")
-      v = get_u
-      out! "<u>#{v}</u><!-- ID (#{v4}) -->"
+      convert_uuid!
     end
+  end
+
+  # need to verify that it actually is some kind of uuid
+  def convert_uuid!
+    out! "<!-- uuid? -->"
+    convert_data! 16
   end
 
   def convert_i!(comment=nil)
@@ -741,13 +742,14 @@ class UiFile
       end
 
       if @version >= 126
+        # uuid too?
         convert_data_zero! 16, "extra v126+ zeroes?"
       end
 
       convert_state_list!
 
       if @version >= 126
-        convert_data! 16, "default state ID2?"
+        convert_uuid!
       end
 
       convert_properties!
@@ -947,6 +949,9 @@ class UiFile
               convert_i!
               convert_i!
             end
+            if @version >= 129
+              convert_data_zero! 2, "v129 additional data?"
+            end
           end
         elsif type == "Table"
           convert_array! "table" do
@@ -997,6 +1002,18 @@ class UiFile
         tag! "subtemplate" do
           convert_s! "source uientry?"
           convert_s! "dest uientry?"
+
+          if @version >= 129
+            convert_uuid!
+            convert_array! "states" do
+              tag! "state" do
+                convert_s! "name"
+                convert_uuid!
+              end
+              out_ofs! "state in template?"
+            end
+          end
+
           convert_s!
 
           if @version >= 119
