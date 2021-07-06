@@ -695,7 +695,7 @@ class UiFile
     tag! "models" do
       out! "<!-- this is very poorly decoded part -->"
       out_ofs! "model"
-      convert_data_zero! 2, "model s?"
+      convert_s!
       if @version == 74
         header_size = 37
       elsif @version == 84
