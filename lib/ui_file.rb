@@ -979,17 +979,17 @@ class UiFile
             convert_bool! "mystery5"
           end
           if @version >= 96
-            convert_i!
-            convert_bool!
+            convert_bool! "mystery6"
+            convert_i! "mystery7"
           end
           if @version == 101
-            convert_i!
-            convert_bool_false!
+            convert_ix! "mystery8"
+            convert_bool_false! "mystery9"
           elsif @version >= 102 and @version <= 104
-            convert_i!
+            convert_i! "mystery8"
             convert_data_zero! 5
           elsif @version == 105
-            convert_i!
+            convert_i! "mystery8"
             convert_data_zero! 10
           elsif @version >= 106
             convert_i!
