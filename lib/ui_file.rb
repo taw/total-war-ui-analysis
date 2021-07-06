@@ -418,8 +418,30 @@ class UiFile
         end
 
         if @version >= 124
-          convert_s!
+          convert_material!
         end
+      end
+    end
+  end
+
+  def convert_material!
+    tag! "material" do
+      path = get_s
+      out_with_comment! "<s>#{path.xml_escape}</s>", "path"
+      if path.empty?
+        out! "<!-- rest skipped if path empty -->"
+      else
+        convert_array! "materialdata" do
+          tag! "materialdatapoint" do
+            convert_s!
+            convert_flt!
+            convert_flt!
+            convert_flt!
+            convert_flt!
+          end
+        end
+        convert_properties!
+        out_ofs! "material data ends"
       end
     end
   end
