@@ -117,8 +117,11 @@ class UiFile
 
   def convert_id!
     if @version >= 126
-      out! "<!-- ID -->"
-      convert_data! 20
+      v4 = lookahead(4).bytes.map{|x| "%02x" % x}.join(" ")
+      v = get_u
+      out! "<u>#{v}</u><!-- ID1 (#{v4}) -->"
+      out! "<!-- ID2 -->"
+      convert_data! 16
     else
       v4 = lookahead(4).bytes.map{|x| "%02x" % x}.join(" ")
       v = get_u
@@ -392,9 +395,7 @@ class UiFile
           convert_s! "event text"
         end
 
-        # 74 and 77 OK up to this point
         out_ofs! "image use list"
-
         convert_image_uses!
 
         if @version >= 26 # something mouse related???
@@ -409,7 +410,7 @@ class UiFile
         end
 
         if @version >= 124
-          convert_data_zero! 2
+          convert_s!
         end
       end
     end
@@ -744,6 +745,10 @@ class UiFile
       end
 
       convert_state_list!
+
+      if @version >= 126
+        convert_data! 16, "default state ID2?"
+      end
 
       convert_properties!
       convert_i! "priority?"
