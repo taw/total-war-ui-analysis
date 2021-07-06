@@ -721,7 +721,7 @@ class UiFile
           convert_s! "mesh name?"
           if @version <= 77
             convert_data! 21, "some model data or anim header or sth"
-          elsif @version == 85
+          elsif @version == 85 or @version == 86
             convert_data! 29, "some model data or anim header or sth"
           else
             convert_data! 1, "some model data or anim header or sth"
