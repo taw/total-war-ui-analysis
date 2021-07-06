@@ -31,15 +31,15 @@ Checked on every `Version033` from every game I could find. Percentage convertin
 * Empire: 199/205 (97%)
 * Napoleon: 199/201 (99%)
 * Shogun 2: 284/285 (100%)
-* Rome 2: 282/306 (92%)
-* Attila: 179/190 (94%)
-* Thrones of Britannia: 188/205 (92%)
-* Warhammer 1: 262/271 (97%)
-* Warhammer 2: 341/349 (98%)
-* Troy: 386/395 (98%)
+* Rome 2: 283/306 (92%)
+* Attila: 180/190 (95%)
+* Thrones of Britannia: 189/205 (92%)
+* Warhammer 1: 263/271 (97%)
+* Warhammer 2: 342/349 (98%)
+* Troy: 387/395 (98%)
 * Three Kingdoms: 431/433 (100%)
 
-* Total: 2751/2840 (97%)
+* Total: 2757/2840 (97%)
 
 ### Files
 

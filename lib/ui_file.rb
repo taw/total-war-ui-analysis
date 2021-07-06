@@ -975,7 +975,7 @@ class UiFile
           convert_i! "mystery2"     # generally 0-2
           convert_bool! "mystery3"
           convert_i! "mystery4"     # generally 1-10
-          if @version >= 54
+          if @version >= 54 and @version != 77
             convert_bool! "mystery5"
           end
           if @version >= 96
