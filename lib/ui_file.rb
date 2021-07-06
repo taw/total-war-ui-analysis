@@ -1100,10 +1100,13 @@ class UiFile
         convert_bool!
       end
 
+      out_ofs! "subtemplate states"
+
       # WTF? seriously? or are we missing some state count somewhere?
       while true
         v = @data[@ofs+2, 2].bytes
-        break if v[0] == 0 or v[1] == 0
+        # length 1 string sometimes happens here
+        break if (v[0] == 0 or v[1] == 0) and lookahead(2) != "\x01\x00".b
         tag! "state" do
           convert_s! "name"
           convert_unicode!
@@ -1115,6 +1118,8 @@ class UiFile
           end
         end
       end
+
+      out_ofs! "subtemplate properties"
 
       convert_properties!
 

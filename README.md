@@ -36,8 +36,8 @@ Checked on every `Version033` from every game I could find. Percentage convertin
 * Thrones of Britannia: 187/205 (91%)
 * Warhammer 1: 261/271 (96%)
 * Warhammer 2: 334/349 (96%)
-* Troy: 381/395 (96%)
-* Three Kingdoms: 388/433 (90%)
+* Troy: 382/395 (97%)
+* Three Kingdoms: 410/433 (95%)
 
 ### Files
 
