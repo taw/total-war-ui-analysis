@@ -318,7 +318,7 @@ class UiFile
           convert_bool_false! "state stuff 1?"
           convert_bool_false! "state stuff 2?"
 
-          if @version == 121 or @version == 122
+          if @version == 121 or @version == 122 or @version >= 129
             convert_s!
           end
         else

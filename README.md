@@ -37,7 +37,7 @@ Checked on every `Version033` from every game I could find. Percentage convertin
 * Warhammer 1: 258/271 (95%)
 * Warhammer 2: 298/349 (85%)
 * Troy: 357/395 (90%)
-* Three Kingdoms: 37/433 (9%)
+* Three Kingdoms: 120/433 (28%)
 
 ### Files
 
