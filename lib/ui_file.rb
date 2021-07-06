@@ -116,7 +116,7 @@ class UiFile
 
   # Most UI formats except the latest ones do
   def starts_with_root_ui_entry?
-    @data[16,4] == "root"
+    @data[16,4] == "root" or @data[32,4] == "root"
   end
 
   def convert_u!(comment=nil)
@@ -1116,9 +1116,11 @@ class UiFile
 
       # WTF? seriously? or are we missing some state count somewhere?
       while true
+        out! "<!-- lookahead: #{ @data[@ofs, 4].bytes } -->"
         v = @data[@ofs+2, 2].bytes
         # length 1 string sometimes happens here
-        break if (v[0] == 0 or v[1] == 0) and lookahead(2) != "\x01\x00".b
+        break if v[0] == 0
+        break if v[1] == 0 and lookahead(2) != "\x01\x00".b
         tag! "state" do
           convert_s! "name"
           convert_unicode!
