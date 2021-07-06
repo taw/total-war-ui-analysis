@@ -1043,7 +1043,10 @@ class UiFile
       convert_flt!
       convert_i!
       convert_i!
-      convert_bool! "subtemplate flag?"
+      convert_bool! "subtemplate flag 1?"
+      if @version >= 128
+        convert_bool! "subtemplate flag 2?"
+      end
       convert_i!
       convert_i!
       convert_data_zero! 2
@@ -1051,7 +1054,6 @@ class UiFile
       convert_unicode! "tooltip text?"
 
       if @version >= 128
-        convert_bool_false!
         convert_bool!
       end
 
