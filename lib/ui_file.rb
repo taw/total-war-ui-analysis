@@ -528,7 +528,7 @@ class UiFile
             convert_flt! "margin left-right?"
           end
           if @version >= 125
-            convert_bool_false!
+            convert_bool!
           end
         else
           if @version >= 51
@@ -605,7 +605,7 @@ class UiFile
           end
         end
         if @version >= 124
-          convert_data_zero! 2
+          convert_s!
         end
         out_ofs! "end of anim"
       end
@@ -749,8 +749,7 @@ class UiFile
       end
 
       if @version >= 126
-        # uuid too?
-        convert_data_zero! 16, "extra v126+ zeroes?"
+        convert_uuid!
       end
 
       convert_state_list!
@@ -1058,6 +1057,9 @@ class UiFile
           convert_data_zero! 2
           convert_unicode! "tooltip id?"
           convert_unicode! "tooltip text?"
+          if @version >= 128
+            convert_bool_false!
+          end
 
           # WTF? seriously? or are we missing some state count somewhere?
           while true
@@ -1078,6 +1080,10 @@ class UiFile
             tag! "image" do
               convert_s!
             end
+          end
+
+          if @version >= 128
+            raise "v128+ stuff?"
           end
 
           out_ofs! "end of subtemplate?"
