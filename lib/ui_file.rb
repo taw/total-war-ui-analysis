@@ -1057,8 +1057,10 @@ class UiFile
           convert_data_zero! 2
           convert_unicode! "tooltip id?"
           convert_unicode! "tooltip text?"
+
           if @version >= 128
             convert_bool_false!
+            convert_bool!
           end
 
           # WTF? seriously? or are we missing some state count somewhere?
@@ -1071,6 +1073,9 @@ class UiFile
               convert_unicode!
               convert_unicode!
               convert_unicode!
+              if @version >= 128
+                convert_bool_false!
+              end
             end
           end
 
@@ -1083,7 +1088,10 @@ class UiFile
           end
 
           if @version >= 128
-            raise "v128+ stuff?"
+            out_ofs! "v128+ stuff?"
+            convert_i_zero! "v128+ stuff 1?"
+            convert_i_zero! "v128+ stuff 2?"
+            convert_i_zero! "v128+ stuff 3?"
           end
 
           out_ofs! "end of subtemplate?"
