@@ -841,40 +841,37 @@ class UiFile
           out! "<no /><!-- has some extra data (section skipped) -->"
         end
 
-        convert_ix! "uientry id reference"
-        convert_ix! "uientry id reference"
-      else
-        has_model = get_bool
-        if has_model
-          out! "<yes /><!-- has model (controls presence of model below) -->"
-          convert_model!
-        else
-          out! "<no /><!-- has model (controls presence of model below) -->"
-        end
-
-        # This version mix...
-        if @version <= 84 and @version != 77 and @version != 78
-          # if it's not all zeroes, we could have VariantMeshDefinition stuff following :-/
-          convert_bool! "end of uientry flag 5A?"
-        else
-          convert_bool! "end of uientry flag 5B?"
-          convert_bool! "end of uientry flag 6B?"
-        end
-
-        if @version >= 94
-          convert_bool!
-        end
-
-        if @version >= 113
-          convert_flt!
-          convert_flt!
-          convert_flt!
-        end
-
-        # v130+ stuff?
-
-        out_ofs! "end of uientry"
+        convert_ix! "uientry id reference maybe?"
       end
+
+      has_model = get_bool
+      if has_model
+        out! "<yes /><!-- has model (controls presence of model below) -->"
+        convert_model!
+      else
+        out! "<no /><!-- has model (controls presence of model below) -->"
+      end
+
+      # This version mix...
+      if @version <= 84 and @version != 77 and @version != 78
+        # if it's not all zeroes, we could have VariantMeshDefinition stuff following :-/
+        convert_bool! "end of uientry flag 5A?"
+      else
+        convert_bool! "end of uientry flag 5B?"
+        convert_bool! "end of uientry flag 6B?"
+      end
+
+      if @version >= 94
+        convert_bool!
+      end
+
+      if @version >= 113
+        convert_flt!
+        convert_flt!
+        convert_flt!
+      end
+
+      out_ofs! "end of uientry"
     end
   end
 
