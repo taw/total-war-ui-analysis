@@ -695,8 +695,9 @@ class UiFile
     tag! "models" do
       out! "<!-- this is very poorly decoded part -->"
       out_ofs! "model"
+      convert_data_zero! 2, "model s?"
       if @version == 74
-        header_size = 38
+        header_size = 37
       elsif @version == 84
         header_size = 51
       elsif @version == 85 or @version == 86
@@ -728,15 +729,10 @@ class UiFile
           convert_i! "anim count?" # assume 1, crashes otherwise
           convert_s! "anim name?"
           convert_s! "anim path?"
-          out_ofs! "end of guessed model data"
-          if @version == 74
-            convert_data! 3, "rest of anim stuff or sth"
-          else
-            convert_data! 4, "rest of anim stuff or sth"
-          end
+          convert_data! 4, "rest of anim stuff or sth"
+          out_ofs! "end of model data"
         end
       end
-      convert_data! 2, "rest of anim stuff or sth"
     end
   end
 
@@ -851,6 +847,7 @@ class UiFile
         has_model = get_bool
         if has_model
           out! "<yes /><!-- has model (controls presence of model below) -->"
+          convert_model!
         else
           out! "<no /><!-- has model (controls presence of model below) -->"
         end
@@ -862,10 +859,6 @@ class UiFile
         else
           convert_bool! "end of uientry flag 5B?"
           convert_bool! "end of uientry flag 6B?"
-        end
-
-        if has_model
-          convert_model!
         end
 
         if @version >= 94
