@@ -996,6 +996,105 @@ class UiFile
     end
   end
 
+  def convert_subtemplate!
+    tag! "subtemplate" do
+      convert_s! "source uientry?"
+      convert_s! "dest uientry?"
+
+      if @version >= 129
+        convert_uuid!
+        convert_array! "states" do
+          tag! "state" do
+            convert_s! "name"
+            convert_uuid!
+          end
+          out_ofs! "state in template?"
+        end
+      end
+
+      convert_s!
+
+      if @version >= 119
+        convert_array! "events" do
+          tag! "event" do
+            convert_s!
+            convert_s!
+            convert_s!
+            if @version >= 121
+              convert_array! "properties" do
+                tag! "property" do
+                  convert_s!
+                  convert_s!
+                end
+              end
+            end
+          end
+        end
+      else
+        convert_s! "type?"
+      end
+
+      convert_s! "func name?"
+      out_ofs! "after all s?"
+
+      convert_flt!
+      convert_flt!
+      convert_flt!
+      convert_flt!
+      convert_i!
+      convert_i!
+      convert_bool! "subtemplate flag?"
+      convert_i!
+      convert_i!
+      convert_data_zero! 2
+      convert_unicode! "tooltip id?"
+      convert_unicode! "tooltip text?"
+
+      if @version >= 128
+        convert_bool_false!
+        convert_bool!
+      end
+
+      # WTF? seriously? or are we missing some state count somewhere?
+      while true
+        v = @data[@ofs+2, 2].bytes
+        break if v[0] == 0 or v[1] == 0
+        tag! "state" do
+          convert_s! "name"
+          convert_unicode!
+          convert_unicode!
+          convert_unicode!
+          convert_unicode!
+          if @version >= 128
+            convert_bool!
+          end
+        end
+      end
+
+      convert_properties!
+
+      convert_array! "images" do
+        tag! "image" do
+          convert_s!
+        end
+      end
+
+      if @version >= 128
+        out_ofs! "v128+ stuff?"
+        convert_i_zero! "v128+ stuff 1?"
+        convert_i_zero! "v128+ stuff 2?"
+        convert_array! "images" do
+          tag! "image" do
+            convert_s! "path"
+            convert_uuid!
+          end
+        end
+      end
+
+      out_ofs! "end of subtemplate?"
+    end
+  end
+
   # Is it even a template?
   def convert_template!
     tag! "template" do
@@ -1005,97 +1104,7 @@ class UiFile
       end
 
       convert_array! "subtemplates" do
-        tag! "subtemplate" do
-          convert_s! "source uientry?"
-          convert_s! "dest uientry?"
-
-          if @version >= 129
-            convert_uuid!
-            convert_array! "states" do
-              tag! "state" do
-                convert_s! "name"
-                convert_uuid!
-              end
-              out_ofs! "state in template?"
-            end
-          end
-
-          convert_s!
-
-          if @version >= 119
-            convert_array! "events" do
-              tag! "event" do
-                convert_s!
-                convert_s!
-                convert_s!
-                if @version >= 121
-                  convert_array! "properties" do
-                    tag! "property" do
-                      convert_s!
-                      convert_s!
-                    end
-                  end
-                end
-              end
-            end
-          else
-            convert_s! "type?"
-          end
-
-          convert_s! "func name?"
-          out_ofs! "after all s?"
-
-          convert_flt!
-          convert_flt!
-          convert_flt!
-          convert_flt!
-          convert_i!
-          convert_i!
-          convert_bool! "subtemplate flag?"
-          convert_i!
-          convert_i!
-          convert_data_zero! 2
-          convert_unicode! "tooltip id?"
-          convert_unicode! "tooltip text?"
-
-          if @version >= 128
-            convert_bool_false!
-            convert_bool!
-          end
-
-          # WTF? seriously? or are we missing some state count somewhere?
-          while true
-            v = @data[@ofs+2, 2].bytes
-            break if v[0] == 0 or v[1] == 0
-            tag! "state" do
-              convert_s! "name"
-              convert_unicode!
-              convert_unicode!
-              convert_unicode!
-              convert_unicode!
-              if @version >= 128
-                convert_bool_false!
-              end
-            end
-          end
-
-          convert_properties!
-
-          convert_array! "images" do
-            tag! "image" do
-              convert_s!
-            end
-          end
-
-          if @version >= 128
-            out_ofs! "v128+ stuff?"
-            convert_i_zero! "v128+ stuff 1?"
-            convert_i_zero! "v128+ stuff 2?"
-            convert_i_zero! "v128+ stuff 3?"
-          end
-
-          out_ofs! "end of subtemplate?"
-        end
+        convert_subtemplate!
       end
 
       convert_array! "children" do
