@@ -825,18 +825,27 @@ class UiFile
       convert_s! "end of uientry 1?"
       convert_s! "end of uientry 2?"
 
-      convert_bool_false! "end of uientry flag 3?"
+      out_ofs! "end_of_uientry data 3"
+
+      if get_bool
+        out! "<yes /><!-- has some extra data (just below) -->"
+        convert_array! "array" do
+          convert_flt!
+        end
+      else
+        out! "<no /><!-- has some extra data (section skipped) -->"
+      end
 
       if @version == 97
         has_extra_data = get_bool
         if has_extra_data
-          out! "<yes /><!-- has some extra data (just below) -->"
+          out! "<yes /><!-- has some extra v97 data (just below) -->"
           convert_i! "extra int 1?"
           convert_array! "array" do
             convert_ix!
           end
         else
-          out! "<no /><!-- has some extra data (section skipped) -->"
+          out! "<no /><!-- has some extra v97 data (section skipped) -->"
         end
 
         convert_ix! "uientry id reference maybe?"
