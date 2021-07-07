@@ -1166,7 +1166,16 @@ class UiFile
       if @version >= 128
         out_ofs! "v128+ stuff?"
         convert_i_zero! "v128+ stuff 1?"
-        convert_i_zero! "v128+ stuff 2?"
+        convert_array! "states" do
+          tag! "state" do
+            convert_s!
+            convert_s!
+            convert_flt!
+            convert_flt!
+            convert_flt!
+            convert_flt!
+          end
+        end
         convert_array! "images" do
           tag! "image" do
             convert_s! "path"
