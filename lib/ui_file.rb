@@ -698,9 +698,7 @@ class UiFile
       convert_s!
       if @version == 74
         header_size = 37
-      elsif @version == 84
-        header_size = 51
-      elsif @version == 85 or @version == 86
+      elsif @version == 84 or @version == 85 or @version == 86
         header_size = 50
       else
         header_size = 74
@@ -721,7 +719,7 @@ class UiFile
           convert_s! "mesh name?"
           if @version <= 77
             convert_data! 21, "some model data or anim header or sth"
-          elsif @version == 85 or @version == 86
+          elsif @version == 84 or @version == 85 or @version == 86
             convert_data! 29, "some model data or anim header or sth"
           else
             convert_data! 1, "some model data or anim header or sth"
