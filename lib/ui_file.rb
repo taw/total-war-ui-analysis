@@ -33,6 +33,7 @@ class UiFile
     @size = @data.size
     @ofs = 0
     @output = output
+    @debug = true
   end
 
   def get(sz)
@@ -215,16 +216,24 @@ class UiFile
   end
 
   def convert_flt!(comment=nil)
-    i = lookahead_u
-    hex = lookahead(4).bytes.map{|x| "%02x" % x }.join(":")
-    out_with_comment! "<flt>#{get_flt}</flt><!-- (#{i} - #{hex}) -->", comment
+    if @debug
+      i = lookahead_u
+      hex = lookahead(4).bytes.map{|x| "%02x" % x }.join(":")
+      out_with_comment! "<flt>#{get_flt}</flt><!-- (#{i} - #{hex}) -->", comment
+    else
+      out_with_comment! "<flt>#{get_flt}</flt>", comment
+    end
   end
 
   def convert_angle!(comment=nil)
     i = lookahead_u
     v = get_flt
     vdeg = (v * 180.0 / Math::PI).round(2)
-    out_with_comment! "<flt>#{v}</flt><!-- (#{i}) / (#{vdeg} degrees) -->", comment
+    if @debug
+      out_with_comment! "<flt>#{v}</flt><!-- #{i} / #{vdeg} degrees -->", comment
+    else
+      out_with_comment! "<flt>#{v}</flt><!-- #{vdeg} degrees -->", comment
+    end
   end
 
   def convert_bgra!(comment=nil)
@@ -860,7 +869,6 @@ class UiFile
 
       # This version mix...
       if @version <= 84 and @version != 77 and @version != 78
-        # if it's not all zeroes, we could have VariantMeshDefinition stuff following :-/
         convert_bool! "end of uientry flag 5A?"
       else
         convert_bool! "end of uientry flag 5B?"
@@ -1028,6 +1036,9 @@ class UiFile
           convert_flt!
 
           convert_bool!
+          if @version == 121
+            convert_bool!
+          end
           out_ofs! "rest of RadialList?"
         else
           raise "Unknown additional data section #{type}"
@@ -1360,6 +1371,7 @@ class UiFile
   end
 
   def out_ofs!(comment=nil)
+    return unless @debug
     @save_ofs = @ofs
     if comment
       out! "<!-- #{@ofs} - #{comment} -->"
