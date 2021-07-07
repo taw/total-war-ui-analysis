@@ -356,7 +356,7 @@ class UiFile
           end
         end
 
-        if @version >= 28
+        if @version >= 27
           convert_s! "font"
           convert_i! "font size? line height?"
           convert_i! "font leading?"
@@ -393,12 +393,12 @@ class UiFile
           convert_bool!
           convert_bool!
           convert_bool!
-        elsif @version == 28
+        elsif @version >= 27
           convert_bool!
           convert_bool!
         end
 
-        if @version >= 28
+        if @version >= 27
           convert_s! "shader name"
           convert_flt! "shader vars"
           convert_flt! "shader vars"
@@ -937,7 +937,7 @@ class UiFile
       convert_state_list!
 
       out_ofs! "state list just finished"
-      if @version >= 28
+      if @version >= 27
         convert_i!
       end
 
