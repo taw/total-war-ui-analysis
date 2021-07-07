@@ -358,10 +358,10 @@ class UiFile
 
         if @version >= 27
           convert_s! "font"
-          convert_i! "font size? line height?"
-          convert_i! "font leading?"
-          convert_i! "font tracking?"
         end
+        convert_i! "font size? line height?"
+        convert_i! "font leading?"
+        convert_i! "font tracking?"
 
         if @version >= 74
           convert_bgra!
@@ -396,15 +396,20 @@ class UiFile
         elsif @version >= 27
           convert_bool!
           convert_bool!
+        elsif @version >= 25
+          convert_bool!
+          convert_bool!
+          convert_bool!
+          convert_bool!
+          convert_bool!
+          convert_bool!
         end
 
-        if @version >= 27
-          convert_s! "shader name"
-          convert_flt! "shader vars"
-          convert_flt! "shader vars"
-          convert_flt! "shader vars"
-          convert_flt! "shader vars"
-        end
+        convert_s! "shader name"
+        convert_flt! "shader vars"
+        convert_flt! "shader vars"
+        convert_flt! "shader vars"
+        convert_flt! "shader vars"
 
         if @version >= 77
           convert_s! "text shader name"
@@ -424,10 +429,9 @@ class UiFile
         out_ofs! "image use list"
         convert_image_uses!
 
-        if @version >= 26 # something mouse related???
-          convert_i!
-          convert_i!
-        end
+        # something mouse related???
+        convert_i!
+        convert_i!
 
         if @version < 74
           convert_transitions!
@@ -937,9 +941,7 @@ class UiFile
       convert_state_list!
 
       out_ofs! "state list just finished"
-      if @version >= 27
-        convert_i!
-      end
+      convert_i!
 
       # in versions 29 and 30 there's sometimes a lone byte but at root level only here for some reason???
       # is the parser searching for "events_end" and that's why it can ignore some small amount of crap?
