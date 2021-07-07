@@ -38,7 +38,7 @@ class FileTask
   end
 
   def supported_by_ui2xml?
-    fc? or cml? or twui_images? or [*25..29, *31..129].include?(version)
+    fc? or cml? or twui_images? or [*25..129].include?(version)
   end
 
   def full_version

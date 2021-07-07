@@ -579,8 +579,11 @@ class UiFile
           if @version >= 51
             convert_bool!
           end
-          if @version == 31 # WTF ?
+          if @version == 31
             convert_i!
+          end
+          if @version == 30
+            convert_bool!
           end
         end
       end
@@ -943,10 +946,6 @@ class UiFile
       out_ofs! "state list just finished"
       convert_i!
 
-      # in versions 29 and 30 there's sometimes a lone byte but at root level only here for some reason???
-      # is the parser searching for "events_end" and that's why it can ignore some small amount of crap?
-      # doesn't sound very likely, but I can't see any other logic to it
-
       out_ofs! "do event list now"
       convert_event_list!
       convert_i!
@@ -1236,6 +1235,12 @@ class UiFile
   def convert_event_list!
     tag! "events" do
       while true
+        # v29, looks like some stray \r\n - \n conversion artifact?
+        # Honestly I don't know how it would even parse in game, probably would just crash
+        # especially since there's another such artifact in different context in the same file
+        #
+        # 029/empire-ui-ui-campaign_ui-sabotage.txt - broken file
+        # 032/empire-ui-ui-campaign_ui-layout_sabotage.xml - game probably just uses this one
         s = get_s
         break if s == "events_end"
         tag! "event" do
