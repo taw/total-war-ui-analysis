@@ -650,8 +650,7 @@ class UiFile
             convert_s! "end of anim 2?"
           end
           if @version >= 106
-            convert_bool_false! "end of anim 3?"
-            convert_bool_false! "end of anim 4?"
+            convert_s! "end of anim 3"
           end
         end
         if @version >= 124
@@ -724,7 +723,7 @@ class UiFile
           else
             convert_data! 1, "some model data or anim header or sth"
           end
-          convert_i! "anim count?" # assume 1, crashes otherwise
+          convert_ix! "anim count or something?" # assume 1, crashes otherwise
           convert_s! "anim name?"
           convert_s! "anim path?"
           convert_data! 4, "rest of anim stuff or sth"
