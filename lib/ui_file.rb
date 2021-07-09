@@ -27,14 +27,32 @@ class String
 end
 
 class UiFile
-  def initialize(path, output)
+  def initialize(path, output_path)
     @path = path
-    @data = File.open(path, 'rb').read
+    @output_path = output_path
+    @data = path.open("rb", &:read)
     @size = @data.size
-    @ofs = 0
-    @output = output
-    @debug = true
   end
+
+  def call
+    with_xml_output! do
+      err1 = try_convert!(debug: false)
+      return unless err1
+    end
+
+    # Didn't work, so try it again in debug mode. We fully expect same error
+    # so we're ignoring the first one
+
+    with_xml_output! do
+      err2 = try_convert!(debug: true)
+      if err2
+        out_error!(err2)
+        raise err2
+      end
+    end
+  end
+
+private
 
   def get(sz)
     raise "Requested reading past end of file (#{@path}:#{@ofs}) - #{sz}" if @ofs + sz > @data.size
@@ -1339,9 +1357,8 @@ class UiFile
     end
   end
 
-  def convert!
+  def autodetect_and_convert!
     @version = get_version
-
     case @version
     when 2
       convert_cml_002!
@@ -1362,7 +1379,25 @@ class UiFile
     else
       raise "Not supported yet"
     end
+  end
+
+  def try_convert!(debug:)
+    @ofs = 0
+    @debug = debug
+    autodetect_and_convert!
+    nil
   rescue Exception => err
+    err
+  end
+
+  def with_xml_output!
+    XMLBuilder.new(@output_path) do |output|
+      @output = output
+      yield
+    end
+  end
+
+  def out_error!(err)
     tag! "error", version: @version, msg: err do
       out! "Data before fail:"
       ofs = @save_ofs || @ofs
@@ -1370,7 +1405,6 @@ class UiFile
       out! "Data from fail #{ofs}:"
       hex_dump!(ofs, ofs+1024)
     end
-    raise err
   end
 
   def out!(*args)

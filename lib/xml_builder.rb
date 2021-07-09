@@ -1,14 +1,11 @@
 class XMLBuilder
   def initialize(path)
-    # This is for xml output and should probably go to another class
     @stack = []
-    open(path, "w") do |fh|
+    path.open("w") do |fh|
       @output = fh
       yield(self)
     end
   end
-
-  # XML Builder, maybe more it to another class
 
   def out!(s)
     @output.puts("  " * @stack.size + s)

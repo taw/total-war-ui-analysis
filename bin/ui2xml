@@ -10,7 +10,4 @@ unless ARGV.size == 2
   exit 1
 end
 
-XMLBuilder.new(ARGV[1]) do |output|
-  ui_file = UiFile.new(ARGV[0], output)
-  ui_file.convert!
-end
+UiFile.new(Pathname(ARGV[0]), Pathname(ARGV[1])).call
